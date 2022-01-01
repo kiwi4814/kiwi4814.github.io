@@ -1,4 +1,416 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">客驿风尘面，花坐墨痕枝。</title><subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle><updated>2022-01-01T12:44:24+00:00</updated><id>https://kiwi4814.github.io/</id><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/"/><link rel="self" type="application/atom+xml" href="https://kiwi4814.github.io/atom.xml"/><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.91.2">Hugo</generator><entry><title type="text">First_post</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/windows%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E5%B8%B8%E7%94%A8%E7%AF%87/"/><id>https://kiwi4814.github.io/posts/windows%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E5%B8%B8%E7%94%A8%E7%AF%87/</id><updated>2022-01-01T12:44:21+00:00</updated><published>2021-12-27T20:35:47+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">一些废话 初衷：除了分享给大家之外，也用来备份大部分我平时使用频率很低的软件； 软件大家……</summary><content type="html">&lt;h2 id="一些废话">一些废话&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">客驿风尘面，花坐墨痕枝</title><subtitle type="html">这是kiwi4814的个人博客！</subtitle><updated>2022-01-01T16:12:11+00:00</updated><id>https://kiwi4814.github.io/</id><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/"/><link rel="self" type="application/atom+xml" href="https://kiwi4814.github.io/atom.xml"/><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.91.2">Hugo</generator><entry><title type="text">CentOS 7离线安装MySQL 5.7</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/mysql-install/"/><id>https://kiwi4814.github.io/posts/mysql-install/</id><updated>2022-01-01T16:12:07+00:00</updated><published>2022-01-01T23:46:30+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">操作系统：CentOs 7.7 MySQL版本：MySQL-5.7.25-x86_64 安装步……</summary><content type="html">&lt;h1 id="heading">&lt;/h1>
+&lt;h4 id="操作系统centos-77">&lt;strong>操作系统：CentOs 7.7&lt;/strong>&lt;/h4>
+&lt;h4 id="mysql版本mysql-5725-x86_64">&lt;strong>MySQL版本：MySQL-5.7.25-x86_64&lt;/strong>&lt;/h4>
+&lt;h4 id="安装步骤">&lt;strong>安装步骤：&lt;/strong>&lt;/h4>
+&lt;ol>
+&lt;li>
+&lt;p>查找并卸载&lt;code>mariadb&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 查找当前系统下是否有mariadb&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ rpm -qa &lt;span class="p">|&lt;/span> grep mariadb
+&lt;span class="c1"># 卸载&lt;/span>
+mariadb-libs-5.5.64-1.el7.x86_64
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ rpm -e --nodeps mariadb-libs-5.5.64-1.el7.x86_64
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>卸载原有的&lt;code>mysql&lt;/code>相关&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 查找当前系统是否有mysql&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ rpm -qa &lt;span class="p">|&lt;/span> grep mysql
+&lt;span class="c1"># 删除配置文件&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ rm /etc/my.cnf
+&lt;span class="c1"># 查找是否存在mysql用户组和用户&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ cat /etc/group &lt;span class="p">|&lt;/span> grep mysql
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ cat /etc/passwd &lt;span class="p">|&lt;/span> grep mysql
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>创建&lt;code>mysql&lt;/code>用户和组&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 创建用户组&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ groupadd mysql
+&lt;span class="c1"># 创建用户&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ useradd -g mysql mysql
+&lt;span class="c1"># 修改用户密码&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ passwd mysql
+Changing password &lt;span class="k">for&lt;/span> user mysql.
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>将&lt;code>mysql&lt;/code>离线安装文件上传到服务器上&lt;/p>
+&lt;p>（1）&lt;a href="https://downloads.mysql.com/archives/community/">下载地址&lt;/a>及文件位置&lt;/p>
+&lt;p>![image-20200312165133529](/Users/heqifeng/Library/Application Support/typora-user-images/image-20200312165133529.png)&lt;/p>
+&lt;p>（2）上传到服务器的&lt;code>/usr/local/&lt;/code>目录下&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">scp /localurl/mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz root@host:/usr/local/
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>解压并建立软链接&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 注意：5的操作均在此目录下进行&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /usr/local/
+&lt;span class="c1"># 解压&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver local&lt;span class="o">]&lt;/span>$ tar -zxvf mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz
+&lt;span class="c1"># 创建软链接&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver local&lt;span class="o">]&lt;/span>$ ln -s mysql-5.7.25-linux-glibc2.12-x86_64 mysql
+&lt;span class="c1"># 赋予mysql用户权限&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver local&lt;span class="o">]&lt;/span>$ chown -R mysql:mysql mysql/
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>创建相关文件，赋予&lt;code>mysql&lt;/code>用户权限&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 分别创建data tmp log文件夹&lt;/span>
+&lt;span class="c1"># 此目录可自行指定，不过要和mysql配置文件中相一致&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ mkdir -p /home/datadriver/mysql/&lt;span class="o">{&lt;/span>data,tmp,log&lt;span class="o">}&lt;/span>
+&lt;span class="c1"># 赋权&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /home/datadriver/
+&lt;span class="o">[&lt;/span>root@datadriver datadriver&lt;span class="o">]&lt;/span>$ chown -R mysql:mysql mysql/
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>创建并修改配置文件&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 这里选择将配置文件放在/etc下面，也可以放在mysql根目录下&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /etc
+&lt;span class="c1"># 创建并编辑my.cnf&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver etc&lt;span class="o">]&lt;/span>$ vi my.cnf
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>这里给出一份配置文件作为参考：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="k">[mysql]&lt;/span>
+&lt;span class="na">default-character-set&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">utf8mb4&lt;/span>
+&lt;span class="k">[mysqld]&lt;/span>
+&lt;span class="c1"># ---------------- Basic ----------------&lt;/span>
+&lt;span class="na">server_id&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">100&lt;/span>
+&lt;span class="na">port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">3306&lt;/span>
+&lt;span class="na">basedir&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">/usr/local/mysql&lt;/span>
+&lt;span class="na">datadir&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">/usr/local/mysql/data&lt;/span>
+&lt;span class="na">socket&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">/tmp/mysql.sock&lt;/span>
+&lt;span class="na">skip-host-cache&lt;/span>
+&lt;span class="na">skip_name_resolve&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">1&lt;/span>
+&lt;span class="na">lower_case_table_names&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">1&lt;/span>
+&lt;span class="na">character-set-server&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">utf8mb4&lt;/span>
+&lt;span class="na">collation-server&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">utf8mb4_general_ci&lt;/span>
+&lt;span class="na">init_connect&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#39;SET NAMES utf8mb4&amp;#39;&lt;/span>
+&lt;span class="na">default-storage-engine&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">INNODB&lt;/span>
+&lt;span class="na">group_concat_max_len&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">102400&lt;/span>
+&lt;span class="c1">#skip-external-locking&lt;/span>
+&lt;span class="c1">#skip-networking&lt;/span>
+&lt;span class="c1"># ---------------- Connection/File/Table ----------------&lt;/span>
+&lt;span class="na">max_connections&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">10000&lt;/span>
+&lt;span class="na">max_connect_errors&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">20000&lt;/span>
+&lt;span class="c1">#wait_timeout = 31536000&lt;/span>
+&lt;span class="c1">#interactive_timeout = 31536000&lt;/span>
+&lt;span class="na">wait_timeout&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">3600&lt;/span>
+&lt;span class="na">interactive_timeout&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">3600&lt;/span>
+&lt;span class="na">lock_wait_timeout&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">1800&lt;/span>
+&lt;span class="na">max_allowed_packet&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">1024M&lt;/span>
+&lt;span class="c1"># ---------------- Thread Pool ----------------&lt;/span>
+&lt;span class="c1">#thread_handling = pool-of-threads&lt;/span>
+&lt;span class="c1">#thread_pool_oversubscribe = 5&lt;/span>
+&lt;span class="na">thread_cache_size&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">64&lt;/span>
+&lt;span class="c1">#extra_max_connections = 10&lt;/span>
+&lt;span class="c1">#extra_port = 33333&lt;/span>
+&lt;span class="c1"># ---------------- log ----------------&lt;/span>
+&lt;span class="na">expire_logs_days&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">8&lt;/span>
+&lt;span class="na">log-bin&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">mysql-bin&lt;/span>
+&lt;span class="na">binlog_format&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">ROW&lt;/span>
+&lt;span class="c1"># ---------------- Others ----------------&lt;/span>
+&lt;span class="na">sql_mode&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">NO_ENGINE_SUBSTITUTION,NO_AUTO_CREATE_USER&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>安装&lt;code>mysql&lt;/code>（要先安装依赖）&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 安装相关依赖，否则会报错，此处不再演示离线安装方式，需要的自行查阅&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ yum install libaio*
+&lt;span class="c1"># 进入到mysql /bin 目录&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /usr/local/myysql/bin/
+&lt;span class="c1"># 初始化mysql，指定用户为mysql&lt;/span>
+&lt;span class="c1"># 此处如果日志中配置了log_error，则控制台不会打印数据&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver bin&lt;span class="o">]&lt;/span>$ ./mysqld --initialize --user&lt;span class="o">=&lt;/span>mysql
+&lt;span class="c1"># 查看日志&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver bin&lt;span class="o">]&lt;/span>$ cat ../log/error.log
+2020-07-29T06:04:33.666390Z &lt;span class="m">0&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option &lt;span class="o">(&lt;/span>see documentation &lt;span class="k">for&lt;/span> more details&lt;span class="o">)&lt;/span>.
+2020-07-29T06:04:33.813204Z &lt;span class="m">0&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> InnoDB: New log files created, &lt;span class="nv">LSN&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">45790&lt;/span>
+2020-07-29T06:04:33.848783Z &lt;span class="m">0&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> InnoDB: Creating foreign key constraint system tables.
+2020-07-29T06:04:33.908557Z &lt;span class="m">0&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> No existing UUID has been found, so we assume that this is the first &lt;span class="nb">time&lt;/span> that this server has been started. Generating a new UUID: 5fe4d020-d161-11ea-9224-0894ef98b412.
+2020-07-29T06:04:33.909451Z &lt;span class="m">0&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> Gtid table is not ready to be used. Table &lt;span class="s1">&amp;#39;mysql.gtid_executed&amp;#39;&lt;/span> cannot be opened.
+2020-07-29T06:04:33.911251Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Note&lt;span class="o">]&lt;/span> A temporary password is generated &lt;span class="k">for&lt;/span> root@localhost: -h+#XfgW:4h2
+2020-07-29T06:04:34.357662Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;user&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;root@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+2020-07-29T06:04:34.357715Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;user&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;mysql.session@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+2020-07-29T06:04:34.357739Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;user&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;mysql.sys@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+2020-07-29T06:04:34.357778Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;db&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;performance_schema mysql.session@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+2020-07-29T06:04:34.357793Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;db&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;sys mysql.sys@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+2020-07-29T06:04:34.357820Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;proxies_priv&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;@ root@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+2020-07-29T06:04:34.357877Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;tables_priv&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;user mysql.session@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+2020-07-29T06:04:34.357898Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;tables_priv&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;sys_config mysql.sys@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>设置开机启动&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 进入应用根目录&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /usr/local/mysql/
+&lt;span class="c1"># 复制启动脚本到资源目录&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver mysql&lt;span class="o">]&lt;/span>$ cp ./support-files/mysql.server /etc/rc.d/init.d/mysqld
+&lt;span class="c1"># 增加mysqld服务控制脚本执行权限&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver mysql&lt;span class="o">]&lt;/span>$ chmod +x /etc/rc.d/init.d/mysqld
+&lt;span class="c1"># 将mysqld服务加入到系统服务&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver mysql&lt;span class="o">]&lt;/span>$ chkconfig --add mysqld
+&lt;span class="c1"># 检查mysqld服务是否已经生效&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver mysql&lt;span class="o">]&lt;/span>$ chkconfig --list mysqld
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>切换至&lt;code>mysql&lt;/code>用户，设置环境变量&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 切换至mysql用户&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ su - mysql
+&lt;span class="c1"># 修改配置文件，增加i&lt;/span>
+&lt;span class="o">[&lt;/span>mysql@datadriver ~&lt;span class="o">]&lt;/span>$ vi .bash_profile
+&lt;span class="c1"># 刷新配置文件使其立即生效&lt;/span>
+&lt;span class="c1"># export PATH=$PATH:/home/datadriver/mysql/mysql5.7.25/bin&lt;/span>
+&lt;span class="o">[&lt;/span>mysql@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">source&lt;/span> .bash_profile
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>启动服务&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 仍然在mysql用户下，启动mysql（启动用start）&lt;/span>
+&lt;span class="o">[&lt;/span>mysql@datadriver ~&lt;span class="o">]&lt;/span>$ service mysqld restart
+&lt;span class="c1"># 重启的时候报警告&lt;/span>
+Shutting down MySQL..&lt;span class="o">[&lt;/span> OK &lt;span class="o">]&lt;/span>
+rm: cannot remove &lt;span class="s1">&amp;#39;/var/lock/subsys/mysql&amp;#39;&lt;/span>: Permission denied
+Starting MySQL.&lt;span class="o">[&lt;/span> OK &lt;span class="o">]&lt;/span>
+&lt;span class="c1"># 切回root用户，赋权即即可&lt;/span>
+&lt;span class="o">[&lt;/span>mysql@datadriver ~&lt;span class="o">]&lt;/span>$ su - root
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /var/lock/
+&lt;span class="o">[&lt;/span>root@datadriver lock&lt;span class="o">]&lt;/span>$ chown -R mysql:mysql subsys/
+&lt;span class="c1"># 切回mysql重启，成功。&lt;/span>
+&lt;span class="o">[&lt;/span>mysql@datadriver ~&lt;span class="o">]&lt;/span>$ service mysqld restart
+Shutting down MySQL..&lt;span class="o">[&lt;/span> OK &lt;span class="o">]&lt;/span>
+Starting MySQL.&lt;span class="o">[&lt;/span> OK &lt;span class="o">]&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>修改&lt;code>mysql&lt;/code>默认密码并设置远程连接&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="c1">-- 修改密码
+&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="k">ALTER&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">USER&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>&lt;span class="o">@&lt;/span>&lt;span class="s1">&amp;#39;localhost&amp;#39;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">IDENTIFIED&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">BY&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="k">set&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">password&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">for&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">root&lt;/span>&lt;span class="o">@&lt;/span>&lt;span class="n">localhost&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">password&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;root&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="n">flush&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">privileges&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="c1">-- 远程连接
+&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="n">use&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">mysql&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="k">update&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">user&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">set&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">host&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;%&amp;#39;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">where&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">user&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="n">flush&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">privileges&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ol></content><category scheme="https://kiwi4814.github.io/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/" term="软件与工具" label="软件与工具"/><category scheme="https://kiwi4814.github.io/series/linux%E8%BF%90%E7%BB%B4/" term="Linux运维" label="Linux运维"/><category scheme="https://kiwi4814.github.io/tags/linux/" term="Linux" label="Linux"/><category scheme="https://kiwi4814.github.io/tags/%E8%BD%AF%E4%BB%B6/" term="软件" label="软件"/><category scheme="https://kiwi4814.github.io/tags/mysql/" term="MySQL" label="MySQL"/></entry><entry><title type="text">Windows软件推荐——常用篇</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/windows%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E5%B8%B8%E7%94%A8%E7%AF%87/"/><id>https://kiwi4814.github.io/posts/windows%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E5%B8%B8%E7%94%A8%E7%AF%87/</id><updated>2022-01-01T16:12:07+00:00</updated><published>2021-12-27T20:35:47+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">本文分享了我个人在windows系统上最常用的软件。</summary><content type="html">&lt;h2 id="前言">前言&lt;/h2>
 &lt;ol>
 &lt;li>
 &lt;p>初衷：除了分享给大家之外，也用来备份大部分我平时使用频率很低的软件；&lt;/p>
@@ -18,9 +430,6 @@
 &lt;li>
 &lt;p>点击标题可跳转官网，下载的话一定去官网下载，其他版本都可能有风险；&lt;/p>
 &lt;/li>
-&lt;li>
-&lt;p>最后，如果因为各种原因需要软件安装包或者安装使用过程中有疑问的地方，欢迎私信和我交流，非常开心能帮助到任何一个人！&lt;/p>
-&lt;/li>
 &lt;/ol>
 &lt;h2 id="系统信息">系统信息&lt;/h2>
 &lt;ul>
@@ -31,48 +440,6 @@
 &lt;p>时间：2021年12月01日&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;h2 id="更新记录">更新记录&lt;/h2>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>时间&lt;/th>
-&lt;th>更新内容&lt;/th>
-&lt;th>更新人&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
 &lt;h2 id="目录">目录&lt;/h2>
 &lt;p>[TOC]&lt;/p>
 &lt;h2 id="正文">正文&lt;/h2>
@@ -611,7 +978,7 @@ NAS，全程是网络附属存储，本质就是你的另一台电脑，里面�
 &lt;/ul>
 &lt;hr>
 &lt;p>本文涉及到的一些软件的安装包已经上传到&lt;a href="https://www.aliyundrive.com/s/6P9Ftt2bD6v">阿里云盘&lt;/a>，方便某些开源软件网络问题无法下载的小伙伴们获取。&lt;/p>
-&lt;p>完。&lt;/p></content><category scheme="https://kiwi4814.github.io/tags/windows/" term="Windows" label="Windows"/><category scheme="https://kiwi4814.github.io/tags/%E8%BD%AF%E4%BB%B6/" term="软件" label="软件"/></entry><entry><title type="text">一些常用的方法论</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/methods/"/><id>https://kiwi4814.github.io/posts/methods/</id><updated>2022-01-01T12:44:21+00:00</updated><published>2021-12-22T22:42:13+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">一些常用的方法论 一、思考技巧与模板 1. SCQA SCQA模型是一个“结构化表达”工具，是麦肯锡……</summary><content type="html">&lt;h1 id="一些常用的方法论">一些常用的方法论&lt;/h1>
+&lt;p>完。&lt;/p></content><category scheme="https://kiwi4814.github.io/tags/windows/" term="Windows" label="Windows"/><category scheme="https://kiwi4814.github.io/tags/%E8%BD%AF%E4%BB%B6/" term="软件" label="软件"/></entry><entry><title type="text">一些常用的方法论</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/methods/"/><id>https://kiwi4814.github.io/posts/methods/</id><updated>2022-01-01T16:12:07+00:00</updated><published>2021-12-22T22:42:13+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">一些常用的方法论 一、思考技巧与模板 1. SCQA SCQA模型是一个“结构化表达”工具，是麦肯锡……</summary><content type="html">&lt;h1 id="一些常用的方法论">一些常用的方法论&lt;/h1>
 &lt;h2 id="一思考技巧与模板">一、思考技巧与模板&lt;/h2>
 &lt;h3 id="1-scqa">1. SCQA&lt;/h3>
 &lt;p>SCQA模型是一个“结构化表达”工具，是麦肯锡咨询顾问芭芭拉·明托在《金字塔原理》中提出的。&lt;/p>
