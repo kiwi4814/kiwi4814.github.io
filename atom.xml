@@ -1,416 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">客驿风尘面，花坐墨痕枝</title><subtitle type="html">这是kiwi4814的个人博客！</subtitle><updated>2022-01-01T16:12:11+00:00</updated><id>https://kiwi4814.github.io/</id><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/"/><link rel="self" type="application/atom+xml" href="https://kiwi4814.github.io/atom.xml"/><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.91.2">Hugo</generator><entry><title type="text">CentOS 7离线安装MySQL 5.7</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/mysql-install/"/><id>https://kiwi4814.github.io/posts/mysql-install/</id><updated>2022-01-01T16:12:07+00:00</updated><published>2022-01-01T23:46:30+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">操作系统：CentOs 7.7 MySQL版本：MySQL-5.7.25-x86_64 安装步……</summary><content type="html">&lt;h1 id="heading">&lt;/h1>
-&lt;h4 id="操作系统centos-77">&lt;strong>操作系统：CentOs 7.7&lt;/strong>&lt;/h4>
-&lt;h4 id="mysql版本mysql-5725-x86_64">&lt;strong>MySQL版本：MySQL-5.7.25-x86_64&lt;/strong>&lt;/h4>
-&lt;h4 id="安装步骤">&lt;strong>安装步骤：&lt;/strong>&lt;/h4>
-&lt;ol>
-&lt;li>
-&lt;p>查找并卸载&lt;code>mariadb&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 查找当前系统下是否有mariadb&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ rpm -qa &lt;span class="p">|&lt;/span> grep mariadb
-&lt;span class="c1"># 卸载&lt;/span>
-mariadb-libs-5.5.64-1.el7.x86_64
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ rpm -e --nodeps mariadb-libs-5.5.64-1.el7.x86_64
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>卸载原有的&lt;code>mysql&lt;/code>相关&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 查找当前系统是否有mysql&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ rpm -qa &lt;span class="p">|&lt;/span> grep mysql
-&lt;span class="c1"># 删除配置文件&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ rm /etc/my.cnf
-&lt;span class="c1"># 查找是否存在mysql用户组和用户&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ cat /etc/group &lt;span class="p">|&lt;/span> grep mysql
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ cat /etc/passwd &lt;span class="p">|&lt;/span> grep mysql
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>创建&lt;code>mysql&lt;/code>用户和组&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 创建用户组&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ groupadd mysql
-&lt;span class="c1"># 创建用户&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ useradd -g mysql mysql
-&lt;span class="c1"># 修改用户密码&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ passwd mysql
-Changing password &lt;span class="k">for&lt;/span> user mysql.
-New password:
-Retype new password:
-passwd: all authentication tokens updated successfully.
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>将&lt;code>mysql&lt;/code>离线安装文件上传到服务器上&lt;/p>
-&lt;p>（1）&lt;a href="https://downloads.mysql.com/archives/community/">下载地址&lt;/a>及文件位置&lt;/p>
-&lt;p>![image-20200312165133529](/Users/heqifeng/Library/Application Support/typora-user-images/image-20200312165133529.png)&lt;/p>
-&lt;p>（2）上传到服务器的&lt;code>/usr/local/&lt;/code>目录下&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">scp /localurl/mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz root@host:/usr/local/
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>解压并建立软链接&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;span class="lnt">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 注意：5的操作均在此目录下进行&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /usr/local/
-&lt;span class="c1"># 解压&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver local&lt;span class="o">]&lt;/span>$ tar -zxvf mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz
-&lt;span class="c1"># 创建软链接&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver local&lt;span class="o">]&lt;/span>$ ln -s mysql-5.7.25-linux-glibc2.12-x86_64 mysql
-&lt;span class="c1"># 赋予mysql用户权限&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver local&lt;span class="o">]&lt;/span>$ chown -R mysql:mysql mysql/
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>创建相关文件，赋予&lt;code>mysql&lt;/code>用户权限&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 分别创建data tmp log文件夹&lt;/span>
-&lt;span class="c1"># 此目录可自行指定，不过要和mysql配置文件中相一致&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ mkdir -p /home/datadriver/mysql/&lt;span class="o">{&lt;/span>data,tmp,log&lt;span class="o">}&lt;/span>
-&lt;span class="c1"># 赋权&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /home/datadriver/
-&lt;span class="o">[&lt;/span>root@datadriver datadriver&lt;span class="o">]&lt;/span>$ chown -R mysql:mysql mysql/
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>创建并修改配置文件&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 这里选择将配置文件放在/etc下面，也可以放在mysql根目录下&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /etc
-&lt;span class="c1"># 创建并编辑my.cnf&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver etc&lt;span class="o">]&lt;/span>$ vi my.cnf
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>这里给出一份配置文件作为参考：&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;span class="lnt">26
-&lt;/span>&lt;span class="lnt">27
-&lt;/span>&lt;span class="lnt">28
-&lt;/span>&lt;span class="lnt">29
-&lt;/span>&lt;span class="lnt">30
-&lt;/span>&lt;span class="lnt">31
-&lt;/span>&lt;span class="lnt">32
-&lt;/span>&lt;span class="lnt">33
-&lt;/span>&lt;span class="lnt">34
-&lt;/span>&lt;span class="lnt">35
-&lt;/span>&lt;span class="lnt">36
-&lt;/span>&lt;span class="lnt">37
-&lt;/span>&lt;span class="lnt">38
-&lt;/span>&lt;span class="lnt">39
-&lt;/span>&lt;span class="lnt">40
-&lt;/span>&lt;span class="lnt">41
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="k">[mysql]&lt;/span>
-&lt;span class="na">default-character-set&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">utf8mb4&lt;/span>
-&lt;span class="k">[mysqld]&lt;/span>
-&lt;span class="c1"># ---------------- Basic ----------------&lt;/span>
-&lt;span class="na">server_id&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">100&lt;/span>
-&lt;span class="na">port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">3306&lt;/span>
-&lt;span class="na">basedir&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">/usr/local/mysql&lt;/span>
-&lt;span class="na">datadir&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">/usr/local/mysql/data&lt;/span>
-&lt;span class="na">socket&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">/tmp/mysql.sock&lt;/span>
-&lt;span class="na">skip-host-cache&lt;/span>
-&lt;span class="na">skip_name_resolve&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">1&lt;/span>
-&lt;span class="na">lower_case_table_names&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">1&lt;/span>
-&lt;span class="na">character-set-server&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">utf8mb4&lt;/span>
-&lt;span class="na">collation-server&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">utf8mb4_general_ci&lt;/span>
-&lt;span class="na">init_connect&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#39;SET NAMES utf8mb4&amp;#39;&lt;/span>
-&lt;span class="na">default-storage-engine&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">INNODB&lt;/span>
-&lt;span class="na">group_concat_max_len&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">102400&lt;/span>
-&lt;span class="c1">#skip-external-locking&lt;/span>
-&lt;span class="c1">#skip-networking&lt;/span>
-&lt;span class="c1"># ---------------- Connection/File/Table ----------------&lt;/span>
-&lt;span class="na">max_connections&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">10000&lt;/span>
-&lt;span class="na">max_connect_errors&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">20000&lt;/span>
-&lt;span class="c1">#wait_timeout = 31536000&lt;/span>
-&lt;span class="c1">#interactive_timeout = 31536000&lt;/span>
-&lt;span class="na">wait_timeout&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">3600&lt;/span>
-&lt;span class="na">interactive_timeout&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">3600&lt;/span>
-&lt;span class="na">lock_wait_timeout&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">1800&lt;/span>
-&lt;span class="na">max_allowed_packet&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">1024M&lt;/span>
-&lt;span class="c1"># ---------------- Thread Pool ----------------&lt;/span>
-&lt;span class="c1">#thread_handling = pool-of-threads&lt;/span>
-&lt;span class="c1">#thread_pool_oversubscribe = 5&lt;/span>
-&lt;span class="na">thread_cache_size&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">64&lt;/span>
-&lt;span class="c1">#extra_max_connections = 10&lt;/span>
-&lt;span class="c1">#extra_port = 33333&lt;/span>
-&lt;span class="c1"># ---------------- log ----------------&lt;/span>
-&lt;span class="na">expire_logs_days&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">8&lt;/span>
-&lt;span class="na">log-bin&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">mysql-bin&lt;/span>
-&lt;span class="na">binlog_format&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">ROW&lt;/span>
-&lt;span class="c1"># ---------------- Others ----------------&lt;/span>
-&lt;span class="na">sql_mode&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">NO_ENGINE_SUBSTITUTION,NO_AUTO_CREATE_USER&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>安装&lt;code>mysql&lt;/code>（要先安装依赖）&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 安装相关依赖，否则会报错，此处不再演示离线安装方式，需要的自行查阅&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ yum install libaio*
-&lt;span class="c1"># 进入到mysql /bin 目录&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /usr/local/myysql/bin/
-&lt;span class="c1"># 初始化mysql，指定用户为mysql&lt;/span>
-&lt;span class="c1"># 此处如果日志中配置了log_error，则控制台不会打印数据&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver bin&lt;span class="o">]&lt;/span>$ ./mysqld --initialize --user&lt;span class="o">=&lt;/span>mysql
-&lt;span class="c1"># 查看日志&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver bin&lt;span class="o">]&lt;/span>$ cat ../log/error.log
-2020-07-29T06:04:33.666390Z &lt;span class="m">0&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option &lt;span class="o">(&lt;/span>see documentation &lt;span class="k">for&lt;/span> more details&lt;span class="o">)&lt;/span>.
-2020-07-29T06:04:33.813204Z &lt;span class="m">0&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> InnoDB: New log files created, &lt;span class="nv">LSN&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">45790&lt;/span>
-2020-07-29T06:04:33.848783Z &lt;span class="m">0&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> InnoDB: Creating foreign key constraint system tables.
-2020-07-29T06:04:33.908557Z &lt;span class="m">0&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> No existing UUID has been found, so we assume that this is the first &lt;span class="nb">time&lt;/span> that this server has been started. Generating a new UUID: 5fe4d020-d161-11ea-9224-0894ef98b412.
-2020-07-29T06:04:33.909451Z &lt;span class="m">0&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> Gtid table is not ready to be used. Table &lt;span class="s1">&amp;#39;mysql.gtid_executed&amp;#39;&lt;/span> cannot be opened.
-2020-07-29T06:04:33.911251Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Note&lt;span class="o">]&lt;/span> A temporary password is generated &lt;span class="k">for&lt;/span> root@localhost: -h+#XfgW:4h2
-2020-07-29T06:04:34.357662Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;user&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;root@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
-2020-07-29T06:04:34.357715Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;user&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;mysql.session@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
-2020-07-29T06:04:34.357739Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;user&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;mysql.sys@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
-2020-07-29T06:04:34.357778Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;db&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;performance_schema mysql.session@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
-2020-07-29T06:04:34.357793Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;db&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;sys mysql.sys@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
-2020-07-29T06:04:34.357820Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;proxies_priv&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;@ root@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
-2020-07-29T06:04:34.357877Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;tables_priv&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;user mysql.session@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
-2020-07-29T06:04:34.357898Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;tables_priv&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;sys_config mysql.sys@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>设置开机启动&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 进入应用根目录&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /usr/local/mysql/
-&lt;span class="c1"># 复制启动脚本到资源目录&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver mysql&lt;span class="o">]&lt;/span>$ cp ./support-files/mysql.server /etc/rc.d/init.d/mysqld
-&lt;span class="c1"># 增加mysqld服务控制脚本执行权限&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver mysql&lt;span class="o">]&lt;/span>$ chmod +x /etc/rc.d/init.d/mysqld
-&lt;span class="c1"># 将mysqld服务加入到系统服务&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver mysql&lt;span class="o">]&lt;/span>$ chkconfig --add mysqld
-&lt;span class="c1"># 检查mysqld服务是否已经生效&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver mysql&lt;span class="o">]&lt;/span>$ chkconfig --list mysqld
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>切换至&lt;code>mysql&lt;/code>用户，设置环境变量&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 切换至mysql用户&lt;/span>
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ su - mysql
-&lt;span class="c1"># 修改配置文件，增加i&lt;/span>
-&lt;span class="o">[&lt;/span>mysql@datadriver ~&lt;span class="o">]&lt;/span>$ vi .bash_profile
-&lt;span class="c1"># 刷新配置文件使其立即生效&lt;/span>
-&lt;span class="c1"># export PATH=$PATH:/home/datadriver/mysql/mysql5.7.25/bin&lt;/span>
-&lt;span class="o">[&lt;/span>mysql@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">source&lt;/span> .bash_profile
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>启动服务&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 仍然在mysql用户下，启动mysql（启动用start）&lt;/span>
-&lt;span class="o">[&lt;/span>mysql@datadriver ~&lt;span class="o">]&lt;/span>$ service mysqld restart
-&lt;span class="c1"># 重启的时候报警告&lt;/span>
-Shutting down MySQL..&lt;span class="o">[&lt;/span> OK &lt;span class="o">]&lt;/span>
-rm: cannot remove &lt;span class="s1">&amp;#39;/var/lock/subsys/mysql&amp;#39;&lt;/span>: Permission denied
-Starting MySQL.&lt;span class="o">[&lt;/span> OK &lt;span class="o">]&lt;/span>
-&lt;span class="c1"># 切回root用户，赋权即即可&lt;/span>
-&lt;span class="o">[&lt;/span>mysql@datadriver ~&lt;span class="o">]&lt;/span>$ su - root
-&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /var/lock/
-&lt;span class="o">[&lt;/span>root@datadriver lock&lt;span class="o">]&lt;/span>$ chown -R mysql:mysql subsys/
-&lt;span class="c1"># 切回mysql重启，成功。&lt;/span>
-&lt;span class="o">[&lt;/span>mysql@datadriver ~&lt;span class="o">]&lt;/span>$ service mysqld restart
-Shutting down MySQL..&lt;span class="o">[&lt;/span> OK &lt;span class="o">]&lt;/span>
-Starting MySQL.&lt;span class="o">[&lt;/span> OK &lt;span class="o">]&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>修改&lt;code>mysql&lt;/code>默认密码并设置远程连接&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;span class="lnt">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="c1">-- 修改密码
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="k">ALTER&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">USER&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>&lt;span class="o">@&lt;/span>&lt;span class="s1">&amp;#39;localhost&amp;#39;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">IDENTIFIED&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">BY&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="k">set&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">password&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">for&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">root&lt;/span>&lt;span class="o">@&lt;/span>&lt;span class="n">localhost&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">password&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;root&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="n">flush&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">privileges&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="c1">-- 远程连接
-&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="n">use&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">mysql&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="k">update&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">user&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">set&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">host&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;%&amp;#39;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">where&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">user&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="n">flush&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">privileges&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;/ol></content><category scheme="https://kiwi4814.github.io/categories/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/" term="软件与工具" label="软件与工具"/><category scheme="https://kiwi4814.github.io/series/linux%E8%BF%90%E7%BB%B4/" term="Linux运维" label="Linux运维"/><category scheme="https://kiwi4814.github.io/tags/linux/" term="Linux" label="Linux"/><category scheme="https://kiwi4814.github.io/tags/%E8%BD%AF%E4%BB%B6/" term="软件" label="软件"/><category scheme="https://kiwi4814.github.io/tags/mysql/" term="MySQL" label="MySQL"/></entry><entry><title type="text">Windows软件推荐——常用篇</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/windows%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E5%B8%B8%E7%94%A8%E7%AF%87/"/><id>https://kiwi4814.github.io/posts/windows%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E5%B8%B8%E7%94%A8%E7%AF%87/</id><updated>2022-01-01T16:12:07+00:00</updated><published>2021-12-27T20:35:47+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">本文分享了我个人在windows系统上最常用的软件。</summary><content type="html">&lt;h2 id="前言">前言&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">客驿风尘面，花坐墨痕枝</title><subtitle type="html">这是kiwi4814的个人博客！</subtitle><updated>2022-01-02T10:15:55+00:00</updated><id>https://kiwi4814.github.io/</id><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/"/><link rel="self" type="application/atom+xml" href="https://kiwi4814.github.io/atom.xml"/><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.91.2">Hugo</generator><entry><title type="text">Windows软件推荐——常用篇</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/2021/win-soft-normal/"/><id>https://kiwi4814.github.io/posts/2021/win-soft-normal/</id><updated>2022-01-02T10:15:52+00:00</updated><published>2021-12-27T20:35:47+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">本文分享了我个人在windows系统上最常用的软件。</summary><content type="html">&lt;h2 id="前言">前言&lt;/h2>
 &lt;ol>
 &lt;li>
 &lt;p>初衷：除了分享给大家之外，也用来备份大部分我平时使用频率很低的软件；&lt;/p>
@@ -978,16 +566,13 @@ NAS，全程是网络附属存储，本质就是你的另一台电脑，里面�
 &lt;/ul>
 &lt;hr>
 &lt;p>本文涉及到的一些软件的安装包已经上传到&lt;a href="https://www.aliyundrive.com/s/6P9Ftt2bD6v">阿里云盘&lt;/a>，方便某些开源软件网络问题无法下载的小伙伴们获取。&lt;/p>
-&lt;p>完。&lt;/p></content><category scheme="https://kiwi4814.github.io/tags/windows/" term="Windows" label="Windows"/><category scheme="https://kiwi4814.github.io/tags/%E8%BD%AF%E4%BB%B6/" term="软件" label="软件"/></entry><entry><title type="text">一些常用的方法论</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/methods/"/><id>https://kiwi4814.github.io/posts/methods/</id><updated>2022-01-01T16:12:07+00:00</updated><published>2021-12-22T22:42:13+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">一些常用的方法论 一、思考技巧与模板 1. SCQA SCQA模型是一个“结构化表达”工具，是麦肯锡……</summary><content type="html">&lt;h1 id="一些常用的方法论">一些常用的方法论&lt;/h1>
-&lt;h2 id="一思考技巧与模板">一、思考技巧与模板&lt;/h2>
+&lt;p>完。&lt;/p></content><category scheme="https://kiwi4814.github.io/categories/2021/12/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/" term="软件与工具" label="软件与工具"/><category scheme="https://kiwi4814.github.io/series/2021/12/windows%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/" term="Windows软件推荐" label="Windows软件推荐"/><category scheme="https://kiwi4814.github.io/tags/2021/12/windows/" term="Windows" label="Windows"/><category scheme="https://kiwi4814.github.io/tags/2021/12/%E8%BD%AF%E4%BB%B6/" term="软件" label="软件"/></entry><entry><title type="text">常见方法论和心理效应</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/2021/methodology/"/><id>https://kiwi4814.github.io/posts/2021/methodology/</id><updated>2022-01-02T10:15:52+00:00</updated><published>2021-12-22T22:42:13+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">本文介绍了一些在工作和生活中经常听到的一些方法论名词以及心里效应，比如PCDA、5W1H、SMART原则、沉默成本、必要难度等等。</summary><content type="html">&lt;h2 id="一思考技巧与模板">一、思考技巧与模板&lt;/h2>
 &lt;h3 id="1-scqa">1. SCQA&lt;/h3>
 &lt;p>SCQA模型是一个“结构化表达”工具，是麦肯锡咨询顾问芭芭拉·明托在《金字塔原理》中提出的。&lt;/p>
-&lt;blockquote>
 &lt;p>S（Situation）情景——由大家都熟悉的情景、事实引入。
 C（Complication）冲突——实际情况往往和我们的要求有冲突。
 Q（Question）疑问——怎么办？
 A（Answer）回答——我们的解决方案是……&lt;/p>
-&lt;/blockquote>
 &lt;h3 id="2-pcda">2. PCDA&lt;/h3>
 &lt;p>PDCA循环是美国质量管理专家休哈特博士提出的，后由戴明采纳普及，又称戴明环。&lt;/p>
 &lt;p>&lt;strong>P——Plan（计划）&lt;/strong>
@@ -999,16 +584,1456 @@ A（Answer）回答——我们的解决方案是……&lt;/p>
 &lt;p>&lt;strong>A——Action（处理）&lt;/strong>
 对总结检查的结果进行处理，对成功的经验加以肯定，并予以标准化；对于失败的教训也要总结，引起重视。对于没有解决的问题，应提交给下一个PDCA循环中去解决。&lt;/p>
 &lt;h3 id="3-mece">3. MECE&lt;/h3>
-&lt;p>[[MEC分析法]]&lt;/p>
+&lt;p>MECE分析法(Mutually Exclusive Collectively Exhaustive)，中文意思是相互独立、完全穷尽。也就是对于一个重大的议题，能够做到不重迭、不遗漏的分类，而且能够借此有效把握问题的核心，并解决问题的方法。&lt;/p>
 &lt;h3 id="4-5w1h法则">4. 5W1H法则&lt;/h3>
-&lt;p>[[5W1H法则]]&lt;/p>
+&lt;p>What —— 设置的目标&lt;/p>
+&lt;p>Where —— 施展的平台&lt;/p>
+&lt;p>When —— 完成的期限&lt;/p>
+&lt;p>Who —— 任务的主体&lt;/p>
+&lt;p>Why —— 产生的动机&lt;/p>
+&lt;p>How —— 解决的策略&lt;/p>
 &lt;h3 id="5-smart原则">5. SMART原则&lt;/h3>
-&lt;p>[[SMART原则]]&lt;/p>
+&lt;p>&lt;strong>SMART原则&lt;/strong>是&lt;a href="https://zh.wikipedia.org/wiki/%E7%9B%AE%E6%A0%87%E7%AE%A1%E7%90%86">目标管理&lt;/a>中的一种方法。目标管理的任务是有效地进行成员的组织与目标的制定和控制以达到更好的工作绩效，由管理学大师&lt;a href="https://zh.wikipedia.org/wiki/%E5%BD%BC%E5%BE%97%C2%B7%E6%9D%9C%E6%8B%89%E5%85%8B">彼得·杜拉克&lt;/a>于1954年首先提出。SMART原则便是为了达到这一目的而提出的一种方法，目前在企业界有广泛的应用。它的首次出现被认为是在1981年12月发行的《&lt;a href="https://zh.wikipedia.org/w/index.php?title=%E7%AE%A1%E7%90%86%E8%AF%84%E8%AE%BA&amp;amp;action=edit&amp;amp;redlink=1">管理评论&lt;/a>》（Management Review）上（由George Doran、Arthur Miller和James Cunningham编著）。&lt;/p>
+&lt;p>SMART原则中的“S”、“M”、“A”、“R”、“T”五个字母分别对应了五个英文单词：Specific（明确）、Measurable（可衡量）、Achievable（可达成）、Relevant（相关）和Time-bound（有时限）。&lt;/p>
 &lt;h2 id="二心理学效应">二、心理学效应&lt;/h2>
 &lt;h3 id="1-框格效应">1. 框格效应&lt;/h3>
+&lt;p>框架效应（英语：Framing effect）是一种认知偏差，人们根据选项是否具有积极或消极的含义来决定选项——例如作为损失或收益。人们在呈现正面框架时倾向於避免风险，而在呈现负面框架时寻求风险。 在假定的事件发展中，收益和损失被定义为结果的描述（例如，失去或挽救的生命、治疗和未治疗的疾病患者等）。 前景理论表明，损失比等效收益更显著，确定收益（确定性效应和伪确定性效应（英语：Pseudocertainty effect））优于概率收益，並且概率损失优于确定性损失。&lt;/p>
+&lt;p>框架效应的危险之一是人们经常在两个框架之一的背景下被提供选择。 这个概念有助于理解社会运动中的框架分析，也有助于形成政治舆论，其中政治化妆师在政治民意调查中发挥着重要作用，政治民意调查旨在鼓励对委托进行民意调查的组织有益的回应。有人认为，这种技术的使用正在诋毁政治民意调查本身。如果向人们提供充足的可信信息，这种影响会减少甚至消除。&lt;/p>
 &lt;h3 id="2-心理账户">2. 心理账户&lt;/h3>
+&lt;p>心理账户(心理会计学)，最早由 2017 年的诺奖得主理查德·塞勒提出。&lt;/p>
+&lt;p>塞勒认为，每个人都有心理账户，通过该心理账户来进行各种各样的经济决策。 通过心理账户，可以解释人的不理性经济决策。 心理账户是芝加哥大学行为科学教授理查德·萨勒(Richard Thaler)提出的概念。他认为，除了荷包这种实际账户外，在人的头脑里还存在著另一种心理账户。人们会把在现实中客观等价的支出或收益在心理上划分到不同的账户中。比如，我们会把工资划归到靠辛苦劳动日积月累下来的“勤劳致富”账户中；把年终奖视为一种额外的恩赐，放到“奖励”账户中；而把买彩票贏来的钱，放到“天上掉下的馅饼”账户中。&lt;/p>
+&lt;p>对於“勤劳致富”账户里的钱，我们会精打细算，谨慎支出。而对“奖励”账户里的钱，我们就会抱著更轻鬆地態度花费掉，比如买一些平日捨不得买的衣服，作为送给自己的新年礼物等。“天上掉下的馅饼”账户里的钱就最不经用了。通常是来也匆匆，去也匆匆型。想想那些中了头彩的人，不论平日多么的节俭，一旦中了500万，也会立马变得豪情万丈，义薄云天。这时的他们通常会有一些善举，比如捐出一部分给贫困儿童。这就是心理账户在起用。当然，他们对社会的贡献是值得称颂的。&lt;/p>
+&lt;p>实际上，绝大多数的人都会受到心理账户的影响，因此总是以不同的態度对待等值的钱財，並做出不同的决策行为。从经济学的角度来看，一万块的工资、一万块的年终奖和一万块的中奖彩票並没有区別，可是普通人却对三者做出了不同的消费决策。&lt;/p>
 &lt;h3 id="3-沉没成本">3. 沉没成本&lt;/h3>
+&lt;p>沉没成本常用来和可变成本（Prospective Costs）作比较，可变成本可以被改变，而沉没成本则不能被改变。在微观经济学理论中，做决策时仅需要考虑可变成本。如果同时考虑到沉没成本（这被微观经济学理论认为是错误的），那结论就不是纯粹基于事物的价值作出的。&lt;/p>
+&lt;p>举例来说，如果某人预订了一张电影票，已经付了票款且假设不能退票。此时付的价钱已经不能收回，就算不看电影钱也收不回来，电影票的价钱算作沉没成本。&lt;/p>
+&lt;p>当然有时候沉没成本只是价格的一部分。比方说某人买了一辆自行车，然后骑了几天低价在二手市场卖出。此时原价和卖出价中间的差价就是沉没成本。而且这种情况下，沉没成本随时间而改变，例如某人留着那辆自行车骑的时间越长，一般来说因为折旧而使卖出价会越低。&lt;/p>
+&lt;p>大多数经济学家们认为，如果人是理性的，那就不该在做决策时考虑沉没成本。比如在前面提到的看电影的例子中，会有两种可能结果：&lt;/p>
+&lt;ol>
+&lt;li>付钱后发觉电影不好看，但忍受着看完；&lt;/li>
+&lt;li>付钱后发觉电影不好看，退场去做别的事情。&lt;/li>
+&lt;/ol>
+&lt;p>两种情况下都已经付钱，所以不应该考虑退钱这件事情。如果后悔买票了，那么当前的决定应该是基于是否想继续看这部电影，而不是为这部电影付了多少钱。此时的决定不应该考虑到买票的事，而应该以看免费电影的心态来作判断。经济学家们往往建议选择后者，这样只是花了点冤枉钱，还可以通过腾出时间来做其他更有意义的事来降低机会成本，而选择前者还要继续受冤枉罪。&lt;/p>
+&lt;p>人类与其他物种都对时间沉没成本有一定的敏感性。&lt;/p>
 &lt;h3 id="4-必要难度">4. 必要难度&lt;/h3>
-&lt;p>[[必要难度]]&lt;/p>
-&lt;h2 id="三社会现象总结">三、社会现象总结&lt;/h2>
-&lt;h3 id="1-二八原则">1. 二八原则&lt;/h3></content><category scheme="https://kiwi4814.github.io/categories/%E6%9D%82%E8%B0%88/" term="杂谈" label="杂谈"/><category scheme="https://kiwi4814.github.io/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" term="方法论" label="方法论"/></entry></feed>
+&lt;p>「必要难度」理论，英文是 Desirable difficulty，最早是由加州大学洛杉矶分校的 Robert Bjork 和 Elizabeth Bjork 教授在 1994 年提出。这个理论简单来说就是我们应该让自己学习记忆的过程始终保持必要的难度，这种难度虽然在最初会减慢你的学习速度，但是长期来看对学习效果更加有利。&lt;/p>
+&lt;p>必要难度理论指出，人的记忆其实有两个不同的维度，分别是存储强度（Storage Strength）和提取强度（Retrieval Strength），两者存在密切的相关性，主要表现在以下三个方面：&lt;/p>
+&lt;ul>
+&lt;li>当我们学习记忆时，信息的存储强度和提取强度同步提升。&lt;/li>
+&lt;li>在学习过程结束，存储强度越高，提取强度自然也越高，两者呈正相关。&lt;/li>
+&lt;li>当我们再次学习记忆，检索强度越低，存储强度反而会越高，两者负相关。&lt;/li>
+&lt;/ul>
+&lt;p>听起来有点复杂，其实简单来说就是，你如果记忆的过程越容易，那么你忘的就越快，反之如果记起来很艰辛，那么也不那么容易忘记。&lt;/p></content><category scheme="https://kiwi4814.github.io/categories/2021/12/%E6%9D%82%E8%B0%88/" term="杂谈" label="杂谈"/><category scheme="https://kiwi4814.github.io/tags/2021/12/%E6%96%B9%E6%B3%95%E8%AE%BA/" term="方法论" label="方法论"/><category scheme="https://kiwi4814.github.io/tags/2021/12/%E5%BF%83%E7%90%86%E6%95%88%E5%BA%94/" term="心理效应" label="心理效应"/></entry><entry><title type="text">流媒体时代如何找到自己想看的电影</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/2021/streaming-media/"/><id>https://kiwi4814.github.io/posts/2021/streaming-media/</id><updated>2022-01-02T10:15:52+00:00</updated><published>2021-12-04T23:46:30+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">本文仅讨论在国内正规渠道无法看到的影视资源，无特殊说明一般代指美剧，有错误欢迎指出。……</summary><content type="html">&lt;p>&lt;strong>本文仅讨论在国内正规渠道无法看到的影视资源，无特殊说明一般代指美剧，有错误欢迎指出。&lt;/strong>&lt;/p>
+&lt;h1 id="片源哪里来">片源哪里来？&lt;/h1>
+&lt;p>当前最热门的流媒体平台有网飞（Netflix），HBO（HBO Max），迪士尼（Disney+），苹果（Apple TV+），Hulu等等。对于身处国内的我们，是如何看到一部美剧的呢？&lt;/p>
+&lt;h3 id="1-web-dl">1. WEB-DL&lt;/h3>
+&lt;p>我们以当下最热门的流媒体网飞为例，网飞在流媒体上映电视剧后，有专门的团队会对这些视频流进行破解和抓取，拿到的这个资源一般为Web-DL，一般来说这个清晰度你可以理解为你在腾讯看的1080P高清。一般这种破解组我们称之为“0-day”发行组。目前像网飞这样的巨头流媒体已经会配上46国字幕了，而没有字幕的一手资源就是我们常说的“生肉”。&lt;/p>
+&lt;p>这时候一般我们已经能从各大BT网站找到种子并进行下载了，如果是没有字幕的，国内的字幕组会同步进行翻译和校对，英语不好的为其配上字幕就可以进行观看了。&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>字幕组的挑选&lt;/strong>&lt;/p>
+&lt;p>首先每个字幕组都有自己擅长的领域，且不说不同语种，同样是美剧也有差异，不同地域、不同文化带来的差异巨大。比如说人人影视、伊甸园、风软、破烂熊被称之为“四大美剧字幕组”，他们翻译速度快、质量也有所保障，因为人数多规模大，不同的剧总有擅长的人来进行翻译。&lt;/p>
+&lt;p>当然，也有一些小众的字幕组，虽然人少但是专注某一部剧或者某一相关领域的翻译也很厉害，比如翻译了Rick and Morty的电波字幕组（与A站合作了）以及权游的专属字幕组衣柜军团，我们在看这类剧的时候，这种字幕组往往才是看剧的最佳伴侣。&lt;/p>
+&lt;p>最后，向每一个为爱发电的字幕组致敬，让我们看到了更多优秀的作品。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-蓝光片源">2. 蓝光片源&lt;/h3>
+&lt;p>大概半年（没有考证，体感时间，具体可从&lt;a href="https://www.blu-ray.com/">这里&lt;/a>查），无论是电影还是电视剧一般会出蓝光光碟，这时候也会有破解组负责购买蓝光片源并进行破解，后面就分很多种了，原盘BDMV体积最大，里面包括了各国音轨、花絮等等，还有经过无损封装的Remux、BluRay以及有损压制的BDrip就是我们下载高清电影时最常下载的几种格式了，这里来举两个例子。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-jsx" data-lang="jsx">&lt;span class="nx">Interstellar&lt;/span>&lt;span class="mf">.2014&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">BluRay&lt;/span>&lt;span class="mf">.2160&lt;/span>&lt;span class="nx">p&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">x265&lt;/span>&lt;span class="mf">.10&lt;/span>&lt;span class="nx">bit&lt;/span>&lt;span class="mf">.4&lt;/span>&lt;span class="nx">Audio&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">mUHD&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nx">FRDS&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">mkv&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>上面这个是星际穿越的资源名称，每一小节以小点（.）隔开，其中前两段意思很明显，就是电影名称+电影年代，第三节和第四节BluRay.2160p代表这个资源是来自蓝光原盘的2016P的清晰度。&lt;/p>
+&lt;p>x265.10bit.4Audio这三段代表压制参数，分别指的是：编码标准、编码精度、音轨数量，此外还有可能有声道、是否杜比、HDR等信息，这里就不展开细讲了，我也是一知半解。&lt;/p>
+&lt;p>最后一段是压制组，上面那些参数就是他们在对蓝光资源进行压制时候的参数，不同的压制组特点各不相同，并且有的压制组会在压制的时候就把精修版的字幕也一同封装进去，这样的资源一般质量就很高了，收藏级的。&lt;/p>
+&lt;p>再看下面这个。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-jsx" data-lang="jsx">&lt;span class="o">**&lt;/span>&lt;span class="nx">Money&lt;/span> &lt;span class="nx">Heist&lt;/span> &lt;span class="nx">Complete&lt;/span> &lt;span class="nx">Series&lt;/span> &lt;span class="mi">1080&lt;/span>&lt;span class="nx">p&lt;/span> &lt;span class="nx">NF&lt;/span> &lt;span class="nx">WEB&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nx">DL&lt;/span> &lt;span class="nx">DDP5&lt;/span>&lt;span class="mf">.1&lt;/span> &lt;span class="nx">x264&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nx">DoA&lt;/span>&lt;span class="o">**&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>其实从上面的经验我们就可以看出来，这是纸钞屋全五季的网飞1080P资源。其中NF代表网飞（Netflix），如果是HBO出品的这里就会变成HMAX，DDP5.1代表声道为杜比数字5.1声道，DoA为压制组。是不是很简单？&lt;/p>
+&lt;p>我们在国内的一些下载网站上看到的&lt;code>XXX.MKV&lt;/code>，一般来说资源都是从以上的压制组流出的，而这些资源会被再次进行封装，压缩，配上字幕甚至强行加上广告，这就是我们在各种“在线网站”看到的视频的来源了。&lt;/p>
+&lt;h1 id="离线的生活">离线的生活&lt;/h1>
+&lt;p>基于以上种种，如果没有条件购买/订阅流媒体资源的话，我仍然推荐下载观看的形式，并且推荐使用BT进行下载。&lt;/p>
+&lt;p>&lt;strong>如果不想下载观看，可以拉到最后看附录中提供的&lt;a href="https://www.notion.so/8878c1c1b1c24380a492502549b0fe51">一些网站&lt;/a>，由于这些网站本身就有很大的不确定性（靠广告盈利，用爱发电的少），随时有可能关站、变卖，时效性可能不长，酌情参考即可。&lt;/strong>&lt;/p>
+&lt;h2 id="1-什么是btpt">1. 什么是BT/PT&lt;/h2>
+&lt;p>&lt;strong>BT&lt;/strong>&lt;/p>
+&lt;p>来自维基百科的定义——&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>BitTorrent协议（简称BT，俗称比特洪流、BT下载）是用在&lt;a href="https://zh.wikipedia.org/wiki/%E5%AF%B9%E7%AD%89%E7%BD%91%E7%BB%9C">对等网络&lt;/a>中&lt;a href="https://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E5%88%86%E4%BA%AB">文件分享&lt;/a>的&lt;a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE">网络协议&lt;/a>&lt;a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F">程序&lt;/a>。和&lt;a href="https://zh.wikipedia.org/wiki/%E7%82%B9%E5%AF%B9%E7%82%B9%E5%8D%8F%E8%AE%AE">点对点&lt;/a>（point-to-point）的协议&lt;a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F">程序&lt;/a>不同，它是用户群对用户群（peer-to-peer），而且用户越多，下载同一档案的人越多，下载该档案的速度越快。且下载后，继续维持上传的状态，就可以“分享”，成为其用户端节点下载的&lt;a href="https://zh.wikipedia.org/wiki/%E7%A7%8D%E5%AD%90%E6%96%87%E4%BB%B6">种子文件&lt;/a>（.torrent），同时上传及下载。&lt;/strong>&lt;/p>
+&lt;/blockquote>
+&lt;p>简单来说，就说你用迅雷下载的资源，这些资源不是存放到某个特定的地方让你下载的，你下载的资源可能就来源于我的电脑，来源于上千上万个同时在下载和上传这个资源的人，其本质就是数据的交换。&lt;/p>
+&lt;p>发布资源的人将资源生成并提供一个.torrent文件，即&lt;a href="https://zh.wikipedia.org/wiki/%E7%A7%8D%E5%AD%90%E6%96%87%E4%BB%B6">种子文件&lt;/a>，也简称为“种子”。而下载者需要先得到这个种子，然后开始下载，也就是和上传者在交换数据。所以同一个种子文件，下载的人越多，下载速度也就越快。&lt;/p>
+&lt;hr>
+&lt;p>&lt;strong>PT&lt;/strong>&lt;/p>
+&lt;p>PT的全称是Private Tracker，是一种改良自BitTorrent协议的P2P下载方式，“Private Tracker”指私有种子服务器。与BT最大的不同点为：可进行私密范围下载，并且记录每一个用户的详细数据。&lt;/p>
+&lt;p>PT可进行私密范围下载，因此提供PT的论坛（网络论坛）大多非公开的，采用邀请制或是不定时开放注册。由已注册的用户向自己所信任的人发送邀请，以确保用户质量。有一些站点还会允许用户通过官方渠道捐助或购买邀请码以获得邀请。&lt;/p>
+&lt;hr>
+&lt;p>&lt;strong>BT与PT的不同之处&lt;/strong>&lt;/p>
+&lt;p>由于BT的特殊性，下载者必须开启上传才可以保证资源让其他人下的到，也就是要“人人为我，我为人人”，如果下载完成就关闭上传或者修改文件名，其他人就无法从你这里获取资源了。久而久之，一些老资源就会”绝版“。所以PT站一般有着严格的规则，必须持续做种或者有足够的上传量才可以在PT站存活，这也是PT站小众和门槛高的原因。&lt;/p>
+&lt;p>其次，压制组一般都会活跃在各大PT站，甚至某些PT站就是压制组的大本营，所以PT站更容易接触到一手资源。&lt;/p>
+&lt;h2 id="2-用什么工具">2. 用什么工具&lt;/h2>
+&lt;p>俗话说，&lt;del>差生文具多&lt;/del>。那么作为一个使用者，我们该选择哪些工具去下载和观看呢？&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>离线播放器&lt;/p>
+&lt;p>&lt;strong>PotPlayer&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>下载器&lt;/p>
+&lt;p>可以选择&lt;strong>迅雷、比特彗星、FDM、Aria2&lt;/strong>等等&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>PT下载器&lt;/p>
+&lt;p>这里所指的PT下载器并不只有PT能用，作为一个BT客户端，只要是种子文件都可以进行下载。&lt;/p>
+&lt;p>PT站点一般只有特定的下载器才能使用，不同PT站的规则不太一样，你可以选择通用一点的，比如&lt;strong>qBittorrent 4.x、uTorrent 2.0.x&lt;/strong>或者按照PT站的要求选用即可。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="3-从哪里下载">3. 从哪里下载&lt;/h2>
+&lt;p>前文提到过，下载者必须获取到”种子”文件才可以进行下载，那么去哪里获得这些种子文件呢？这里还是分BT和PT分别进行介绍。&lt;/p>
+&lt;hr>
+&lt;p>&lt;strong>BT种子的下载&lt;/strong>&lt;/p>
+&lt;p>如果你在国外，可以直接去&lt;a href="https://thepiratebay.org/index.html">海盗湾&lt;/a>、&lt;a href="https://proxyrarbg.org/torrents.php">RARBG&lt;/a>、&lt;a href="https://yts.mx/">YTS&lt;/a>、&lt;a href="https://kickasscr.net/">KAT&lt;/a>等等“大站”搜索。&lt;/p>
+&lt;p>国内的话虽然也有很多很多磁力站，但除了少数几个，大部分站点存活时间都很短，这就导致我们如果要通过BT下载的话经常要更换站点，很是麻烦。&lt;/p>
+&lt;p>但是不用担心，已经有很多“网络大神”帮我们整理好了，也无需特地记忆，需要找的时候打开百度检索就好了，比如下图这样子的：&lt;/p>
+&lt;p>&lt;img src="%E6%B5%81%E5%AA%92%E4%BD%93%E6%97%B6%E4%BB%A3%E5%A6%82%E4%BD%95%205994dc91311e40fb887a92a286fa1298/Untitled.png" alt="Untitled">&lt;/p>
+&lt;hr>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>这里随便贴几个磁力站或者导航站：&lt;/strong>&lt;/p>
+&lt;p>&lt;a href="https://tellme.pw/btsow">BTSOW&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.yuhuage52.xyz/">雨花阁 - 简单好用的BT搜索引擎&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.yeeach.com/post/1367">2021年可用、好用、值得推荐的磁力搜索引擎【更新版】-出家如初,成佛有余&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.xerer.com/archives/27010.html">75个 bt磁力搜索网站推荐汇总（亲测可用，可直接访问）&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://ifun.cool/">趣导航 | 趣导航搜集互联网各种优秀的网站网址，打造全网最实用简洁的网址导航，同时支持网址收录，网址导航，选趣导航！&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://funletu.com/">Funletu - 发现好物，分享资源，推荐精品&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;p>&lt;strong>当然了，除了磁力站之外，在附录中的资源站很多也都支持BT种子或者磁力链接的下载，嫌麻烦的可以直接去搜索即可。&lt;/strong>&lt;/p>
+&lt;hr>
+&lt;p>&lt;strong>PT站点介绍&lt;/strong>&lt;/p>
+&lt;p>国内 PT 站可以划分为两个系别：教育网 PT 站 与 公网 PT 站。&lt;/p>
+&lt;p>其中教育网以北京邮电大学的北邮人、西北工业大学的蒲公英、东北大学的六维空间、天津大学的北洋园等等为主。公网PT站点很多，也有很多因为版权问题隐没的，目前主流的几大站点有：CHD、HdChina、TTG、M-Team、BtSchool等等，由于PT站点的私密性以及邀请制度，加之门槛较高，需要有较大的硬盘空间和做种机器，所以这里不多做介绍了，有兴趣的小伙伴可以自行查阅相关资料，打开新的世界。&lt;/p>
+&lt;p>完。&lt;/p>
+&lt;hr>
+&lt;p>&lt;a href="https://www.notion.so/8878c1c1b1c24380a492502549b0fe51">附：一些资源站&lt;/a>&lt;/p></content><category scheme="https://kiwi4814.github.io/categories/2021/12/%E6%95%B0%E5%AD%97%E7%94%9F%E6%B4%BB/" term="数字生活" label="数字生活"/><category scheme="https://kiwi4814.github.io/tags/2021/12/bt/" term="BT" label="BT"/><category scheme="https://kiwi4814.github.io/tags/2021/12/%E6%B5%81%E5%AA%92%E4%BD%93/" term="流媒体" label="流媒体"/></entry><entry><title type="text">WSL安装oh-my-posh踩坑记录</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/2021/wsl-oh-my-posh/"/><id>https://kiwi4814.github.io/posts/2021/wsl-oh-my-posh/</id><updated>2022-01-02T10:15:52+00:00</updated><published>2021-11-21T20:35:47+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">整体思路参考此文：Windows Terminal Custom Prompt Setup | Microsoft Docs 一、安装NerdFonts 推荐安装Ca……</summary><content type="html">&lt;p>整体思路参考此文：&lt;a href="https://docs.microsoft.com/zh-cn/windows/terminal/tutorials/custom-prompt-setup">Windows Terminal Custom Prompt Setup | Microsoft Docs&lt;/a>&lt;/p>
+&lt;h3 id="一安装nerdfontshttpswwwnerdfontscomfont-downloads">一、安装&lt;a href="https://www.nerdfonts.com/font-downloads">NerdFonts&lt;/a>&lt;/h3>
+&lt;p>推荐安装&lt;strong>Caskaydia Cove Nerd Font&lt;/strong>&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211121161954784.png" alt="image-20211121161954784">&lt;/p>
+&lt;h3 id="二安装oh-my-posh">二、安装oh-my-posh&lt;/h3>
+&lt;p>文章中采用了两种方式，一种是为powershell单独安装，另外一种是使用包管理器Winget同时为WSL和PowerShell安装。下面采用的是第二种：&lt;/p>
+&lt;h4 id="1-安装winget">1. 安装Winget&lt;/h4>
+&lt;p>官方中文文档：&lt;a href="https://docs.microsoft.com/zh-cn/windows/package-manager/">Windows 程序包管理器&lt;/a>，应用商店直接搜索 app installer安装即可。&lt;/p>
+&lt;h4 id="2-安装oh-my-posh">2. 安装oh-my-posh&lt;/h4>
+&lt;p>安装命令如下：&lt;/p>
+&lt;pre tabindex="0">&lt;code>winget install JanDeDobbeleer.OhMyPosh
+&lt;/code>&lt;/pre>&lt;p>此命令将会安装：&lt;/p>
+&lt;ul>
+&lt;li>oh-my-posh windows程序&lt;/li>
+&lt;li>oh-my-posh-wsl&lt;/li>
+&lt;li>oh-my-posh 主题&lt;/li>
+&lt;/ul>
+&lt;p>安装日志如下，仅供参考&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="nb">PS &lt;/span>&lt;span class="n">C:&lt;/span>&lt;span class="p">\&lt;/span>&lt;span class="n">Users&lt;/span>&lt;span class="p">\&lt;/span>&lt;span class="n">heqifeng&lt;/span>&lt;span class="p">&amp;gt;&lt;/span> &lt;span class="n">winget&lt;/span> &lt;span class="n">install&lt;/span> &lt;span class="n">JanDeDobbeleer&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">OhMyPosh&lt;/span>
+&lt;span class="s2">&amp;#34;msstore&amp;#34;&lt;/span>&lt;span class="n">源要求在使用前查看以下协议&lt;/span>&lt;span class="err">。&lt;/span>
+&lt;span class="n">Terms&lt;/span> &lt;span class="n">of&lt;/span> &lt;span class="n">Transaction&lt;/span>&lt;span class="err">:&lt;/span> &lt;span class="n">https&lt;/span>&lt;span class="err">:&lt;/span>&lt;span class="p">//&lt;/span>&lt;span class="n">aka&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ms&lt;/span>&lt;span class="p">/&lt;/span>&lt;span class="nb">microsoft-store&lt;/span>&lt;span class="n">-terms-of-transaction&lt;/span>
+&lt;span class="n">源要求发送当前计算机的地理区域才能正常工作&lt;/span>&lt;span class="err">。&lt;/span>
+&lt;span class="n">是否同意所有源协议条款&lt;/span>&lt;span class="p">?&lt;/span>
+&lt;span class="no">[Y] 是 [N]&lt;/span> &lt;span class="n">否&lt;/span>&lt;span class="err">:&lt;/span> &lt;span class="n">Y&lt;/span>
+&lt;span class="n">已找到&lt;/span> &lt;span class="nb">Oh &lt;/span>&lt;span class="n">My&lt;/span> &lt;span class="n">Posh&lt;/span> &lt;span class="no">[JanDeDobbeleer.OhMyPosh]&lt;/span> &lt;span class="n">版本&lt;/span> &lt;span class="n">6&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">8&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">0&lt;/span>
+&lt;span class="n">此应用程序由其所有者授权给你&lt;/span>&lt;span class="err">。&lt;/span>
+&lt;span class="n">Microsoft&lt;/span> &lt;span class="n">对第三方程序包概不负责&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">也不向第三方程序包授予任何许可证&lt;/span>&lt;span class="err">。&lt;/span>
+&lt;span class="n">Downloading&lt;/span> &lt;span class="n">https&lt;/span>&lt;span class="err">:&lt;/span>&lt;span class="p">//&lt;/span>&lt;span class="n">github&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="p">/&lt;/span>&lt;span class="n">JanDeDobbeleer&lt;/span>&lt;span class="p">/&lt;/span>&lt;span class="nb">oh-my&lt;/span>&lt;span class="n">-posh&lt;/span>&lt;span class="p">/&lt;/span>&lt;span class="n">releases&lt;/span>&lt;span class="p">/&lt;/span>&lt;span class="n">download&lt;/span>&lt;span class="p">/&lt;/span>&lt;span class="n">v6&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">8&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">0&lt;/span>&lt;span class="p">/&lt;/span>&lt;span class="nb">install-amd64&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">exe&lt;/span>
+&lt;span class="err">██████████████████████████████&lt;/span> &lt;span class="n">15&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">8&lt;/span> &lt;span class="n">MB&lt;/span> &lt;span class="p">/&lt;/span> &lt;span class="n">15&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">8&lt;/span> &lt;span class="n">MB&lt;/span>
+&lt;span class="n">已成功验证安装程序哈希&lt;/span>
+&lt;span class="n">正在启动程序包安装&lt;/span>&lt;span class="p">...&lt;/span>
+&lt;span class="n">已成功安装&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="21-查看主题">2.1 &lt;strong>查看主题&lt;/strong>&lt;/h5>
+&lt;p>官方文档：&lt;a href="https://ohmyposh.dev/docs/themes">prompt themes in the Oh My Posh docs&lt;/a>&lt;/p>
+&lt;p>文章给出的命令如下：&lt;/p>
+&lt;pre tabindex="0">&lt;code>Get-ChildItem -Path &amp;quot;~\AppData\Local\Programs\oh-my-posh\themes\*&amp;quot; -Include '*.omp.json' | Sort-Object Name | ForEach-Object -Process {
+$esc = [char]27
+Write-Host &amp;quot;&amp;quot;
+Write-Host &amp;quot;$esc[1m$($_.BaseName)$esc[0m&amp;quot;
+Write-Host &amp;quot;&amp;quot;
+oh-my-posh --config $($_.FullName) --pwd $PWD
+Write-Host &amp;quot;&amp;quot;
+}
+&lt;/code>&lt;/pre>&lt;p>这里注意路径需要根据实际情况去修改。&lt;/p>
+&lt;blockquote>
+&lt;p>WSL下的路径为：/mnt/c/Users/heqifeng/AppData/Local/Programs/oh-my-posh/bin/oh-my-posh.wsl【这里列出来没有实际作用，只是想说明，wsl的文件也在windows下的安装路径上】&lt;/p>
+&lt;p>Windows下的路径为：C:\Users\heqifeng\AppData\Local\Programs\oh-my-posh&lt;/p>
+&lt;/blockquote>
+&lt;p>此处如果使用第一种方式，即单独为powershell安装的话，可以使用&lt;code>Get-PoshThemes&lt;/code>命令直接查看主题。&lt;/p>
+&lt;p>【注】第二种方式没有试过这个命令，不知道是否可行（因为是重新按照第一种方式单独执行了命令，在这之前没有执行过主题命令）&lt;/p>
+&lt;h5 id="22-增加启动脚本">2.2 增加启动脚本&lt;/h5>
+&lt;p>选择好自己的主题之后，分别在PowerShell和WSL中修改配置文件即可。&lt;/p>
+&lt;h6 id="221-powershell">2.2.1 PowerShell&lt;/h6>
+&lt;p>修改PowerShell的启动配置文件，在末尾加上脚本：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="nb">oh-my&lt;/span>&lt;span class="n">-posh&lt;/span> &lt;span class="p">-&lt;/span>&lt;span class="n">-init&lt;/span> &lt;span class="p">-&lt;/span>&lt;span class="n">-shell&lt;/span> &lt;span class="n">pwsh&lt;/span> &lt;span class="p">-&lt;/span>&lt;span class="n">-config&lt;/span> &lt;span class="p">~/&lt;/span>&lt;span class="n">jandedobbeleer&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">omp&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">json&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="nb">Invoke-Expression&lt;/span>
+&lt;span class="nb">Set-PoshPrompt&lt;/span> &lt;span class="n">-Theme&lt;/span> &lt;span class="n">jandedobbeleer&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>其中第一行代表初始化oh-my-posh，第二行代表设置主题。&lt;/p>
+&lt;p>按照文档的说法在powershell中执行命令：&lt;code>notepad $PROFILE&lt;/code>。提示记事本无法找到路径，因为该文档本身并不存在。两种解决方法：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>执行一个判断命令，没有则创建一个&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="k">if&lt;/span> &lt;span class="p">(!(&lt;/span>&lt;span class="nb">Test-Path&lt;/span> &lt;span class="n">-Path&lt;/span> &lt;span class="nv">$PROFILE&lt;/span> &lt;span class="p">))&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="nb">New-Item&lt;/span> &lt;span class="n">-Type&lt;/span> &lt;span class="n">File&lt;/span> &lt;span class="n">-Path&lt;/span> &lt;span class="nv">$PROFILE&lt;/span> &lt;span class="n">-Force&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>使用VS Code打开【[排查](&lt;a href="https://stackoverflow.com/questions/8997316/powershell-profile-is-pointing-to-a-path-that-i-cant-find-and-setting-permane">windows - Powershell: $profile is pointing to a path that I can't find and setting permanent path - Stack Overflow&lt;/a>)】&lt;/p>
+&lt;pre tabindex="0">&lt;code>code $PROFILE
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>执行&lt;code>code $PROFILE&lt;/code>命令时遇到的第一个问题是：&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>无法加载文件 D:\Users\heqifeng\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1，因为在此系统上禁止运行
+脚本。有关详细信息，请参阅 https:/go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。
+所在位置 行:1 字符: 3
++ . 'D:\Users\heqifeng\Documents\WindowsPowerShell\Microsoft.PowerShell ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ CategoryInfo : SecurityError: (:) []，PSSecurityException
++ FullyQualifiedErrorId : UnauthorizedAccess
+&lt;/code>&lt;/pre>&lt;p>按照[文档](&lt;a href="https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2">关于执行策略 - PowerShell | Microsoft Docs&lt;/a>)排查后，执行下面命令解决：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="c"># 查询当前的执行策略&lt;/span>
+&lt;span class="nb">get-executionpolicy&lt;/span>
+&lt;span class="c"># 修改执行策略（以管理员身份打开powershell）&lt;/span>
+&lt;span class="nb">set-executionpolicy&lt;/span> &lt;span class="n">remotesigned&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>解决完执行策略的问题之后，修改完配置文件后重新打开windows terminal。&lt;/p>
+&lt;p>&lt;strong>这里遇到第二个问题：&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="nb">Set-PoshPrompt&lt;/span> &lt;span class="err">:&lt;/span> &lt;span class="n">无法将&lt;/span>&lt;span class="err">“&lt;/span>&lt;span class="nb">Set-PoshPrompt&lt;/span>&lt;span class="err">”&lt;/span>&lt;span class="n">项识别为&lt;/span> &lt;span class="n">cmdlet&lt;/span>&lt;span class="err">、&lt;/span>&lt;span class="n">函数&lt;/span>&lt;span class="err">、&lt;/span>&lt;span class="n">脚本文件或可运行程序的名称&lt;/span>&lt;span class="err">。&lt;/span>&lt;span class="n">请检查名称的拼写&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">如果包括路径&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">请确保路径正确&lt;/span>&lt;span class="err">，&lt;/span>&lt;span class="n">然后再试一次&lt;/span>&lt;span class="err">。&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>此问题没有找到原因，怀疑是第二种方式本身的安装方式有问题。解决的方法是按照第一种方式重新安装了一次：&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="nb">Install-Module&lt;/span> &lt;span class="nb">oh-my&lt;/span>&lt;span class="n">-posh&lt;/span> &lt;span class="n">-Scope&lt;/span> &lt;span class="n">CurrentUser&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>最终效果：&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211121173415026.png" alt="image-20211121173415026">&lt;/p>
+&lt;h6 id="222-wsl">2.2.2 WSL&lt;/h6>
+&lt;p>对于WSL来说需要更新&lt;code>.bashrc&lt;/code>配置文件。&lt;/p>
+&lt;p>使用命令 &lt;code>nano .bashrc&lt;/code> 打开配置文件 并将下面的脚本放进去。（下面脚本中&lt;code>paradox.omp.json&lt;/code> 为主题部分，可自行替换，你可以在&lt;code>.poshthemes&lt;/code>这个文件夹下面看到所有的主题。 ）&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="nb">eval&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>oh-my-posh-wsl --init --shell bash --config ~/.poshthemes/paradox.omp.json&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>参考链接：&lt;a href="https://ohmyposh.dev/docs/windows">Oh My Posh documentation&lt;/a>.&lt;/p>
+&lt;p>【注意】这里的路径要根据实际情况变更，直接放进去会报错。我这里的安装日志如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="c1"># 编辑配置文件&lt;/span>
+vim .bashrc
+&lt;span class="c1"># 增加下面的命令到末尾&lt;/span>
+&lt;span class="nb">eval&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>oh-my-posh-wsl --init --shell bash --config /mnt/c/Users/heqifeng/AppData/Local/Programs/oh-my-posh/themes/paradox.omp.json&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;span class="c1"># 使配置生效&lt;/span>
+&lt;span class="nb">source&lt;/span> .bashrc
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211121181139938.png" alt="image-20211121181139938">&lt;/p>
+&lt;p>当然了，WSL下是可以使用oh-my-zsh的，这里预留个坑位： [WSL安装oh my zsh.md](WSL安装oh my zsh.md)&lt;/p>
+&lt;h6 id="223-附第一种方式的安装说明">2.2.3 附第一种方式的安装说明&lt;/h6>
+&lt;p>如果不考虑在WSL上使用oh-my-posh，可以完全参考下面这篇文章操作。&lt;/p>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/354603010">Windows Terminal美化（oh-my-posh3）&lt;/a>&lt;/p>
+&lt;p>&lt;em>&lt;strong>下面是官方文章中对于第一种方式的说明。&lt;/strong>&lt;/em>&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;em>&lt;strong>Using PowerShell, install Oh My Posh with the command:&lt;/strong>&lt;/em>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="nb">Install-Module&lt;/span> &lt;span class="nb">oh-my&lt;/span>&lt;span class="n">-posh&lt;/span> &lt;span class="n">-Scope&lt;/span> &lt;span class="n">CurrentUser&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;em>&lt;strong>Browse the prompt themes, with the command:&lt;/strong>&lt;/em>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="nb">Get-PoshThemes&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;em>&lt;strong>Choose a theme and update your PowerShell profile with this command. (You can replace &lt;code>notepad&lt;/code> with the text editor of your choice.)&lt;/strong>&lt;/em>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="n">notepad&lt;/span> &lt;span class="nv">$PROFILE&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;em>&lt;strong>Add the following to the end of your PowerShell profile file to set the &lt;code>paradox&lt;/code> theme. (Replace &lt;code>paradox&lt;/code> with the theme of your choice.)&lt;/strong>&lt;/em>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="nb">Import-Module&lt;/span> &lt;span class="nb">oh-my&lt;/span>&lt;span class="n">-posh&lt;/span>
+&lt;span class="nb">Set-PoshPrompt&lt;/span> &lt;span class="n">-Theme&lt;/span> &lt;span class="n">paradox&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;h3 id="三安装posh-git">三、安装posh-git&lt;/h3>
+&lt;p>经过上面的安装记录，这里就非常简单了，按照步骤操作即可。&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Install posh-git using PowerShell with the command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="nb">Install-Module&lt;/span> &lt;span class="nb">posh-git&lt;/span> &lt;span class="n">-Scope&lt;/span> &lt;span class="n">CurrentUser&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Update your PowerShell profile file: &lt;code>notepad $PROFILE&lt;/code>. (You can replace nodepad with the text editor of your choice).&lt;/p>
+&lt;p>In your PowerShell profile, add the following to the end of the file:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="nb">Import-Module&lt;/span> &lt;span class="nb">posh-git&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>git设置和取消代理&lt;/p>
+&lt;pre tabindex="0">&lt;code>git config --global https.proxy http://127.0.0.1:1080
+git config --global https.proxy https://127.0.0.1:1080
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;/ol></content><category scheme="https://kiwi4814.github.io/categories/2021/12/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/" term="软件与工具" label="软件与工具"/><category scheme="https://kiwi4814.github.io/tags/2021/12/windows/" term="Windows" label="Windows"/><category scheme="https://kiwi4814.github.io/tags/2021/12/%E8%BD%AF%E4%BB%B6/" term="软件" label="软件"/></entry><entry><title type="text">MySQL优化之索引（index）</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/2020/mysql-index/"/><id>https://kiwi4814.github.io/posts/2020/mysql-index/</id><updated>2022-01-02T10:15:52+00:00</updated><published>2020-09-01T20:42:47+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">一、定义 索引是一种数据结构，存储表中特定列的值并进行排序，方便查询这个特定列，就好比……</summary><content type="html">&lt;h1 id="一定义">一、定义&lt;/h1>
+&lt;p>索引是一种数据结构，存储表中特定列的值并进行排序，方便查询这个特定列，就好比一本书的目录，可以更快的根据目录查找所需的内容。&lt;/p>
+&lt;h2 id="索引的优点">索引的优点&lt;/h2>
+&lt;ol>
+&lt;li>通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。&lt;/li>
+&lt;li>可以大大加快数据的检索速度，避免进行全表的数据扫描，大大减少遍历匹配的行数，这也是创建索引的最主要的原因。&lt;/li>
+&lt;li>可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。&lt;/li>
+&lt;li>在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。&lt;/li>
+&lt;li>通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。&lt;/li>
+&lt;/ol>
+&lt;h2 id="索引的缺点">索引的缺点&lt;/h2>
+&lt;ol>
+&lt;li>创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加。&lt;/li>
+&lt;li>索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大。&lt;/li>
+&lt;li>当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度。&lt;/li>
+&lt;/ol>
+&lt;h2 id="在哪些列建立索引">在哪些列建立索引&lt;/h2>
+&lt;ol>
+&lt;li>在经常需要搜索的列上，可以加快搜索的速度；&lt;/li>
+&lt;li>在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构；&lt;/li>
+&lt;li>在经常用在连接的列上，这些列主要是一些外键，可以加快连接的速度；&lt;/li>
+&lt;li>在经常需要根据范围进行搜索的列上创建索引，因为索引已经排序，其指定的范围是连续的；&lt;/li>
+&lt;li>在经常需要排序的列上创建索引，因为索引已经排序，这样查询可以利用索引的排序，加快排序查询时间；&lt;/li>
+&lt;li>在经常使用在&lt;code>WHERE&lt;/code>子句中的列上面创建索引，加快条件的判断速度。&lt;/li>
+&lt;/ol>
+&lt;h2 id="不在哪些列建索引">不在哪些列建索引？&lt;/h2>
+&lt;ol>
+&lt;li>对于那些在查询中很少使用或者参考的列不应该创建索引。这是因为，既然这些列很少使用到，因此有索引或者无索引，并不能提高查询速度。相反，由于增加了索引，反而降低了系统的维护速度和增大了空间需求。&lt;/li>
+&lt;li>对于那些只有很少数据值的列也不应该增加索引。这是因为，由于这些列的取值很少，例如人事表的性别列，在查询的结果中，结果集的数据行占了表中数据行的很大比例，即需要在表中搜索的数据行的比例很大。增加索引，并不能明显加快检索速度。&lt;/li>
+&lt;li>对于那些定义为&lt;code>text&lt;/code>, &lt;code>image&lt;/code>和&lt;code>bit&lt;/code>数据类型的列不应该增加索引。这是因为，这些列的数据量要么相当大，要么取值很少。&lt;/li>
+&lt;li>当修改性能远远大于检索性能时，不应该创建索引。这是因为，修改性能和检索性能是互相矛盾的。当增加索引时，会提高检索性能，但是会降低修改性能。当减少索引时，会提高修改性能，降低检索性能。因此，当修改性能远远大于检索性能时，不应该创建索引。&lt;/li>
+&lt;/ol>
+&lt;h1 id="二索引的数据结构">二、索引的数据结构&lt;/h1>
+&lt;p>常见的索引的数据结构有：&lt;code>B+Tree&lt;/code>、&lt;code>Hash索引&lt;/code>、&lt;code>FullText索引&lt;/code>、&lt;code>R-Tree索引&lt;/code>。&lt;/p>
+&lt;h3 id="hash-索引">Hash 索引&lt;/h3>
+&lt;p>&lt;strong>1. 概述：&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>MySQL 中，只有Memory存储引擎支持Hash索引，是Memory表的默认索引类型。hash 索引把数据的索引以 hash 值形式组织起来，因此检索效率非常高，可以一次定位，不像B-/+Tree索引需要进行从根节点到叶节点的多次 IO 操作。&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>2. Hash 索引的缺点：&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>① Hash 索引仅仅能满足等值的查询，不能满足范围查询。因为数据在经过 Hash 算法后，其大小关系就可能发生变化。 ② Hash 索引不能被排序。同样是因为数据经过 Hash 算法后，大小关系就可能发生变化，排序是没有意义的。&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>③ Hash 索引不能避免表数据的扫描。因为发生 Hash 碰撞时，仅仅比较 Hash 值是不够的，需要比较实际的值以判定是否符合要求。&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>④ Hash 索引在发生大量 Hash 值相同的情况时性能不一定比 B-Tree 索引高。因为碰撞情况会导致多次的表数据的扫描，造成整体性能的低下，可以通过采用合适的 Hash 算法一定程度解决这个问题。&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>⑤ Hash 索引不能使用部分索引键查询。因为当使用组合索引情况时，是把多个数据库列数据合并后再计算 Hash 值，所以对单独列数据计算 Hash 值是没有意义的。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="fulltext-索引">FullText 索引&lt;/h3>
+&lt;p>&lt;strong>1. 概述：&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>全文索引，目前 MySQL 中只有MyISAM存储引擎支持，并且只有char、varchar、text 类型支持。它用于替代效率较低的like 模糊匹配操作，而且可以通过多字段组合的全文索引一次性全模糊匹配多个字段。&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>2. 存储结构：&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>同样使用B-Tree存放索引数据，但使用的是特定的算法，将字段数据分割后再进行索引（一般每 4 个字节一次分割），索引文件存储的是分割前的索引字符串集合，与分割后的索引信息，对应 Btree 结构的节点存储的是分割后的词信息以及它在分割前的索引字符串集合中的位置。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="b-tree-索引">B-/+Tree 索引&lt;/h3>
+&lt;ul>
+&lt;li>B+Tree 是 mysql 使用最频繁的一个索引数据结构，是 Innodb 和 Myisam 存储引擎模式的索引类型。相对 Hash 索引，B+树在查找单条记录的速度比不上 Hash 索引，但是更适合排序等操作。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>1. B+Tree 索引的优点：&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>带顺序访问指针的 B+Tree：B+Tree 所有索引数据都在叶子结点上，并且增加了顺序访问指针,每个叶子节点都有指向相邻叶子节点的指针。这样做是为了提高区间查询效率，例如查询 key 为从 18 到 49 的所有数据记录，当找到 18 后，只需顺着节点和指针顺序遍历就可以一次性访问到所有数据节点，极大提到了区间查询效率。&lt;/li>
+&lt;li>大大减少磁盘 I/O 读取次数。&lt;/li>
+&lt;/ul>
+&lt;h1 id="三mysql索引的实现">三、MySQL索引的实现&lt;/h1>
+&lt;p>在 MySQL 中，索引属于存储引擎级别的概念，不同存储引擎对索引的实现方式是不同的，本部分主要讨论 MyISAM 和 InnoDB 两个存储引擎的索引实现方式。&lt;/p>
+&lt;h3 id="myisam-索引的实现">MyISAM 索引的实现&lt;/h3>
+&lt;p>&lt;strong>1. 主键索引&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>MyISAM 引擎使用 B+Tree 作为索引结构，叶节点的 data 域存放的是数据记录的地址。下图是 MyISAM 索引的原理图：&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/3.png" alt="">&lt;/p>
+&lt;ul>
+&lt;li>这里设表一共有三列，假设我们以 Col1 为主键，则上图是一个 MyISAM 表的主索引（Primary key）示意。可以看出 MyISAM 的索引文件仅仅保存数据记录的地址。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>2. 辅助索引&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>在MyISAM中，主索引和辅助索引（Secondary key）在结构上没有任何区别，只是主索引要求 key 是唯一的，而辅助索引的 key 可以重复。如果我们在 Col2 上建立一个辅助索引，则此索引的结构如下图所示：&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/4.png" alt="">&lt;/p>
+&lt;ul>
+&lt;li>同样也是一颗 B+Tree，data 域保存数据记录的地址。因此，MyISAM 中索引检索的算法为首先按照 B+Tree 搜索算法搜索索引，如果指定的 Key 存在，则取出其 data 域的值，然后以 data 域的值为地址，读取相应数据记录。&lt;/li>
+&lt;li>MyISAM 的索引方式也叫做“非聚集”的，之所以这么称呼是为了与 InnoDB 的聚集索引区分。&lt;/li>
+&lt;/ul>
+&lt;h3 id="innodb-索引的实现">InnoDB 索引的实现&lt;/h3>
+&lt;ul>
+&lt;li>虽然 InnoDB 也使用 B+Tree 作为索引结构，但具体实现方式却不相同。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>1. 主键索引&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>与 MyISAM 第一个重大区别是 InnoDB 的数据文件本身就是索引文件。从上文知道，MyISAM 索引文件和数据文件是分离的，索引文件仅保存数据记录的地址。而在 InnoDB 中，表数据文件本身就是按 B+Tree 组织的一个索引结构，这棵树的叶节点 data 域保存了完整的数据记录。这个索引的 key 是数据表的主键，因此 InnoDB 表数据文件本身就是主索引。&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/2.png" alt="https://gitee.com/chenjiabing666/Blog-file/raw/master/%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86/2.png">&lt;/p>
+&lt;p>上图是 InnoDB 主索引（同时也是数据文件）的示意图，可以看到叶节点包含了完整的数据记录。这种索引叫做聚集索引。因为 InnoDB 的数据文件本身要按主键聚集，所以 InnoDB 要求表必须有主键（MyISAM 可以没有），如果没有显式指定，则 MySQL 系统会自动选择一个可以唯一标识数据记录的列作为主键，如果不存在这种列，则 MySQL 自动为 InnoDB 表生成一个隐含字段作为主键，这个字段长度为 6 个字节，类型为长整形。&lt;/p>
+&lt;p>&lt;strong>2. 辅助索引&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>第二个与 MyISAM 索引的不同是 InnoDB 的辅助索引 data 域存储相应记录主键的值而不是地址。换句话说，InnoDB 的所有辅助索引都引用主键作为 data 域。例如，下图为定义在 Col3 上的一个辅助索引：&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/1.png" alt="https://gitee.com/chenjiabing666/Blog-file/raw/master/%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86/1.png">&lt;/p>
+&lt;ul>
+&lt;li>这里以英文字符的 ASCII 码作为比较准则。聚集索引这种实现方式使得按主键的搜索十分高效，但是辅助索引搜索需要检索两遍索引：首先检索辅助索引获得主键，然后用主键到主索引中检索获得记录。&lt;/li>
+&lt;li>&lt;strong>InnoDB 表是基于聚簇索引建立的&lt;/strong>。因此 InnoDB 的索引能提供一种非常快速的主键查找性能。不过，它的辅助索引也会包含主键列，所以，如果主键使用过长的字段，将会导致其他辅助索变得更大。如果想在表上定义 、很多索引，则争取尽量把主键定义得小一些。InnoDB 不会压缩索引。&lt;/li>
+&lt;/ul></content><category scheme="https://kiwi4814.github.io/categories/2020/09/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/><category scheme="https://kiwi4814.github.io/tags/2020/09/mysql/" term="MySQL" label="MySQL"/></entry><entry><title type="text">如何在MySQL中设计一个树形存储结构？</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/2020/mysql-tree/"/><id>https://kiwi4814.github.io/posts/2020/mysql-tree/</id><updated>2022-01-02T10:15:52+00:00</updated><published>2020-09-01T20:35:47+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">我们经常需要在数据库中去维护一个树形结构，通常普遍的做法有以下几种： Adjacency List 每一条记录存……</summary><content type="html">&lt;p>我们经常需要在数据库中去维护一个树形结构，通常普遍的做法有以下几种：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;em>&lt;strong>Adjacency List&lt;/strong>&lt;/em>&lt;/p>
+&lt;p>每一条记录存在一个&lt;code>parent_id&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;em>&lt;strong>Path Enumerations&lt;/strong>&lt;/em>&lt;/p>
+&lt;p>每一条记录存整个&lt;code>tree path&lt;/code>经过的&lt;code>node&lt;/code>枚举&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;em>&lt;strong>Nested Sets&lt;/strong>&lt;/em>&lt;/p>
+&lt;p>每一条记录存 &lt;code>nleft&lt;/code> 和 &lt;code>nright&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;em>&lt;strong>Closure Table&lt;/strong>&lt;/em>&lt;/p>
+&lt;p>额外维护一个表，所有的t&lt;code>ree path&lt;/code>作为记录进行保存。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a href="https://www.notion.so/322ad02521884b51bade610e1b42ee98">各类方法的操作代价&lt;/a>&lt;/p></content><category scheme="https://kiwi4814.github.io/categories/2020/09/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/><category scheme="https://kiwi4814.github.io/tags/2020/09/mysql/" term="MySQL" label="MySQL"/></entry><entry><title type="text">CentOS 7离线安装MySQL 5.7</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/2020/mysql-install/"/><id>https://kiwi4814.github.io/posts/2020/mysql-install/</id><updated>2022-01-02T10:15:52+00:00</updated><published>2020-08-30T23:46:30+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">操作系统：CentOs 7.7 MySQL版本：MySQL-5.7.25-x86_64 安装步……</summary><content type="html">&lt;h1 id="heading">&lt;/h1>
+&lt;h4 id="操作系统centos-77">&lt;strong>操作系统：CentOs 7.7&lt;/strong>&lt;/h4>
+&lt;h4 id="mysql版本mysql-5725-x86_64">&lt;strong>MySQL版本：MySQL-5.7.25-x86_64&lt;/strong>&lt;/h4>
+&lt;h4 id="安装步骤">&lt;strong>安装步骤：&lt;/strong>&lt;/h4>
+&lt;ol>
+&lt;li>
+&lt;p>查找并卸载&lt;code>mariadb&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 查找当前系统下是否有mariadb&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ rpm -qa &lt;span class="p">|&lt;/span> grep mariadb
+&lt;span class="c1"># 卸载&lt;/span>
+mariadb-libs-5.5.64-1.el7.x86_64
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ rpm -e --nodeps mariadb-libs-5.5.64-1.el7.x86_64
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>卸载原有的&lt;code>mysql&lt;/code>相关&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 查找当前系统是否有mysql&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ rpm -qa &lt;span class="p">|&lt;/span> grep mysql
+&lt;span class="c1"># 删除配置文件&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ rm /etc/my.cnf
+&lt;span class="c1"># 查找是否存在mysql用户组和用户&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ cat /etc/group &lt;span class="p">|&lt;/span> grep mysql
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ cat /etc/passwd &lt;span class="p">|&lt;/span> grep mysql
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>创建&lt;code>mysql&lt;/code>用户和组&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 创建用户组&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ groupadd mysql
+&lt;span class="c1"># 创建用户&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ useradd -g mysql mysql
+&lt;span class="c1"># 修改用户密码&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ passwd mysql
+Changing password &lt;span class="k">for&lt;/span> user mysql.
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>将&lt;code>mysql&lt;/code>离线安装文件上传到服务器上&lt;/p>
+&lt;p>（1）&lt;a href="https://downloads.mysql.com/archives/community/">下载地址&lt;/a>&lt;/p>
+&lt;p>（2）上传到服务器的&lt;code>/usr/local/&lt;/code>目录下&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">scp /localurl/mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz root@host:/usr/local/
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>解压并建立软链接&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 注意：5的操作均在此目录下进行&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /usr/local/
+&lt;span class="c1"># 解压&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver local&lt;span class="o">]&lt;/span>$ tar -zxvf mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz
+&lt;span class="c1"># 创建软链接&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver local&lt;span class="o">]&lt;/span>$ ln -s mysql-5.7.25-linux-glibc2.12-x86_64 mysql
+&lt;span class="c1"># 赋予mysql用户权限&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver local&lt;span class="o">]&lt;/span>$ chown -R mysql:mysql mysql/
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>创建相关文件，赋予&lt;code>mysql&lt;/code>用户权限&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 分别创建data tmp log文件夹&lt;/span>
+&lt;span class="c1"># 此目录可自行指定，不过要和mysql配置文件中相一致&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ mkdir -p /home/datadriver/mysql/&lt;span class="o">{&lt;/span>data,tmp,log&lt;span class="o">}&lt;/span>
+&lt;span class="c1"># 赋权&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /home/datadriver/
+&lt;span class="o">[&lt;/span>root@datadriver datadriver&lt;span class="o">]&lt;/span>$ chown -R mysql:mysql mysql/
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>创建并修改配置文件&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 这里选择将配置文件放在/etc下面，也可以放在mysql根目录下&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /etc
+&lt;span class="c1"># 创建并编辑my.cnf&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver etc&lt;span class="o">]&lt;/span>$ vi my.cnf
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>这里给出一份配置文件作为参考：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="k">[mysql]&lt;/span>
+&lt;span class="na">default-character-set&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">utf8mb4&lt;/span>
+&lt;span class="k">[mysqld]&lt;/span>
+&lt;span class="c1"># ---------------- Basic ----------------&lt;/span>
+&lt;span class="na">server_id&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">100&lt;/span>
+&lt;span class="na">port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">3306&lt;/span>
+&lt;span class="na">basedir&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">/usr/local/mysql&lt;/span>
+&lt;span class="na">datadir&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">/usr/local/mysql/data&lt;/span>
+&lt;span class="na">socket&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">/tmp/mysql.sock&lt;/span>
+&lt;span class="na">skip-host-cache&lt;/span>
+&lt;span class="na">skip_name_resolve&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">1&lt;/span>
+&lt;span class="na">lower_case_table_names&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">1&lt;/span>
+&lt;span class="na">character-set-server&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">utf8mb4&lt;/span>
+&lt;span class="na">collation-server&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">utf8mb4_general_ci&lt;/span>
+&lt;span class="na">init_connect&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#39;SET NAMES utf8mb4&amp;#39;&lt;/span>
+&lt;span class="na">default-storage-engine&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">INNODB&lt;/span>
+&lt;span class="na">group_concat_max_len&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">102400&lt;/span>
+&lt;span class="c1">#skip-external-locking&lt;/span>
+&lt;span class="c1">#skip-networking&lt;/span>
+&lt;span class="c1"># ---------------- Connection/File/Table ----------------&lt;/span>
+&lt;span class="na">max_connections&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">10000&lt;/span>
+&lt;span class="na">max_connect_errors&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">20000&lt;/span>
+&lt;span class="c1">#wait_timeout = 31536000&lt;/span>
+&lt;span class="c1">#interactive_timeout = 31536000&lt;/span>
+&lt;span class="na">wait_timeout&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">3600&lt;/span>
+&lt;span class="na">interactive_timeout&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">3600&lt;/span>
+&lt;span class="na">lock_wait_timeout&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">1800&lt;/span>
+&lt;span class="na">max_allowed_packet&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">1024M&lt;/span>
+&lt;span class="c1"># ---------------- Thread Pool ----------------&lt;/span>
+&lt;span class="c1">#thread_handling = pool-of-threads&lt;/span>
+&lt;span class="c1">#thread_pool_oversubscribe = 5&lt;/span>
+&lt;span class="na">thread_cache_size&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">64&lt;/span>
+&lt;span class="c1">#extra_max_connections = 10&lt;/span>
+&lt;span class="c1">#extra_port = 33333&lt;/span>
+&lt;span class="c1"># ---------------- log ----------------&lt;/span>
+&lt;span class="na">expire_logs_days&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">8&lt;/span>
+&lt;span class="na">log-bin&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">mysql-bin&lt;/span>
+&lt;span class="na">binlog_format&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">ROW&lt;/span>
+&lt;span class="c1"># ---------------- Others ----------------&lt;/span>
+&lt;span class="na">sql_mode&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">NO_ENGINE_SUBSTITUTION,NO_AUTO_CREATE_USER&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>安装&lt;code>mysql&lt;/code>（要先安装依赖）&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 安装相关依赖，否则会报错，此处不再演示离线安装方式，需要的自行查阅&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ yum install libaio*
+&lt;span class="c1"># 进入到mysql /bin 目录&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /usr/local/myysql/bin/
+&lt;span class="c1"># 初始化mysql，指定用户为mysql&lt;/span>
+&lt;span class="c1"># 此处如果日志中配置了log_error，则控制台不会打印数据&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver bin&lt;span class="o">]&lt;/span>$ ./mysqld --initialize --user&lt;span class="o">=&lt;/span>mysql
+&lt;span class="c1"># 查看日志&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver bin&lt;span class="o">]&lt;/span>$ cat ../log/error.log
+2020-07-29T06:04:33.666390Z &lt;span class="m">0&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option &lt;span class="o">(&lt;/span>see documentation &lt;span class="k">for&lt;/span> more details&lt;span class="o">)&lt;/span>.
+2020-07-29T06:04:33.813204Z &lt;span class="m">0&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> InnoDB: New log files created, &lt;span class="nv">LSN&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">45790&lt;/span>
+2020-07-29T06:04:33.848783Z &lt;span class="m">0&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> InnoDB: Creating foreign key constraint system tables.
+2020-07-29T06:04:33.908557Z &lt;span class="m">0&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> No existing UUID has been found, so we assume that this is the first &lt;span class="nb">time&lt;/span> that this server has been started. Generating a new UUID: 5fe4d020-d161-11ea-9224-0894ef98b412.
+2020-07-29T06:04:33.909451Z &lt;span class="m">0&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> Gtid table is not ready to be used. Table &lt;span class="s1">&amp;#39;mysql.gtid_executed&amp;#39;&lt;/span> cannot be opened.
+2020-07-29T06:04:33.911251Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Note&lt;span class="o">]&lt;/span> A temporary password is generated &lt;span class="k">for&lt;/span> root@localhost: -h+#XfgW:4h2
+2020-07-29T06:04:34.357662Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;user&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;root@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+2020-07-29T06:04:34.357715Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;user&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;mysql.session@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+2020-07-29T06:04:34.357739Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;user&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;mysql.sys@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+2020-07-29T06:04:34.357778Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;db&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;performance_schema mysql.session@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+2020-07-29T06:04:34.357793Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;db&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;sys mysql.sys@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+2020-07-29T06:04:34.357820Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;proxies_priv&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;@ root@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+2020-07-29T06:04:34.357877Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;tables_priv&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;user mysql.session@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+2020-07-29T06:04:34.357898Z &lt;span class="m">1&lt;/span> &lt;span class="o">[&lt;/span>Warning&lt;span class="o">]&lt;/span> &lt;span class="s1">&amp;#39;tables_priv&amp;#39;&lt;/span> entry &lt;span class="s1">&amp;#39;sys_config mysql.sys@localhost&amp;#39;&lt;/span> ignored in --skip-name-resolve mode.
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>设置开机启动&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 进入应用根目录&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /usr/local/mysql/
+&lt;span class="c1"># 复制启动脚本到资源目录&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver mysql&lt;span class="o">]&lt;/span>$ cp ./support-files/mysql.server /etc/rc.d/init.d/mysqld
+&lt;span class="c1"># 增加mysqld服务控制脚本执行权限&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver mysql&lt;span class="o">]&lt;/span>$ chmod +x /etc/rc.d/init.d/mysqld
+&lt;span class="c1"># 将mysqld服务加入到系统服务&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver mysql&lt;span class="o">]&lt;/span>$ chkconfig --add mysqld
+&lt;span class="c1"># 检查mysqld服务是否已经生效&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver mysql&lt;span class="o">]&lt;/span>$ chkconfig --list mysqld
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>切换至&lt;code>mysql&lt;/code>用户，设置环境变量&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 切换至mysql用户&lt;/span>
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ su - mysql
+&lt;span class="c1"># 修改配置文件，增加i&lt;/span>
+&lt;span class="o">[&lt;/span>mysql@datadriver ~&lt;span class="o">]&lt;/span>$ vi .bash_profile
+&lt;span class="c1"># 刷新配置文件使其立即生效&lt;/span>
+&lt;span class="c1"># export PATH=$PATH:/home/datadriver/mysql/mysql5.7.25/bin&lt;/span>
+&lt;span class="o">[&lt;/span>mysql@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">source&lt;/span> .bash_profile
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>启动服务&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># 仍然在mysql用户下，启动mysql（启动用start）&lt;/span>
+&lt;span class="o">[&lt;/span>mysql@datadriver ~&lt;span class="o">]&lt;/span>$ service mysqld restart
+&lt;span class="c1"># 重启的时候报警告&lt;/span>
+Shutting down MySQL..&lt;span class="o">[&lt;/span> OK &lt;span class="o">]&lt;/span>
+rm: cannot remove &lt;span class="s1">&amp;#39;/var/lock/subsys/mysql&amp;#39;&lt;/span>: Permission denied
+Starting MySQL.&lt;span class="o">[&lt;/span> OK &lt;span class="o">]&lt;/span>
+&lt;span class="c1"># 切回root用户，赋权即即可&lt;/span>
+&lt;span class="o">[&lt;/span>mysql@datadriver ~&lt;span class="o">]&lt;/span>$ su - root
+&lt;span class="o">[&lt;/span>root@datadriver ~&lt;span class="o">]&lt;/span>$ &lt;span class="nb">cd&lt;/span> /var/lock/
+&lt;span class="o">[&lt;/span>root@datadriver lock&lt;span class="o">]&lt;/span>$ chown -R mysql:mysql subsys/
+&lt;span class="c1"># 切回mysql重启，成功。&lt;/span>
+&lt;span class="o">[&lt;/span>mysql@datadriver ~&lt;span class="o">]&lt;/span>$ service mysqld restart
+Shutting down MySQL..&lt;span class="o">[&lt;/span> OK &lt;span class="o">]&lt;/span>
+Starting MySQL.&lt;span class="o">[&lt;/span> OK &lt;span class="o">]&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>修改&lt;code>mysql&lt;/code>默认密码并设置远程连接&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="c1">-- 修改密码
+&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="k">ALTER&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">USER&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>&lt;span class="o">@&lt;/span>&lt;span class="s1">&amp;#39;localhost&amp;#39;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">IDENTIFIED&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">BY&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="k">set&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">password&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">for&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">root&lt;/span>&lt;span class="o">@&lt;/span>&lt;span class="n">localhost&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">password&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;root&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="n">flush&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">privileges&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="c1">-- 远程连接
+&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="n">use&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">mysql&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="k">update&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">user&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">set&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">host&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;%&amp;#39;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">where&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">user&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w">&lt;/span>&lt;span class="n">flush&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">privileges&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ol></content><category scheme="https://kiwi4814.github.io/categories/2021/12/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/" term="软件与工具" label="软件与工具"/><category scheme="https://kiwi4814.github.io/series/2020/08/linux%E8%BF%90%E7%BB%B4/" term="Linux运维" label="Linux运维"/><category scheme="https://kiwi4814.github.io/tags/2020/08/linux/" term="Linux" label="Linux"/><category scheme="https://kiwi4814.github.io/tags/2021/12/%E8%BD%AF%E4%BB%B6/" term="软件" label="软件"/><category scheme="https://kiwi4814.github.io/tags/2020/09/mysql/" term="MySQL" label="MySQL"/></entry><entry><title type="text">介绍几种分号的不同写法</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/2019/semicolon/"/><id>https://kiwi4814.github.io/posts/2019/semicolon/</id><updated>2022-01-02T10:15:52+00:00</updated><published>2019-12-31T23:46:30+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">起因是因为代码的bug发现在SQL语句中夹杂了一个希腊文的问号（在IDEA编译器中跟……</summary><content type="html">&lt;p>起因是因为代码的bug发现在SQL语句中夹杂了一个希腊文的问号（在IDEA编译器中跟分号长的一模一样，无从分辨），遂整理了一下分号的几种编码格式。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">符号&lt;/th>
+&lt;th style="text-align:center">Unicode编码&lt;/th>
+&lt;th style="text-align:center">十进制编码&lt;/th>
+&lt;th style="text-align:left">说明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">;&lt;/td>
+&lt;td style="text-align:center">&lt;code>\u003b&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>59&lt;/code>&lt;/td>
+&lt;td style="text-align:left">普通分号&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">;&lt;/td>
+&lt;td style="text-align:center">&lt;code>\u37e&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>894&lt;/code>&lt;/td>
+&lt;td style="text-align:left">希腊文的问号！！！，很容易和普通的分号混淆&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">；&lt;/td>
+&lt;td style="text-align:center">&lt;code>\uff1b&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>65307&lt;/code>&lt;/td>
+&lt;td style="text-align:left">全角分号，中文分号&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">︔&lt;/td>
+&lt;td style="text-align:center">&lt;code>\ufe14&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>65044&lt;/code>&lt;/td>
+&lt;td style="text-align:left">垂直分号（&lt;code>PRESENTATION FORM FOR VERTICAL SEMICOLON&lt;/code>），以兼容 &lt;a href="https://zh.wikipedia.org/wiki/GB_18030">GB 18030&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">﹔&lt;/td>
+&lt;td style="text-align:center">&lt;code>\ufe54&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>65108&lt;/code>&lt;/td>
+&lt;td style="text-align:left">小分号（&lt;code>SMALL SEMICOLON&lt;/code>），源自 &lt;a href="https://zh.wikipedia.org/wiki/CNS11643">CNS11643&lt;/a> / &lt;a href="https://zh.wikipedia.org/wiki/Big5">Big5&lt;/a>。&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></content><category scheme="https://kiwi4814.github.io/categories/2020/09/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/></entry><entry><title type="text">获取YYYY-MM-dd所在月份的最后一天</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/2019/js-lastday/"/><id>https://kiwi4814.github.io/posts/2019/js-lastday/</id><updated>2022-01-02T10:15:52+00:00</updated><published>2019-12-31T23:46:30+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">获取日期格式为&amp;quot;YYYY-MM-dd&amp;quot;所在月份的最后一天 1 2 3 4……</summary><content type="html">&lt;h2 id="获取日期格式为yyyy-mm-dd所在月份的最后一天">获取日期格式为&lt;code>&amp;quot;YYYY-MM-dd&amp;quot;&lt;/code>所在月份的最后一天&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="kd">function&lt;/span> &lt;span class="nx">getLastDay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">year&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">month&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="c1">// 取下一个月的第一天
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="kd">var&lt;/span> &lt;span class="nx">new_year&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">year&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kd">var&lt;/span> &lt;span class="nx">new_month&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">month&lt;/span>&lt;span class="o">++&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">month&lt;/span> &lt;span class="o">&amp;gt;&lt;/span> &lt;span class="mi">11&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="nx">new_month&lt;/span> &lt;span class="o">-=&lt;/span> &lt;span class="mi">12&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="nx">new_year&lt;/span>&lt;span class="o">++&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="kd">var&lt;/span> &lt;span class="nx">new_date&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="nb">Date&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">new_year&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">new_month&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="c1">// 获取当前月的最后一天
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="k">new&lt;/span> &lt;span class="nb">Date&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">new_date&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">getTime&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="mi">1000&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="mi">60&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="mi">60&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="mi">24&lt;/span>&lt;span class="p">)).&lt;/span>&lt;span class="nx">format&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;yyyy-MM-dd&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="c1">//获取当月最后一天日期
+&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="nb">Date&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">prototype&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">format&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kd">function&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">fmt&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="kd">var&lt;/span> &lt;span class="nx">o&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="s2">&amp;#34;M+&amp;#34;&lt;/span> &lt;span class="o">:&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">getMonth&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1">//月份
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="s2">&amp;#34;d+&amp;#34;&lt;/span> &lt;span class="o">:&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">getDate&lt;/span>&lt;span class="p">(),&lt;/span> &lt;span class="c1">//日
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="s2">&amp;#34;h+&amp;#34;&lt;/span> &lt;span class="o">:&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">getHours&lt;/span>&lt;span class="p">(),&lt;/span> &lt;span class="c1">//小时
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="s2">&amp;#34;m+&amp;#34;&lt;/span> &lt;span class="o">:&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">getMinutes&lt;/span>&lt;span class="p">(),&lt;/span> &lt;span class="c1">//分
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="s2">&amp;#34;s+&amp;#34;&lt;/span> &lt;span class="o">:&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">getSeconds&lt;/span>&lt;span class="p">(),&lt;/span> &lt;span class="c1">//秒
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="s2">&amp;#34;q+&amp;#34;&lt;/span> &lt;span class="o">:&lt;/span> &lt;span class="nb">Math&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">floor&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="k">this&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">getMonth&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="mi">3&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="c1">//季度
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="s2">&amp;#34;S&amp;#34;&lt;/span> &lt;span class="o">:&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">getMilliseconds&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="c1">//毫秒
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="p">};&lt;/span>
+&lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sr">/(y+)/&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">test&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">fmt&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="nx">fmt&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nx">fmt&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">replace&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">RegExp&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">$1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="k">this&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">getFullYear&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="nx">substr&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">4&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="nb">RegExp&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">$1&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">length&lt;/span>&lt;span class="p">));&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="k">for&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kd">var&lt;/span> &lt;span class="nx">k&lt;/span> &lt;span class="k">in&lt;/span> &lt;span class="nx">o&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">new&lt;/span> &lt;span class="nb">RegExp&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;(&amp;#34;&lt;/span>&lt;span class="o">+&lt;/span> &lt;span class="nx">k&lt;/span> &lt;span class="o">+&lt;/span>&lt;span class="s2">&amp;#34;)&amp;#34;&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="nx">test&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">fmt&lt;/span>&lt;span class="p">)){&lt;/span>
+&lt;span class="nx">fmt&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">fmt&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">replace&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">RegExp&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">$1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nb">RegExp&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">$1&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">length&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">?&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">o&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">k&lt;/span>&lt;span class="p">])&lt;/span> &lt;span class="o">:&lt;/span> &lt;span class="p">((&lt;/span>&lt;span class="s2">&amp;#34;00&amp;#34;&lt;/span>&lt;span class="o">+&lt;/span> &lt;span class="nx">o&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">k&lt;/span>&lt;span class="p">]).&lt;/span>&lt;span class="nx">substr&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="o">+&lt;/span> &lt;span class="nx">o&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nx">k&lt;/span>&lt;span class="p">]).&lt;/span>&lt;span class="nx">length&lt;/span>&lt;span class="p">)));&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="nx">fmt&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></content><category scheme="https://kiwi4814.github.io/categories/2020/09/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/><category scheme="https://kiwi4814.github.io/tags/2019/12/javascript/" term="JavaScript" label="JavaScript"/></entry><entry><title type="text">Camunda流程引擎简介及功能拓展</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/2019/camunda/"/><id>https://kiwi4814.github.io/posts/2019/camunda/</id><updated>2022-01-02T10:15:52+00:00</updated><published>2019-08-25T20:35:47+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">一、流程引擎以及BPMN2.0规范 Camunda和BPMN Camunda BPM （BPM，Busine……</summary><content type="html">&lt;h2 id="一流程引擎以及bpmn20规范">一、流程引擎以及BPMN2.0规范&lt;/h2>
+&lt;hr>
+&lt;h3 id="camunda和bpmn">Camunda和BPMN&lt;/h3>
+&lt;p>Camunda BPM （BPM，Business Process Manager，业务流程管理）是一个灵活的工作流和过程自动化框架，它的核心是一个在Java虚拟机内部运行的原生BPMN 2.0流程引擎，因此它可以嵌入到任何Java应用程序或运行时容器中。Camunda BPM与Java EE 6集成，并可以与Spring Framework完美匹配。 Camunda BPM附带了用于创建工作流和决策模型，在生产中操作已部署模型以及允许用户执行分配给他们的工作流任务的工具。&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/architecture-overview.png" alt="流程引擎架构图（来源：官方文档）">&lt;/p>
+&lt;p>流程引擎架构图（来源：官方文档）&lt;/p>
+&lt;p>&lt;strong>下面我们来看下维基百科对于BPMN的定义：&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>业务流程模型和标记法（BPMN，Business Process Model and Notation）是对象管理组织（OMG，Object Management Group）维护的关于业务流程建模的行业性标准。它创建在与UML的活动图非常相似的流程图法（flowcharting）基础上，为“业务流程图”（BPD, Business Process Diagram）中的特定业务流程提供一套图形化标记法。BPMN的目标是，通过提供一套既匹配业务人员直观又能表现复杂流程语义的标记法，同时为技术人员和业务人员从事业务流程管理提供支持。BPMN规范还提供从标记法的图到执行语言基础构造的映射，尤其是业务流程执行语言（BPEL）。&lt;/p>
+&lt;/blockquote>
+&lt;p>BPMN文件的底层数据格式是xml，定义了一些标签的标准含义和图形表示。一方面通过图形方便所有人理解流程，另一方面限制实现方必须按着流程的要求来实现。&lt;/p>
+&lt;p>Camunda BPM官方提供了用于建模BPMN工作流和DMN决策的桌面应用程序Camunda Modeler。&lt;/p>
+&lt;hr>
+&lt;h3 id="camunda-modelerhttpscamundacomproductsmodeler">&lt;a href="https://camunda.com/products/modeler/">Camunda Modeler&lt;/a>&lt;/h3>
+&lt;p>下面为使用Camunda Moleler设计的一张只含有基本元素的流程定义：&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/1559570847866.png" alt="一个普通的流程图示例">&lt;/p>
+&lt;p>一个普通的流程图示例&lt;/p>
+&lt;p>对应的BPMN源码为：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">......
+&lt;span class="nt">&amp;lt;bpmn:process&lt;/span> &lt;span class="na">id=&lt;/span>&lt;span class="s">&amp;#34;Process_1em8emw&amp;#34;&lt;/span> &lt;span class="na">name=&lt;/span>&lt;span class="s">&amp;#34;项目材料审核&amp;#34;&lt;/span> &lt;span class="na">isExecutable=&lt;/span>&lt;span class="s">&amp;#34;true&amp;#34;&lt;/span>&lt;span class="nt">&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;bpmn:startEvent&lt;/span> &lt;span class="na">id=&lt;/span>&lt;span class="s">&amp;#34;StartEvent_1&amp;#34;&lt;/span> &lt;span class="na">name=&lt;/span>&lt;span class="s">&amp;#34;开始节点&amp;#34;&lt;/span>&lt;span class="nt">&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;bpmn:outgoing&amp;gt;&lt;/span>SequenceFlow_1pagkpa&lt;span class="nt">&amp;lt;/bpmn:outgoing&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;/bpmn:startEvent&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;bpmn:sequenceFlow&lt;/span> &lt;span class="na">id=&lt;/span>&lt;span class="s">&amp;#34;SequenceFlow_1pagkpa&amp;#34;&lt;/span> &lt;span class="na">sourceRef=&lt;/span>&lt;span class="s">&amp;#34;StartEvent_1&amp;#34;&lt;/span> &lt;span class="na">targetRef=&lt;/span>&lt;span class="s">&amp;#34;Task_0hn604q&amp;#34;&lt;/span> &lt;span class="nt">/&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;bpmn:userTask&lt;/span> &lt;span class="na">id=&lt;/span>&lt;span class="s">&amp;#34;Task_0hn604q&amp;#34;&lt;/span> &lt;span class="na">name=&lt;/span>&lt;span class="s">&amp;#34;填写材料&amp;#34;&lt;/span>&lt;span class="nt">&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;bpmn:incoming&amp;gt;&lt;/span>SequenceFlow_1pagkpa&lt;span class="nt">&amp;lt;/bpmn:incoming&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;bpmn:incoming&amp;gt;&lt;/span>SequenceFlow_058xsmq&lt;span class="nt">&amp;lt;/bpmn:incoming&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;bpmn:outgoing&amp;gt;&lt;/span>SequenceFlow_0rs76c2&lt;span class="nt">&amp;lt;/bpmn:outgoing&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;bpmn:multiInstanceLoopCharacteristics&lt;/span> &lt;span class="nt">/&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;/bpmn:userTask&amp;gt;&lt;/span>
+......
+&lt;span class="nt">&amp;lt;bpmn:exclusiveGateway&lt;/span> &lt;span class="na">id=&lt;/span>&lt;span class="s">&amp;#34;ExclusiveGateway_0ol3vgn&amp;#34;&lt;/span> &lt;span class="na">name=&lt;/span>&lt;span class="s">&amp;#34;是否需要合伙人批阅&amp;#34;&lt;/span>&lt;span class="nt">&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;bpmn:incoming&amp;gt;&lt;/span>SequenceFlow_0icnkq2&lt;span class="nt">&amp;lt;/bpmn:incoming&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;bpmn:outgoing&amp;gt;&lt;/span>SequenceFlow_1hoelow&lt;span class="nt">&amp;lt;/bpmn:outgoing&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;bpmn:outgoing&amp;gt;&lt;/span>SequenceFlow_160qlaz&lt;span class="nt">&amp;lt;/bpmn:outgoing&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;/bpmn:exclusiveGateway&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;bpmn:endEvent&lt;/span> &lt;span class="na">id=&lt;/span>&lt;span class="s">&amp;#34;EndEvent_1qn3z3o&amp;#34;&lt;/span> &lt;span class="na">name=&lt;/span>&lt;span class="s">&amp;#34;结束&amp;#34;&lt;/span>&lt;span class="nt">&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;bpmn:incoming&amp;gt;&lt;/span>SequenceFlow_0ymsxgc&lt;span class="nt">&amp;lt;/bpmn:incoming&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;bpmn:incoming&amp;gt;&lt;/span>SequenceFlow_160qlaz&lt;span class="nt">&amp;lt;/bpmn:incoming&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;/bpmn:endEvent&amp;gt;&lt;/span>
+&lt;span class="nt">&amp;lt;/bpmn:process&amp;gt;&lt;/span>
+......
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>
+&lt;p>开始事件 &lt;strong>StartEvent&lt;/strong>&lt;/p>
+&lt;p>原型细线标记，标明一个流程的开始事件，分为空启动、异常启动、定时启动等。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>结束事件 &lt;strong>EndEvent&lt;/strong>&lt;/p>
+&lt;p>原型粗线标记，标明一个流程的结束事件，分为空结束、异常结束、取消结束等。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>顺序流 &lt;strong>SequenceFlow&lt;/strong>&lt;/p>
+&lt;p>顺序流表明两个模型之间的连接线，分为标准顺序流和条件顺序流。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>任务 &lt;strong>Task&lt;/strong>&lt;/p>
+&lt;p>最重要的业务模型，一般用一个矩形表示，根据矩形左上角小图标的不同可以分为用户任务、Service任务、脚本任务、邮件任务等等。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>网关 &lt;strong>Gateway&lt;/strong>&lt;/p>
+&lt;p>网关是用于控制流程走向的执行令牌，根据功能的不同主要分为排他网关、并行网关、包容网关、事件网关。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>子流程 &lt;strong>Subprocess&lt;/strong>&lt;/p>
+&lt;p>把一切需要处理的任务归结到一起作为作为一个大流程的一部分，因为子流程嵌入在主流程中，所有也叫“嵌入式子流程”&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>边界事件 &lt;strong>Boundary Event&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>中间事件 &lt;strong>Intermediate Event&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>监听器 &lt;strong>Listener&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="uel表达式">UEL表达式&lt;/h3>
+&lt;p>Camunda BPM支持统一表达式语言（EL），它是JSP 2.1标准（JSR-245）的一部分，使用开源JUEL（Java Unified Expression Language，EL的Java实现）实现。在Camunda BPM的绝大多数地方都可以使用UEL表达式，主要支持两个UEL表达式：UEL-value 和 UEL-method。&lt;/p>
+&lt;hr>
+&lt;h3 id="流程引擎的生命周期">流程引擎的生命周期&lt;/h3>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/Camunda%E6%B5%81%E7%A8%8B%E5%BC%95%E6%93%8E%E7%AE%80%E4%BB%8B%20a4fe0f2279754a49b750f583f42fa27b.png" alt="流程引擎的生命周期">&lt;/p>
+&lt;p>流程引擎的生命周期&lt;/p>
+&lt;p>生命周期&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>定义&lt;/strong>：工作流的生命周期从定义开始，此阶段的主要任务是收集业务需求并且转化为流程定义。&lt;/li>
+&lt;li>&lt;strong>发布&lt;/strong>：由开发人员打包各种资源，在流程引擎平台发布流程定义。在具体的流程引擎中包括流程定义文件（.bpmn结尾）、自定义表单、任务监听类等等。&lt;/li>
+&lt;li>&lt;strong>执行&lt;/strong>：具体的流程引擎按照事先定义好的流程处理路线以任务驱动的方式执行业务流程。&lt;/li>
+&lt;li>&lt;strong>监控&lt;/strong>：根据任务（Task）的结果做出相应的处理。&lt;/li>
+&lt;li>&lt;strong>优化&lt;/strong>：不满足业务需求的流程或者需求变更的流程进行重新设计和发布。&lt;/li>
+&lt;/ul>
+&lt;h2 id="二流程引擎基础概念介绍">二、流程引擎基础概念介绍&lt;/h2>
+&lt;hr>
+&lt;h3 id="多租户-multitenancy">多租户 Multitenancy&lt;/h3>
+&lt;p>总的来说，多租户是一个软件为多个不同组织提供服务的概念。其核心是数据是隔离的，一个组织不能看到其他组织的数据。在这个语境中，一个这样的组织（或部门、团队……）被称为一个&lt;em>租户（tenant）&lt;/em>。&lt;/p>
+&lt;p>在Camunda流程引擎中部署流程定义时，可以传递一个&lt;em>租户标识符（tenant identifier）&lt;/em>，当然为了实际使用流程数据上的租户标识符，所有查询API都可以通过租户过滤。&lt;/p>
+&lt;hr>
+&lt;h3 id="流程定义-process-definitions">流程定义 Process Definitions&lt;/h3>
+&lt;p>一个流程定义规定了整个流程的结构，Camunda BPM使用BPMN 2.0规范作为它的主要设计语言，并在此基础上扩展了新的元素和属性。&lt;/p>
+&lt;p>主要属性：tenant，processDefinitionKey，version，processDefinitionId&lt;/p>
+&lt;hr>
+&lt;h3 id="流程实例-process-instances">流程实例 Process Instances&lt;/h3>
+&lt;p>流程实例是一个流程定义（Process Definitions）与业务对象联系的入口，也就是说是流程定义的实际应用。&lt;/p>
+&lt;p>流程实例与流程定义的关系与面向对象编程中的对象和类之间的关系相同。&lt;/p>
+&lt;p>关键属性：processInstanceId、instanceRemark&lt;/p>
+&lt;hr>
+&lt;h3 id="流程执行对象-execution">流程执行对象 Execution&lt;/h3>
+&lt;p>Execution的含义就是一个流程实例（Process Instances）具体要执行的过程对象。一个流程实例中，流程实例本身也是一条Execution，作为所有Execution的根节点一起形成一个树状结构。&lt;/p>
+&lt;hr>
+&lt;h3 id="活动实例-activity-instances">活动实例 Activity Instances&lt;/h3>
+&lt;p>Activity Instances的概念与Execution比较像，不同的是Exectuion是把Activity Instances串起来的线的唯一标识。Activity Instances也是树状结构的，可能是Task、Subprocess、MuiltiInstance等等。&lt;/p>
+&lt;hr>
+&lt;h3 id="用户任务-usertask">用户任务 UserTask&lt;/h3>
+&lt;p>顾名思义，表示需要人员去审批的任务。&lt;/p>
+&lt;p>根据任务的处理方式的不同，可以分为单人审批，多人审批（并行），多人审批（串行）等。&lt;/p>
+&lt;p>任务可以设置的主要属性有审批人，任务到期日，任务优先级等。其中关于审批人的设置，除了直接填写用户之外，还可以填写UEL表达式来支持从流程变量中获取审批人或者组以及从JavaBean中获取审批人。&lt;/p>
+&lt;hr>
+&lt;h3 id="任务和任务定义-jobs-and-job-definitions">任务和任务定义 Jobs and Job Definitions&lt;/h3>
+&lt;hr>
+&lt;h3 id="流程变量-process-variables">流程变量 Process Variables&lt;/h3>
+&lt;p>流程变量是指在流程运行状态的时候（ProcessInstance而不是ProcessDefinition）存储的数据，它的数据结构本质为&lt;code>Map&amp;lt;String, Object&amp;gt;&lt;/code>，可以通过流程引擎提供的API进行数据的修改。流程变量是范围性的，也就是说可以为某个任务节点单独设置流程变量，这个值仅仅存在于当前的任务节点。也可以为整个流程设置全局性的流程变量，在整个流程的运行过程中都是可以查看并使用的。&lt;/p>
+&lt;h2 id="三表结构及接口设计">三、表结构及接口设计&lt;/h2>
+&lt;hr>
+&lt;h3 id="流程引擎表结构">流程引擎表结构&lt;/h3>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/erd_710_bpmn.svg" alt="流程引擎的表结构（来源：官方文档）">&lt;/p>
+&lt;p>流程引擎的表结构（来源：官方文档）&lt;/p>
+&lt;p>根据前缀的不同，这些表可以分为以下几类：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>ACT_GE_&lt;/strong>：General，存储通用的配置&lt;/li>
+&lt;li>&lt;strong>ACT_ID_&lt;/strong>：Identity，存储身份相关的数据&lt;/li>
+&lt;li>&lt;strong>ACT_RE_&lt;/strong>：Repository，存储静态信息，如流程定义和流程资源等&lt;/li>
+&lt;li>&lt;strong>ACT_HI_&lt;/strong>：History，这些表中保存的都是历史数据，比如执行过的流程实例、变量、任务，等等。&lt;/li>
+&lt;li>&lt;strong>ACT_RU_&lt;/strong>：只保存流程实例在执行过程中的运行时数据，并且当流程结束后会立即移除这些数据，这是为了保证运行时表尽量的小并运行的足够快。&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="拓展表表结构">拓展表表结构&lt;/h3>
+&lt;p>自定义拓展表的表结构以GC开头，主要用于存储流程引擎拓展功能的数据、投资管理系统特殊的业务逻辑以及前端在线画图功能的数据等。&lt;/p>
+&lt;p>&lt;a href="https://www.notion.so/a28f6f1ec71f42f6874f176ef24a77a8">拓展表部分表结构展示&lt;/a>&lt;/p>
+&lt;hr>
+&lt;h3 id="流程引擎api">流程引擎API&lt;/h3>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/api.services.png" alt="流程引擎API（来源：官方文档）">&lt;/p>
+&lt;p>流程引擎API（来源：官方文档）&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>RepositoryService&lt;/strong>提供了管理和控制发布包和流程定义的操作，发布一个流程定义意味着把它上传到引擎中，所有流程都会在保存进数据库之前分析解析好。
+&lt;ul>
+&lt;li>查询引擎中的流程定义和部署信息。&lt;/li>
+&lt;li>暂停或激活流程定义，对应全部和特定流程定义。&lt;/li>
+&lt;li>获得流程定义的文件&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>IdentityService&lt;/strong>可以管理（创建，更新，删除，查询…）群组和用户。&lt;/li>
+&lt;li>&lt;strong>TaskService&lt;/strong>主要涉及关于任务的操作。
+&lt;ul>
+&lt;li>查询分配给用户或组的任务&lt;/li>
+&lt;li>创建独立运行任务&lt;/li>
+&lt;li>手工设置任务的审批人&lt;/li>
+&lt;li>认领并完成一个任务，对任务进行多样化的操作&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>HistoryService&lt;/strong>提供了流程引擎的所有历史数据的查询，比如历史流程实例、历史任务实例、历史流程变量等。&lt;/li>
+&lt;/ul>
+&lt;h2 id="四流程功能设计">四、流程功能设计&lt;/h2>
+&lt;hr>
+&lt;h3 id="选人">选人&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>设置审批人&lt;/strong>&lt;/p>
+&lt;p>在流程设计的时候预先选好节点审批人，可以选用户、角色、部门、团队、团队-角色等等，也可自己实现接口用于选人。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>动态选人（自选审批人）&lt;/strong>&lt;/p>
+&lt;p>在流程运行的时候动态的选择下一节点的审批人。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="监听">监听&lt;/h3>
+&lt;p>流程引擎本身提供了在流程运行过程中各个节点的监听的实现，可以在捕捉到这些事件之后执行Java代码或者计算表达式。这些事件包括流程开始和结束，网关，节点，顺序流，任务的创建和完成等等。可以执行的代码包括UEL表达式、实现了对应监听接口的Java Class等。&lt;/p>
+&lt;hr>
+&lt;h3 id="会签">会签&lt;/h3>
+&lt;p>在多人审批的情况下，会存在会签的情况，比如投决会审批，当投委会成员投票数大于等于2/3时，流程就可以通过并且自动跳入下一个节点。针对这种情况，流程引擎本身提供了任务模型（Task）上的完成条件&lt;code>completionCondition&lt;/code>以及顺序流（SequenceFlow）上的条件表达式&lt;code>conditionExpression&lt;/code>。这两者都支持UEL表达式的条件判断，其中UEL表达式中可以使用流程变量。在Task上还可以使用流程引擎内置的额外四个变量：&lt;/p>
+&lt;ul>
+&lt;li>nrOfInstances 节点的所有的实例数量&lt;/li>
+&lt;li>nrOfCompletedInstances 已经完成的实例数量&lt;/li>
+&lt;li>nrOfActiveInstances 当前激活的实例数量，当&lt;code>isSequential=true&lt;/code>时， nrOfActiveInstances的值永远为1&lt;/li>
+&lt;li>loopCounter 实例循环的次数，依次递减&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="代理">代理&lt;/h3>
+&lt;p>任务可交由代理人来代为审批&lt;/p>
+&lt;hr>
+&lt;h3 id="打回">打回&lt;/h3>
+&lt;p>流程审批人将流程打回至流程发起人那里，等待重新发起&lt;/p>
+&lt;hr>
+&lt;h3 id="撤回">撤回&lt;/h3>
+&lt;p>流程发起人撤回发起的流程&lt;/p>
+&lt;hr>
+&lt;h3 id="跳转">跳转&lt;/h3>
+&lt;p>流程在执行中可以任意跳转到其他节点&lt;/p>
+&lt;hr>
+&lt;h3 id="加签">加签&lt;/h3>
+&lt;ul>
+&lt;li>前加签&lt;/li>
+&lt;li>后加签&lt;/li>
+&lt;li>中间加签&lt;/li>
+&lt;/ul>
+&lt;h2 id="五提供的接口">五、提供的接口&lt;/h2>
+&lt;p>&lt;a href="https://www.notion.so/9ba42812297746d492be6bc27f356f5a">通用的参数名称说明&lt;/a>&lt;/p>
+&lt;p>下面只列几个常用的接口，其他详见接口文档。&lt;/p>
+&lt;hr>
+&lt;h3 id="1-查询流程定义列表">1. 查询流程定义列表&lt;/h3>
+&lt;p>功能：用于在发起流程时候选择合适的流程去发起，比如过阶段审批、现金流审批、会议室申请等等。&lt;/p>
+&lt;p>接口地址：&lt;code>/api/definition/findProcessDefinitionWithType.json&lt;/code>&lt;/p>
+&lt;p>主要查询条件：租户ID（&lt;code>tenantId&lt;/code>），流程类型（&lt;code>processType&lt;/code>）【表示类型】&lt;/p>
+&lt;hr>
+&lt;h3 id="2-查询流程实例列表">2. 查询流程实例列表&lt;/h3>
+&lt;p>功能：用于客户端查看和管理已发起的流程&lt;/p>
+&lt;p>接口地址：&lt;code>/api/instance/findHisInstanceList.json&lt;/code>&lt;/p>
+&lt;p>主要查询条件：详见&lt;code>ProcessSearch&lt;/code>类&lt;/p>
+&lt;hr>
+&lt;h3 id="3-查询单个流程实例详情">3. 查询单个流程实例详情&lt;/h3>
+&lt;p>功能：查询单个流程实例的详情，包括流程定义的xml字符串、流程实例的属性、流程实例已经生成的Activity instance列表等。&lt;/p>
+&lt;p>接口地址：&lt;code>/api/instance/findInstanceInfo.json&lt;/code>&lt;/p>
+&lt;p>主要查询条件：流程实例ID（&lt;code>processInstanceId&lt;/code>）&lt;/p>
+&lt;hr>
+&lt;h3 id="4-发起一个流程实例">4. 发起一个流程实例&lt;/h3>
+&lt;p>功能：根据流程的定义发起一个流程实例，是客户端发起流程的入口。&lt;/p>
+&lt;p>接口地址：&lt;code>/api/instance/startProcessInstance.json&lt;/code>&lt;/p>
+&lt;p>参数：租户ID（&lt;code>tenantId&lt;/code>），流程唯一Key（&lt;code>processDefinitionKey&lt;/code>）&lt;/p>
+&lt;hr>
+&lt;h3 id="5-查询待办列表">5. 查询待办列表&lt;/h3>
+&lt;p>功能：查询待办列表&lt;/p>
+&lt;p>接口地址：&lt;code>/api/task/findTasks.json&lt;/code>&lt;/p>
+&lt;p>主要查询条件：租户ID（&lt;code>tenantId&lt;/code>），流程实例ID（&lt;code>instanceId&lt;/code>），审批人（&lt;code>userId&lt;/code>），任务定义Key（&lt;code>taskDefinitionKey&lt;/code>）&lt;/p>
+&lt;hr>
+&lt;h3 id="6-查询单个待办详情">6. 查询单个待办详情&lt;/h3>
+&lt;p>功能：用于审批人登录系统审批的时候查看审批的详细情况以及表单等等。&lt;/p>
+&lt;p>接口地址：&lt;code>/api/task/selectTaskInfoById.json&lt;/code>&lt;/p>
+&lt;p>主要查询条件：待办ID（&lt;code>taskId&lt;/code>）&lt;/p>
+&lt;hr>
+&lt;h3 id="7-待办审批">7. 待办审批&lt;/h3>
+&lt;p>功能：客户端审批待办的入口&lt;/p>
+&lt;p>接口地址：&lt;code>/api/task/audit.json&lt;/code>&lt;/p>
+&lt;p>参数：审批结果，审批意见&lt;/p>
+&lt;hr>
+&lt;h3 id="8-查询操作日志">8. 查询操作日志&lt;/h3>
+&lt;p>功能：查询流程的操作日志&lt;/p>
+&lt;p>接口地址：&lt;code>/api/process/findProcessOperHistoryList.json&lt;/code>&lt;/p>
+&lt;p>主要查询条件：租户ID（&lt;code>tenantId&lt;/code>），流程实例ID（&lt;code>processInstanceId&lt;/code>），任务定义Key（&lt;code>taskDefinitionKey&lt;/code>）&lt;/p>
+&lt;h2 id="参考文档">&lt;strong>参考文档&lt;/strong>&lt;/h2>
+&lt;p>&lt;em>&lt;strong>Camunda BPM版本：7.10&lt;/strong>&lt;/em>&lt;/p>
+&lt;p>&lt;a href="https://docs.camunda.org/manual/7.10/">【Camunda Docs】&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://docs.camunda.org/javadoc/camunda-bpm-platform/7.10/org/camunda/bpm/engine/">【Camunda BPM Javadocs】&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://docs.camunda.org/javadoc/camunda-bpm-platform/7.10/org/camunda/bpm/engine/">【BPMN 2.0规范】&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html">【UEL Docs】&lt;/a>&lt;/p>
+&lt;p>【Activiti相关博文】自行百度&lt;/p></content><category scheme="https://kiwi4814.github.io/categories/2020/09/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/><category scheme="https://kiwi4814.github.io/tags/2019/08/%E6%B5%81%E7%A8%8B%E5%BC%95%E6%93%8E/" term="流程引擎" label="流程引擎"/><category scheme="https://kiwi4814.github.io/tags/2019/08/camunda/" term="Camunda" label="Camunda"/></entry><entry><title type="text">Java和Javascript去除字符串空格的方法</title><link rel="alternate" type="text/html" href="https://kiwi4814.github.io/posts/2019/space-remove/"/><id>https://kiwi4814.github.io/posts/2019/space-remove/</id><updated>2022-01-02T10:15:52+00:00</updated><published>2019-06-05T23:46:30+08:00</published><author><name>kiwi4814</name><uri>https://kiwi4814.github.io/</uri><email>m4814@outlook.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">正则表达式详解 解析常用空格的正则表达式为： 1 [ *| *|\s*]* 其中正则表达式\s等同于[ \r\n\f\t\v] 1 2 3……</summary><content type="html">&lt;h3 id="正则表达式详解">正则表达式详解&lt;/h3>
+&lt;p>&lt;strong>解析常用空格的正则表达式&lt;/strong>为：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="o">[&lt;/span>　&lt;span class="o">*|&lt;/span> &lt;span class="o">*|&lt;/span>&lt;span class="err">\&lt;/span>&lt;span class="n">s&lt;/span>&lt;span class="o">*]*&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>其中正则表达式&lt;code>\s&lt;/code>等同于&lt;code>[ \r\n\f\t\v]&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="nx">空格：为U&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="mo">00&lt;/span>&lt;span class="nx">A0&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="nx">不换行空格&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">32&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="nx">\r：回车符&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">CARRIAGE_RETURN&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="nx">，使光标到行首，ASCII&lt;/span> &lt;span class="nx">代码&lt;/span> &lt;span class="mi">13&lt;/span>&lt;span class="nx">；&lt;/span>
+&lt;span class="nx">\n：换行符&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">LINE_FEED&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="nx">，使光标下移一格，ASCII&lt;/span> &lt;span class="nx">代码&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="nx">；&lt;/span>
+&lt;span class="nx">\f：换页符&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="nx">ASCII&lt;/span> &lt;span class="nx">代码&lt;/span> &lt;span class="mi">12&lt;/span>&lt;span class="nx">；&lt;/span>
+&lt;span class="nx">\t：横向跳进字符，ASCII&lt;/span> &lt;span class="nx">代码&lt;/span> &lt;span class="mi">9&lt;/span>&lt;span class="nx">，即水平制表符；&lt;/span>
+&lt;span class="nx">\v：纵向跳进字符，即垂直制表符。&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>上述正则表达式中，另有两个空格，分别为&lt;/p>
+&lt;pre tabindex="0">&lt;code>U+3000 12288 全角空格，表意文字空格，CJK（中日韩）符号及标点
+U+0020 160 无中断空格（SPACE），可命名文件的空格类型
+&lt;/code>&lt;/pre>&lt;p>另外正则表达式中&lt;code>\s&lt;/code>中包含的空格为：
+&lt;code>U+00A0&lt;/code>，十进制为&lt;code>32&lt;/code>，&lt;code>HTML&lt;/code>代码为&lt;code>&amp;amp;nbsp;&lt;/code>，为最常用的不换行空格（NO-BREAK SPACE），即正常编译器中空格键打出的空格。
+此外还有其他很多空格类型，都不包含在&lt;code>\s&lt;/code>，由于不常用所以并未列在正则表达式中。&lt;/p>
+&lt;h3 id="java去空格">Java去空格&lt;/h3>
+&lt;h4 id="去除所有空格">去除所有空格&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="n">str&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">replaceAll&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;[　*| *|\\s*]*&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="去除句首句尾空格">去除句首句尾空格&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="n">str&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">replaceAll&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;^[　*| *|\\s*]*&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;&amp;#34;&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">replaceAll&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;[　*| *|\\s*]*$&amp;#34;&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="javascript的正则表达式">Javascript的正则表达式&lt;/h3>
+&lt;h5 id="直接量语法">直接量语法&lt;/h5>
+&lt;p>&lt;strong>&lt;code>/pattern/attributes&lt;/code>&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>js&lt;/code>中使用&lt;code>//&lt;/code>定义的pattern不需要任何转义，只有&lt;code>&amp;quot;&amp;quot;&lt;/code>定义的字符串才需要转义字符。&lt;/li>
+&lt;/ul>
+&lt;h5 id="构造函数">构造函数&lt;/h5>
+&lt;p>&lt;strong>&lt;code>new RegExp(pattern, attributes);&lt;/code>&lt;/strong>&lt;/p>
+&lt;h5 id="参数">参数&lt;/h5>
+&lt;p>参数 &lt;code>pattern&lt;/code> 是一个字符串，指定了正则表达式的模式或其他正则表达式。
+参数 &lt;code>attributes&lt;/code> 是一个可选的字符串，包含属性 &amp;quot;g&amp;quot;、&amp;quot;i&amp;quot; 和 &amp;quot;m&amp;quot;，分别用于指定全局匹配、区分大小写的匹配和多行匹配。ECMAScript 标准化之前，不支持 m 属性。如果 pattern 是正则表达式，而不是字符串，则必须省略该参数。&lt;/p>
+&lt;h5 id="返回值">返回值&lt;/h5>
+&lt;p>一个新的 &lt;code>RegExp&lt;/code> 对象，具有指定的模式和标志。如果参数 &lt;code>pattern&lt;/code> 是正则表达式而不是字符串，那么 &lt;code>RegExp()&lt;/code> 构造函数将用与指定的 &lt;code>RegExp&lt;/code> 相同的模式和标志创建一个新的 &lt;code>RegExp&lt;/code> 对象。
+如果不用 &lt;code>new&lt;/code> 运算符，而将 &lt;code>RegExp()&lt;/code> 作为函数调用，那么它的行为与用 &lt;code>new&lt;/code> 运算符调用时一样，只是当 &lt;code>pattern&lt;/code> 是正则表达式时，它只返回 &lt;code>pattern&lt;/code>，而不再创建一个新的 &lt;code>RegExp&lt;/code> 对象。&lt;/p>
+&lt;h5 id="抛出">抛出&lt;/h5>
+&lt;p>&lt;code>SyntaxError&lt;/code> - 如果 &lt;code>pattern&lt;/code> 不是合法的正则表达式，或 &lt;code>attributes&lt;/code> 含有 &lt;code>&amp;quot;g&amp;quot;&lt;/code>、&lt;code>&amp;quot;i&amp;quot;&lt;/code> 和 &lt;code>&amp;quot;m&amp;quot;&lt;/code> 之外的字符，抛出该异常。
+&lt;code>TypeError&lt;/code> - 如果 &lt;code>pattern&lt;/code> 是 RegExp 对象，但没有省略 &lt;code>attributes&lt;/code> 参数，抛出该异常。&lt;/p>
+&lt;h3 id="javascript去空格">Javascript去空格&lt;/h3>
+&lt;p>&lt;code>JS&lt;/code> 字符串替换操作有&lt;code>replace()&lt;/code> 方法，但是这个方法只能替换目标字符串中第一个匹配的字符串。
+如果要将目标字符串全部替换的话，&lt;code>java&lt;/code>里可以用&lt;code>replaceAll&lt;/code>，但是&lt;code>JS&lt;/code> 没有提供这样的方法，所以使用正则表达式来达到&lt;code>replaceAll()&lt;/code>的效果：&lt;/p>
+&lt;h4 id="全局匹配的写法1">全局匹配的写法1&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="nx">str&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">replace&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sr">/[　*| *|\s*]*/g&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>g&lt;/code> 的意义是：执行全局匹配（查找所有匹配而不是在找到第一个匹配后停止）。&lt;/p>
+&lt;h4 id="全局匹配的写法2">全局匹配的写法2&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="nx">str&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">replace&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">new&lt;/span> &lt;span class="nb">RegExp&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;[　*| *|\\s*]*&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;gm&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="增加string-对象原型方法">增加String 对象原型方法&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="nb">String&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">prototype&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">replaceAll&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kd">function&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">s1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="nx">s2&lt;/span>&lt;span class="p">){&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">replace&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">new&lt;/span> &lt;span class="nb">RegExp&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">s1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;gm&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span>&lt;span class="nx">s2&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>这样就可以在&lt;code>js&lt;/code>代码中使用&lt;code>replaceAll&lt;/code>方法了。&lt;/p>
+&lt;p>oracle去空格&lt;/p>
+&lt;p>&lt;code>SELECT REGEXP_REPLACE('dark souls sin', '\s', NULL) FROM DUAL;&lt;/code>&lt;/p></content><category scheme="https://kiwi4814.github.io/categories/2020/09/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/><category scheme="https://kiwi4814.github.io/tags/2019/06/java/" term="Java" label="Java"/><category scheme="https://kiwi4814.github.io/tags/2019/12/javascript/" term="JavaScript" label="JavaScript"/></entry></feed>
