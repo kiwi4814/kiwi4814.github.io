@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.91.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 02 Jan 2022 10:45:31 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>Windows软件推荐——常用篇</title><link>https://kiwi4814.github.io/posts/2021/win-soft-normal/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/win-soft-normal/</guid><pubDate>Mon, 27 Dec 2021 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="前言">前言&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.91.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Mon, 03 Jan 2022 12:20:59 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>Windows软件推荐——常用篇</title><link>https://kiwi4814.github.io/posts/2021/win-soft-normal/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/win-soft-normal/</guid><pubDate>Mon, 27 Dec 2021 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="前言">前言&lt;/h2>
 &lt;ol>
 &lt;li>
 &lt;p>初衷：除了分享给大家之外，也用来备份大部分我平时使用频率很低的软件；&lt;/p>
@@ -624,7 +624,7 @@ A（Answer）回答——我们的解决方案是……&lt;/p>
 &lt;li>当我们再次学习记忆，检索强度越低，存储强度反而会越高，两者负相关。&lt;/li>
 &lt;/ul>
 &lt;p>听起来有点复杂，其实简单来说就是，你如果记忆的过程越容易，那么你忘的就越快，反之如果记起来很艰辛，那么也不那么容易忘记。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2021/12/%E6%9D%82%E8%B0%88/">杂谈</category><category domain="https://kiwi4814.github.io/tags/2021/12/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论</category><category domain="https://kiwi4814.github.io/tags/2021/12/%E5%BF%83%E7%90%86%E6%95%88%E5%BA%94/">心理效应</category></item><item><title>流媒体时代如何找到自己想看的电影</title><link>https://kiwi4814.github.io/posts/2021/streaming-media/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/streaming-media/</guid><pubDate>Sat, 04 Dec 2021 23:46:30 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>&lt;strong>本文仅讨论在国内正规渠道无法看到的影视资源，无特殊说明一般代指美剧，有错误欢迎指出。&lt;/strong>&lt;/p>
-&lt;h1 id="片源哪里来">片源哪里来？&lt;/h1>
+&lt;h2 id="片源哪里来">片源哪里来？&lt;/h2>
 &lt;p>当前最热门的流媒体平台有网飞（Netflix），HBO（HBO Max），迪士尼（Disney+），苹果（Apple TV+），Hulu等等。对于身处国内的我们，是如何看到一部美剧的呢？&lt;/p>
 &lt;h3 id="1-web-dl">1. WEB-DL&lt;/h3>
 &lt;p>我们以当下最热门的流媒体网飞为例，网飞在流媒体上映电视剧后，有专门的团队会对这些视频流进行破解和抓取，拿到的这个资源一般为Web-DL，一般来说这个清晰度你可以理解为你在腾讯看的1080P高清。一般这种破解组我们称之为“0-day”发行组。目前像网飞这样的巨头流媒体已经会配上46国字幕了，而没有字幕的一手资源就是我们常说的“生肉”。&lt;/p>
@@ -661,10 +661,10 @@ A（Answer）回答——我们的解决方案是……&lt;/p>
 &lt;/div>
 &lt;/div>&lt;p>其实从上面的经验我们就可以看出来，这是纸钞屋全五季的网飞1080P资源。其中NF代表网飞（Netflix），如果是HBO出品的这里就会变成HMAX，DDP5.1代表声道为杜比数字5.1声道，DoA为压制组。是不是很简单？&lt;/p>
 &lt;p>我们在国内的一些下载网站上看到的&lt;code>XXX.MKV&lt;/code>，一般来说资源都是从以上的压制组流出的，而这些资源会被再次进行封装，压缩，配上字幕甚至强行加上广告，这就是我们在各种“在线网站”看到的视频的来源了。&lt;/p>
-&lt;h1 id="离线的生活">离线的生活&lt;/h1>
+&lt;h2 id="离线的生活">离线的生活&lt;/h2>
 &lt;p>基于以上种种，如果没有条件购买/订阅流媒体资源的话，我仍然推荐下载观看的形式，并且推荐使用BT进行下载。&lt;/p>
 &lt;p>&lt;strong>如果不想下载观看，可以拉到最后看附录中提供的&lt;a href="https://www.notion.so/8878c1c1b1c24380a492502549b0fe51">一些网站&lt;/a>，由于这些网站本身就有很大的不确定性（靠广告盈利，用爱发电的少），随时有可能关站、变卖，时效性可能不长，酌情参考即可。&lt;/strong>&lt;/p>
-&lt;h2 id="1-什么是btpt">1. 什么是BT/PT&lt;/h2>
+&lt;h3 id="1-什么是btpt">1. 什么是BT/PT&lt;/h3>
 &lt;p>&lt;strong>BT&lt;/strong>&lt;/p>
 &lt;p>来自维基百科的定义——&lt;/p>
 &lt;blockquote>
@@ -680,7 +680,7 @@ A（Answer）回答——我们的解决方案是……&lt;/p>
 &lt;p>&lt;strong>BT与PT的不同之处&lt;/strong>&lt;/p>
 &lt;p>由于BT的特殊性，下载者必须开启上传才可以保证资源让其他人下的到，也就是要“人人为我，我为人人”，如果下载完成就关闭上传或者修改文件名，其他人就无法从你这里获取资源了。久而久之，一些老资源就会”绝版“。所以PT站一般有着严格的规则，必须持续做种或者有足够的上传量才可以在PT站存活，这也是PT站小众和门槛高的原因。&lt;/p>
 &lt;p>其次，压制组一般都会活跃在各大PT站，甚至某些PT站就是压制组的大本营，所以PT站更容易接触到一手资源。&lt;/p>
-&lt;h2 id="2-用什么工具">2. 用什么工具&lt;/h2>
+&lt;h3 id="2-用什么工具">2. 用什么工具&lt;/h3>
 &lt;p>俗话说，&lt;del>差生文具多&lt;/del>。那么作为一个使用者，我们该选择哪些工具去下载和观看呢？&lt;/p>
 &lt;ul>
 &lt;li>
@@ -697,7 +697,7 @@ A（Answer）回答——我们的解决方案是……&lt;/p>
 &lt;p>PT站点一般只有特定的下载器才能使用，不同PT站的规则不太一样，你可以选择通用一点的，比如&lt;strong>qBittorrent 4.x、uTorrent 2.0.x&lt;/strong>或者按照PT站的要求选用即可。&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;h2 id="3-从哪里下载">3. 从哪里下载&lt;/h2>
+&lt;h3 id="3-从哪里下载">3. 从哪里下载&lt;/h3>
 &lt;p>前文提到过，下载者必须获取到”种子”文件才可以进行下载，那么去哪里获得这些种子文件呢？这里还是分BT和PT分别进行介绍。&lt;/p>
 &lt;hr>
 &lt;p>&lt;strong>BT种子的下载&lt;/strong>&lt;/p>
