@@ -1,4 +1,227 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.91.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 04 Jan 2022 05:13:29 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>Windows软件推荐——常用篇</title><link>https://kiwi4814.github.io/posts/2021/win-soft-normal/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/win-soft-normal/</guid><pubDate>Mon, 27 Dec 2021 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="前言">前言&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.91.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 04 Jan 2022 15:42:55 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>windows软件不完全推荐03—工具篇</title><link>https://kiwi4814.github.io/posts/2021/windows-software-tools/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/windows-software-tools/</guid><pubDate>Mon, 03 Jan 2022 22:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>本篇会放一些使用频率没那么高但也同样优秀的软件。也会按照第一章那样进行归类，同时也会介绍一些前文提到的同类软件。&lt;/p>
+&lt;p>增加了关键词的词条，可以按照想要的功能检索。&lt;/p>
+&lt;h3 id="截图类">截图类&lt;/h3>
+&lt;h4 id="snipastehttpszhsnipastecom">&lt;a href="https://zh.snipaste.com/">Snipaste&lt;/a>&lt;/h4>
+&lt;h3 id="文件管理类">文件管理类&lt;/h3>
+&lt;h4 id="adrenamer">AdRenamer&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：免费&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>关键词&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;/li>
+&lt;/ul>
+&lt;h4 id="handshaker">HandShaker&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：免费&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>关键词&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;/li>
+&lt;/ul>
+&lt;h4 id="synergyhttpssymlesscomsynergy">&lt;a href="https://symless.com/synergy">Synergy&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：免费&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>关键词&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;/li>
+&lt;/ul>
+&lt;h4 id="faststone">FastStone&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：免费&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>关键词&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;/li>
+&lt;/ul>
+&lt;h4 id="beyond-comparehttpwwwscootersoftwarecom">&lt;a href="http://www.scootersoftware.com/">Beyond Compare&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：免费&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>关键词&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;/li>
+&lt;/ul>
+&lt;h4 id="wirelesskeyviewhttpwwwnirsoftnetutilswireless_keyhtml">&lt;a href="http://www.nirsoft.net/utils/wireless_key.html">WirelessKeyView&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：免费&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>关键词&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;/li>
+&lt;/ul>
+&lt;h4 id="windows-terminalhttpswwwmicrosoftcomzh-cnpwindows-terminal9n0dx20hk701">&lt;a href="https://www.microsoft.com/zh-cn/p/windows-terminal/9n0dx20hk701">Windows Terminal&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：免费&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>关键词&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;/li>
+&lt;/ul>
+&lt;h4 id="迅雷httpsxl11xunleicom">&lt;a href="https://xl11.xunlei.com/">迅雷&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：不用介绍了，不过迅雷已经不是迅雷极速版/尊享版那个年代的良心迅雷了，装软件喜欢一路下一步的慎装。&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：额外安装一个迅雷的目的是，有些资源真的用什么都下不动，但是迅雷可以有速度（玄学），所以我会额外装一个以备不时之需。&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：免费&lt;/li>
+&lt;li>&lt;strong>关键词&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：下载最新的安装包，安装时勾选掉所有的捆绑项目，安装后打开设置，取消所有的开机启动、接管设置、文件关联等配置项，然后就可以关掉了。&lt;/li>
+&lt;/ul>
+&lt;h4 id="picgo">PicGo&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：免费&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>关键词&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;/li>
+&lt;/ul>
+&lt;h4 id="heu-kms-activator">HEU KMS Activator&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：免费&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>关键词&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;/li>
+&lt;/ul>
+&lt;h4 id="directx-repair">DirectX Repair&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：免费&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>关键词&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;/li>
+&lt;/ul>
+&lt;h3 id="电子书">电子书&lt;/h3>
+&lt;p>如果你喜欢看电子书，那么你肯定对epub、mobi、azw3，甚至CBZ、CBR这些格式都不陌生。其中epub为开放标准，mobi和azw3主要是亚马逊在用。这几种格式的电子书相比于远古时期的text，支持更精细的排版、脚本，公式，矢量图形等，是目前主流的几种电子书格式。&lt;/p>
+&lt;p>下面是我常用的一些相关的软件：&lt;/p>
+&lt;h4 id="calibrehttpscalibre-ebookcom">&lt;a href="https://calibre-ebook.com/">calibre&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>软件简介&lt;/strong>：calibre是一个自由开源的电子书软体套装，可以用来组织、存放、以及管理电子书，支援大多数的电子书格式。 同时也支援与许多流行的电子书阅读器进行同步，並可能在DRM的限制下转换电子书的格式。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>我的理由&lt;/strong>：Kindle最佳伴侣。可以在电脑上管理和增加Kindle书籍，个性化修改书籍封面和内容，转换格式（epub、mobi、azw3），当然也可以直接当作电子书阅读器使用，是一个功能非常齐全的电子书管理器。&lt;/p>
+&lt;p>&lt;img src="https://i.loli.net/2021/11/28/wt9UqNFAC4pjaRI.png" alt="image-20211128202259395">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>授权方式&lt;/strong>：&lt;font style="background-color:#8bc34a">开源免费&lt;/font>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>使用方法&lt;/strong>：使用可以参照&lt;a href="https://sspai.com/post/43843">最强大的本地电子书管理工具：Calibre 使用指南&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>关键词&lt;/strong>：电子书管理、Kindle、epub、mobi、azw3&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="kindle-comic-converterhttpskcciosphere">&lt;a href="https://kcc.iosphe.re/">Kindle Comic Converter&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：Kindle Comic Converter (KCC) 是一个可以把 PNG、JPG、GIF、CBZ、CBR 和 CB7 格式的漫画转换成 EPUB 或 MOBI 格式电子书的免费开源软件，制作 E-Ink 设备适用的电子书从此轻而易举。KCC 最初是专门为 Kindle 所开发的，但是现在对 EPUB 3.0 和 CBZ 也有效。此外 KCC 在处理图片时会针对电子墨水显示屏进行全面优化。&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：如果你喜欢在Kindle看漫画，通常我们网上找到的资源是以多张图片压缩包的形式呈现给我们的，一般我会使用此软件来将图片转换为mobi格式的漫画。针对不同的Kindle版本优化分辨率，根据文件夹自动分章节等等，非常好用。&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：&lt;font style="background-color:#8bc34a">免费&lt;/font>&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：参考&lt;a href="https://bookfere.com/post/164.html">最简单的漫画转换工具&lt;/a>。实际使用的时候注意不要一次转换太多章节，容易失败。&lt;/li>
+&lt;li>&lt;strong>关键词&lt;/strong>：Kindle，漫画&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：亚马逊官方的Kindle Comic Creator，使用繁琐，不推荐。&lt;/li>
+&lt;/ul>
+&lt;h4 id="comicshttpswwwmicrosoftcomzh-cnpcomics9nblgggzlsmqactivetabpivotoverviewtab">&lt;a href="https://www.microsoft.com/zh-cn/p/comics/9nblgggzlsmq?activetab=pivot:overviewtab">Comics++&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：优秀的漫画阅读器，支持ZIP/CBZ、RAR/CBR、7Z/CB7、PDF和文件夹图像文件。此程序由C++/CX语言写成，操作简单，速度敏捷，功能具备。&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：在PC上按照文件夹读漫画的时候会选择用它。&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：&lt;font style="background-color:#8bc34a">免费UWP&lt;/font>&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：打开后选择你要看的漫画所在文件夹或者压缩包即可。&lt;/li>
+&lt;li>&lt;strong>关键词&lt;/strong>：漫画阅读器&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;a href="https://www.cdisplayex.com/">CBR Reader（前身Comic reader）&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h4 id="aria">Aria&lt;/h4>
+&lt;h3 id="影音工具">影音工具&lt;/h3>
+&lt;p>此部分适合家里有NAS的小伙伴。&lt;/p>
+&lt;h4 id="tmmhttpswwwtinymediamanagerorg">&lt;a href="https://www.tinymediamanager.org/">TMM&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>软件简介&lt;/strong>：tinyMediaManager作为一款电影信息刮削神器，目前支持Linux、Windows、Mac三个平台。而tinyMediaManager是基于Java开发的，需要Java 1.8以上版本的运行时环境支持。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>我的理由&lt;/strong>：如果你喜欢自己打造属于自己的电影墙，你肯定会爱上它，支持从各大数据库刮削电影和电视剧对的海报、简介、分集介绍等等。&lt;/p>
+&lt;p>&lt;img src="https://i.loli.net/2021/11/28/ir9kWldhb35v6LF.png" alt="image-20211128182340967">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>授权方式&lt;/strong>：使用免费的4.0.6版本即可&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>使用方法&lt;/strong>：选择自己收藏电影或者电视剧的文件夹，然后在主界面刮削即可，可以自定义从哪个数据库进行刮削。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>关键词&lt;/strong>：刮削，&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>同类软件&lt;/strong>：&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="kodi">Kodi&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：免费&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>关键词&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;/li>
+&lt;/ul>
+&lt;h4 id="jellyfinhttpsjellyfinorg">&lt;a href="https://jellyfin.org/">jellyfin&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>软件简介&lt;/strong>：Jellyfin 是一个自由的软件媒体系统，用于控制和管理媒体和流媒体。本质就是用照片墙的形式展示你自己的电影、电视剧等多媒体数据，并提供多平台访问播放服务。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>我的理由&lt;/strong>：搭配群晖QuickConnect、公网IP或者其他内网穿透软件就可以在任何地方观看你在家里存储的电影电视了，最终实现的效果可以参考下图所示。&lt;/p>
+&lt;p>&lt;img src="https://i.loli.net/2021/11/28/aR5Qmp3dYskSLj7.jpg" alt="image-20211128184640304 (1)">&lt;/p>
+&lt;p>&lt;img src="https://i.loli.net/2021/11/28/reO3KygQYZtVxL5.png" alt="image-20211128184015350">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>授权方式&lt;/strong>：&lt;font style="background-color:#8bc34a">开源免费&lt;/font>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>使用方法&lt;/strong>：折腾&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>关键词&lt;/strong>：群晖，NAS，海报墙，家庭影院&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>同类软件&lt;/strong>：&lt;a href="https://www.plex.tv/">plex&lt;/a>，&lt;a href="https://emby.media/">emby&lt;/a>，&lt;a href="https://jellyfin.org/">Jellyfin&lt;/a>一般我们并称家庭影院三剑客，其中Plex体验最好但也最贵，emby和jellyfin同出一源，Jellyfin为emby的开源免费版。另外两个不再做过多的额外介绍了。&lt;/p>
+&lt;/li>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/01/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2022/01/windows%E8%BD%AF%E4%BB%B6%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8E%A8%E8%8D%90/">windows软件不完全推荐</category><category domain="https://kiwi4814.github.io/tags/2022/01/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2022/01/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>从零开始搭建个人博客（1） - 准备工作</title><link>https://kiwi4814.github.io/posts/2022/hugo-github-pages/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/hugo-github-pages/</guid><pubDate>Mon, 03 Jan 2022 22:10:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>很久以来我的电子笔记都是通过本地化文件来管理的，中间也经历过很多痛苦的过程，Evernote、Notion、Typora以及目前主力使用的Obsidian，但是我发现这些管理方式都有着比较致命的缺点：知识过于碎片化以及过于依赖我的自制力。&lt;/p>
+&lt;p>卡片式笔记法固然优秀，但是目前里面的很多文字都是随意写就，力求自己能够看懂，搭建自己的知识体系足够，但是想要分享的话却是难上加难。基于以上种种，有了搭建一个个人博客的想法，一方面尝试着分享一下自己粗浅的知识储备，另一方面借此机会学习一下这个过程。&lt;/p>
+&lt;p>因而有了这篇文章，或者说这个系列的文章，希望能够让看到这篇文章的人也能学会如何搭建自己的个人博客。&lt;/p>
+&lt;p>本文为此系列的第一章，主要介绍下我们需要预先准备的账号、需要了解的知识以及需要安装的工具。&lt;/p>
+&lt;h2 id="一github简介">一、Github简介&lt;/h2>
+&lt;p>如果你是一个程序员或者相关从业者，跳过此节即可。&lt;/p>
+&lt;h3 id="1-github是啥">1. GitHub是啥？&lt;/h3>
+&lt;p>&lt;strong>GitHub&lt;/strong>是通过Git进行版本控制的软件源代码托管服务平台，简单来说就是一个帮你管理代码以及代码历史记录的平台，很多&lt;/p>
+&lt;p>教程网上特别多，&lt;a href="https://www.zhihu.com/question/21669554">适合新手的&lt;/a>也有很多，这里不作过多的介绍了，我们需要的是注册一个github账号，才能进行接下来的一些操作。&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>打开&lt;a href="https://github.com/">Github官网&lt;/a>，然后点击右上角&lt;code>Sign Up&lt;/code>，按照提示填写信息操作即可；&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220103225041849.png" alt="image-20220103225041849">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>登录系统，右上角头像下拉找到 &lt;code>your repositories&lt;/code>，然后点击&lt;code>new&lt;/code>创建一个仓库；&lt;/p>
+&lt;p>【注意】新建仓库的名字命名为：&lt;code>你的用户名+.github.io&lt;/code>，比如我的用户名是kiwi4814，那么我的仓库名就应该写&lt;code>kiwi4814.github.io&lt;/code>，勾选&lt;code>Add a README file&lt;/code>，然后创建即可。&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220103224705360.png" alt="image-20220103224705360">&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="2-github-pages">2. Github Pages&lt;/h3>
+&lt;p>第一步如果你已经按照说明建好了一个仓库，你可以试试在浏览器中直接输入仓库名称，比如我直接在浏览器地址栏输入&lt;code>kiwi4814.github.io&lt;/code>，会发现这个地址是可以打开的，而且里面的内容就是刚刚创建好的&lt;code>README.md&lt;/code>里面的内容，这就是Github Pages。&lt;/p>
+&lt;h3 id="3-github-action">3. Github Action&lt;/h3>
+&lt;h2 id="二安装hugo">二、安装Hugo&lt;/h2>
+&lt;h2 id="三购买自己的域名可选">三、购买自己的域名（可选）&lt;/h2></description><category domain="https://kiwi4814.github.io/categories/2022/01/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2022/01/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">从零开始搭建个人博客</category><category domain="https://kiwi4814.github.io/tags/2022/01/hugo/">Hugo</category><category domain="https://kiwi4814.github.io/tags/2022/01/github/">Github</category><category domain="https://kiwi4814.github.io/tags/2022/01/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">个人博客</category></item><item><title>windows软件不完全推荐01—常用篇</title><link>https://kiwi4814.github.io/posts/2021/windows-software-common/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/windows-software-common/</guid><pubDate>Mon, 27 Dec 2021 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="前言">前言&lt;/h2>
 &lt;ol>
 &lt;li>
 &lt;p>初衷：除了分享给大家之外，也用来备份大部分我平时使用频率很低的软件；&lt;/p>
@@ -566,7 +789,7 @@ NAS，全程是网络附属存储，本质就是你的另一台电脑，里面�
 &lt;/ul>
 &lt;hr>
 &lt;p>本文涉及到的一些软件的安装包已经上传到&lt;a href="https://www.aliyundrive.com/s/6P9Ftt2bD6v">阿里云盘&lt;/a>，方便某些开源软件网络问题无法下载的小伙伴们获取。&lt;/p>
-&lt;p>完。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2021/12/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2021/12/windows%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">Windows软件推荐</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">Windows</category><category domain="https://kiwi4814.github.io/tags/2021/12/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>常见方法论和心理效应</title><link>https://kiwi4814.github.io/posts/2021/methodology/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/methodology/</guid><pubDate>Wed, 22 Dec 2021 22:42:13 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一思考技巧与模板">一、思考技巧与模板&lt;/h2>
+&lt;p>完。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/01/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2022/01/windows%E8%BD%AF%E4%BB%B6%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8E%A8%E8%8D%90/">windows软件不完全推荐</category><category domain="https://kiwi4814.github.io/tags/2022/01/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2022/01/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>常见方法论和心理效应</title><link>https://kiwi4814.github.io/posts/2021/methodology/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/methodology/</guid><pubDate>Wed, 22 Dec 2021 22:42:13 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一思考技巧与模板">一、思考技巧与模板&lt;/h2>
 &lt;h3 id="1-scqa">1. SCQA&lt;/h3>
 &lt;p>SCQA模型是一个“结构化表达”工具，是麦肯锡咨询顾问芭芭拉·明托在《金字塔原理》中提出的。&lt;/p>
 &lt;p>S（Situation）情景——由大家都熟悉的情景、事实引入。
@@ -994,7 +1217,228 @@ git config --global https.proxy https://127.0.0.1:1080
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 &lt;/code>&lt;/pre>&lt;/li>
-&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2021/12/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">Windows</category><category domain="https://kiwi4814.github.io/tags/2021/12/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>MySQL优化之索引（index）</title><link>https://kiwi4814.github.io/posts/2020/mysql-index/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2020/mysql-index/</guid><pubDate>Tue, 01 Sep 2020 20:42:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="一定义">一、定义&lt;/h1>
+&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2022/01/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/tags/2022/01/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2022/01/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>windows软件不完全推荐02—办公篇</title><link>https://kiwi4814.github.io/posts/2021/windows-software-work/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/windows-software-work/</guid><pubDate>Sun, 03 Jan 2021 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>&lt;em>&lt;strong>其实大部分行业我都不太了解，所以这里也就只能放放一些我认为比较通用的办公软件了。&lt;/strong>&lt;/em>&lt;/p>
+&lt;h2 id="办公软件">办公软件&lt;/h2>
+&lt;h3 id="零一些在线网站">零：一些在线网站&lt;/h3>
+&lt;p>&lt;a href="https://tophub.today/">今日热榜&lt;/a>：嗯，每天摸鱼看热搜&lt;/p>
+&lt;p>&lt;a href="https://www.todaybing.com/">必应壁纸&lt;/a>：必应4K壁纸&lt;/p>
+&lt;p>&lt;a href="https://hellogithub.com/">Github热门开源项目&lt;/a>：发现好玩的好用的项目&lt;/p>
+&lt;h3 id="一工具箱">一、工具箱&lt;/h3>
+&lt;h4 id="万彩办公大师httpwwwwofficeboxcomabouthtml">&lt;a href="http://www.wofficebox.com/about.html">万彩办公大师&lt;/a>&lt;/h4>
+&lt;p>用的不多，但是功能齐全，一般我U盘里会放一个完整离线版的。这里贴一个官网的介绍还有软件首页的截图吧。&lt;/p>
+&lt;blockquote>
+&lt;p>万彩办公大师OfficeBox是一款由广州万彩信息技术有限公司研发的免费办公工具软件超级套装，几乎可以满足日常各种办公工具需求。它内置了60多款强大的，无任何广告及插件的绿色办公组件，如PDF工具集（PDF转换（PDF 转 Word/Excel/PPT， PDF 合并分割水印）；文档/音视频/图片转换工具集；OCR工具集；屏幕录制工具集；图片处理工具集；文件处理工具集等。所有的套装工具不需要安装，直接可以绿色加载启动，省去了用户为安装各种办公软件而寻找工具、安装及卸载的麻烦。&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211127231339424.png" alt="image-20211127231339424">&lt;/p>
+&lt;h3 id="二office全家桶">二、Office全家桶&lt;/h3>
+&lt;p>说到办公，肯定离不开Office三件套，对于微软的Microsoft Office版本而言，目前最常用的应该是Office 2013，Office 2016，Office 2019以及随Windows11发布的Office 2021。&lt;/p>
+&lt;p>这里推荐大家直接使用Microsoft 365，如果有熟悉的小伙伴或者家人一起使用可以选择Microsoft 365 家庭版，最多支持6个人使用并且每个人附赠1T的OneDrive空间，官网购买即可，还是挺香的。&lt;/p>
+&lt;p>白嫖的话，建议如下：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>第一种，如果你有一个&lt;strong>国外EDU邮箱&lt;/strong>的话，可以来&lt;a href="https://www.microsoft.com/zh-cn/education/products/office">这里&lt;/a>申请Office 365 教育版，同样含有1TB的OneDrive，但这里就不建议存储太过私人的东西了哈，可以当中转站使用；&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>第二种，&lt;strong>安装Office 2019&lt;/strong>使用。在&lt;a href="https://msdn.itellyou.cn/">这里&lt;/a>下载官方原版镜像（不建议下载网上的各种私人破解版），然后使用KMS工具（例如&lt;a href="https://github.com/zbezj/HEU_KMS_Activator">HEU KMS Activator&lt;/a>）或者用&lt;a href="https://cmwtat.cloudmoe.com/cn.html">云萌&lt;/a>进行破解激活；&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>第三种，使用WPS全家桶（可以找WPS2019的专业版）&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>除此以外，推荐一些与Office相关的套件：&lt;/p>
+&lt;h4 id="islidehttpswwwislidecc">&lt;a href="https://www.islide.cc/">iSlide&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：iSlide是一款基于PowerPoint的一键化效率插件，提供了便捷的排版设计工具，能够帮助使用者快速进行字体统一、色彩统一、矩形/环形布局、批量裁剪图片等操作。具备8个资源库，包括主题库、色彩库、图示库、智能图表库、图标库、图片库和插图库，所有资源即插即用。&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：做PPT的时候不需要关注配色、字体、图标库什么的了，只需要关注内容就好了，剩下的iSlide几乎都可以帮你搞定。&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：&lt;font>付费&lt;/font>，而且是最讨厌的订阅制！&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：&lt;a href="https://sspai.com/post/42773">如何快速设计出令人满意的 PPT？用 iSlide 四步帮你搞定&lt;/a>&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;a href="http://meihua.docer.com/">PPT美化大师&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h4 id="方方格子httpwwwffcellcom">&lt;a href="http://www.ffcell.com/">方方格子&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>软件简介&lt;/strong>：方方格子 Excel工具箱是一款Excel工具箱软件。上百个实用功能：文本处理、批量录入、删除工具、合并转换、重复值工具、数据对比、高级排序、颜色排序、合并单元格排序、 聚光灯、宏收纳箱等。另外还有会员工具：汇总拆分（含汇总大师）、导航、图片专题工具、快查快录、身份证工具、拼音笔画、打印专题、邮件群发、翻译、财务工具等。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>我的理由&lt;/strong>：集成了一些Excel快捷操作，每个人的使用习惯不同，可以根据官网或者其他论坛的介绍先看一眼是否有心水的快捷操作。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>授权方式&lt;/strong>：&lt;font style="background-color:#8bc34a">免费&lt;/font>使用，但也有很多工具是付费的，深度使用的话可以考虑。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>使用方法&lt;/strong>：安装后会额外多出方方格子和DIY工具箱两栏&lt;/p>
+&lt;p>&lt;img src="https://s2.loli.net/2021/12/06/97WVstQzOa1e6Zh.png" alt="image-20211206234550340">&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="datacharts-for-excel-34httpsclubexcelhomenetthread-1310268-1-1html">&lt;a href="https://club.excelhome.net/thread-1310268-1-1.html">&lt;strong>DataCharts For Excel 3.4&lt;/strong>&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：初衷是将百度的Echarts搬到Excel中，让不懂的开发的人也开始使用绚丽的图表，但因为只有业余时间且对js不熟悉，搬的过程很吃力，进展比较慢。关于Echarts可访问百度浏览图表效果。&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：网络大神自主研发，安全性和稳定性不敢保障，抛个链接，自行判断。&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：&lt;font style="background-color:#8bc34a">免费&lt;/font>&lt;/li>
+&lt;/ul>
+&lt;h4 id="小恐龙公文排版助手httpsgwxkonglongcom">&lt;a href="https://gw.xkonglong.com/#/">小恐龙公文排版助手&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>软件简介&lt;/strong>：根据《党政机关公文格式国家标准》(GB/T 9704—2012)的格式要求，快速设置页面版式、快速设置常用文字格式、插入常用符号、版头、版记、公文页码、红线等。支持对文字的快速排版，中文首行缩进2字符、删除空白，断句重排等。支持对文档盖章、可以在文档同目录下生成 PDF/ doc /图片 格式的副本。可广泛用于各类规范文本的排版。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>授权方式&lt;/strong>：&lt;font>付费&lt;/font>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>使用方法&lt;/strong>：按照指引安装后会在功能菜单最右边出现公文菜单。&lt;/p>
+&lt;p>&lt;img src="https://s2.loli.net/2021/12/07/gmA42kr8VyJqvYa.png" alt="image-20211207223022212">&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="三pdf处理">三、PDF处理&lt;/h3>
+&lt;p>上面的&lt;strong>万彩办公大师&lt;/strong>里其实已经有很多针对PDF文件的处理了，如果还是不能满足需求的话，这里推荐几个更专业的软件。&lt;/p>
+&lt;h4 id="福昕pdf编辑器httpseditorfoxitsoftwarecn万兴pdf专家httpspdfwondersharecn">&lt;a href="https://editor.foxitsoftware.cn/">福昕PDF编辑器&lt;/a>、&lt;a href="https://pdf.wondershare.cn/">万兴PDF专家&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：福昕PDF编辑器一款简单方便的PDF编辑器。 主要功能及优势：轻松修改PDF文档内容，以所见即所得的方式实现可靠、方便的编辑，无需了解PDF格式知识。此外，PDF Element（国内叫万兴PDF专家）几乎和福昕PDF编辑器功能一样，要用的话二选一即可。&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：大学时候不想用笨重的Adobe阅读器的时候一直在用福昕，后来需要对PDF进行编辑的时候，自然而然也会想到他们家的编辑器。现在PDF编辑器的软件非常多，国内比较有名的就是福昕和万兴了。&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：两款软件都是&lt;font>付费&lt;/font>的，都很贵，&lt;del>但是破解版也都很多&lt;/del>。&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;a href="https://www.adobe.com/acrobat/acrobat-pro.html">Adobe Acrobat Pro DC&lt;/a> 、&lt;a href="https://pdf.wondershare.cn/">PDF Element&lt;/a>、&lt;a href="https://www.pdfshaper.com/">PDFShaper&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h4 id="pdf24-toolshttpstoolspdf24orgzh">&lt;a href="https://tools.pdf24.org/zh/">PDF24 Tools&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>软件简介&lt;/strong>：PDF24 Tools是一个免费且易于使用的&lt;strong>线上PDF工具&lt;/strong>，一共收录28个PDF功能，包括很常见的PDF转档、合并、编辑、压缩、加密解密、旋转、分割页面、加入浮水印或页码、提取图片、比较PDF文件、注释等等，PDF24 Tools另一特色是已经内建包括中文在内等多国语言，操作起来也很简单。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>我的理由&lt;/strong>：这款工具最大的几个优势：①线上工具，打开网页就能直接用；②完全免费，允许商业化使用；③不想线上的话安装客户端也支持&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211207224040240.png" alt="image-20211207224040240">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>授权方式&lt;/strong>：&lt;font style="background-color:#8bc34a">开源免费&lt;/font>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>同类软件&lt;/strong>：各类线上工具，如：&lt;a href="https://easypdf.com/cn">easypdf&lt;/a>、&lt;a href="https://pdf.io/">PDF.io&lt;/a>、&lt;a href="https://smallpdf.com/cn">Smallpdf&lt;/a>等&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="四图片处理">四、图片处理&lt;/h3>
+&lt;h4 id="在线工具">在线工具&lt;/h4>
+&lt;p>在线工具主要适合应急使用，所以推荐的尽量以免费的为主，或者那种免费的也够用了的。&lt;/p>
+&lt;h5 id="图片综合处理">图片综合处理&lt;/h5>
+&lt;ul>
+&lt;li>&lt;a href="https://www.iloveimg.com/zh-cn">iLoveIMG&lt;/a>：图片综合处理工具，&lt;font style="background-color:#8bc34a">免费&lt;/font>可用，高级帐户可解锁更多功能&lt;/li>
+&lt;li>&lt;a href="https://renzhezhilu.gitee.io/webp2jpg-online/#/">多功能图片转换器&lt;/a>：图片格式转换器，此作者另有&lt;a href="https://renzhezhilu.gitee.io/webp2jpg-online/batch.html">图片加水印&lt;/a>以及&lt;a href="https://renzhezhilu.gitee.io/webp2jpg-online/splicing.html#/splicing">视频字幕拼接&lt;/a>工具，&lt;font style="background-color:#8bc34a">免费&lt;/font>&lt;/li>
+&lt;li>&lt;a href="https://www.canva.com/">Canva可画&lt;/a>：在线设计平台，设计贺卡、海报、Logo等，&lt;font style="background-color:#8bc34a">免费&lt;/font>可用，亦可选择付费解锁更多模板&lt;/li>
+&lt;li>&lt;a href="https://www.jpeg.io/">Jpeg.io | Convert any major image format into a highly optimized JPEG&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h5 id="图片压缩">图片压缩&lt;/h5>
+&lt;ul>
+&lt;li>&lt;a href="https://squoosh.app/">Squoosh&lt;/a>：Google的压缩神器，&lt;font style="background-color:#8bc34a">完全免费&lt;/font>&lt;/li>
+&lt;li>&lt;a href="https://zh.recompressor.com/">最优图像优化&lt;/a>：在文件尺寸和质量之间选择完美平衡，并且可获取完整在线预览，&lt;font style="background-color:#8bc34a">完全免费&lt;/font>&lt;/li>
+&lt;li>&lt;a href="https://www.picdiet.com/zh-cn">Picdiet&lt;/a>：基于浏览器的本地压缩工具，&lt;font style="background-color:#8bc34a">完全免费&lt;/font>&lt;/li>
+&lt;li>&lt;a href="https://imagecompressor.com/zh/">在线图片优化器 (imagecompressor.com)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h5 id="图片放大">图片放大&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://bigjpg.com/">Bigjpg&lt;/a>：无损放大图片的在线工具，&lt;font style="background-color:#8bc34a">免费&lt;/font>但每个月限制20张&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://imglarger.com/">imglarger&lt;/a>：AI图像放大，&lt;font style="background-color:#8bc34a">免费&lt;/font>空间只有8个&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="在线ps">在线PS&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://www.photopea.com/">Photopea &lt;/a>：最早做在线PS的网站，免费账户就可以使用全部功能了，会员去广告&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://ps.gaoding.com/#/">稿定设计PS&lt;/a>：国内的Photopea，网络不好的可以用这个代替，此外，他们家还有很多工具，不过很多都是收费的&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://photoeditor.polarr.com/">Polarr&lt;/a>：泼辣修图的网页版，会员功能更多&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://www.remove.bg/">Remove.bg&lt;/a>：扣除图片背景&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="客户端">客户端&lt;/h4>
+&lt;p>如果电脑配置允许，并且有一定的技术基础的话，编辑图片肯定还是要选用专业的软件的。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Adobe全家桶&lt;/strong>：安装破解版的话可以跳转到微博大佬&lt;a href="https://weibo.com/vposy">@vposy&lt;/a>&lt;/li>
+&lt;li>&lt;strong>Topaz全家桶&lt;/strong>：主打AI智能处理，无损放大、清晰度增强、降噪、扣图、HDR效果增强、4K视频修复等等，用过几次，操作非常简单，破解版网上也很多。&lt;/li>
+&lt;/ul>
+&lt;h3 id="五文本编辑">五、文本编辑&lt;/h3>
+&lt;p>&lt;em>如果不喜欢用Word，那么非常推荐使用markdown来做文字相关类的工作，具体可在【常用篇】里的云笔记里看一些相关的软件推荐。&lt;/em>&lt;/p>
+&lt;h4 id="visual-studio-codehttpscodevisualstudiocom">&lt;a href="https://code.visualstudio.com/">Visual Studio Code&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：VSCode 全称 Visual Studio Code，是微软出的一款轻量级代码编辑器，免费、开源而且功能强大。它支持几乎所有主流的程序语言的语法高亮、智能代码补全、自定义热键、括号匹配、代码片段、代码对比 Diff、GIT 等特性，支持插件扩展，并针对网页开发和云端应用开发做了优化。&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：原本一直是使用Notepad++来代替默认记事本的，后来因为作者发布反华言论寻找替代品时发现微软的Visual Studio Code简直太好用了，不愧是最优秀的代码编辑器，丰富的插件让你可以在上面做任何事（&lt;del>比如我之前上班就在VS Code上看微信读书&lt;/del>）。&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：微软出品，&lt;font style="background-color:#8bc34a">免费&lt;/font>&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：不是用来开发的话，开启文本类文件（txt,log,conf,无后缀..）的时候右键选择使用code打开即可。&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;a href="https://www.sublimetext.com/blog/articles/sublime-text-4">Sublime Text &lt;/a>，&lt;a href="https://www.ultraedit.com/">UltraEdit&lt;/a>，&lt;a href="https://atom.io/">Atom&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h4 id="beyond-comparehttpswwwbeyondcomparecc">&lt;a href="https://www.beyondcompare.cc/">Beyond Compare&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>软件简介&lt;/strong>：Beyond Compare 是一套由 Scooter Software 推出的非常实用的文件及文件夹对比工具，丌仅可以快速比较出两个文件夹的不同之处，还可以详细的比较文件之间的内容差异，并将差异以颜色标示。 程序内建了文件浏览器，方便您对文件、文件夹、压缩包、FTP 网站之间的差异对比以及资料同步。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>我的理由&lt;/strong>：对于会用git的人应该很熟悉show diff的操作，其实就是对比文件的历史版本的差异。而不熟悉git或者我们想要对比Office、图像文件时，Beyond Compare目前还是市面上首屈一指的对比软件。建议搭配git使用效果更佳，再也不怕自己写过的东西丢了。&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211128105911299.png" alt="image-20211128105911299">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>授权方式&lt;/strong>：&lt;font>付费&lt;/font>，有点贵，用的话建议破解版就好&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>使用方法&lt;/strong>：拖动文件&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211128110108145.png" alt="image-20211128110108145">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>同类软件&lt;/strong>：git、&lt;a href="https://winmerge.org/">Winmerge&lt;/a>、&lt;a href="https://sourcegear.com/diffmerge/">DiffMerge&lt;/a>都是开源免费的，但是功能不如BC强大。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="六文本识别ocr">六、文本识别（OCR）&lt;/h3>
+&lt;p>在线OCR：&lt;a href="https://gongpeione.github.io/quick-js-ocr/example/">JsOCR (gongpeione.github.io)&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/AnyListen/tianruoocr">tianruoocr开源版本&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://ocr.tianruo.net/">天若OCR文字识别-59&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/AnyListen/tools-ocr">树洞OCR/tools-ocr)&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://gitee.com/wanglifree/tianruoocr-cl">tianruoocr-cl: 天若ocr开源版本的本地版，采用Chinese-lite和paddleocr识别框架 (gitee.com)&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/miaomiaosoft/PandaOCR">PandaOCR&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/miaomiaosoft/PandaOCR.Pro">PandaOCR.Pro&lt;/a>&lt;/p>
+&lt;p>使用教程：&lt;a href="https://support.qq.com/products/322047/faqs-more/">PandaOCR专业版 (qq.com)&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/PaddlePaddle/PaddleOCR">PaddleOCR&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://sspai.com/post/44944">这款被忽视的大厂作品，其实有更出色的中文 OCR 效果：ABBYY FineScanner - 少数派 (sspai.com)&lt;/a>&lt;/p>
+&lt;h3 id="七流程图思维导图">七、流程图&amp;amp;思维导图&lt;/h3>
+&lt;p>推荐一些相关的软件/网站：&lt;/p>
+&lt;h4 id="microsoft-office-visio">Microsoft Office Visio&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：&lt;font>付费&lt;/font>&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;/li>
+&lt;/ul>
+&lt;h4 id="drawiohttpsappdiagramsnet">&lt;a href="https://app.diagrams.net/">drawio&lt;/a>&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>软件简介&lt;/strong>：draw.io 是一个强大简洁的在线的绘图网站，支持流程图，UML图，架构图，原型图等图标。支持Github，Google Drive, One drive等网盘同步，并且永久免费。如果觉得使用Web版不方便，draw.io 也提供了多平台的离线桌面版可供下载。&lt;/li>
+&lt;li>&lt;strong>我的理由&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>授权方式&lt;/strong>：&lt;font>付费&lt;/font>&lt;/li>
+&lt;li>&lt;strong>使用方法&lt;/strong>：&lt;/li>
+&lt;li>&lt;strong>同类软件&lt;/strong>：&lt;/li>
+&lt;/ul>
+&lt;h4 id="xmind">Xmind&lt;/h4>
+&lt;h4 id="edrawmax">EdrawMax&lt;/h4>
+&lt;h4 id="coggle">coggle&lt;/h4>
+&lt;p>coggle&lt;/p>
+&lt;h4 id="processon">ProcessOn&lt;/h4>
+&lt;p>网站&lt;/p>
+&lt;h4 id="httpswwwzhixicom">&lt;a href="https://www.zhixi.com/">https://www.zhixi.com/&lt;/a>&lt;/h4>
+&lt;p>客户端&lt;/p>
+&lt;h3 id="七邮箱">七、邮箱&lt;/h3>
+&lt;p>邮箱类的软件坑比较少，我一般常用的有两个：Foxmail和OutLook，前者是腾讯收购的张小龙（微信）研发的邮箱产品，符合国人的使用习惯，非常轻量、简洁和易用；后者是微软官方的邮件客户端，优点是功能强大、高效协同而且与Office套件、exchange无缝集成，缺点是使用起来过于麻烦，远远不如Foxmail。其他的同类产品还有网易邮箱，QQ邮箱，Gmail客户端等等。&lt;/p>
+&lt;h3 id="八gtd">八、GTD&lt;/h3>
+&lt;p>GTD类软件相信大家有这个习惯的肯定都有自己惯用的了，市面上能找到的GTD软件数不胜数，这里只列两个，一个是微软收购奇妙清单后开发的&lt;a href="https://todo.microsoft.com/tasks/">Microsoft To Do&lt;/a>，另外一个是辅助办公的番茄钟软件&lt;a href="https://pomofocus.io/">Pomofocus&lt;/a>。&lt;/p>
+&lt;p>目前前者已经被我用Notion替代掉了，Notion强大的定制化功能（&lt;del>抄别人模板很方便&lt;/del>）足以应对大部分的GTD需求。&lt;/p>
+&lt;p>Pomofocus则是我常用的另一款软件（PS：其网页端也可以集成在Notion里面，就不需要额外安装软件了），主要功能非常简单，就是计时，附带的任务管理和数据统计可以忽略，颜值尚可。&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211128165134247.png" alt="image-20211128165134247">&lt;/p>
+&lt;h3 id="九协同办公">九、协同办公&lt;/h3>
+&lt;p>&lt;a href="https://docs.qq.com/desktop/">腾讯文档 (qq.com)&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://shimo.im/welcome">石墨文档-企业在线协同办公系统平台,支持云端多人在线协作编辑文档和表格 (shimo.im)&lt;/a>&lt;/p>
+&lt;h3 id="十开会">十、开会&lt;/h3></description><category domain="https://kiwi4814.github.io/categories/2022/01/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2022/01/windows%E8%BD%AF%E4%BB%B6%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8E%A8%E8%8D%90/">windows软件不完全推荐</category><category domain="https://kiwi4814.github.io/tags/2022/01/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2022/01/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>MySQL优化之索引（index）</title><link>https://kiwi4814.github.io/posts/2020/mysql-index/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2020/mysql-index/</guid><pubDate>Tue, 01 Sep 2020 20:42:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="一定义">一、定义&lt;/h1>
 &lt;p>索引是一种数据结构，存储表中特定列的值并进行排序，方便查询这个特定列，就好比一本书的目录，可以更快的根据目录查找所需的内容。&lt;/p>
 &lt;h2 id="索引的优点">索引的优点&lt;/h2>
 &lt;ol>
@@ -1102,7 +1546,7 @@ git config --global --unset https.proxy
 &lt;ul>
 &lt;li>这里以英文字符的 ASCII 码作为比较准则。聚集索引这种实现方式使得按主键的搜索十分高效，但是辅助索引搜索需要检索两遍索引：首先检索辅助索引获得主键，然后用主键到主索引中检索获得记录。&lt;/li>
 &lt;li>&lt;strong>InnoDB 表是基于聚簇索引建立的&lt;/strong>。因此 InnoDB 的索引能提供一种非常快速的主键查找性能。不过，它的辅助索引也会包含主键列，所以，如果主键使用过长的字段，将会导致其他辅助索变得更大。如果想在表上定义 、很多索引，则争取尽量把主键定义得小一些。InnoDB 不会压缩索引。&lt;/li>
-&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2020/09/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2020/09/mysql/">MySQL</category></item><item><title>如何在MySQL中设计一个树形存储结构？</title><link>https://kiwi4814.github.io/posts/2020/mysql-tree/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2020/mysql-tree/</guid><pubDate>Tue, 01 Sep 2020 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>我们经常需要在数据库中去维护一个树形结构，通常普遍的做法有以下几种：&lt;/p>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/01/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2020/09/mysql/">MySQL</category></item><item><title>如何在MySQL中设计一个树形存储结构？</title><link>https://kiwi4814.github.io/posts/2020/mysql-tree/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2020/mysql-tree/</guid><pubDate>Tue, 01 Sep 2020 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>我们经常需要在数据库中去维护一个树形结构，通常普遍的做法有以下几种：&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>&lt;em>&lt;strong>Adjacency List&lt;/strong>&lt;/em>&lt;/p>
@@ -1121,7 +1565,7 @@ git config --global --unset https.proxy
 &lt;p>额外维护一个表，所有的t&lt;code>ree path&lt;/code>作为记录进行保存。&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;a href="https://www.notion.so/322ad02521884b51bade610e1b42ee98">各类方法的操作代价&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2020/09/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2020/09/mysql/">MySQL</category></item><item><title>CentOS 7离线安装MySQL 5.7</title><link>https://kiwi4814.github.io/posts/2020/mysql-install/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2020/mysql-install/</guid><pubDate>Sun, 30 Aug 2020 23:46:30 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="heading">&lt;/h1>
+&lt;p>&lt;a href="https://www.notion.so/322ad02521884b51bade610e1b42ee98">各类方法的操作代价&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/01/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2020/09/mysql/">MySQL</category></item><item><title>CentOS 7离线安装MySQL 5.7</title><link>https://kiwi4814.github.io/posts/2020/mysql-install/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2020/mysql-install/</guid><pubDate>Sun, 30 Aug 2020 23:46:30 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="heading">&lt;/h1>
 &lt;h4 id="操作系统centos-77">&lt;strong>操作系统：CentOs 7.7&lt;/strong>&lt;/h4>
 &lt;h4 id="mysql版本mysql-5725-x86_64">&lt;strong>MySQL版本：MySQL-5.7.25-x86_64&lt;/strong>&lt;/h4>
 &lt;h4 id="安装步骤">&lt;strong>安装步骤：&lt;/strong>&lt;/h4>
@@ -1532,7 +1976,28 @@ Starting MySQL.&lt;span class="o">[&lt;/span> OK &lt;span class="o">]&lt;/span>
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/li>
-&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2021/12/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2020/08/linux%E8%BF%90%E7%BB%B4/">Linux运维</category><category domain="https://kiwi4814.github.io/tags/2020/08/linux/">Linux</category><category domain="https://kiwi4814.github.io/tags/2021/12/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2020/09/mysql/">MySQL</category></item><item><title>介绍几种分号的不同写法</title><link>https://kiwi4814.github.io/posts/2019/semicolon/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2019/semicolon/</guid><pubDate>Tue, 31 Dec 2019 23:46:30 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>起因是因为代码的bug发现在SQL语句中夹杂了一个希腊文的问号（在IDEA编译器中跟分号长的一模一样，无从分辨），遂整理了一下分号的几种编码格式。&lt;/p>
+&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2022/01/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2020/08/linux%E8%BF%90%E7%BB%B4/">Linux运维</category><category domain="https://kiwi4814.github.io/tags/2020/08/linux/">Linux</category><category domain="https://kiwi4814.github.io/tags/2022/01/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2020/09/mysql/">MySQL</category></item><item><title>Java数组All elements are null异常</title><link>https://kiwi4814.github.io/posts/2020/all-elements-are-null/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2020/all-elements-are-null/</guid><pubDate>Fri, 03 Jan 2020 22:10:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>使用Mybatis查询数据库时，如果返回值是null并且以List&lt;String>接收时，会出现一条空的记录。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">shldllArrays&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ersJqxxExtMapper&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">selectShldllByJqbh&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">jqbhs&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>这时候如果使用&lt;code>CollectionUtils.isNotEmpty(shldllArrays)&lt;/code>去判断是无法判断这种情况的，从而导致后面可能会报错。在断点中可以发现，这个数组虽然size为1，但是提示：All elements are null。&lt;/p>
+&lt;p>解决办法：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="c1">// 移除所有的null元素，为了防止出现空指针异常【查询返回String会返回一个空null】
+&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="n">shldllArrays&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">removeAll&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Collections&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">singleton&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="kc">null&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description><category domain="https://kiwi4814.github.io/categories/2022/01/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2020/01/java/">Java</category><category domain="https://kiwi4814.github.io/tags/2020/01/%E9%94%99%E9%A2%98%E9%9B%86/">错题集</category></item><item><title>介绍几种分号的不同写法</title><link>https://kiwi4814.github.io/posts/2019/semicolon/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2019/semicolon/</guid><pubDate>Tue, 31 Dec 2019 23:46:30 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>起因是因为代码的bug发现在SQL语句中夹杂了一个希腊文的问号（在IDEA编译器中跟分号长的一模一样，无从分辨），遂整理了一下分号的几种编码格式。&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -1574,7 +2039,7 @@ Starting MySQL.&lt;span class="o">[&lt;/span> OK &lt;span class="o">]&lt;/span>
 &lt;td style="text-align:left">小分号（&lt;code>SMALL SEMICOLON&lt;/code>），源自 &lt;a href="https://zh.wikipedia.org/wiki/CNS11643">CNS11643&lt;/a> / &lt;a href="https://zh.wikipedia.org/wiki/Big5">Big5&lt;/a>。&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description><category domain="https://kiwi4814.github.io/categories/2020/09/%E6%8A%80%E6%9C%AF/">技术</category></item><item><title>获取YYYY-MM-dd所在月份的最后一天</title><link>https://kiwi4814.github.io/posts/2019/js-lastday/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2019/js-lastday/</guid><pubDate>Tue, 31 Dec 2019 23:46:30 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="获取日期格式为yyyy-mm-dd所在月份的最后一天">获取日期格式为&lt;code>&amp;quot;YYYY-MM-dd&amp;quot;&lt;/code>所在月份的最后一天&lt;/h2>
+&lt;/table></description><category domain="https://kiwi4814.github.io/categories/2022/01/%E6%8A%80%E6%9C%AF/">技术</category></item><item><title>获取YYYY-MM-dd所在月份的最后一天</title><link>https://kiwi4814.github.io/posts/2019/js-lastday/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2019/js-lastday/</guid><pubDate>Tue, 31 Dec 2019 23:46:30 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="获取日期格式为yyyy-mm-dd所在月份的最后一天">获取日期格式为&lt;code>&amp;quot;YYYY-MM-dd&amp;quot;&lt;/code>所在月份的最后一天&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -1646,7 +2111,7 @@ Starting MySQL.&lt;span class="o">[&lt;/span> OK &lt;span class="o">]&lt;/span>
 &lt;span class="p">}&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description><category domain="https://kiwi4814.github.io/categories/2020/09/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2019/12/javascript/">JavaScript</category></item><item><title>Homebrew卡在 Updating Homebrew 的解决方法</title><link>https://kiwi4814.github.io/posts/2019/brew-update/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2019/brew-update/</guid><pubDate>Thu, 19 Dec 2019 23:46:30 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>在使用 Homebrew install的过程中，经常会卡在&lt;code>Updating Homebrew...&lt;/code>这个过程中。&lt;/p>
+&lt;/div></description><category domain="https://kiwi4814.github.io/categories/2022/01/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2019/12/javascript/">JavaScript</category></item><item><title>Homebrew卡在 Updating Homebrew 的解决方法</title><link>https://kiwi4814.github.io/posts/2019/brew-update/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2019/brew-update/</guid><pubDate>Thu, 19 Dec 2019 23:46:30 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>在使用 Homebrew install的过程中，经常会卡在&lt;code>Updating Homebrew...&lt;/code>这个过程中。&lt;/p>
 &lt;h2 id="解决办法一修改配置文件取消检查更新的操作">解决办法一：修改配置文件，取消检查更新的操作&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -1903,7 +2368,7 @@ brew update
 &lt;span class="nb">source&lt;/span> ~/.bash_profile
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description><category domain="https://kiwi4814.github.io/categories/2020/09/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2019/12/homebrew/">Homebrew</category><category domain="https://kiwi4814.github.io/tags/2019/12/macos/">MacOS</category></item><item><title>Camunda流程引擎简介及功能拓展</title><link>https://kiwi4814.github.io/posts/2019/camunda/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2019/camunda/</guid><pubDate>Sun, 25 Aug 2019 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一流程引擎以及bpmn20规范">一、流程引擎以及BPMN2.0规范&lt;/h2>
+&lt;/div></description><category domain="https://kiwi4814.github.io/categories/2022/01/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2019/12/homebrew/">Homebrew</category><category domain="https://kiwi4814.github.io/tags/2019/12/macos/">MacOS</category></item><item><title>Camunda流程引擎简介及功能拓展</title><link>https://kiwi4814.github.io/posts/2019/camunda/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2019/camunda/</guid><pubDate>Sun, 25 Aug 2019 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一流程引擎以及bpmn20规范">一、流程引擎以及BPMN2.0规范&lt;/h2>
 &lt;hr>
 &lt;h3 id="camunda和bpmn">Camunda和BPMN&lt;/h3>
 &lt;p>Camunda BPM （BPM，Business Process Manager，业务流程管理）是一个灵活的工作流和过程自动化框架，它的核心是一个在Java虚拟机内部运行的原生BPMN 2.0流程引擎，因此它可以嵌入到任何Java应用程序或运行时容器中。Camunda BPM与Java EE 6集成，并可以与Spring Framework完美匹配。 Camunda BPM附带了用于创建工作流和决策模型，在生产中操作已部署模型以及允许用户执行分配给他们的工作流任务的工具。&lt;/p>
@@ -2188,7 +2653,7 @@ brew update
 &lt;p>&lt;a href="https://docs.camunda.org/javadoc/camunda-bpm-platform/7.10/org/camunda/bpm/engine/">【Camunda BPM Javadocs】&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://docs.camunda.org/javadoc/camunda-bpm-platform/7.10/org/camunda/bpm/engine/">【BPMN 2.0规范】&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html">【UEL Docs】&lt;/a>&lt;/p>
-&lt;p>【Activiti相关博文】自行百度&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2020/09/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2019/08/%E6%B5%81%E7%A8%8B%E5%BC%95%E6%93%8E/">流程引擎</category><category domain="https://kiwi4814.github.io/tags/2019/08/camunda/">Camunda</category></item><item><title>Java和Javascript去除字符串空格的方法</title><link>https://kiwi4814.github.io/posts/2019/space-remove/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2019/space-remove/</guid><pubDate>Wed, 05 Jun 2019 23:46:30 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h3 id="正则表达式详解">正则表达式详解&lt;/h3>
+&lt;p>【Activiti相关博文】自行百度&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/01/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2019/08/%E6%B5%81%E7%A8%8B%E5%BC%95%E6%93%8E/">流程引擎</category><category domain="https://kiwi4814.github.io/tags/2019/08/camunda/">Camunda</category></item><item><title>Java和Javascript去除字符串空格的方法</title><link>https://kiwi4814.github.io/posts/2019/space-remove/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2019/space-remove/</guid><pubDate>Wed, 05 Jun 2019 23:46:30 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h3 id="正则表达式详解">正则表达式详解&lt;/h3>
 &lt;p>&lt;strong>解析常用空格的正则表达式&lt;/strong>为：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -2296,4 +2761,4 @@ U+0020 160 无中断空格（SPACE），可命名文件的空格类型
 &lt;/div>
 &lt;/div>&lt;p>这样就可以在&lt;code>js&lt;/code>代码中使用&lt;code>replaceAll&lt;/code>方法了。&lt;/p>
 &lt;p>oracle去空格&lt;/p>
-&lt;p>&lt;code>SELECT REGEXP_REPLACE('dark souls sin', '\s', NULL) FROM DUAL;&lt;/code>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2020/09/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2019/06/java/">Java</category><category domain="https://kiwi4814.github.io/tags/2019/12/javascript/">JavaScript</category></item></channel></rss>
+&lt;p>&lt;code>SELECT REGEXP_REPLACE('dark souls sin', '\s', NULL) FROM DUAL;&lt;/code>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/01/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2020/01/java/">Java</category><category domain="https://kiwi4814.github.io/tags/2019/12/javascript/">JavaScript</category></item></channel></rss>
