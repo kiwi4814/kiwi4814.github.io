@@ -1,26 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.91.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 04 Jan 2022 16:04:45 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>从零开始搭建个人博客（1） - 准备工作</title><link>https://kiwi4814.github.io/posts/2022/hugo-github-pages/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/hugo-github-pages/</guid><pubDate>Mon, 03 Jan 2022 22:10:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>很久以来我的电子笔记都是通过本地化文件来管理的，中间也经历过很多痛苦的过程，Evernote、Notion、Typora以及目前主力使用的Obsidian，但是我发现这些管理方式都有着比较致命的缺点：知识过于碎片化以及过于依赖我的自制力。&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.92.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Thu, 20 Jan 2022 15:38:37 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>从零开始搭建个人博客（1） - 准备工作</title><link>https://kiwi4814.github.io/posts/2022/hugo-github-pages/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/hugo-github-pages/</guid><pubDate>Mon, 03 Jan 2022 22:10:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>很久以来我的电子笔记都是通过本地化文件来管理的，中间也经历过很多痛苦的过程，Evernote、Notion、Typora以及目前主力使用的Obsidian，但是我发现这些管理方式都有着比较致命的缺点：知识过于碎片化以及过于依赖我的自制力。&lt;/p>
 &lt;p>卡片式笔记法固然优秀，但是目前里面的很多文字都是随意写就，力求自己能够看懂，搭建自己的知识体系足够，但是想要分享的话却是难上加难。基于以上种种，有了搭建一个个人博客的想法，一方面尝试着分享一下自己粗浅的知识储备，另一方面借此机会学习一下这个过程。&lt;/p>
 &lt;p>因而有了这篇文章，或者说这个系列的文章，希望能够让看到这篇文章的人也能学会如何搭建自己的个人博客。&lt;/p>
 &lt;p>本文为此系列的第一章，主要介绍下我们需要预先准备的账号、需要了解的知识以及需要安装的工具。&lt;/p>
 &lt;h2 id="一github简介">一、Github简介&lt;/h2>
 &lt;p>如果你是一个程序员或者相关从业者，跳过此节即可。&lt;/p>
 &lt;h3 id="1-github是啥">1. GitHub是啥？&lt;/h3>
-&lt;p>&lt;strong>GitHub&lt;/strong>是通过Git进行版本控制的软件源代码托管服务平台，简单来说就是一个帮你管理代码以及代码历史记录的平台，很多&lt;/p>
-&lt;p>教程网上特别多，&lt;a href="https://www.zhihu.com/question/21669554">适合新手的&lt;/a>也有很多，这里不作过多的介绍了，我们需要的是注册一个github账号，才能进行接下来的一些操作。&lt;/p>
+&lt;p>&lt;strong>GitHub&lt;/strong>是通过Git进行版本控制的软件源代码托管服务平台，简单来说就是一个帮你管理代码以及代码历史记录的平台，很多教程网上特别多，&lt;a href="https://www.zhihu.com/question/21669554">适合新手的&lt;/a>也有很多，这里不作过多的介绍了，我们需要的是注册一个github账号，才能进行接下来的一些操作。&lt;/p>
 &lt;ol>
 &lt;li>
-&lt;p>打开&lt;a href="https://github.com/">Github官网&lt;/a>，然后点击右上角&lt;code>Sign Up&lt;/code>，按照提示填写信息操作即可；&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220103225041849.png" alt="image-20220103225041849">&lt;/p>
+&lt;p>打开&lt;a href="https://github.com/">Github官网&lt;/a>，然后点击右上角&lt;code>Sign Up&lt;/code>，如下图所示按照提示填写信息操作即可：&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github1.png" alt="github1">&lt;/p>
+&lt;p>创建完之后会有一些初始化的过程，可以选择跳过，也可以根据需要勾选一些配置和选项。&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>登录系统，右上角头像下拉找到 &lt;code>your repositories&lt;/code>，然后点击&lt;code>new&lt;/code>创建一个仓库；&lt;/p>
-&lt;p>【注意】新建仓库的名字命名为：&lt;code>你的用户名+.github.io&lt;/code>，比如我的用户名是kiwi4814，那么我的仓库名就应该写&lt;code>kiwi4814.github.io&lt;/code>，勾选&lt;code>Add a README file&lt;/code>，然后创建即可。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220103224705360.png" alt="image-20220103224705360">&lt;/p>
+&lt;p>账号注册后登录系统，点击右上角头像，在下拉选项中找到 &lt;code>your repositories&lt;/code>并打开，然后点击&lt;code>new&lt;/code>创建一个仓库：&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github2.png" alt="github2">&lt;/p>
+&lt;p>点击&lt;code>new&lt;/code>创建一个新的仓库：&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github3.png" alt="github3">&lt;/p>
+&lt;p>我们先来建立一个普通仓库：&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github4.png" alt="github4">&lt;/p>
+&lt;p>创建后自动跳转到项目主页，如果你没勾选&lt;code>Add a README file&lt;/code>，那么看到的应该是如下页面，这里介绍了git的一些主要命令和用法，建议可以按照提示操作一下。&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github5.png" alt="github5">&lt;/p>
 &lt;/li>
 &lt;/ol>
 &lt;h3 id="2-github-pages">2. Github Pages&lt;/h3>
-&lt;p>第一步如果你已经按照说明建好了一个仓库，你可以试试在浏览器中直接输入仓库名称，比如我直接在浏览器地址栏输入&lt;code>kiwi4814.github.io&lt;/code>，会发现这个地址是可以打开的，而且里面的内容就是刚刚创建好的&lt;code>README.md&lt;/code>里面的内容，这就是Github Pages。&lt;/p>
-&lt;h3 id="3-github-action">3. Github Action&lt;/h3>
+&lt;p>下面我们来建立另外一个仓库，步骤与第一个一样，不同的是仓库名称有所区别。仓库名称固定为&lt;code>你的用户名+.github.io&lt;/code>，比如我上面截图的用户名是&lt;code>tsuchinoe&lt;/code>，那么我仓库的名称就应该写成&lt;code>tsuchinoe.github.io&lt;/code>&lt;strong>（注意这次勾选一下&lt;code>Add a README file&lt;/code>）&lt;/strong>&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github6.png" alt="">&lt;/p>
+&lt;p>仓库创建完后，自动跳转到项目主页，可以看到仓库中已经存在一个&lt;code>README.md&lt;/code>，并且里面的内容中已经自动填充了仓库名以及仓库简介。&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github7.png" alt="github7">&lt;/p>
+&lt;p>接下来我们试试在浏览器中直接输入仓库名称，比如我直接在浏览器地址栏输入&lt;code>tsuchinoe.github.io&lt;/code>，会发现这个地址是可以打开的，而且里面的内容就是刚刚创建好的&lt;code>README.md&lt;/code>里面的内容，这就是Github Pages。&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github8.png" alt="github8">&lt;/p>
+&lt;h3 id="3-git的简单用法">3. Git的简单用法&lt;/h3>
 &lt;h2 id="二安装hugo">二、安装Hugo&lt;/h2>
 &lt;h2 id="三购买自己的域名可选">三、购买自己的域名（可选）&lt;/h2></description><category domain="https://kiwi4814.github.io/categories/2022/01/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2022/01/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">从零开始搭建个人博客</category><category domain="https://kiwi4814.github.io/tags/2022/01/hugo/">Hugo</category><category domain="https://kiwi4814.github.io/tags/2022/01/github/">Github</category><category domain="https://kiwi4814.github.io/tags/2022/01/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">个人博客</category></item><item><title>windows软件不完全推荐03—工具篇</title><link>https://kiwi4814.github.io/posts/2021/windows-software-tools/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/windows-software-tools/</guid><pubDate>Wed, 29 Dec 2021 22:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>本篇会放一些使用频率没那么高但也同样优秀的软件。也会按照第一章那样进行归类，同时也会介绍一些前文提到的同类软件。&lt;/p>
 &lt;p>增加了关键词的词条，可以按照想要的功能检索。&lt;/p>
