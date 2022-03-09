@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.93.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 08 Mar 2022 14:48:31 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>设计模式之美——1@面向对象与面向过程</title><link>https://kiwi4814.github.io/posts/2022/tbod-oop/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/tbod-oop/</guid><pubDate>Tue, 08 Mar 2022 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="理论一什么是面向对象">理论一：什么是面向对象？&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.93.3 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Wed, 09 Mar 2022 00:00:31 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>1@面向对象与面向过程</title><link>https://kiwi4814.github.io/posts/2022/tbod-oop/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/tbod-oop/</guid><pubDate>Tue, 08 Mar 2022 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="理论一什么是面向对象">理论一：什么是面向对象？&lt;/h2>
 &lt;p>面向对象编程和面向对象编程语言的区别？&lt;/p>
 &lt;blockquote>
 &lt;p>面向对象是一种编程风格，面向对象编程语言是支持类或者对象的语法机制，使用面向对象语言能够很方便的实现面向对象编程。&lt;/p>
@@ -74,27 +74,57 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>但是如果不提供getter方法实际上是看不到购物车的，这时候怎么办呢？解决方法也很简单，以Java为例,&lt;strong>我们可以通过 Java 提供的 Collections.unmodifiableList() 方法，让 getter 方法返回一个不可被修改的 UnmodifiableList 集合容器，而这个容器类重写了 List 容器中跟修改数据相关的方法，比如 add()、clear() 等方法。一旦我们调用这些修改数据的方法，代码就会抛出 UnsupportedOperationException 异常，这样就避免了容器中的数据被修改。具体的代码实现如下所示。&lt;/strong>&lt;/p>
-&lt;pre tabindex="0">&lt;code>
-public class ShoppingCart {
-// ...省略其他代码...
-public List&amp;lt;ShoppingCartItem&amp;gt; getItems() {
-return Collections.unmodifiableList(this.items);
-}
-}
-public class UnmodifiableList&amp;lt;E&amp;gt; extends UnmodifiableCollection&amp;lt;E&amp;gt;
-implements List&amp;lt;E&amp;gt; {
-public boolean add(E e) {
-throw new UnsupportedOperationException();
-}
-public void clear() {
-throw new UnsupportedOperationException();
-}
-// ...省略其他代码...
-}
-ShoppingCart cart = new ShoppingCart();
-List&amp;lt;ShoppingCartItem&amp;gt; items = cart.getItems();
-items.clear();//抛出UnsupportedOperationException异常
-&lt;/code>&lt;/pre>&lt;p>不过这样也是有风险的，因为即使无法修改List，也可以修改List中的item，这个问题可以留待日后讨论。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">ShoppingCart&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ...省略其他代码...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">public&lt;/span> &lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">ShoppingCartItem&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="nf">getItems&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">Collections&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">unmodifiableList&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">items&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">UnmodifiableList&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">E&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="kd">extends&lt;/span> &lt;span class="n">UnmodifiableCollection&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">E&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">implements&lt;/span> &lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">E&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">boolean&lt;/span> &lt;span class="nf">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">E&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">throw&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">UnsupportedOperationException&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">clear&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">throw&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">UnsupportedOperationException&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ...省略其他代码...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ShoppingCart&lt;/span> &lt;span class="n">cart&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ShoppingCart&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">ShoppingCartItem&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">items&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">cart&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getItems&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">items&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">clear&lt;/span>&lt;span class="o">();&lt;/span>&lt;span class="c1">//抛出UnsupportedOperationException异常
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>不过这样也是有风险的，因为即使无法修改List，也可以修改List中的item，这个问题可以留待日后讨论。&lt;/p>
 &lt;p>&lt;strong>总结：&lt;/strong> 在设计实现类的时候，除非真的需要，尽量不要给属性定义setter方法。除此之外，尽管getter方法相对setter方法要安全些，但是如果返回的是集合容器（比如List），也要防范集合内部数据被修改的风险。&lt;/p>
 &lt;h4 id="2-滥用全局变量和全局方法">2. 滥用全局变量和全局方法&lt;/h4>
 &lt;blockquote>
@@ -132,7 +162,7 @@ items.clear();//抛出UnsupportedOperationException异常
 &lt;li>在一些微小程序、数据处理和算法中，脚本式的面向过程的编程风格更合适&lt;/li>
 &lt;li>面向过程是面向对象的基础，即使在面向对象语言中，类里面每个方法的实现过程就是面向过程的&lt;/li>
 &lt;li>我们的最终目的是写出易维护、易读、易复用的高质量代码，所以这两种编程风格并不是非黑即白的。&lt;/li>
-&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2022/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E4%B9%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">极客时间之设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>从零开始搭建个人博客（1） - 准备工作</title><link>https://kiwi4814.github.io/posts/2022/hugo-github-pages/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/hugo-github-pages/</guid><pubDate>Mon, 03 Jan 2022 22:10:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>很久以来我的电子笔记都是通过本地化文件来管理的，中间也经历过很多痛苦的过程，Evernote、Notion、Typora以及目前主力使用的Obsidian，但是我发现这些管理方式都有着比较致命的缺点：知识过于碎片化以及过于依赖我的自制力。&lt;/p>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>从零开始搭建个人博客（1） - 准备工作</title><link>https://kiwi4814.github.io/posts/2022/hugo-github-pages/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/hugo-github-pages/</guid><pubDate>Mon, 03 Jan 2022 22:10:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>很久以来我的电子笔记都是通过本地化文件来管理的，中间也经历过很多痛苦的过程，Evernote、Notion、Typora以及目前主力使用的Obsidian，但是我发现这些管理方式都有着比较致命的缺点：知识过于碎片化以及过于依赖我的自制力。&lt;/p>
 &lt;p>卡片式笔记法固然优秀，但是目前里面的很多文字都是随意写就，力求自己能够看懂，搭建自己的知识体系足够，但是想要分享的话却是难上加难。基于以上种种，有了搭建一个个人博客的想法，一方面尝试着分享一下自己粗浅的知识储备，另一方面借此机会学习一下这个过程。&lt;/p>
 &lt;p>因而有了这篇文章，或者说这个系列的文章，希望能够让看到这篇文章的人也能学会如何搭建自己的个人博客。&lt;/p>
 &lt;p>本文为此系列的第一章，主要介绍下我们需要预先准备的账号、需要了解的知识以及需要安装的工具。&lt;/p>
