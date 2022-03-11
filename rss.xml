@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.94.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Fri, 11 Mar 2022 16:08:26 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>1@面向对象与面向过程</title><link>https://kiwi4814.github.io/posts/2022/tbod-oop/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/tbod-oop/</guid><pubDate>Tue, 08 Mar 2022 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="理论一什么是面向对象">理论一：什么是面向对象？&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.94.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Fri, 11 Mar 2022 16:14:12 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>1@面向对象与面向过程</title><link>https://kiwi4814.github.io/posts/2022/tbod-oop/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/tbod-oop/</guid><pubDate>Tue, 08 Mar 2022 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="理论一什么是面向对象">理论一：什么是面向对象？&lt;/h2>
 &lt;p>面向对象编程和面向对象编程语言的区别？&lt;/p>
 &lt;blockquote>
 &lt;p>面向对象是一种编程风格，面向对象编程语言是支持类或者对象的语法机制，使用面向对象语言能够很方便的实现面向对象编程。&lt;/p>
@@ -1613,7 +1613,1275 @@ git config --global https.proxy https://127.0.0.1:1080
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 &lt;/code>&lt;/pre>&lt;/li>
-&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2021/12/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2021/12/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>初识单元测试</title><link>https://kiwi4814.github.io/posts/2022/unittest1/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/unittest1/</guid><pubDate>Fri, 03 Sep 2021 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="单元测试相关概念">单元测试相关概念&lt;/h1>
+&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2021/12/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2021/12/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>单元测试之三：参数化测试</title><link>https://kiwi4814.github.io/posts/2021/unittest3/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/unittest3/</guid><pubDate>Wed, 08 Sep 2021 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="单元测试之参数化测试">单元测试之参数化测试&lt;/h1>
+&lt;h2 id="一参数化测试">一、参数化测试&lt;/h2>
+&lt;p>有时候对于同一个单元测试，我们并不希望只测试一组参数，而是期望对传入的不同参数返回不同的结果。参数化测试允许开发人员使用不同的值反复运行同一个测试。&lt;/p>
+&lt;h2 id="二在系统中集成参数化测试">二、在系统中集成参数化测试&lt;/h2>
+&lt;p>参数化测试主要有如下步骤实现：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>用 @RunWith(Parameterized.class) 来注释 test 类；&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>实现 @Parameters注解的公共静态方法，返回值是一个数组对象，作为测试的参数集合；&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>创建一个公共的构造函数，它接受和一行测试数据相等同的东西；&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>为每一列测试数据创建一个实例变量；&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>用实例变量作为测试数据的来源来创建你的测试用例。&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>首先，我们在上节中使用Mockito时Test类的注解已经变成了**&lt;code>MockitoJUnitRunner&lt;/code>**，为了能兼容Mockito的使用，我们需要手动初始化Mockito，代码如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@RunWith&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">SpringRunner&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">AlarmInfoServiceImplDESTest&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@InjectMocks&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">AlarmInfoServiceImpl&lt;/span> &lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Before&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">initMocks&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">MockitoAnnotations&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">initMocks&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">this&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">testMethod&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>在此基础上，我们实现集成了Parameterized.class的单元测试类：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@RunWith&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Parameterized&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">AlarmInfoServiceImplParameterizedTest&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@InjectMocks&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">AlarmInfoServiceImpl&lt;/span> &lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Before&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">initMocks&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">MockitoAnnotations&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">initMocks&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">this&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">cellPhone&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">bh&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="nf">AlarmInfoServiceImplParameterizedTest&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">cellPhone&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">bh&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">cellPhone&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">cellPhone&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">bh&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">bh&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Parameterized.Parameters&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;{index}: des({0}_{1})&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="n">Iterable&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Object&lt;/span>&lt;span class="o">[]&amp;gt;&lt;/span> &lt;span class="nf">data&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">Arrays&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">asList&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">new&lt;/span> &lt;span class="n">Object&lt;/span>&lt;span class="o">[][]{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">{&lt;/span>&lt;span class="s">&amp;#34;13764589436&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;202102164582A&amp;#34;&lt;/span>&lt;span class="o">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">{&lt;/span>&lt;span class="s">&amp;#34;13764589437&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;202102164582B&amp;#34;&lt;/span>&lt;span class="o">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">{&lt;/span>&lt;span class="s">&amp;#34;13764589438&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;202102164582C&amp;#34;&lt;/span>&lt;span class="o">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">{&lt;/span>&lt;span class="s">&amp;#34;13764589439&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;202102164582D&amp;#34;&lt;/span>&lt;span class="o">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">{&lt;/span>&lt;span class="s">&amp;#34;13764589440&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;202102164582E&amp;#34;&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">AESTest&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ReflectionTestUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setField&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;H5SlatKey&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;htGyqmtq2IdlA7Y2&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ReflectionTestUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setField&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;h5MessagePrefix&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;【deptName】您的报警信息已经收到，点击查看}&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span> &lt;span class="n">encrypt&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">encrypt&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">cellPhone&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">bh&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">BaseH5DecodeModel&lt;/span> &lt;span class="n">decrypt&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">decrypt&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">encrypt&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">bh&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">decrypt&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getAlarmCode&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">cellPhone&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">decrypt&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getCellPhone&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">encrypt&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">decrypt&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getPath&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="三使用junitparams">三、使用JUnitParams&lt;/h2>
+&lt;p>但是，使用上面的方法实现起来未免太麻烦，这意味着一个类中只能写一个单元测试，而通常情况下对于同一个方法，我们可能有很多的单元测试用例，要传递不同的参数，全部应用参数化测试的时候工作量太大。为此，我们引入&lt;code>JUnitParams&lt;/code>来解决这个问题。&lt;/p>
+&lt;p>官方文档对于&lt;code>JUnitParams&lt;/code>的介绍只有一句话：&lt;/p>
+&lt;blockquote>
+&lt;p>Parameterised tests that don't suck.&lt;/p>
+&lt;/blockquote>
+&lt;p>直译的话就是让你的单元测试不会很差劲。这个工具主要针对JUnit4，因为Junit5已经对参数化测试做了优化，功能更加强大和便捷。&lt;/p>
+&lt;p>JUnitParams和默认的Parameterized.class的区别之处在于：&lt;/p>
+&lt;ul>
+&lt;li>参数定义在测试方法参数中，而不是类的字段&lt;/li>
+&lt;li>不需要构造函数来设置参数&lt;/li>
+&lt;li>可以在一个类中使用非参数化方法进行参数化测试&lt;/li>
+&lt;li>参数可以写在csv文件或者单独的类中提供&lt;/li>
+&lt;li>参数提供程序类可以具有尽可能多的参数提供方法，以便分组不同的案例&lt;/li>
+&lt;li>可以有一个提供参数的测试方法&lt;/li>
+&lt;li>您可以在IDE中看到实际参数值(在JUnit的Parametrised中，它只有连续数量的参数)&lt;/li>
+&lt;/ul>
+&lt;p>这里列出一些常见的写法：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>通过注解来实现&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@RunWith&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">JUnitParamsRunner&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">AlarmInfoServiceImplJUnitParamsTest&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@InjectMocks&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">AlarmInfoServiceImpl&lt;/span> &lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Before&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">initMocks&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">MockitoAnnotations&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">initMocks&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">this&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Parameters&lt;/span>&lt;span class="o">({&lt;/span>&lt;span class="s">&amp;#34;13764589436|202102231536A&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;13764589437|202102231536A&amp;#34;&lt;/span>&lt;span class="o">})&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">AESTest2&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">cellPhone&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">bh&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ReflectionTestUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setField&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;H5SlatKey&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;htGyqmtq2IdlA7Y2&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ReflectionTestUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setField&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;h5MessagePrefix&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;【deptName】您的报警信息已经收到，点击查看}&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span> &lt;span class="n">encrypt&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">encrypt&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">cellPhone&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">bh&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">BaseH5DecodeModel&lt;/span> &lt;span class="n">decrypt&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">decrypt&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">encrypt&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">bh&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">decrypt&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getAlarmCode&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">cellPhone&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">decrypt&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getCellPhone&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">encrypt&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">decrypt&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getPath&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>通过方法来实现&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@RunWith&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">JUnitParamsRunner&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">AlarmInfoServiceImplJUnitParamsTest&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@InjectMocks&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">AlarmInfoServiceImpl&lt;/span> &lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Before&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">initMocks&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">MockitoAnnotations&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">initMocks&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">this&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="n">Iterable&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Object&lt;/span>&lt;span class="o">[]&amp;gt;&lt;/span> &lt;span class="nf">data&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">Arrays&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">asList&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">new&lt;/span> &lt;span class="n">Object&lt;/span>&lt;span class="o">[][]{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">{&lt;/span>&lt;span class="s">&amp;#34;13764589436&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;202102164582A&amp;#34;&lt;/span>&lt;span class="o">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">{&lt;/span>&lt;span class="s">&amp;#34;13764589437&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;202102164582B&amp;#34;&lt;/span>&lt;span class="o">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">{&lt;/span>&lt;span class="s">&amp;#34;13764589438&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;202102164582C&amp;#34;&lt;/span>&lt;span class="o">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">{&lt;/span>&lt;span class="s">&amp;#34;13764589439&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;202102164582D&amp;#34;&lt;/span>&lt;span class="o">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">{&lt;/span>&lt;span class="s">&amp;#34;13764589440&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;202102164582E&amp;#34;&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Parameters&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">method&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;data&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">AESTest2&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">cellPhone&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">bh&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ReflectionTestUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setField&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;H5SlatKey&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;htGyqmtq2IdlA7Y2&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ReflectionTestUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setField&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;h5MessagePrefix&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;【deptName】您的报警信息已经收到，点击查看}&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span> &lt;span class="n">encrypt&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">encrypt&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">cellPhone&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">bh&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">BaseH5DecodeModel&lt;/span> &lt;span class="n">decrypt&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">decrypt&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">encrypt&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">bh&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">decrypt&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getAlarmCode&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">cellPhone&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">decrypt&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getCellPhone&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">encrypt&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">decrypt&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getPath&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>通过csv文件实现&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@RunWith&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">JUnitParamsRunner&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">AlarmInfoServiceImplJUnitParamsTest&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@InjectMocks&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">AlarmInfoServiceImpl&lt;/span> &lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Before&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">initMocks&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">MockitoAnnotations&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">initMocks&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">this&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@FileParameters&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;classpath:test.csv&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">AESTest1&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">cellPhone&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">bh&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ReflectionTestUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setField&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;H5SlatKey&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;htGyqmtq2IdlA7Y2&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ReflectionTestUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setField&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;h5MessagePrefix&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;【deptName】您的报警信息已经收到，点击查看}&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span> &lt;span class="n">encrypt&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">encrypt&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">cellPhone&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">bh&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">BaseH5DecodeModel&lt;/span> &lt;span class="n">decrypt&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">alarmInfoService&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">decrypt&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">encrypt&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">bh&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">decrypt&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getAlarmCode&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">cellPhone&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">decrypt&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getCellPhone&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">encrypt&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">decrypt&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getPath&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;h2 id="参考文档">参考文档&lt;/h2>
+&lt;p>&lt;a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1304065789132833">https://www.liaoxuefeng.com/wiki/1252599548343744/1304065789132833&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.testwithspring.com/lesson/writing-parameterized-tests-with-junit-4/">Writing Parameterized Tests With JUnit 4 (testwithspring.com)&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.baeldung.com/junit-params">Introduction to JUnitParams | Baeldung&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2021/09/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</category></item><item><title>单元测试之二：代码用例</title><link>https://kiwi4814.github.io/posts/2021/unittest2/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/unittest2/</guid><pubDate>Sun, 05 Sep 2021 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="单元测试之代码用例">单元测试之代码用例&lt;/h1>
+&lt;h2 id="一引入">一、引入&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.springframework.boot&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>spring-boot-starter-test&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;scope&amp;gt;&lt;/span>test&lt;span class="nt">&amp;lt;/scope&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>从*&lt;code>dependency:tree&lt;/code>*中我们可以看到：&lt;/p>
+&lt;p>![image-20210527095848554](../../../../slipbox/ReadingNotes/极客时间学习/数据结构与算法之美/Users/heqifeng/Library/Application Support/typora-user-images/image-20210527095848554.png)&lt;/p>
+&lt;p>里面默认依赖了我们会可能会用到包：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>JUnit&lt;/code>，标准的单元测试Java应用程序；&lt;/li>
+&lt;li>&lt;code>Spring Test &amp;amp; Spring Boot Test&lt;/code>，对Spring Boot应用程序的单元测试提供支持；&lt;/li>
+&lt;li>&lt;code>Mockito&lt;/code>, Java mocking框架，用于模拟任何Spring管理的Bean，比如在单元测试中模拟一个第三方系统Service接口返回的数据，而不会去真正调用第三方系统；&lt;/li>
+&lt;li>&lt;code>AssertJ&lt;/code>，一个流畅的assertion库，同时也提供了更多的期望值与测试返回值的比较方式；&lt;/li>
+&lt;li>&lt;code>Hamcrest&lt;/code>，库的匹配对象（也称为约束或谓词）；&lt;/li>
+&lt;li>&lt;code>JsonPath&lt;/code>，提供类似XPath那样的符号来获取JSON数据片段；&lt;/li>
+&lt;li>&lt;code>JSONassert&lt;/code>，对JSON对象或者JSON字符串断言的库。&lt;/li>
+&lt;/ul>
+&lt;p>此外，在后续的使用过程中，为了在单元测试中实现各种各样的功能，我们还将引入一下jar包：&lt;/p>
+&lt;p>&lt;strong>1. MyBatis-Test，用于在单元测试中测试持久层&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.mybatis.spring.boot&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>mybatis-spring-boot-starter-test&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>1.3.5&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;scope&amp;gt;&lt;/span>test&lt;span class="nt">&amp;lt;/scope&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>2. 用于JSON数据的断言&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>com.jayway.jsonpath&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>json-path-assert&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>${jsonPath.assert.version}&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>3. powermock，用于mock静态方法、枚举、构造器等&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.powermock&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>powermock-module-junit4&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>${powermock.version}&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;scope&amp;gt;&lt;/span>test&lt;span class="nt">&amp;lt;/scope&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.powermock&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>powermock-api-mockito&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>${powermock.version}&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;scope&amp;gt;&lt;/span>test&lt;span class="nt">&amp;lt;/scope&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>4. JUnitParams，用于参数化测试的辅助&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>pl.pragmatists&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>JUnitParams&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>1.1.1&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;scope&amp;gt;&lt;/span>test&lt;span class="nt">&amp;lt;/scope&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="二知识准备">二、知识准备&lt;/h2>
+&lt;h3 id="1-junit基本注解">1. &lt;code>Junit&lt;/code>基本注解&lt;/h3>
+&lt;p>&lt;code>Junit4&lt;/code>单元测试主流程中的主要注解有：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>@BeforeClass&lt;/code>&lt;/li>
+&lt;li>&lt;code>@Before&lt;/code>&lt;/li>
+&lt;li>&lt;code>@Test&lt;/code>&lt;/li>
+&lt;li>&lt;code>@After&lt;/code>&lt;/li>
+&lt;li>&lt;code>@AfterClass&lt;/code>&lt;/li>
+&lt;li>&lt;code>@Ignore&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>其中， &lt;code>@BeforeClass&lt;/code>和&lt;code>@AfterClass&lt;/code>在每个类加载的开始和结束时运行，必须为静态方法；而&lt;code>@Before&lt;/code>和&lt;code>@After&lt;/code>则在每个测试方法开始之前和结束之后运行。执行次序是&lt;code>@BeforeClass&lt;/code> -&amp;gt; &lt;code>@Before&lt;/code> -&amp;gt; &lt;code>@Test&lt;/code> -&amp;gt; &lt;code>@After&lt;/code> -&amp;gt; &lt;code>@Before&lt;/code> -&amp;gt; &lt;code>@Test&lt;/code> -&amp;gt; &lt;code>@After&lt;/code> -&amp;gt; &lt;code>@AfterClass&lt;/code>。&lt;code>@Ignore&lt;/code>会被忽略。&lt;/p>
+&lt;h3 id="2-assert断言工具">2. &lt;code>Assert&lt;/code>断言工具&lt;/h3>
+&lt;p>&lt;code>Junit4&lt;/code>提供了一个Assert类，Assert类中定义了很多静态方法来进行断言。&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>assertEquals(&amp;quot;message&amp;quot;,A,B)&lt;/code>，判断A对象和B对象是否相等，这个判断在比较两个对象时调用了equals()方法。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>assertSame(&amp;quot;message&amp;quot;,A,B)&lt;/code>，判断A对象与B对象是否相同，使用的是==操作符。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>assertTrue(&amp;quot;message&amp;quot;,A)&lt;/code>，判断A条件是否为真。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>assertFalse(&amp;quot;message&amp;quot;,A)&lt;/code>，判断A条件是否不为真。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>assertNotNull(&amp;quot;message&amp;quot;,A)&lt;/code>，判断A对象是否不为null。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>assertArrayEquals(&amp;quot;message&amp;quot;,A,B)&lt;/code>，判断A数组与B数组是否相等。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="3-mockmvc">3. &lt;code>MockMvc&lt;/code>&lt;/h3>
+&lt;p>MockMvc，从字面上来看指的是模拟的MVC，即其可以模拟一个MVC环境，向Controller发送请求然后得到响应。&lt;/p>
+&lt;p>利用MockMvc我们可以模拟get、post、文件上传、session和cookie等，并且对返回结果进行处理。这里贴出一些常用的代码段：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 模拟get请求
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcRequestBuilders&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/jqxx/get?jqbh={jqbh}&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;jqbh&amp;#34;&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 模拟post请求
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcRequestBuilders&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">post&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/jqxx/put/{jqbh}&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;202105212106A&amp;#34;&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 模拟文件上传：
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcRequestBuilders&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">fileUpload&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/fileupload&amp;#34;&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">file&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;file&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;文件内容&amp;#34;&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getBytes&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;utf-8&amp;#34;&lt;/span>&lt;span class="o">)));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 设置返回格式为JSON：
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcRequestBuilders&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/user/{id}&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">1&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">accept&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MediaType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">APPLICATION_JSON&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 模拟HTTP请求头：
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcRequestBuilders&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/user/{id}&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">1&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">header&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;name&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;values&amp;#34;&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 模拟发送一个message参数，值为hello
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcRequestBuilders&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/hello&amp;#34;&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">param&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;message&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;hello&amp;#34;&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 模拟提交一个checkbox值，name为hobby，值为sleep和eat
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcRequestBuilders&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/saveHobby&amp;#34;&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">param&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;hobby&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;sleep&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;eat&amp;#34;&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 模拟Session和Cookie：
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcRequestBuilders&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/index&amp;#34;&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">sessionAttr&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;name&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;value&amp;#34;&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcRequestBuilders&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/index&amp;#34;&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">cookie&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">new&lt;/span> &lt;span class="n">Cookie&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;name&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;value&amp;#34;&lt;/span>&lt;span class="o">)));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 设置请求的Content-Type：
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcRequestBuilders&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/index&amp;#34;&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">contentType&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MediaType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">APPLICATION_JSON_UTF8&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 期望成功调用，即HTTP Status为200：
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcRequestBuilders&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/user/{id}&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">1&lt;/span>&lt;span class="o">)).&lt;/span>&lt;span class="na">andExpect&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcResultMatchers&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">status&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">isOk&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 期望返回内容是application/json：
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcRequestBuilders&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/user/{id}&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">1&lt;/span>&lt;span class="o">)).&lt;/span>&lt;span class="na">andExpect&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcResultMatchers&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">content&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">contentType&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MediaType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">APPLICATION_JSON&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 检查返回JSON数据中某个值的内容：
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcRequestBuilders&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/user/{id}&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">1&lt;/span>&lt;span class="o">)).&lt;/span>&lt;span class="na">andExpect&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockMvcResultMatchers&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">jsonPath&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;$.username&amp;#34;&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">value&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;mrbird&amp;#34;&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="4-mockito">4. &lt;code>Mockito&lt;/code>&lt;/h3>
+&lt;p>官方文档：&lt;a href="https://javadoc.io/static/org.mockito/mockito-core/2.28.2/org/mockito/Mockito.html">Mockito (Mockito 2.28.2 API) (javadoc.io)&lt;/a>&lt;/p>
+&lt;p>Mockito 是一个强大的用于 Java 开发的模拟测试框架, 通过 Mockito 我们可以创建和配置 Mock 对象, 进而简化有外部依赖的类的测试。目前在 Java 中主流的 mock 测试工具有 Mockito、JMock、EasyMock..等，而 SpringBoot 目前內建的是 Mockito 框架。使用 Mockito 的大致流程如下：&lt;/p>
+&lt;ul>
+&lt;li>创建外部依赖的 Mock 对象，然后将此 Mock 对象注入到测试类中。&lt;/li>
+&lt;li>执行测试代码。&lt;/li>
+&lt;li>校验测试代码是否执行正确。&lt;/li>
+&lt;/ul>
+&lt;h4 id="1injectmocks">（1）@InjectMocks&lt;/h4>
+&lt;p>&lt;strong>创建一个实例，简单的说是这个Mock可以调用真实代码的方法，其余用@Mock（或@Spy）注解创建的mock将被注入到用该实例中。&lt;/strong>&lt;/p>
+&lt;h4 id="2mock">（2）@Mock&lt;/h4>
+&lt;p>&lt;strong>对函数的调用均执行mock（即虚假函数），不执行真正部分。&lt;/strong>&lt;/p>
+&lt;h4 id="3spy">（3）@Spy&lt;/h4>
+&lt;p>&lt;strong>对函数的调用进行监视，优先执行打桩的代码，否则执行真实的代码&lt;/strong>&lt;/p>
+&lt;h2 id="三单元测试">三、单元测试&lt;/h2>
+&lt;h3 id="1-使用mockito测试服务层代码">1. 使用Mockito测试服务层代码&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@RunWith&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockitoJUnitRunner&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">AlarmInfoTestServiceTest&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@InjectMocks&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">AlarmInfoTestServiceImpl&lt;/span> &lt;span class="n">alarmInfoTestService&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Mock&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">RbacCurrentUserService&lt;/span> &lt;span class="n">currentUserService&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Mock&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">ErsZxxxExtMapper&lt;/span> &lt;span class="n">ersZxxxExtMapper&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">save&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">AuthUser&lt;/span> &lt;span class="n">user&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">AuthUser&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">user&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setCode&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;poc-hqf&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">user&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setName&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;000000&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">when&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">currentUserService&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">findCurrentAuthUser&lt;/span>&lt;span class="o">()).&lt;/span>&lt;span class="na">thenReturn&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">user&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">when&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">ersZxxxExtMapper&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">selectAllFjhmAndzxzt&lt;/span>&lt;span class="o">()).&lt;/span>&lt;span class="na">thenReturn&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">new&lt;/span> &lt;span class="n">ArrayList&lt;/span>&lt;span class="o">&amp;lt;&amp;gt;());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">ZxFjZtDTO&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">zxFjZtDTOS&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">alarmInfoTestService&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">saveTest&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;111&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Assert&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">zxFjZtDTOS&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">size&lt;/span>&lt;span class="o">(),&lt;/span> &lt;span class="n">0&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-使用mybatistest测试持久层代码">2. 使用MyBatisTest测试持久层代码&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@RunWith&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">SpringRunner&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@ContextConfiguration&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">classes&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">{&lt;/span>&lt;span class="n">ErsZxxxExtMapper&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">})&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">TestMapperTest&lt;/span> &lt;span class="kd">extends&lt;/span> &lt;span class="n">BaseMapperConfig&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Resource&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">ErsZxxxExtMapper&lt;/span> &lt;span class="n">ersZxxxExtMapper&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">selectZxxxList&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">ZxFjZtDTO&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">results&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ersZxxxExtMapper&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">selectAllFjhmAndzxzt&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">System&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">out&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">println&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;==========Mapper Test Result==========&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Assert&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">results&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">size&lt;/span>&lt;span class="o">(),&lt;/span>&lt;span class="n">25&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@MybatisTest&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@AutoConfigureTestDatabase&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">replace&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">AutoConfigureTestDatabase&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">Replace&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">NONE&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@ActiveProfiles&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;dev&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@MapperScan&lt;/span>&lt;span class="o">({&lt;/span>&lt;span class="s">&amp;#34;com.kedacom.ers.**.mapper&amp;#34;&lt;/span>&lt;span class="o">})&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">BaseMapperConfig&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="3-测试controller">3. 测试Controller&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@RunWith&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MockitoJUnitRunner&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@WebMvcTest&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">secure&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//@ContextConfiguration(classes = {AlarmInfoTestController.class})
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">AlarmInfoControllerTest2&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">MockMvc&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Mock&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">RbacCurrentUserService&lt;/span> &lt;span class="n">currentUserService&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@InjectMocks&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">AlarmInfoTestController&lt;/span> &lt;span class="n">alarmInfoTestController&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 初始化默认的mockMvc行为
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nd">@Before&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">setup&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">mockMvc&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">standaloneSetup&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">alarmInfoTestController&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">alwaysDo&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">print&lt;/span>&lt;span class="o">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">alwaysExpect&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">content&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">contentType&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MediaType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">APPLICATION_JSON_UTF8&lt;/span>&lt;span class="o">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">alwaysExpect&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">status&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">isOk&lt;/span>&lt;span class="o">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">save&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">AuthUser&lt;/span> &lt;span class="n">user&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">AuthUser&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">user&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setCode&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;poc-hqf&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">user&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setName&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;000000&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">given&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">currentUserService&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">findCurrentAuthUser&lt;/span>&lt;span class="o">()).&lt;/span>&lt;span class="na">willReturn&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">user&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span> &lt;span class="n">result&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">post&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/jqxx/save2&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">accept&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MediaType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">APPLICATION_JSON_UTF8&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">param&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;deptCode&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;111&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">contentType&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MediaType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">APPLICATION_JSON_UTF8&lt;/span>&lt;span class="o">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andExpect&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">status&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">isOk&lt;/span>&lt;span class="o">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andReturn&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">getResponse&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">getContentAsString&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>使用mockMvc时针对controller不同的参数类型如何入参：&lt;/p>
+&lt;h4 id="requestparam">@RequestParam&lt;/h4>
+&lt;p>测试类：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@RestController&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@RequestMapping&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/jqxx&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@Slf4j&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">AlarmInfoTestController&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@GetMapping&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">value&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;/list&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">ResponseMessage&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="nf">getJqxxList&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="nd">@RequestParam&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">value&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;jqbh&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">jqbh&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="nd">@RequestParam&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">value&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;deptCode&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">deptCode&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">log&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">info&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;this is a test=={}=={}&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">jqbh&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">deptCode&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">ResponseMessage&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">ok&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;Succeed&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>方法1:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">getJqxxList&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span> &lt;span class="n">result&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/jqxx/list&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">param&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;jqbh&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;202105161215A&amp;#34;&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">param&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;deptCode&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;5e10e7d4c651428a86977f5fe0947204&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">contentType&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MediaType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">APPLICATION_JSON_UTF8&lt;/span>&lt;span class="o">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andExpect&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">status&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">isOk&lt;/span>&lt;span class="o">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andExpect&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">jsonPath&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;$.result&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">is&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;Succeed1&amp;#34;&lt;/span>&lt;span class="o">)))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andReturn&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">getResponse&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">getContentAsString&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>方法2:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">getJqxxList&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span> &lt;span class="n">result&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/jqxx/list?jqbh={jqbh}&amp;amp;deptCode={deptCode},&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;202105161215A&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;5e10e7d4c651428a86977f5fe0947204&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">contentType&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MediaType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">APPLICATION_JSON_UTF8&lt;/span>&lt;span class="o">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andExpect&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">status&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">isOk&lt;/span>&lt;span class="o">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andExpect&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">jsonPath&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;$.result&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">is&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;Succeed1&amp;#34;&lt;/span>&lt;span class="o">)))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andReturn&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">getResponse&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">getContentAsString&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>方法3:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">getJqxxList&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">MultiValueMap&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">params&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">LinkedMultiValueMap&lt;/span>&lt;span class="o">&amp;lt;&amp;gt;();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">params&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;jqbh&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;202105161215A&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">params&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;deptCode&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;5e10e7d4c651428a86977f5fe0947204&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span> &lt;span class="n">result&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/jqxx/list&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">params&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">params&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">contentType&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MediaType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">APPLICATION_JSON_UTF8&lt;/span>&lt;span class="o">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andExpect&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">status&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">isOk&lt;/span>&lt;span class="o">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andExpect&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">jsonPath&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;$.result&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">is&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;Succeed1&amp;#34;&lt;/span>&lt;span class="o">)))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andReturn&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">getResponse&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">getContentAsString&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="pathvariable">@PathVariable&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">getJqxxList2&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span> &lt;span class="n">result&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/jqxx/get/{jqbh}?deptCode={deptCode},&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;202105161215A&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;5e10e7d4c651428a86977f5fe0947204&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">contentType&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MediaType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">APPLICATION_JSON_UTF8&lt;/span>&lt;span class="o">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andExpect&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">status&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">isOk&lt;/span>&lt;span class="o">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andExpect&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">jsonPath&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;$.result&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">is&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;Succeed1&amp;#34;&lt;/span>&lt;span class="o">)))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andReturn&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">getResponse&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">getContentAsString&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="requestbody">@RequestBody&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>使用JSON的方式传递&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl"> &lt;span class="err">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">public&lt;/span> &lt;span class="err">void&lt;/span> &lt;span class="err">getJqxxList&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="err">()&lt;/span> &lt;span class="err">throws&lt;/span> &lt;span class="err">Exception&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">String&lt;/span> &lt;span class="err">jsonStr&lt;/span> &lt;span class="err">=&lt;/span> &lt;span class="nt">&amp;#34;{\&amp;#34;jqbh\&amp;#34;:\&amp;#34;202105161215A\&amp;#34;,\&amp;#34;departmentCode\&amp;#34;:\&amp;#34;5e10e7d4c651428a86977f5fe0947204\&amp;#34;}&amp;#34;&lt;/span>&lt;span class="err">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">String&lt;/span> &lt;span class="err">result&lt;/span> &lt;span class="err">=&lt;/span> &lt;span class="err">mockMvc.perform(get(&lt;/span>&lt;span class="s2">&amp;#34;/jqxx/list&amp;#34;&lt;/span>&lt;span class="err">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">.content(jsonStr.getBytes(StandardCharsets.UTF_&lt;/span>&lt;span class="mi">8&lt;/span>&lt;span class="err">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">.contentType(MediaType.APPLICATION_JSON_UTF&lt;/span>&lt;span class="mi">8&lt;/span>&lt;span class="err">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">.andExpect(status().isOk())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">.andExpect(jsonPath(&lt;/span>&lt;span class="s2">&amp;#34;$.result&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="err">is(&lt;/span>&lt;span class="nt">&amp;#34;Succeed1&amp;#34;&lt;/span>&lt;span class="err">)))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">.andReturn().getResponse().getContentAsString();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">public&lt;/span> &lt;span class="err">void&lt;/span> &lt;span class="err">getJqxxList&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="err">()&lt;/span> &lt;span class="err">throws&lt;/span> &lt;span class="err">Exception&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">ErsJqxxConditonQuery&lt;/span> &lt;span class="err">query&lt;/span> &lt;span class="err">=&lt;/span> &lt;span class="err">new&lt;/span> &lt;span class="err">ErsJqxxConditonQuery();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">query.setJqbh(&lt;/span>&lt;span class="nt">&amp;#34;202105161215A&amp;#34;&lt;/span>&lt;span class="err">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">query.setDepartmentCode(&lt;/span>&lt;span class="s2">&amp;#34;5e10e7d4c651428a86977f5fe0947204&amp;#34;&lt;/span>&lt;span class="err">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">String&lt;/span> &lt;span class="err">userJson&lt;/span> &lt;span class="err">=&lt;/span> &lt;span class="err">JSONUtil.toJsonStr(query);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">String&lt;/span> &lt;span class="err">result&lt;/span> &lt;span class="err">=&lt;/span> &lt;span class="err">mockMvc.perform(get(&lt;/span>&lt;span class="s2">&amp;#34;/jqxx/list&amp;#34;&lt;/span>&lt;span class="err">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">.content(userJson.getBytes(StandardCharsets.UTF_&lt;/span>&lt;span class="mi">8&lt;/span>&lt;span class="err">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">.accept(MediaType.APPLICATION_JSON_UTF&lt;/span>&lt;span class="mi">8&lt;/span>&lt;span class="err">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">.contentType(MediaType.APPLICATION_JSON_UTF&lt;/span>&lt;span class="mi">8&lt;/span>&lt;span class="err">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">.andExpect(status().isOk())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">.andExpect(jsonPath(&lt;/span>&lt;span class="s2">&amp;#34;$.result&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="err">is(&lt;/span>&lt;span class="nt">&amp;#34;Succeed1&amp;#34;&lt;/span>&lt;span class="err">)))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">.andReturn().getResponse().getContentAsString();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;h3 id="4-综合测试">4. 综合测试&lt;/h3>
+&lt;p>&lt;strong>有时候，我们并不想单纯的测试controller或者service，我们只想把一些复杂的或者中间件服务的代码进行Mock，其余的均模拟真实的环境进行测试，也就是从controller到service到mapper进行全方位的测试。这时候我们需要使用Spring-Boot-Test提供的MockBean和SpyBean注解来实现。&lt;/strong>&lt;/p>
+&lt;h4 id="mock与mockbean的区别">@Mock与@MockBean的区别&lt;/h4>
+&lt;p>@Mock是Mockito提供的注解，用于快速的模拟所需要的bean。&lt;/p>
+&lt;p>@MockBean的作用是允许在Spring ApplicationContext中添加Mockito模拟。它的含义是如果上下文中存在与声明的类兼容的 bean，则用 mock 替换它。否则它会将 mock 作为 bean 添加到上下文中。&lt;/p>
+&lt;h4 id="mock和spy的区别">@Mock和@Spy的区别&lt;/h4>
+&lt;p>对于未指定mock的方法，spy默认会调用真实的方法，有返回值的返回真实的返回值，而mock默认不执行，有返回值的，默认返回null。&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>spy和mock生成的对象不受spring管理&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>spy调用真实方法时，其它bean是无法注入的，要使用注入，要使用SpyBean&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>SpyBean和MockBean生成的对象受spring管理，相当于自动替换对应类型bean的注入，比如@Autowired等注入&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="代码用例">代码用例&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@RunWith&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">SpringRunner&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@WebMvcTest&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">secure&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//@ContextConfiguration(classes = {AlarmInfoTestController.class})
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="nd">@AutoConfigureTestDatabase&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">replace&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">AutoConfigureTestDatabase&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">Replace&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">NONE&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@ActiveProfiles&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;dev&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@MapperScan&lt;/span>&lt;span class="o">({&lt;/span>&lt;span class="s">&amp;#34;com.kedacom.ers.**.mapper&amp;#34;&lt;/span>&lt;span class="o">})&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@AutoConfigureMybatis&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">AlarmInfoControllerTest3&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Autowired&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">MockMvc&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@MockBean&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">RbacCurrentUserService&lt;/span> &lt;span class="n">currentUserService&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@SpyBean&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">AlarmInfoTestServiceImpl&lt;/span> &lt;span class="n">alarmInfoTestService&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">save&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">AuthUser&lt;/span> &lt;span class="n">user&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">AuthUser&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">user&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setCode&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;poc-hqf&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">user&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setName&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;000000&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">when&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">currentUserService&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">findCurrentAuthUser&lt;/span>&lt;span class="o">()).&lt;/span>&lt;span class="na">thenReturn&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">user&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span> &lt;span class="n">result&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mockMvc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">perform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">post&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/jqxx/save3&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">accept&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MediaType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">APPLICATION_JSON_UTF8&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">param&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;deptCode&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;111&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">contentType&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">MediaType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">APPLICATION_JSON_UTF8&lt;/span>&lt;span class="o">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andExpect&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">status&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">isOk&lt;/span>&lt;span class="o">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">andReturn&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">getResponse&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">getContentAsString&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="5-powermock介绍">5. PowerMock介绍&lt;/h3>
+&lt;p>PowerMock可以和Mockito配合使⽤，版本之间的对应关系如下：&lt;/p>
+&lt;p>&lt;img src="../../../../slipbox/ReadingNotes/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E/Users/heqifeng/Pictures/PowerMock-Mockito.png" alt="PowerMock-Mockito">&lt;/p>
+&lt;p>由于PowerMock的机制是反射，所以除了⼀些特殊的地⽅需要使⽤到PowerMock的，其余测试仍然推荐使⽤ Mockito。具体如下：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Mock Final类&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">testMockFinalMethod&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Student&lt;/span> &lt;span class="n">student&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">PowerMockito&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">mock&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Student&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span> &lt;span class="n">mockFinalMethod&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;mockFinalMethod&amp;#34;&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">when&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">student&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getFinalMethod&lt;/span>&lt;span class="o">()).&lt;/span>&lt;span class="na">thenReturn&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">mockFinalMethod&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertThat&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">student&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getFinalMethod&lt;/span>&lt;span class="o">(),&lt;/span> &lt;span class="n">is&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">mockFinalMethod&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Mock 私有⽅法&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Mock 静态⽅法&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Mock 构造器&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">testMockConstructMethod&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Student&lt;/span> &lt;span class="n">student1000&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">Student&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">1000&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PowerMockito&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">whenNew&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Student&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">withArguments&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">10&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">thenReturn&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">student1000&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Student&lt;/span> &lt;span class="n">student10&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">Student&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">10&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertThat&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">student10&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getAge&lt;/span>&lt;span class="o">(),&lt;/span> &lt;span class="n">is&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">1000&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Mock 枚举Enum&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">testMockEnum&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PersonType&lt;/span> &lt;span class="n">personType&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">PowerMockito&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">mock&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">PersonType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Whitebox&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setInternalState&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">PersonType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;N&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">personType&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">when&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">personType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getType&lt;/span>&lt;span class="o">()).&lt;/span>&lt;span class="na">thenReturn&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;mockN&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertThat&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">PersonType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">N&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getType&lt;/span>&lt;span class="o">(),&lt;/span> &lt;span class="n">is&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;mockN&amp;#34;&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assertThat&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">PersonType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">S&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getType&lt;/span>&lt;span class="o">(),&lt;/span> &lt;span class="n">is&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;student&amp;#34;&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>代码⽤例：&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@RunWith&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">PowerMockRunner&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@PrepareForTest&lt;/span>&lt;span class="o">({&lt;/span>&lt;span class="n">MockMvcServiceImpl&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">StaticUtil&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">ShardCacheRunner&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">IPUtil&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">})&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">PowerMockServiceTest&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@InjectMocks&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">MockMvcServiceImpl&lt;/span> &lt;span class="n">mockMvcService&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Mock&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">RbacCurrentUserService&lt;/span> &lt;span class="n">currentUserService&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Mock&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">ErsZxxxExtMapper&lt;/span> &lt;span class="n">ersZxxxExtMapper&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="cm">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * 如果不需要mock静态方法，直接使用即可
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">powermock_serviceUseStatic_givenNumber&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">when&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">mockMvcService&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">codeWithStatic&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">anyString&lt;/span>&lt;span class="o">())).&lt;/span>&lt;span class="na">thenReturn&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;2&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">when&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">ersZxxxExtMapper&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">selectDeviceIdByUserId&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">anyString&lt;/span>&lt;span class="o">())).&lt;/span>&lt;span class="na">thenReturn&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;1030&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span> &lt;span class="n">ip&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mockMvcService&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">codeWithStatic&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;testTest&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//Assert.assertEquals(&amp;#34;192.168.42.68&amp;#34;, ip);
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="cm">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * mock静态方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">powermock_staticPublic_givenNumber&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PowerMockito&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">spy&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">StaticUtil&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">test&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ArrayList&lt;/span>&lt;span class="o">&amp;lt;&amp;gt;();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">test&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;111&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PowerMockito&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">doReturn&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">test&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">when&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">StaticUtil&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;getPublicInfo&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">publicInfo&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">StaticUtil&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getPublicInfo&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Assert&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">1&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">publicInfo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">size&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="cm">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * mock私有方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">powermock_staticPrivate_givenNumber&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">Exception&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PowerMockito&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">spy&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">StaticUtil&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">test&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ArrayList&lt;/span>&lt;span class="o">&amp;lt;&amp;gt;();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">test&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;111&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">PowerMockito&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">doReturn&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">test&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">when&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">StaticUtil&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">class&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;getPrivateInfo&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">publicInfo&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">StaticUtil&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getPrivateInfoUsePublic&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Assert&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">assertEquals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">1&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">publicInfo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">size&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="参考文档">参考文档&lt;/h2>
+&lt;p>&lt;a href="https://docs.spring.io/spring-framework/docs/4.3.18.RELEASE/spring-framework-reference/html/integration-testing.html#spring-mvc-test-server">Spring-Documentation - 15.6.1 Server-Side Tests&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://docs.spring.io/spring-framework/docs/4.3.18.RELEASE/javadoc-api/index.html?org/springframework/web/socket/sockjs/transport/TransportType.html">MockMvc (Spring Framework 4.3.18.RELEASE API)&lt;/a>&lt;/p>
+&lt;p>&lt;a href="http://mybatis.org/spring-boot-starter/mybatis-spring-boot-test-autoconfigure/index.html">mybatis-spring-boot-test-autoconfigure – Introduction&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.baeldung.com/spring-tests">Optimizing Spring Integration Tests | Baeldung&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.baeldung.com/integration-testing-in-spring">Integration Testing in Spring | Baeldung&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest">Testing in Spring Boot | Baeldung&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/json-path/JsonPath">json-path/JsonPath: Java JsonPath implementation (github.com)&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/hehonghui/mockito-doc-zh#0">hehonghui/mockito-doc-zh: Mockito框架中文文档 (github.com)&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2021/09/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</category></item><item><title>单元测试之一：初识单元测试</title><link>https://kiwi4814.github.io/posts/2021/unittest1/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/unittest1/</guid><pubDate>Fri, 03 Sep 2021 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="单元测试之初识单元测试">单元测试之初识单元测试&lt;/h1>
 &lt;p>单元测试是编写测试代码，用来检测特定的、明确的、细颗粒的功能。单元测试并不一定保证程序功能是正确的，更不保证整体业务是准备的。单元测试不仅仅用来保证当前代码的正确性，更重要的是用来保证代码&lt;strong>修复&lt;/strong>、&lt;strong>改进&lt;/strong>或&lt;strong>重构&lt;/strong>之后的正确性。&lt;/p>
 &lt;p>与之相应的，有集成测试（ Integration Testing）——集成测试是在单元测试的基础上，将所有模块按照概要设计要求组装成为子系统或系统，验证组装后功能以及模块间接口是否正确的测试工作。集成测试也叫组装测试、联合测试、子系统测试或部件测试。最简单的集成测试的例子：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
