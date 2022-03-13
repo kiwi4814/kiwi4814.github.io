@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.94.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 13 Mar 2022 07:44:04 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>1@面向对象与面向过程</title><link>https://kiwi4814.github.io/posts/2022/tbod-oop/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/tbod-oop/</guid><pubDate>Tue, 08 Mar 2022 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="理论一什么是面向对象">理论一：什么是面向对象？&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.94.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 13 Mar 2022 08:13:41 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>1@面向对象与面向过程</title><link>https://kiwi4814.github.io/posts/2022/tbod-oop/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/tbod-oop/</guid><pubDate>Tue, 08 Mar 2022 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="理论一什么是面向对象">理论一：什么是面向对象？&lt;/h2>
 &lt;p>面向对象编程和面向对象编程语言的区别？&lt;/p>
 &lt;blockquote>
 &lt;p>面向对象是一种编程风格，面向对象编程语言是支持类或者对象的语法机制，使用面向对象语言能够很方便的实现面向对象编程。&lt;/p>
@@ -1613,8 +1613,130 @@ git config --global https.proxy https://127.0.0.1:1080
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 &lt;/code>&lt;/pre>&lt;/li>
-&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2021/12/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2021/12/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>高可用之一：什么是高可用系统？</title><link>https://kiwi4814.github.io/posts/2021/high-availability-concept/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-concept/</guid><pubDate>Fri, 08 Oct 2021 15:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="高可用之一什么是高可用系统">高可用之一：什么是高可用系统？&lt;/h1>
-&lt;p>要想了解高可用这个概念，我们首先需要知道：什么是高可用？在介绍它之前，我们首先来看两个息息相关的概念。&lt;/p>
+&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2021/12/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2021/12/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>高可用06：高可用系统设计之「其他辅助手段」</title><link>https://kiwi4814.github.io/posts/2021/high-availability-aids/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-aids/</guid><pubDate>Tue, 12 Oct 2021 16:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description/><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category><category domain="https://kiwi4814.github.io/tags/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category></item><item><title>高可用05：高可用系统设计之「存储高可用」</title><link>https://kiwi4814.github.io/posts/2021/high-availability-storage/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-storage/</guid><pubDate>Tue, 12 Oct 2021 15:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description/><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category><category domain="https://kiwi4814.github.io/tags/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category></item><item><title>高可用04：高可用系统设计之「服务高可用」</title><link>https://kiwi4814.github.io/posts/2021/high-availability-server/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-server/</guid><pubDate>Mon, 11 Oct 2021 15:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description/><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category><category domain="https://kiwi4814.github.io/tags/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category></item><item><title>高可用03：高可用系统设计之「应用高可用」</title><link>https://kiwi4814.github.io/posts/2021/high-availability-application/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-application/</guid><pubDate>Sun, 10 Oct 2021 15:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description/><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category><category domain="https://kiwi4814.github.io/tags/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category></item><item><title>高可用02：高可用系统设计之「架构高可用」</title><link>https://kiwi4814.github.io/posts/2021/high-availability-architecture/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-architecture/</guid><pubDate>Sat, 09 Oct 2021 15:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="如何设计一个高可用系统">如何设计一个高可用系统&lt;/h2>
+&lt;p>上一节我们已经介绍了什么是高可用以及高可用相关的一些概念，接下来我们分几个章节来介绍：&lt;strong>如何设计一个高可用系统？&lt;/strong>&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313160723990.png" alt="image-20220313160723990">&lt;/p>
+&lt;p>&lt;strong>大型系统的分层架构及物理服务器的分布式部署使得位于不同层次的服务器具有不同的可用性特点。关闭服务或服务器宕机时产生的影响也不相同，高可用的解决方案也差异甚大&lt;/strong>。大致可以分为：&lt;/p>
+&lt;ul>
+&lt;li>高可用的架构 - 主要方式是：主备、主从、双主、集群、分区&lt;/li>
+&lt;li>高可用的应用 - 主要手段是：负载均衡&lt;/li>
+&lt;li>高可用的服务 - 主要手段是：分级管理、超时重试、异步调用、限流、降解、断路、幂等性设计&lt;/li>
+&lt;li>高可用的数据 - 主要手段是：数据备份和失效转移&lt;/li>
+&lt;/ul>
+&lt;h2 id="1-架构高可用">1. 架构高可用&lt;/h2>
+&lt;p>常见的机构模式有：双机（主备、主从、主主等）、集群、分区等。&lt;/p>
+&lt;h3 id="1主备复制">（1）主备复制&lt;/h3>
+&lt;p>主备复制是最常见也是最简单的一种存储高可用方案，几乎所有的存储系统都提供了主备复制的功能，例如 MySQL、Redis、MongoDB 等。&lt;strong>主备模式&lt;/strong>中，两台服务不再是平等关系。主服务承担所有的读写请求，备服务只有在主服务不可用时才取而代之。主备服务之间虽然也存在两个方向的数据同步，但跟双主模式不同，它们不会同时发生。正常情况下只存在主向备同步数据。主不可用的时间段内，数据会写到备服务。当主恢复后，才需要由备向主同步数据。在此期间，会双写数据到主备节点，防止主同时再向备同步数据。主备架构比较容易实现，缺点是备服务在绝大部分时间是一种资源浪费。一般数据库系统在部署时会考虑主备架构。&lt;/p>
+&lt;p>主备复制要点：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>存在&lt;strong>一主多备&lt;/strong>。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>主机负责读&amp;amp;写，并定期复制数据给备机。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>一旦主机宕机，可以通过人工手段，将其中一个备节点作为主节点。&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313160803044.png" alt="image-20220313160803044">&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>优点&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>主备复制架构中，客户端可以不感知备机的存在。即使灾难恢复后，原来的备机被人工修改为主机后，对于客户端来说，只是认为主机的地址换了而已，无须知道是原来的备机升级为主机。&lt;/li>
+&lt;li>主备复制架构中，主机和备机之间，只需要进行数据复制即可，无须进行状态判断和主备切换这类复杂的操作。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>缺点&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>主备复制架构中，故障后需要人工干预，无法自动恢复。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>适用场景&lt;/strong>&lt;/p>
+&lt;p>综合主备复制架构的优缺点，内部的后台管理系统使用主备复制架构的情况会比较多，例如学生管理系统、员工管理系统、假期管理系统等，因为这类系统的数据变更频率低，即使在某些场景下丢失数据，也可以通过人工的方式补全。&lt;/p>
+&lt;h3 id="2主从复制">（2）主从复制&lt;/h3>
+&lt;p>主从复制和主备复制只有一字之差，“从”意思是“随从、仆从”，“备”的意思是备份。我们可以理解为仆从是要帮主人干活的，这里的干活就是承担“读”的操作。也就是说，主机负责读写操作，从机只负责读操作，不负责写操作。&lt;/p>
+&lt;p>&lt;strong>主从模式&lt;/strong>其实不是主要解决高可用问题的，更多的是为了实现读写分离，来解决高并发问题。实际场景中通常不是一主一从，而是一主多从架构，因为大部分应用都是的读多写少。主节点处理写请求，从节点处理读请求。由于存在多从，读服务的可用性远高于写服务。另外，写服务会存在单点故障。这个问题可以通过集群动态选主来解决：当主节点不可用时，集群自动选出一台新的主节点。基于zookeeper，动态选主很容易实现。不过动态选主在MySQL集群架构中不会使用，原因是主从同步数据必须在部署时配置好，切换了主节点还是需要运维人工介入修改配置并重启服务。&lt;/p>
+&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313160959711.png" alt="image-20220313160959711" style="zoom: 80%;" />
+&lt;p>&lt;strong>优缺点分析&lt;/strong>&lt;/p>
+&lt;p>主从复制与主备复制相比，优点有：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>主从复制在主机故障时，读操作相关的业务可以继续运行。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>主从复制架构的从机提供读操作，发挥了硬件的性能。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>缺点有：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>主从复制架构中，客户端需要感知主从关系，并将不同的操作发给不同的机器进行处理，复杂度比主备复制要高。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>主从复制架构中，从机提供读业务，如果主从复制延迟比较大，业务会因为数据不一致出现问题。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>故障时需要人工干预.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>综合主从复制的优缺点，一般情况下，写少读多的业务使用主从复制的存储架构比较多。例如，论坛、BBS、新闻网站这类业务，此类业务的读操作数量是写操作数量的 10 倍甚至 100 倍以上。&lt;/p>
+&lt;h3 id="3双机切换">（3）双机切换&lt;/h3>
+&lt;p>以上介绍的主备复制和主从复制都存在两个比较致命的问题，那就是并非100%高可用。主要体现在：&lt;/p>
+&lt;ul>
+&lt;li>主机故障后，无法进行写操作。&lt;/li>
+&lt;li>如果主机无法恢复，需要人工指定新的主机角色。&lt;/li>
+&lt;/ul>
+&lt;p>双机切换就是为了解决这两个问题而产生的，包括主备切换和主从切换两种方案。简单来说，这两个方案就是在原有方案的基础上增加“切换”功能，即系统自动决定主机角色，并完成角色切换。&lt;/p>
+&lt;p>常见的主备切换架构有三种形式：互连式、中介式和模拟式。具体细节感兴趣可以参考这篇文章——&lt;a href="https://xiaojun90.github.io/blog/architecture/1018.html">高可用存储架构：双机架构&lt;/a>。&lt;/p>
+&lt;h3 id="4双主模式">（4）双主模式&lt;/h3>
+&lt;p>&lt;strong>双主模式&lt;/strong>中，两台服务是平等关系，同时对外提供读写服务，客户端任选一台即可。双主模式是可用性最好的，但是这种架构的一致性处理比较困难，需要两台服务进行双向数据同步。一旦它们之间的通信断开，就形成了网络分区，这种分区会带来&lt;a href="https://cloud.tencent.com/developer/article/1027323">脑裂&lt;/a>（brain-split）问题，并且系统对此无解，必须人工介入。所以在架构设计时极少选择双主模式。&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313161033607.png" alt="image-20220313161033607">&lt;/p>
+&lt;h3 id="5数据集群">（5）数据集群&lt;/h3>
+&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313161130766.png" alt="image-20220313161130766" style="zoom:50%;" />
+&lt;p>主备、主从、主主架构本质上都有一个隐含的假设：主机能够存储所有数据，但主机本身的存储和处理能力肯定是有极限的。早在 2013 年，Facebook 就有 2500 亿张上传照片，当时这些照片的容量就已经达到了 250 PB 字节（250 × 1024TB），平均一天上传的图片有 3 亿 5000 万张。如此大量的数据，单台服务器肯定是无法存储和处理的，我们必须使用多台服务器来存储数据，这就是数据集群架构。&lt;/p>
+&lt;p>简单来说，集群就是多台机器组合在一起形成一个统一的系统，这里的“多台”，数量上至少是 3 台；相比而言，主备、主从都是 2 台机器。根据集群中机器承担的不同角色来划分，集群可以分为两类：数据集中集群、数据分散集群。&lt;/p>
+&lt;h4 id="数据集中集群">①数据集中集群&lt;/h4>
+&lt;p>数据集中集群与主备、主从这类架构相似，我们也可以称数据集中集群为 1 主多备或者 1 主多从。无论是 1 主 1 从、1 主 1 备，还是 1 主多备、1 主多从，数据都只能往主机中写，而读操作可以参考主备、主从架构进行灵活多变。虽然架构上是类似的，但由于集群里面的服务器数量更多，导致复杂度整体更高一些，具体体现在：&lt;/p>
+&lt;ul>
+&lt;li>主机如何将数据复制给备机&lt;/li>
+&lt;li>备机如何检测主机状态&lt;/li>
+&lt;li>主机故障后，如何决定新的主机&lt;/li>
+&lt;/ul>
+&lt;h4 id="数据分散集群">②数据分散集群&lt;/h4>
+&lt;p>数据分散集群指多个服务器组成一个集群，每台服务器都会负责存储一部分数据；同时，为了提升硬件利用率，每台服务器又会备份一部分数据。&lt;/p>
+&lt;p>数据分散集群的复杂点在于如何将数据分配到不同的服务器上，算法需要考虑这些设计点：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>均衡性&lt;/strong>&lt;/p>
+&lt;p>算法需要保证服务器上的数据分区基本是均衡的，不能存在某台服务器上的分区数量是另外一台服务器的几倍的情况。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>容错性&lt;/strong>&lt;/p>
+&lt;p>当出现部分服务器故障时，算法需要将原来分配给故障服务器的数据分区分配给其他服务器。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>可伸缩性&lt;/strong>&lt;/p>
+&lt;p>当集群容量不够，扩充新的服务器后，算法能够自动将部分数据分区迁移到新服务器，并保证扩容后所有服务器的均衡性。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>数据分散集群和数据集中集群的不同点在于，&lt;strong>数据分散集群中的每台服务器都可以处理读写请求&lt;/strong>，因此不存在数据集中集群中负责写的主机那样的角色。但在数据分散集群中，必须有一个角色来负责执行数据分配算法，这个角色可以是独立的一台服务器【例如Hadoop的Namenode】，也可以是集群自己选举出的一台服务器【例如ElasticSearch的master node】。&lt;/p>
+&lt;p>如果是集群服务器选举出来一台机器承担数据分区分配的职责，则这台服务器一般也会叫作主机，但我们需要知道这里的“主机”和数据集中集群中的“主机”，其职责是有差异的。&lt;/p>
+&lt;h4 id="总结">③总结&lt;/h4>
+&lt;p>数据集中集群架构中，客户端只能将数据写到主机；数据分散集群架构中，客户端可以向任意服务器中读写数据。正是因为这个关键的差异，决定了两种集群的应用场景不同。一般来说，数据集中集群适合数据量不大，集群机器数量不多的场景。例如，ZooKeeper 集群，一般推荐 5 台机器左右，数据量是单台服务器就能够支撑；而数据分散集群，由于其良好的可伸缩性，适合业务数据量巨大、集群机器数量庞大的业务场景。例如，Hadoop 集群、HBase 集群，大规模的集群可以达到上百台甚至上千台服务器。&lt;/p>
+&lt;p>&lt;strong>【延伸阅读】&lt;/strong>&lt;/p>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/130332285">分布式一致性算法——共识性算法&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/130332285">分布式一致性算法-Paxos、Raft、ZAB、Gossip&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.jianshu.com/p/2bceacd60b8a">Zookeeper——一致性协议:Zab协议 - 简书 (jianshu.com)&lt;/a>&lt;/p>
+&lt;h3 id="6数据分区">（6）数据分区&lt;/h3>
+&lt;p>前面我们讨论的存储高可用架构都是基于硬件故障的场景去考虑和设计的，主要考虑当部分硬件可能损坏的情况下系统应该如何处理，但对于一些影响非常大的灾难或者事故来说，有可能所有的硬件全部故障。例如，新奥尔良水灾、美加大停电、洛杉矶大地震等这些极端灾害或者事故，可能会导致一个城市甚至一个地区的所有基础设施瘫痪，这种情况下基于硬件故障而设计的高可用架构不再适用，我们需要基于地理级别的故障来设计高可用架构，这就是数据分区架构产生的背景。&lt;/p>
+&lt;p>数据分区指将数据按照一定的规则进行分区，不同分区分布在不同的地理位置上，每个分区存储一部分数据，通过这种方式来规避地理级别的故障所造成的巨大影响。&lt;/p>
+&lt;p>设计一个良好的数据分区架构，需要从&lt;strong>数据量的大小、具体的区域、分区的规则和复制的规则&lt;/strong>来具体考虑。&lt;/p>
+&lt;p>其中最重要的就是数据复制的规则，在某些异常或者灾难情况下，虽然部分数据受影响，但整体数据并没有全部被影响，本身就相当于一个高可用方案了。但仅仅做到这点还不够，因为每个分区本身的数据量虽然只是整体数据的一部分，但还是很大，这部分数据如果损坏或者丢失，损失同样难以接受。&lt;strong>因此即使是分区架构，同样需要考虑复制方案。&lt;/strong>&lt;/p>
+&lt;p>常见的复制方法有集中式、互备式和独立式三种。&lt;/p>
+&lt;p>&lt;strong>集中式&lt;/strong>：所有数据存在一个总备份中心，设计简单，但是成本较高，需要建设一个独立的备份中心。&lt;/p>
+&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313161156097.png" alt="image-20220313161156097" style="zoom:25%;" />
+&lt;p>&lt;strong>互备式&lt;/strong>：每个分区备份另外一个分区的数据，设计复杂，并且扩展麻烦，优点是成本低，因为每台机器都承载两个身份。&lt;/p>
+&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313161206002.png" alt="image-20220313161206002" style="zoom:25%;" />
+&lt;p>&lt;strong>独立式&lt;/strong>：每个分区自己有独立的备份中心【非本分区的】，优点是设计简单，各个分区互不影响，但是成本极高。&lt;/p>
+&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313161215359.png" alt="image-20220313161215359" style="zoom:25%;" /></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category><category domain="https://kiwi4814.github.io/tags/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category></item><item><title>高可用之一：什么是高可用系统？</title><link>https://kiwi4814.github.io/posts/2021/high-availability-concept/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-concept/</guid><pubDate>Fri, 08 Oct 2021 15:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>要想了解高可用这个概念，我们首先需要知道：什么是高可用？在介绍它之前，我们首先来看两个息息相关的概念。&lt;/p>
 &lt;h2 id="分布式一致性">分布式一致性&lt;/h2>
 &lt;p>用户，在使用不同的系统或者不同的场景的时候，对于应用所着重的功能点是有不同的期望值的。&lt;/p>
 &lt;p>举个例子，当我们登录12306买票的时候，我们肯定不希望买到的票和别人买到的票是重复的，对于我们来说是天经地义的，但是对于购票系统来说，就有严格的一致性要求，也就是说购票系统的数据无论在天南海北的哪个售票窗口每时每刻必须都保证是准确无误的。&lt;/p>
@@ -1640,7 +1762,7 @@ git config --global --unset https.proxy
 &lt;h2 id="cap和base理论">CAP和BASE理论&lt;/h2>
 &lt;p>CAP 定理（CAP theorem）又被称作布鲁尔定理（Brewer's theorem），是加州大学伯克利分校的计算机科学家埃里克·布鲁尔（Eric Brewer）在 2000 年的 ACM PODC 上提出的一个猜想。2002 年，麻省理工学院的赛斯·吉尔伯特（Seth Gilbert）和南希·林奇（Nancy Lynch）发表了布鲁尔猜想的证明，使之成为分布式计算领域公认的一个定理。&lt;/p>
 &lt;p>简单来说，CAP理论可以概括为：在一个分布式系统（指互相连接并共享数据的节点的集合）中，当涉及读写操作时，只能保证**&lt;code>一致性（Consistence）&lt;/code>&lt;strong>、&lt;/strong>&lt;code>可用性（Availability）&lt;/code>&lt;strong>、&lt;/strong>&lt;code>分区容错性（Partition Tolerance）&lt;/code>**三者中的两个，另外一个必须被牺牲。&lt;/p>
-&lt;p>&lt;img src="%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9E%B6%E6%9E%84.assets/20191128001.png" alt="图片">&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313154456757.png" alt="image-20220313154456757">&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -1796,7 +1918,7 @@ git config --global --unset https.proxy
 &lt;/li>
 &lt;/ul>
 &lt;blockquote>
-&lt;h4 id="文章节选真正决定高可用系统的本质原因">【文章节选】真正决定高可用系统的本质原因&lt;/h4>
+&lt;h3 id="文章节选真正决定高可用系统的本质原因">【文章节选】真正决定高可用系统的本质原因&lt;/h3>
 &lt;p>从上面这些会影响高可用的SLA的因素，你看到了什么？如果你还是只看到了技术方面或是软件设计的东西，那么你只看到了冰山一角。我们再仔细想一想，&lt;strong>那个5个9的SLA在一年内只能是5分钟的不可用时间，5分钟啊，如果按一年只出1次故障，你也得在五分钟内恢复故障，让我们想想，这意味着什么？&lt;/strong>&lt;/p>
 &lt;p>&lt;strong>如果你没有一套科学的牛逼的软件工程的管理，没有牛逼先进的自动化的运维工具，没有技术能力很牛逼的工程师团队，怎么可能出现高可用的系统啊&lt;/strong>。&lt;/p>
 &lt;p>是的，&lt;strong>要干出高可用的系统，这TMD就是一套严谨科学的工程管理&lt;/strong>，其中包括但不限于了：&lt;/p>
@@ -1813,8 +1935,7 @@ git config --global --unset https.proxy
 &lt;li>一个公司的工程文化&lt;/li>
 &lt;li>领导者对工程的尊重&lt;/li>
 &lt;/ul>
-&lt;/blockquote></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category><category domain="https://kiwi4814.github.io/tags/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category></item><item><title>单元测试之三：参数化测试</title><link>https://kiwi4814.github.io/posts/2021/unittest3/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/unittest3/</guid><pubDate>Wed, 08 Sep 2021 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="单元测试之三参数化测试">单元测试之三：参数化测试&lt;/h1>
-&lt;h2 id="一参数化测试">一、参数化测试&lt;/h2>
+&lt;/blockquote></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category><category domain="https://kiwi4814.github.io/tags/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category></item><item><title>单元测试之三：参数化测试</title><link>https://kiwi4814.github.io/posts/2021/unittest3/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/unittest3/</guid><pubDate>Wed, 08 Sep 2021 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一参数化测试">一、参数化测试&lt;/h2>
 &lt;p>有时候对于同一个单元测试，我们并不希望只测试一组参数，而是期望对传入的不同参数返回不同的结果。参数化测试允许开发人员使用不同的值反复运行同一个测试。&lt;/p>
 &lt;h2 id="二在系统中集成参数化测试">二、在系统中集成参数化测试&lt;/h2>
 &lt;p>参数化测试主要有如下步骤实现：&lt;/p>
@@ -2177,8 +2298,7 @@ git config --global --unset https.proxy
 &lt;h2 id="参考文档">参考文档&lt;/h2>
 &lt;p>&lt;a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1304065789132833">https://www.liaoxuefeng.com/wiki/1252599548343744/1304065789132833&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://www.testwithspring.com/lesson/writing-parameterized-tests-with-junit-4/">Writing Parameterized Tests With JUnit 4 (testwithspring.com)&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://www.baeldung.com/junit-params">Introduction to JUnitParams | Baeldung&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/09/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</category><category domain="https://kiwi4814.github.io/tags/2021/09/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</category></item><item><title>单元测试之二：代码用例</title><link>https://kiwi4814.github.io/posts/2021/unittest2/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/unittest2/</guid><pubDate>Sun, 05 Sep 2021 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="单元测试之二代码用例">单元测试之二：代码用例&lt;/h1>
-&lt;h2 id="一引入">一、引入&lt;/h2>
+&lt;p>&lt;a href="https://www.baeldung.com/junit-params">Introduction to JUnitParams | Baeldung&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/09/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</category><category domain="https://kiwi4814.github.io/tags/2021/09/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</category></item><item><title>单元测试之二：代码用例</title><link>https://kiwi4814.github.io/posts/2021/unittest2/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/unittest2/</guid><pubDate>Sun, 05 Sep 2021 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一引入">一、引入&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -3081,8 +3201,7 @@ git config --global --unset https.proxy
 &lt;p>&lt;a href="https://www.baeldung.com/integration-testing-in-spring">Integration Testing in Spring | Baeldung&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest">Testing in Spring Boot | Baeldung&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://github.com/json-path/JsonPath">json-path/JsonPath: Java JsonPath implementation (github.com)&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://github.com/hehonghui/mockito-doc-zh#0">hehonghui/mockito-doc-zh: Mockito框架中文文档 (github.com)&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/09/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</category><category domain="https://kiwi4814.github.io/tags/2021/09/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</category></item><item><title>单元测试之一：初识单元测试</title><link>https://kiwi4814.github.io/posts/2021/unittest1/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/unittest1/</guid><pubDate>Fri, 03 Sep 2021 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="单元测试之一初识单元测试">单元测试之一：初识单元测试&lt;/h1>
-&lt;p>单元测试是编写测试代码，用来检测特定的、明确的、细颗粒的功能。单元测试并不一定保证程序功能是正确的，更不保证整体业务是准备的。单元测试不仅仅用来保证当前代码的正确性，更重要的是用来保证代码&lt;strong>修复&lt;/strong>、&lt;strong>改进&lt;/strong>或&lt;strong>重构&lt;/strong>之后的正确性。&lt;/p>
+&lt;p>&lt;a href="https://github.com/hehonghui/mockito-doc-zh#0">hehonghui/mockito-doc-zh: Mockito框架中文文档 (github.com)&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/09/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</category><category domain="https://kiwi4814.github.io/tags/2021/09/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</category></item><item><title>单元测试之一：初识单元测试</title><link>https://kiwi4814.github.io/posts/2021/unittest1/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/unittest1/</guid><pubDate>Fri, 03 Sep 2021 22:40:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>单元测试是编写测试代码，用来检测特定的、明确的、细颗粒的功能。单元测试并不一定保证程序功能是正确的，更不保证整体业务是准备的。单元测试不仅仅用来保证当前代码的正确性，更重要的是用来保证代码&lt;strong>修复&lt;/strong>、&lt;strong>改进&lt;/strong>或&lt;strong>重构&lt;/strong>之后的正确性。&lt;/p>
 &lt;p>与之相应的，有集成测试（ Integration Testing）——集成测试是在单元测试的基础上，将所有模块按照概要设计要求组装成为子系统或系统，验证组装后功能以及模块间接口是否正确的测试工作。集成测试也叫组装测试、联合测试、子系统测试或部件测试。最简单的集成测试的例子：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
