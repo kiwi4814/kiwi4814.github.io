@@ -1,4 +1,644 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.94.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 15 Mar 2022 02:06:12 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>设计模式之美03：组合、继承与委托</title><link>https://kiwi4814.github.io/posts/2022/composition-inheritance-delegation/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/composition-inheritance-delegation/</guid><pubDate>Sun, 13 Mar 2022 18:00:56 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="多用组合少用继承">多用组合少用继承&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.94.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 15 Mar 2022 02:23:43 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>面向对象编程05：如何利用面向对象编程开发接口鉴权功能？</title><link>https://kiwi4814.github.io/posts/2022/practice-oop-auth/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/practice-oop-auth/</guid><pubDate>Mon, 14 Mar 2022 16:47:37 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>对于面向对象的设计思想，大部分人还只是停留在理论层面，但更重要的是需要知道“怎么做”，也就是如何使用面向对象进行分析、设计和编程。下面将结合一个真实的开发案例，从基础的需求分析、职责划分、类的定义、交互、组装运行讲起，将最基础的面向对象分析、设计、编程讲清楚。&lt;/p>
+&lt;h2 id="一如何进行面向对象分析ooa">一、如何进行面向对象分析（OOA）&lt;/h2>
+&lt;h3 id="1案例介绍">1.案例介绍&lt;/h3>
+&lt;p>假设你正在开发一个微服务，通过HTTP协议暴露接口给其他系统调用。为了保证接口调用的安全性，我们希望设计一个接口调用鉴权功能，没有认证过的系统调用我们的接口会被拒绝。&lt;/p>
+&lt;h3 id="2需求分析">2.需求分析&lt;/h3>
+&lt;h4 id="1第一轮基础分析---用户名密码">（1）第一轮基础分析 - 用户名密码&lt;/h4>
+&lt;p>很直观的就可以想到，最简单的解决方案就是通过用户名和密码来认证。每个调用方都有一个应用ID和对应的密钥，调用方在请求接口的时候携带，微服务解析并进行对比，一致后再进行接口调用。&lt;/p>
+&lt;h4 id="2第二轮分析优化---加密">（2）第二轮分析优化 - 加密&lt;/h4>
+&lt;p>不过，这样的验证方式，每次都要明文传输密码。所以我们借助算法加密，对密码进行加密处理，但是实际上这也不行，因为加密之后的账号密码同样可以被截获，这就是典型的“重放攻击”。&lt;/p>
+&lt;p>对于这个问题，我们来借住OAuth的验证思路来解决：&lt;/p>
+&lt;ol>
+&lt;li>调用方将URL、AppID以及AppSecret拼接在一起，然后进行加密，生成一个token；&lt;/li>
+&lt;li>调用方调用接口时将原本的URL、AppID以及第一步生成的token一起传递出去；&lt;/li>
+&lt;li>微服务端收到请求后，根据AppID取出AppSecret，然后用同样的算法生成另外一个token，命名为token_s&lt;/li>
+&lt;li>对比token以及token_s，如果一致就允许接口调用请求&lt;/li>
+&lt;/ol>
+&lt;h4 id="3第三轮分析优化---引入随机变量时间戳">（3）第三轮分析优化 - 引入随机变量时间戳&lt;/h4>
+&lt;p>即使是这样，也会有“重放攻击”的风险，因为URL、AppID以及AppSecret都是固定的，未认证系统截获后仍然可以伪装成认证系统去进行调用。为了解决这个问题，我们进一步优化token生成算法，引入一个随机变量，让每次接口请求生成的token不一样，比如我们使用时间戳作为随机变量。&lt;/p>
+&lt;p>现在我们将URL、AppID、AppSecret、时间戳四者进行加密来生成token，调用方在接口请求的时候将token、AppID、时间戳一起随着URL传递给服务端。这样的话，微服务由于有了时间戳，可以判定是否在一定的时间窗口内，如果超过指定的时间就认为token过期而拒绝调用。&lt;/p>
+&lt;h4 id="4第四轮分析优化">（4）第四轮分析优化&lt;/h4>
+&lt;p>你可能会说，这样扔拦截不了这个指定时间内的“重放攻击”啊，是的，这个方案仍然有漏洞。但是安全本身就是相对的，我们需要衡量安全性、开发成本、对系统性能的影响等等来做出合理的方案。&lt;/p>
+&lt;p>我们还有一个细节需要考虑，那就是微服务端如何存储每个客户端的账户密码（即AppID和AppSecret），最容易想到的方案就是存储到MySQL中。不过，像这种非业务功能，最好不要与具体的第三方有过度的耦合。&lt;/p>
+&lt;p>针对存储方案，我们最好能灵活的支持各种存储方式，不一定每一种都要实现，但都要保留扩展点，保证系统有足够的灵活性和扩展性，能够在我们切换存储方式的时候，尽可能地减少代码的改动。&lt;/p>
+&lt;h4 id="5确定最终需求">（5）确定最终需求&lt;/h4>
+&lt;blockquote>
+&lt;ol>
+&lt;li>调用方进行接口请求的时候，将 URL、AppID、密码、时间戳拼接在一起，通过加密算法生成 token，并且将 token、AppID、时间戳拼接在 URL 中，一并发送到微服务端。&lt;/li>
+&lt;li>微服务端在接收到调用方的接口请求之后，从请求中拆解出 token、AppID、时间戳。&lt;/li>
+&lt;li>微服务端首先检查传递过来的时间戳跟当前时间，是否在 token 失效时间窗口内。如果已经超过失效时间，那就算接口调用鉴权失败，拒绝接口调用请求。&lt;/li>
+&lt;li>如果 token 验证没有过期失效，微服务端再从自己的存储中，取出 AppID 对应的密码，通过同样的 token 生成算法，生成另外一个 token，与调用方传递过来的 token 进行匹配；如果一致，则鉴权成功，允许接口调用，否则就拒绝接口调用。&lt;/li>
+&lt;/ol>
+&lt;/blockquote>
+&lt;p>需求分析的过程实际上是一个不断迭代优化的过程。我们不要试图一下就能给出一个完美的解决方案，而是先给出一个粗糙的、基础的方案，有一个迭代的基础，然后再慢慢优化，这样一个思考过程能让我们摆脱无从下手的窘境。&lt;/p>
+&lt;h2 id="二如何进行面向对象设计ood">二、如何进行面向对象设计（OOD）&lt;/h2>
+&lt;p>第一步，我们使用面向对象分析，并且最终产出了详细的需求。下面我们来进行面向对象设计，最终的产出是：类。&lt;/p>
+&lt;p>主要包含下面几个部分：&lt;/p>
+&lt;h3 id="1划分职责进而识别出有哪些类">1.划分职责进而识别出有哪些类？&lt;/h3>
+&lt;p>根据详细的的需求分析，将涉及到的功能点罗列出来，然后去看哪些功能点职责相近，操作同样的属性，是否应该属于同一个类。如果是大型的业务系统，那么先进行模块的拆分即可。&lt;/p>
+&lt;p>针对鉴权这个业务场景，我们可以拆解出来以下功能点：&lt;/p>
+&lt;ul>
+&lt;li>拼接字符串，URL+AppID+AppSecret+Timestamp&lt;/li>
+&lt;li>token加密&lt;/li>
+&lt;li>拼接字符串为新的URL&lt;/li>
+&lt;li>解析URL&lt;/li>
+&lt;li>从存储中取出对应的AppID和AppSecret&lt;/li>
+&lt;li>判断token是否过期&lt;/li>
+&lt;li>验证token是否匹配&lt;/li>
+&lt;/ul>
+&lt;p>这其中可以粗略的分为三类，AuthToken，负责token的生成和验证；Url负责URL的拼接和解析；CredentialStorage，负责从存储中取数据。&lt;/p>
+&lt;h3 id="2定义类及其属性和方法">2.定义类及其属性和方法&lt;/h3>
+&lt;h4 id="authtoken">AuthToken&lt;/h4>
+&lt;p>接下来具体定义每个类的属性和方法，先看AuthToken：&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/202203141908823.jpg" alt="img">&lt;/p>
+&lt;p>从上图中可以发现几个细节：&lt;/p>
+&lt;ul>
+&lt;li>并不是所有的名词都被定义为类的属性了，比如URL、AppID、密码、时间戳是定义为方法的参数的；&lt;/li>
+&lt;li>新增的createTime，expireTimeInterval这两个属性是没有出现在功能点描述中的，但是我们需要用它来在isExpired()函数中来判定token是否过期&lt;/li>
+&lt;li>我们给AuthToken这个类中增加了一个功能点中没有描述的方法getToken()&lt;/li>
+&lt;/ul>
+&lt;p>这告诉我们，在业务模型上来说，不属于这个类的属性和方法，不应该被放到这个类里；此外，在设计类具有哪些属性和方法的时候，不止要分析当下，还要分析这个类从业务模型上来讲了理应有哪些属性和方法。&lt;/p>
+&lt;h4 id="url">Url&lt;/h4>
+&lt;p>虽然在需求描述中，我们定义这个类为URL，但实际的接口请求不一定是Url的形式，还有可能是Dubbo、RPC等其他形式，为了更加通用，我们命名为ApiRequest。&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/202203141915811.jpg" alt="img">&lt;/p>
+&lt;h4 id="credentialstorage">CredentialStorage&lt;/h4>
+&lt;p>CredentialStorage 类非常简单，类图如下所示。为了做到抽象封装具体的存储方式，我们将 CredentialStorage 设计成了接口，基于接口而非具体的实现编程。&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/202203141918591.png" alt="image-20220314191859560">&lt;/p>
+&lt;h3 id="3定义类与类之间的交互关系">3.定义类与类之间的交互关系&lt;/h3>
+&lt;p>UML统一建模语言中定义了六种类之间的关系，它们分别是泛化、实现、关联、聚合、组合、依赖。&lt;/p>
+&lt;ul>
+&lt;li>泛化（Generalization）：就是继承关系&lt;/li>
+&lt;li>实现（Realization）：一般是接口和实现类的关系&lt;/li>
+&lt;li>聚合（Aggregation）：是一种包含关系。A 类对象包含 B 类对象，B 类对象的生命周期可以不依赖 A 类对象的生命周期，也就是说可以单独销毁 A 类对象而不影响 B 对象
+&lt;ul>
+&lt;li>组合（Composition）：也是一种包含关系。A 类对象包含 B 类对象，B 类对象的生命周期依赖 A 类对象的生命周期，B 类对象不可单独存在，比如鸟与翅膀之间的关系。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>关联（Association）：是一种非常弱的关系，包含聚合、组合两种关系。具体到代码层面，如果 B 类对象是 A 类的成员变量，那 B 类和 A 类就是关联关系。&lt;/li>
+&lt;li>依赖（Dependency）：是一种比关联关系更加弱的关系，包含关联关系。不管是 B 类对象是 A 类对象的成员变量，还是 A 类的方法使用 B 类对象作为参数或者返回值、局部变量，只要 B 类对象和 A 类对象有任何使用关系，我们都称它们有依赖关系。&lt;/li>
+&lt;/ul>
+&lt;p>刚刚我们定义的类之间都有哪些关系呢？因为目前只有三个核心的类，所以只用到了实现关系，也即 CredentialStorage 和 MysqlCredentialStorage 之间的关系。&lt;/p>
+&lt;h3 id="4将类组装起来并提供执行入口">4.将类组装起来并提供执行入口&lt;/h3>
+&lt;p>接口鉴权并不是一个独立运行的系统，而是一个集成在系统上运行的组件，所以，我们封装所有的实现细节，设计了一个最顶层的 ApiAuthenticator 接口类，暴露一组给外部调用者使用的 API 接口，作为触发执行鉴权逻辑的入口。具体的类的设计如下所示：&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/202203150941804.jpg" alt="img">&lt;/p>
+&lt;h2 id="三如何进行面向对象编程oop">三、如何进行面向对象编程（OOP）&lt;/h2>
+&lt;p>面向对象编程就是按照设计好的类，翻译成代码实现就行了，这部分工作比较简单，这里给出ApiAuthenticator的实现。&lt;/p>
+&lt;pre tabindex="0">&lt;code>
+public interface ApiAuthenticator {
+void auth(String url);
+void auth(ApiRequest apiRequest);
+}
+public class DefaultApiAuthenticatorImpl implements ApiAuthenticator {
+private CredentialStorage credentialStorage;
+public DefaultApiAuthenticatorImpl() {
+this.credentialStorage = new MysqlCredentialStorage();
+}
+public DefaultApiAuthenticatorImpl(CredentialStorage credentialStorage) {
+this.credentialStorage = credentialStorage;
+}
+@Override
+public void auth(String url) {
+ApiRequest apiRequest = ApiRequest.buildFromUrl(url);
+auth(apiRequest);
+}
+@Override
+public void auth(ApiRequest apiRequest) {
+String appId = apiRequest.getAppId();
+String token = apiRequest.getToken();
+long timestamp = apiRequest.getTimestamp();
+String originalUrl = apiRequest.getOriginalUrl();
+AuthToken clientAuthToken = new AuthToken(token, timestamp);
+if (clientAuthToken.isExpired()) {
+throw new RuntimeException(&amp;#34;Token is expired.&amp;#34;);
+}
+String password = credentialStorage.getPasswordByAppId(appId);
+AuthToken serverAuthToken = AuthToken.generate(originalUrl, appId, password, timestamp);
+if (!serverAuthToken.match(clientAuthToken)) {
+throw new RuntimeException(&amp;#34;Token verfication failed.&amp;#34;);
+}
+}
+}
+&lt;/code>&lt;/pre>&lt;p>不过，在平时的工作中，大部分程序员往往都是在脑子里或者草纸上完成面向对象分析和设计，然后就开始写代码了，边写边思考边重构，并不会严格地按照刚刚的流程来执行。而且，说实话，即便我们在写代码之前，花很多时间做分析和设计，绘制出完美的类图、UML 图，也不可能把每个细节、交互都想得很清楚。在落实到代码的时候，我们还是要反复迭代、重构、打破重写。毕竟，整个软件开发本来就是一个迭代、修修补补、遇到问题解决问题的过程，是一个不断重构的过程。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">极客时间 - 设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>面向对象编程04：贫血模型与充血模型</title><link>https://kiwi4814.github.io/posts/2022/anaemic-and-rich-domain-model/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/anaemic-and-rich-domain-model/</guid><pubDate>Sun, 13 Mar 2022 18:21:11 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>我们都知道，很多业务系统都是基于MVC三层架构来开发，实际上，这是一种基于贫血模型的MVC三层架构开发模式。虽然现在以及成为标准的web项目开发模式，但是却违反了面向对象编程风格，因而被人称为”反模式“。特别是&lt;strong>领域驱动设计&lt;/strong>（Domain Driven Design，简称DDD）盛行之后，这种基于贫血模型的传统的开发模式就更加被人诟病。&lt;/p>
+&lt;h2 id="充血模型与贫血模型">充血模型与贫血模型&lt;/h2>
+&lt;h3 id="1什么是基于贫血模型的传统开发模式">1.什么是基于贫血模型的传统开发模式？&lt;/h3>
+&lt;p>做过Java开发项目的，都知道MVC架构模式。MVC 三层架构中的 M 表示 Model，V 表示 View，C 表示 Controller。它将整个项目分为三层：展示层、逻辑层、数据层。MVC 三层开发架构是一个比较笼统的分层方式，落实到具体的开发层面，很多项目也并不会 100% 遵从 MVC 固定的分层方式，而是会根据具体的项目需求，做适当的调整。&lt;/p>
+&lt;p>比如，现在很多 Web 或者 App 项目都是前后端分离的，后端负责暴露接口给前端调用。这种情况下，我们一般就将后端项目分为 Repository 层、Service 层、Controller 层。其中，Repository 层负责数据访问，Service 层负责业务逻辑，Controller 层负责暴露接口。当然，这只是其中一种分层和命名方式。不同的项目、不同的团队，可能会对此有所调整。不过，万变不离其宗，只要是依赖数据库开发的 Web 项目，基本的分层思路都大差不差。&lt;/p>
+&lt;p>在这种MVC架构里面，有很多只包含数据（成员变量及对应的getter、setter方法），不包含业务逻辑的类，这种就叫做&lt;strong>贫血模型（Anemic Domain Model）&lt;/strong>。这种贫血模型将数据与操作分离，破坏了面向对象的封装特性，是一种典型的面向过程的编程风格。&lt;/p>
+&lt;h3 id="2什么是基于充血模型的ddd开发模式">2.什么是基于充血模型的DDD开发模式？&lt;/h3>
+&lt;h4 id="充血模型">充血模型&lt;/h4>
+&lt;p>在贫血模型中，数据和业务逻辑被分割到不同的类中。充血模型（Rich Domain Model）则正好相反，数据和对应的业务逻辑被封装到同一个类中。因此，这种充血模型满足面向对象的封装特性，是典型的面向对象编程风格。&lt;/p>
+&lt;h4 id="领域驱动设计">领域驱动设计&lt;/h4>
+&lt;p>领域驱动设计主要是用来指导如何解耦业务系统，划分业务模块，定义业务领域模型及其交互。这个概念在2004年就被提出，不过它被大众所熟知还得基于另外一个概念的兴起，那就是&lt;strong>微服务&lt;/strong>。&lt;/p>
+&lt;p>我们知道，除了监控、调用链追踪、API 网关等服务治理系统的开发之外，微服务还有另外一个更加重要的工作，那就是针对公司的业务，合理地做微服务拆分。而领域驱动设计恰好就是用来指导划分服务的。所以，微服务加速了领域驱动设计的盛行。&lt;/p>
+&lt;p>不过领域驱动设计不是银弹，也没必要花很多时间研究它。做好领域驱动设计的关键是对业务的熟悉程度，而不是对DDD的熟悉程度。实际上，基于充血模型的DDD开发模式实现的代码，也是按照MVC三层架构分的。Controller层负责暴露接口，Repository层还是负责数据存取，Service层负责核心业务逻辑，它们之间的主要区别在于Service层。&lt;/p>
+&lt;p>在传统的贫血模型开发模式中，Service层包含Service和Bo两个部分，Bo只包含数据不包含业务逻辑，业务逻辑集中在Service层；而在DDD开发模式种，Service层包含Service类和Domain类两个部分，Domain就相当于贫血模型中的BO，不过Domain是既包含数据，又包含业务逻辑的，相对的是Service类变得非常单薄。&lt;/p>
+&lt;h3 id="3为什么贫血模式更加受欢迎">3.为什么贫血模式更加受欢迎？&lt;/h3>
+&lt;blockquote>
+&lt;p>我们前面也讲过，面向过程编程风格有种种弊端，比如，数据和操作分离之后，数据本身的操作就不受限制了。任何代码都可以随意修改数据。既然基于贫血模型的这种传统开发模式是面向过程编程风格的，那它又为什么会被广大程序员所接受呢？关于这个问题，我总结了下面三点原因。&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>业务系统足够简单，很多系统几乎是基于SQL的CRUD操作，贫血模型就足以应对&lt;/li>
+&lt;li>充血模型的设计比贫血模型更加有难度，贫血模型只需要定义好数据，在service实现功能即可&lt;/li>
+&lt;li>思维固化，转型有成本&lt;/li>
+&lt;/ul>
+&lt;h3 id="4什么项目应该使用基于充血模型的ddd开发模式">4.什么项目应该使用基于充血模型的DDD开发模式&lt;/h3>
+&lt;blockquote>
+&lt;p>刚刚我们讲到，基于贫血模型的传统的开发模式，比较适合业务比较简单的系统开发。相对应的，基于充血模型的 DDD 开发模式，更适合业务复杂的系统开发。比如，包含各种利息计算模型、还款模型等复杂业务的金融系统。&lt;/p>
+&lt;/blockquote>
+&lt;p>两者的区别一个重逻辑，一个重数据，所以根本的区别是什么呢？为什么复杂系统要用基于充血模型的DDD模式开发更有优势？&lt;/p>
+&lt;p>实际上，这两者还有一个非常重要的区别：&lt;strong>会导致不同的开发流程&lt;/strong>。而基于充血模型的DDD开发模式在应对大型复杂系统时更有优势，为什么这么说呢？&lt;/p>
+&lt;p>在基于贫血模型开发时，大部分是SQL驱动的，按照固定的模板，实现SQL和接口返回，这样时间久了，各种长得差不多的、区别很小的SQL语句满天飞。这个过程中很少有人会应用领域模型、OOP的概念，也很少有代码复用意识。对于复杂的业务系统来说，这种开发方式会让代码越来越混乱，最终导致无法维护。&lt;/p>
+&lt;p>在DDD开发模式下，我们需要事先理清所有的业务，定义领域模型所包含的属性和方法，领域模型相当于可复用的业务中间层。新功能需求的开发，都基于之前定义好的这些领域模型来完成。越是复杂的系统，对代码的复用性、易维护性要求就越高，我们越是应该花时间在前期设计上【90%设计，10%编码】。而基于充血模型的 DDD 开发模式，正好需要我们前期做大量的业务调研、领域模型设计，所以它更加适合这种复杂系统的开发。&lt;/p>
+&lt;h2 id="利用ddd开发一个虚拟钱包系统">利用DDD开发一个虚拟钱包系统&lt;/h2>
+&lt;h3 id="业务场景">业务场景&lt;/h3>
+&lt;p>很多具有支付、购买功能的应用（比如淘宝、滴滴出行、极客时间等）都支持钱包的功能。应用为每个用户开设一个系统内的虚拟钱包账户，支持用户&lt;strong>充值、提现、支付、冻结、透支、转赠、查询账户余额、查询交易流水&lt;/strong>等操作。为了方便理解，我们现在给这个钱包定义以下五个功能：&lt;/p>
+&lt;h4 id="1充值">1.充值&lt;/h4>
+&lt;ul>
+&lt;li>从用户的银行卡账户转账到应用的公共银行卡账户&lt;/li>
+&lt;li>将用户的充值金额加到虚拟钱包余额上&lt;/li>
+&lt;li>记录刚刚的操作流水&lt;/li>
+&lt;/ul>
+&lt;h4 id="2支付">2.支付&lt;/h4>
+&lt;ul>
+&lt;li>从用户的虚拟钱包划钱到商家的虚拟钱包账户&lt;/li>
+&lt;li>记录流水&lt;/li>
+&lt;/ul>
+&lt;h4 id="3提现">3.提现&lt;/h4>
+&lt;ul>
+&lt;li>扣减虚拟钱包余额&lt;/li>
+&lt;li>转账到真实的银行卡&lt;/li>
+&lt;li>记录流水&lt;/li>
+&lt;/ul>
+&lt;h4 id="4查询余额">4.查询余额&lt;/h4>
+&lt;ul>
+&lt;li>查看余额数字即可&lt;/li>
+&lt;/ul>
+&lt;h4 id="5查询交易流水">5.查询交易流水&lt;/h4>
+&lt;ul>
+&lt;li>查询充值、支付、提现的记录列表&lt;/li>
+&lt;/ul>
+&lt;h3 id="设计思路">设计思路&lt;/h3>
+&lt;p>我们可以把整个钱包系统的业务划分为两部分，其中一部分单纯跟应用内的虚拟钱包账户打交道，另一部分单纯跟银行账户打交道。我们基于这样一个业务划分，给系统解耦，将整个钱包系统拆分为两个子系统：虚拟钱包系统和三方支付系统。&lt;/p>
+&lt;p>我们在这里只讲解虚拟钱包系统。&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/202203141253373.jpg" alt="img">&lt;/p>
+&lt;p>从图中我们可以看出，虚拟钱包系统要支持的操作非常简单，就是余额的加加减减。其中，充值、提现、查询余额三个功能，只涉及一个账户余额的加减操作，而支付功能涉及两个账户的余额加减操作：一个账户减余额，另一个账户加余额。&lt;/p>
+&lt;p>至于交易流水，交易流水的数据格式包含两个钱包账号，一个是入账钱包账号，一个是出账钱包账号。为什么要有两个账号信息呢？这主要是为了兼容支付这种涉及两个账户的交易类型。不过，对于充值、提现这两种交易类型来说，我们只需要记录一个钱包账户信息就够了。&lt;/p>
+&lt;p>下面来看一下如何用两种模式来实现这样的虚拟钱包系统？&lt;/p>
+&lt;h3 id="基于贫血模型的传统开发模式">基于贫血模型的传统开发模式&lt;/h3>
+&lt;p>如果你有开发web项目的经验，那么这个系统对你来说将会非常简单，这是一个典型的Web后端项目三层架构，Controller和VO负责暴露接口，伪代码如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">VirtualWalletController&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 通过构造函数或者IOC框架注入
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">private&lt;/span> &lt;span class="n">VirtualWalletService&lt;/span> &lt;span class="n">virtualWalletService&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="nf">getBalance&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">walletId&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="o">...&lt;/span> &lt;span class="o">}&lt;/span> &lt;span class="c1">//查询余额
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">debit&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">walletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="o">...&lt;/span> &lt;span class="o">}&lt;/span> &lt;span class="c1">//出账
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">credit&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">walletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="o">...&lt;/span> &lt;span class="o">}&lt;/span> &lt;span class="c1">//入账
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">transfer&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">fromWalletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">Long&lt;/span> &lt;span class="n">toWalletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="o">...}&lt;/span> &lt;span class="c1">//转账
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="c1">//省略查询transaction的接口
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Service 和 BO 负责核心业务逻辑，Repository 和 Entity 负责数据存取。Service层的代码如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;span class="lnt">56
+&lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;span class="lnt">59
+&lt;/span>&lt;span class="lnt">60
+&lt;/span>&lt;span class="lnt">61
+&lt;/span>&lt;span class="lnt">62
+&lt;/span>&lt;span class="lnt">63
+&lt;/span>&lt;span class="lnt">64
+&lt;/span>&lt;span class="lnt">65
+&lt;/span>&lt;span class="lnt">66
+&lt;/span>&lt;span class="lnt">67
+&lt;/span>&lt;span class="lnt">68
+&lt;/span>&lt;span class="lnt">69
+&lt;/span>&lt;span class="lnt">70
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">VirtualWalletBo&lt;/span> &lt;span class="o">{&lt;/span>&lt;span class="c1">//省略getter/setter/constructor方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">private&lt;/span> &lt;span class="n">Long&lt;/span> &lt;span class="n">id&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">Long&lt;/span> &lt;span class="n">createTime&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">balance&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="n">Enum&lt;/span> &lt;span class="n">TransactionType&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">DEBIT&lt;/span>&lt;span class="o">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">CREDIT&lt;/span>&lt;span class="o">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">TRANSFER&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">VirtualWalletService&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 通过构造函数或者IOC框架注入
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">private&lt;/span> &lt;span class="n">VirtualWalletRepository&lt;/span> &lt;span class="n">walletRepo&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">VirtualWalletTransactionRepository&lt;/span> &lt;span class="n">transactionRepo&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">VirtualWalletBo&lt;/span> &lt;span class="nf">getVirtualWallet&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">walletId&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">VirtualWalletEntity&lt;/span> &lt;span class="n">walletEntity&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">walletRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getWalletEntity&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">VirtualWalletBo&lt;/span> &lt;span class="n">walletBo&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">convert&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletEntity&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">walletBo&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="nf">getBalance&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">walletId&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">walletRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getBalance&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Transactional&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">debit&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">walletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">VirtualWalletEntity&lt;/span> &lt;span class="n">walletEntity&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">walletRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getWalletEntity&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">balance&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">walletEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getBalance&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">balance&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">compareTo&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">0&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">throw&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">NoSufficientBalanceException&lt;/span>&lt;span class="o">(...);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">VirtualWalletTransactionEntity&lt;/span> &lt;span class="n">transactionEntity&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">VirtualWalletTransactionEntity&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setAmount&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setCreateTime&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">System&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">currentTimeMillis&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setType&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">TransactionType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">DEBIT&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setFromWalletId&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">saveTransaction&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">walletRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">updateBalance&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">balance&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">subtract&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Transactional&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">credit&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">walletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">VirtualWalletTransactionEntity&lt;/span> &lt;span class="n">transactionEntity&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">VirtualWalletTransactionEntity&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setAmount&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setCreateTime&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">System&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">currentTimeMillis&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setType&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">TransactionType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">CREDIT&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setFromWalletId&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">saveTransaction&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">VirtualWalletEntity&lt;/span> &lt;span class="n">walletEntity&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">walletRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getWalletEntity&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">balance&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">walletEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getBalance&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">walletRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">updateBalance&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">balance&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Transactional&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">transfer&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">fromWalletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">Long&lt;/span> &lt;span class="n">toWalletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">VirtualWalletTransactionEntity&lt;/span> &lt;span class="n">transactionEntity&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">VirtualWalletTransactionEntity&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setAmount&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setCreateTime&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">System&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">currentTimeMillis&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setType&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">TransactionType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">TRANSFER&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setFromWalletId&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">fromWalletId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setToWalletId&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">toWalletId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">saveTransaction&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">debit&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">fromWalletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">credit&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">toWalletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="基于充血模型的ddd开发模式">基于充血模型的DDD开发模式&lt;/h3>
+&lt;p>在上一节课中，我们讲到，基于充血模型的 DDD 开发模式，跟基于贫血模型的传统开发模式的主要区别就在 Service 层，Controller 层和 Repository 层的代码基本上相同。所以，我们重点看一下，Service 层按照基于充血模型的 DDD 开发模式该如何来实现。&lt;/p>
+&lt;p>在这种开发模式下，我们把虚拟钱包 VirtualWallet 类设计成一个充血的 Domain 领域模型，并且将原来在 Service 类中的部分业务逻辑移动到 VirtualWallet 类中，让 Service 类的实现依赖 VirtualWallet 类。具体的代码实现如下所示：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;span class="lnt">56
+&lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;span class="lnt">59
+&lt;/span>&lt;span class="lnt">60
+&lt;/span>&lt;span class="lnt">61
+&lt;/span>&lt;span class="lnt">62
+&lt;/span>&lt;span class="lnt">63
+&lt;/span>&lt;span class="lnt">64
+&lt;/span>&lt;span class="lnt">65
+&lt;/span>&lt;span class="lnt">66
+&lt;/span>&lt;span class="lnt">67
+&lt;/span>&lt;span class="lnt">68
+&lt;/span>&lt;span class="lnt">69
+&lt;/span>&lt;span class="lnt">70
+&lt;/span>&lt;span class="lnt">71
+&lt;/span>&lt;span class="lnt">72
+&lt;/span>&lt;span class="lnt">73
+&lt;/span>&lt;span class="lnt">74
+&lt;/span>&lt;span class="lnt">75
+&lt;/span>&lt;span class="lnt">76
+&lt;/span>&lt;span class="lnt">77
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">VirtualWallet&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="c1">// Domain领域模型(充血模型)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">private&lt;/span> &lt;span class="n">Long&lt;/span> &lt;span class="n">id&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">Long&lt;/span> &lt;span class="n">createTime&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">System&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">currentTimeMillis&lt;/span>&lt;span class="o">();;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">balance&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">BigDecimal&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">ZERO&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="nf">VirtualWallet&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">preAllocatedId&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">id&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">preAllocatedId&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="nf">balance&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">balance&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">debit&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">balance&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">compareTo&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">0&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">throw&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">InsufficientBalanceException&lt;/span>&lt;span class="o">(...);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">balance&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">balance&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">subtract&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">credit&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">compareTo&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">BigDecimal&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">ZERO&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">0&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">throw&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">InvalidAmountException&lt;/span>&lt;span class="o">(...);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">balance&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">balance&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">VirtualWalletService&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 通过构造函数或者IOC框架注入
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">private&lt;/span> &lt;span class="n">VirtualWalletRepository&lt;/span> &lt;span class="n">walletRepo&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">VirtualWalletTransactionRepository&lt;/span> &lt;span class="n">transactionRepo&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">VirtualWallet&lt;/span> &lt;span class="nf">getVirtualWallet&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">walletId&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">VirtualWalletEntity&lt;/span> &lt;span class="n">walletEntity&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">walletRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getWalletEntity&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">VirtualWallet&lt;/span> &lt;span class="n">wallet&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">convert&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletEntity&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">wallet&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="nf">getBalance&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">walletId&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">walletRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getBalance&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Transactional&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">debit&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">walletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">VirtualWalletEntity&lt;/span> &lt;span class="n">walletEntity&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">walletRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getWalletEntity&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">VirtualWallet&lt;/span> &lt;span class="n">wallet&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">convert&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletEntity&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">wallet&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">debit&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">VirtualWalletTransactionEntity&lt;/span> &lt;span class="n">transactionEntity&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">VirtualWalletTransactionEntity&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setAmount&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setCreateTime&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">System&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">currentTimeMillis&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setType&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">TransactionType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">DEBIT&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setFromWalletId&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">saveTransaction&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">walletRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">updateBalance&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">wallet&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">balance&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Transactional&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">credit&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">walletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">VirtualWalletEntity&lt;/span> &lt;span class="n">walletEntity&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">walletRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getWalletEntity&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">VirtualWallet&lt;/span> &lt;span class="n">wallet&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">convert&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletEntity&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">wallet&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">credit&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">VirtualWalletTransactionEntity&lt;/span> &lt;span class="n">transactionEntity&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">VirtualWalletTransactionEntity&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setAmount&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setCreateTime&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">System&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">currentTimeMillis&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setType&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">TransactionType&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">CREDIT&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setFromWalletId&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transactionRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">saveTransaction&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">transactionEntity&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">walletRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">updateBalance&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">walletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">wallet&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">balance&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Transactional&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">transfer&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">fromWalletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">Long&lt;/span> &lt;span class="n">toWalletId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//...跟基于贫血模型的传统开发模式的代码一样...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>看了上面的代码，你可能会说，领域模型 VirtualWallet 类很单薄，包含的业务逻辑很简单。相对于原来的贫血模型的设计思路，这种充血模型的设计思路，貌似并没有太大优势。你说得没错！这也是大部分业务系统都使用基于贫血模型开发的原因。不过，如果虚拟钱包系统需要支持更复杂的业务逻辑，那充血模型的优势就显现出来了。比如，我们要支持透支一定额度和冻结部分余额的功能。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">VirtualWallet&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">Long&lt;/span> &lt;span class="n">id&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">Long&lt;/span> &lt;span class="n">createTime&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">System&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">currentTimeMillis&lt;/span>&lt;span class="o">();;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">balance&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">BigDecimal&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">ZERO&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">boolean&lt;/span> &lt;span class="n">isAllowedOverdraft&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">true&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">overdraftAmount&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">BigDecimal&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">ZERO&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">frozenAmount&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">BigDecimal&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">ZERO&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="nf">VirtualWallet&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Long&lt;/span> &lt;span class="n">preAllocatedId&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">id&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">preAllocatedId&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">freeze&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="o">...&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">unfreeze&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="o">...}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">increaseOverdraftAmount&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="o">...&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">decreaseOverdraftAmount&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="o">...&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">closeOverdraft&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="o">...&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">openOverdraft&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="o">...&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="nf">balance&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">balance&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="nf">getAvaliableBalance&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">totalAvaliableBalance&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">balance&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">subtract&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">frozenAmount&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">isAllowedOverdraft&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">totalAvaliableBalance&lt;/span> &lt;span class="o">+=&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">overdraftAmount&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">totalAvaliableBalance&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">debit&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">totalAvaliableBalance&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">getAvaliableBalance&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">totoalAvaliableBalance&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">compareTo&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">0&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">throw&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">InsufficientBalanceException&lt;/span>&lt;span class="o">(...);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">balance&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">balance&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">subtract&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">credit&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">BigDecimal&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">compareTo&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">BigDecimal&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">ZERO&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">0&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">throw&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">InvalidAmountException&lt;/span>&lt;span class="o">(...);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">balance&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">balance&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">amount&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>领域模型 VirtualWallet 类添加了简单的冻结和透支逻辑之后，功能看起来就丰富了很多，代码也没那么单薄了。如果功能继续演进，我们可以增加更加细化的冻结策略、透支策略、支持钱包账号（VirtualWallet id 字段）自动生成的逻辑（不是通过构造函数经外部传入 ID，而是通过分布式 ID 生成算法来自动生成 ID）等等。VirtualWallet 类的业务逻辑会变得越来越复杂，也就很值得设计成充血模型了。&lt;/p>
+&lt;h3 id="辩证思考">辩证思考&lt;/h3>
+&lt;p>1.DDD开发模式中业务逻辑都在Domain中，那么Service的职责是什么？&lt;/p>
+&lt;ul>
+&lt;li>负责与repo层交流，保持领域模型的独立性，不与其他层耦合过深&lt;/li>
+&lt;li>业务聚合，有些逻辑是多个函数组合到一起的，使用service进行聚合&lt;/li>
+&lt;li>Service负责一些非功能性及与三方系统交互的工作，比如幂等、事务、发邮件、发消息、记录日志等&lt;/li>
+&lt;/ul>
+&lt;p>2.Controller和Repo层仍然是贫血模型，是否有必要进行充血领域建模呢？&lt;/p>
+&lt;ul>
+&lt;li>没有必要，Controller 层主要负责接口的暴露，Repository 层主要负责与数据库打交道，这两层包含的业务逻辑并不多&lt;/li>
+&lt;li>Repo层的Entity由于生命周期有限，一旦传递到Service层后就会被转化为BO或者Domain来处理后续逻辑，所以不需要充血模型&lt;/li>
+&lt;li>Controller层的VO实际上是一种DTO，从功能上来讲是不包含逻辑只包含数据的，所以设计成贫血模型也是合理的&lt;/li>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">极客时间 - 设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>面向对象编程03：组合、继承与委托</title><link>https://kiwi4814.github.io/posts/2022/composition-inheritance-delegation/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/composition-inheritance-delegation/</guid><pubDate>Sun, 13 Mar 2022 18:00:56 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="多用组合少用继承">多用组合少用继承&lt;/h2>
 &lt;p>我们再来讲讲另外一个原则：&lt;strong>组合优于继承，多用组合少用继承。&lt;/strong>&lt;/p>
 &lt;p>为什么这么说呢？&lt;/p>
 &lt;h3 id="1为什么不推荐使用继承">1.为什么不推荐使用继承？&lt;/h3>
@@ -210,7 +850,7 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/li>
-&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>设计模式之美02：接口与抽象类</title><link>https://kiwi4814.github.io/posts/2022/interface-abstract-class/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/interface-abstract-class/</guid><pubDate>Fri, 11 Mar 2022 19:59:00 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一接口和抽象类">一、接口和抽象类&lt;/h2>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">极客时间 - 设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>面向对象编程02：接口与抽象类</title><link>https://kiwi4814.github.io/posts/2022/interface-abstract-class/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/interface-abstract-class/</guid><pubDate>Fri, 11 Mar 2022 19:59:00 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一接口和抽象类">一、接口和抽象类&lt;/h2>
 &lt;p>众所周知，我们可以使用接口来实现面向对象的&lt;strong>抽象特性&lt;/strong>、&lt;strong>多态特性&lt;/strong>和&lt;strong>基于接口而非实现&lt;/strong>的设计原则，使用抽象类来实现面向对象的&lt;strong>继承&lt;/strong>特性和&lt;strong>模板设计模式&lt;/strong>等等。&lt;/p>
 &lt;h3 id="1-接口和抽象类的区别">1. 接口和抽象类的区别&lt;/h3>
 &lt;h4 id="抽象类">抽象类&lt;/h4>
@@ -535,7 +1175,7 @@
 &lt;li>函数的命名不能暴露任何实现细节&lt;/li>
 &lt;li>封装具体的实现细节&lt;/li>
 &lt;li>为实现类定义抽象的接口，具体的实现类都依赖统一的接口定义，使用者依赖接口而非具体的实现类编程&lt;/li>
-&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>设计模式之美01：面向对象与面向过程</title><link>https://kiwi4814.github.io/posts/2022/object-oriented-procedural/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/object-oriented-procedural/</guid><pubDate>Tue, 08 Mar 2022 22:40:15 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="理论一什么是面向对象">理论一：什么是面向对象？&lt;/h2>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">极客时间 - 设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>面向对象编程01：面向对象与面向过程</title><link>https://kiwi4814.github.io/posts/2022/object-oriented-procedural/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/object-oriented-procedural/</guid><pubDate>Tue, 08 Mar 2022 22:40:15 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="理论一什么是面向对象">理论一：什么是面向对象？&lt;/h2>
 &lt;p>面向对象编程和面向对象编程语言的区别？&lt;/p>
 &lt;blockquote>
 &lt;p>面向对象是一种编程风格，面向对象编程语言是支持类或者对象的语法机制，使用面向对象语言能够很方便的实现面向对象编程。&lt;/p>
@@ -699,7 +1339,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;li>在一些微小程序、数据处理和算法中，脚本式的面向过程的编程风格更合适&lt;/li>
 &lt;li>面向过程是面向对象的基础，即使在面向对象语言中，类里面每个方法的实现过程就是面向过程的&lt;/li>
 &lt;li>我们的最终目的是写出易维护、易读、易复用的高质量代码，所以这两种编程风格并不是非黑即白的。&lt;/li>
-&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>从零开始搭建个人博客（1） - 准备工作</title><link>https://kiwi4814.github.io/posts/2022/hugo-github-pages/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/hugo-github-pages/</guid><pubDate>Mon, 03 Jan 2022 22:10:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>很久以来我的电子笔记都是通过本地化文件来管理的，中间也经历过很多痛苦的过程，Evernote、Notion、Typora以及目前主力使用的Obsidian，但是我发现这些管理方式都有着比较致命的缺点：知识过于碎片化以及过于依赖我的自制力。&lt;/p>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">极客时间 - 设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>从零开始搭建个人博客（1） - 准备工作</title><link>https://kiwi4814.github.io/posts/2022/hugo-github-pages/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/hugo-github-pages/</guid><pubDate>Mon, 03 Jan 2022 22:10:15 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>很久以来我的电子笔记都是通过本地化文件来管理的，中间也经历过很多痛苦的过程，Evernote、Notion、Typora以及目前主力使用的Obsidian，但是我发现这些管理方式都有着比较致命的缺点：知识过于碎片化以及过于依赖我的自制力。&lt;/p>
 &lt;p>卡片式笔记法固然优秀，但是目前里面的很多文字都是随意写就，力求自己能够看懂，搭建自己的知识体系足够，但是想要分享的话却是难上加难。基于以上种种，有了搭建一个个人博客的想法，一方面尝试着分享一下自己粗浅的知识储备，另一方面借此机会学习一下这个过程。&lt;/p>
 &lt;p>因而有了这篇文章，或者说这个系列的文章，希望能够让看到这篇文章的人也能学会如何搭建自己的个人博客。&lt;/p>
 &lt;p>本文为此系列的第一章，主要介绍下我们需要预先准备的账号、需要了解的知识以及需要安装的工具。&lt;/p>
