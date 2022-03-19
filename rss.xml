@@ -1,4 +1,858 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.94.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sat, 19 Mar 2022 08:27:41 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>面向对象编程05：如何利用面向对象编程开发接口鉴权功能？</title><link>https://kiwi4814.github.io/posts/2022/practice-oop-auth/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/practice-oop-auth/</guid><pubDate>Mon, 14 Mar 2022 16:47:37 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>对于面向对象的设计思想，大部分人还只是停留在理论层面，但更重要的是需要知道“怎么做”，也就是如何使用面向对象进行分析、设计和编程。下面将结合一个真实的开发案例，从基础的需求分析、职责划分、类的定义、交互、组装运行讲起，将最基础的面向对象分析、设计、编程讲清楚。&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.94.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sat, 19 Mar 2022 10:51:47 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>设计原则04：接口隔离原则（ISP）</title><link>https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/interface-segregation-principle/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/interface-segregation-principle/</guid><pubDate>Fri, 18 Mar 2022 22:02:37 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="如何理解接口隔离原则">如何理解”接口隔离原则“？&lt;/h2>
+&lt;p>接口隔离原则的英文翻译是”Interface Segregation Principle“，Robert Martin 在 SOLID 原则中是这样定义它的：“&lt;strong>Clients should not be forced to depend upon interfaces that they do not use。&lt;/strong>”直译成中文的话就是：**客户端不应该被强迫依赖它不需要的接口。**其中的“客户端”，可以理解为接口的调用者或者使用者。&lt;/p>
+&lt;p>在这条原则中，接口一般可以理解为：一组API接口集合、单个API接口或函数、OOP中的接口概念。&lt;/p>
+&lt;p>下面分别针对这三种情况来详细讲解这个原则。&lt;/p>
+&lt;h3 id="接口是一组api接口或集合">接口是一组API接口或集合&lt;/h3>
+&lt;p>假如现在有一个微服务用户系统，提供了一组和用户相关的API给其他系统使用，比如提供了一个UserService接口，其中包含了注册、登录、获取用户信息等功能。现在后台想要增加一个删除用户的功能，一般来说，我们只需要在这个UserService增加一个函数，提供删除的接口就行了。&lt;/p>
+&lt;p>这个方法可以解决问题，但是也会带来一些隐患。&lt;/p>
+&lt;p>我们知道删除用户是一个非常慎重的操作，如果这样设计，在没有鉴权系统的情况下，这个接口有可能会被误用。所有有权限使用UserService的系统都有可以调用这个删除接口，这样不加限制的被使用就有可能导致误删用户。&lt;/p>
+&lt;p>我们参照接口隔离原则，调用者不应该强迫依赖它不需要的接口，将删除接口单独放在另外的一个接口RestrictedUserService中，然后将RestrictedUserService单独给后台系统使用，具体的代码实现如下所示：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">interface&lt;/span> &lt;span class="nc">UserService&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">boolean&lt;/span> &lt;span class="nf">register&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">cellphone&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">boolean&lt;/span> &lt;span class="nf">login&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">cellphone&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">UserInfo&lt;/span> &lt;span class="nf">getUserInfoById&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="kt">long&lt;/span> &lt;span class="n">id&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">UserInfo&lt;/span> &lt;span class="nf">getUserInfoByCellphone&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">cellphone&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">interface&lt;/span> &lt;span class="nc">RestrictedUserService&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">boolean&lt;/span> &lt;span class="nf">deleteUserByCellphone&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">cellphone&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">boolean&lt;/span> &lt;span class="nf">deleteUserById&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="kt">long&lt;/span> &lt;span class="n">id&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">UserServiceImpl&lt;/span> &lt;span class="kd">implements&lt;/span> &lt;span class="n">UserService&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">RestrictedUserService&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ...省略实现代码...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>所以，当接口理解成一组集合接口，&lt;strong>在设计微服务或者类库接口时如果部分接口只被部分调用者使用，那我们需要将这部分接口隔离出来，单独给对应的调用者使用，而不是强迫其他调用者也依赖这部分不会用到的接口。&lt;/strong>&lt;/p>
+&lt;h3 id="接口是单个api或者函数">接口是单个API或者函数&lt;/h3>
+&lt;p>如果接口是个函数，那么接口隔离原则就可以理解为：&lt;strong>函数的设计要功能单一，不要将多个不同的功能逻辑在一个函数中实现。&lt;/strong>&lt;/p>
+&lt;p>这时候，接口隔离原则其实比较类似单一职责原则，不过还是稍微有些区别。单一职责原则针对的是模块、类、接口的设计。而接口隔离原则更侧重于接口的设计，另一方面思考的角度也是不同的，它提供了一种判断接口是否职责单一的标准——通过调用者如何使用接口来判断。如果调用者只使用部分接口或接口的部分功能，那接口的设计就不够职责单一。&lt;/p>
+&lt;h3 id="把接口理解成oop中的接口interface">把接口理解成OOP中的接口（Interface）&lt;/h3>
+&lt;p>假设我们项目中用到了三个外部系统：Kafka、MySQL和Redis。每个系统都对应一系列配置信息，比如地址、端口、访问超时时间等。为了在内存中存储这些配置信息，供项目中的其他模块使用，我们分别设计了三个Configuration类：RedisConfig、MySQLConfig和KafkaConfig。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">RedisConfig&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">ConfigSource&lt;/span> &lt;span class="n">configSource&lt;/span>&lt;span class="o">;&lt;/span> &lt;span class="c1">//配置中心（比如zookeeper）
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">address&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">timeout&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">maxTotal&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//省略其他配置: maxWaitMillis,maxIdle,minIdle...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="nf">RedisConfig&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">ConfigSource&lt;/span> &lt;span class="n">configSource&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">configSource&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">configSource&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="nf">getAddress&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">address&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//...省略其他get()、init()方法...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">update&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//从configSource加载配置到address/timeout/maxTotal...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">KafkaConfig&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="c1">//...省略... }
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">MysqlConfig&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="c1">//...省略... }
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>现在我们有一个新的功能需求，要求支持Redis和Kafka配置信息的热更新，如果在配置中心更改了配置信息，不需要重启系统就能将更新加载到内存中，但是我们不希望对MySQL的配置信息进行热更新。&lt;/p>
+&lt;p>为了实现这个功能，我们设计实现了一个ScheduledUpdater，以固定频率来调用RedisConfig和KafkaConfig中的update()方法。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">interface&lt;/span> &lt;span class="nc">Updater&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">void&lt;/span> &lt;span class="nf">update&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">RedisConfig&lt;/span> &lt;span class="n">implemets&lt;/span> &lt;span class="n">Updater&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//...省略其他属性和方法...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nd">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">update&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="c1">//... }
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">KafkaConfig&lt;/span> &lt;span class="kd">implements&lt;/span> &lt;span class="n">Updater&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//...省略其他属性和方法...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nd">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">update&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="c1">//... }
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">MysqlConfig&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="c1">//...省略其他属性和方法... }
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">ScheduledUpdater&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kd">final&lt;/span> &lt;span class="n">ScheduledExecutorService&lt;/span> &lt;span class="n">executor&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Executors&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">newSingleThreadScheduledExecutor&lt;/span>&lt;span class="o">();;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="n">initialDelayInSeconds&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="n">periodInSeconds&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">Updater&lt;/span> &lt;span class="n">updater&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="nf">ScheduleUpdater&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Updater&lt;/span> &lt;span class="n">updater&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="n">initialDelayInSeconds&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="n">periodInSeconds&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">updater&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">updater&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">initialDelayInSeconds&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">initialDelayInSeconds&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">periodInSeconds&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">periodInSeconds&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">run&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">executor&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">scheduleAtFixedRate&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">new&lt;/span> &lt;span class="n">Runnable&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">run&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">updater&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">update&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">},&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">initialDelayInSeconds&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">periodInSeconds&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">TimeUnit&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">SECONDS&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">Application&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ConfigSource&lt;/span> &lt;span class="n">configSource&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ZookeeperConfigSource&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="cm">/*省略参数*/&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="kd">final&lt;/span> &lt;span class="n">RedisConfig&lt;/span> &lt;span class="n">redisConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">RedisConfig&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">configSource&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="kd">final&lt;/span> &lt;span class="n">KafkaConfig&lt;/span> &lt;span class="n">kafkaConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">KakfaConfig&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">configSource&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="kd">final&lt;/span> &lt;span class="n">MySqlConfig&lt;/span> &lt;span class="n">mysqlConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">MysqlConfig&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">configSource&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">[]&lt;/span> &lt;span class="n">args&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ScheduledUpdater&lt;/span> &lt;span class="n">redisConfigUpdater&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ScheduledUpdater&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">redisConfig&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">300&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">300&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">redisConfigUpdater&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">run&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ScheduledUpdater&lt;/span> &lt;span class="n">kafkaConfigUpdater&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ScheduledUpdater&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">kafkaConfig&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">60&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">60&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">kafkaConfigUpdater&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">run&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>热更新的需求我们已经搞定了，不久之后，又来了一个新的需求，通过命令行来查看Zookeeper中的配置信息是比较麻烦的，所以我们需要有另外一种更加方便的配置信息查看方式。&lt;/p>
+&lt;p>我们开发了一个内嵌的SimpleHttpServer，输出项目的配置信息到一个固定的HTTP地址，不过出于某些原因，我们不想暴露Kafka的配置信息，只想暴露MySQL和Redis的。&lt;/p>
+&lt;p>为了实现这个功能，我们对代码进一步做了改造：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;span class="lnt">56
+&lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;span class="lnt">59
+&lt;/span>&lt;span class="lnt">60
+&lt;/span>&lt;span class="lnt">61
+&lt;/span>&lt;span class="lnt">62
+&lt;/span>&lt;span class="lnt">63
+&lt;/span>&lt;span class="lnt">64
+&lt;/span>&lt;span class="lnt">65
+&lt;/span>&lt;span class="lnt">66
+&lt;/span>&lt;span class="lnt">67
+&lt;/span>&lt;span class="lnt">68
+&lt;/span>&lt;span class="lnt">69
+&lt;/span>&lt;span class="lnt">70
+&lt;/span>&lt;span class="lnt">71
+&lt;/span>&lt;span class="lnt">72
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">interface&lt;/span> &lt;span class="nc">Updater&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">void&lt;/span> &lt;span class="nf">update&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">interface&lt;/span> &lt;span class="nc">Viewer&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span> &lt;span class="nf">outputInPlainText&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Map&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="nf">output&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">RedisConfig&lt;/span> &lt;span class="n">implemets&lt;/span> &lt;span class="n">Updater&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">Viewer&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//...省略其他属性和方法...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nd">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">update&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="c1">//... }
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nd">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="nf">outputInPlainText&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="c1">//... }
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nd">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">Map&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="nf">output&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="c1">//...}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">KafkaConfig&lt;/span> &lt;span class="kd">implements&lt;/span> &lt;span class="n">Updater&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//...省略其他属性和方法...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nd">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">update&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="c1">//... }
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">MysqlConfig&lt;/span> &lt;span class="kd">implements&lt;/span> &lt;span class="n">Viewer&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//...省略其他属性和方法...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nd">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="nf">outputInPlainText&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="c1">//... }
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nd">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">Map&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="nf">output&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="c1">//...}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">SimpleHttpServer&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">host&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">port&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">Map&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Viewer&lt;/span>&lt;span class="o">&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">viewers&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">HashMap&lt;/span>&lt;span class="o">&amp;lt;&amp;gt;();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="nf">SimpleHttpServer&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">host&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">port&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>&lt;span class="c1">//...}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">addViewers&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">urlDirectory&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">Viewer&lt;/span> &lt;span class="n">viewer&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(!&lt;/span>&lt;span class="n">viewers&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">containsKey&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">urlDirectory&lt;/span>&lt;span class="o">))&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">viewers&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">put&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">urlDirectory&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ArrayList&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Viewer&lt;/span>&lt;span class="o">&amp;gt;());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">viewers&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">get&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">urlDirectory&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">viewer&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">run&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="c1">//... }
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">Application&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ConfigSource&lt;/span> &lt;span class="n">configSource&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ZookeeperConfigSource&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="kd">final&lt;/span> &lt;span class="n">RedisConfig&lt;/span> &lt;span class="n">redisConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">RedisConfig&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">configSource&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="kd">final&lt;/span> &lt;span class="n">KafkaConfig&lt;/span> &lt;span class="n">kafkaConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">KakfaConfig&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">configSource&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="kd">final&lt;/span> &lt;span class="n">MySqlConfig&lt;/span> &lt;span class="n">mysqlConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">MySqlConfig&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">configSource&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">[]&lt;/span> &lt;span class="n">args&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ScheduledUpdater&lt;/span> &lt;span class="n">redisConfigUpdater&lt;/span> &lt;span class="o">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">new&lt;/span> &lt;span class="n">ScheduledUpdater&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">redisConfig&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">300&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">300&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">redisConfigUpdater&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">run&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ScheduledUpdater&lt;/span> &lt;span class="n">kafkaConfigUpdater&lt;/span> &lt;span class="o">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">new&lt;/span> &lt;span class="n">ScheduledUpdater&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">kafkaConfig&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">60&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">60&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">redisConfigUpdater&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">run&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SimpleHttpServer&lt;/span> &lt;span class="n">simpleHttpServer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">SimpleHttpServer&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="err">“&lt;/span>&lt;span class="n">127&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">0&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">0&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">1&lt;/span>&lt;span class="err">”&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">2389&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">simpleHttpServer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">addViewer&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/config&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">redisConfig&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">simpleHttpServer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">addViewer&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;/config&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">mysqlConfig&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">simpleHttpServer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">run&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>至此，热更新和监控的需求都实现了，我们来回顾一下其设计思想。&lt;/p>
+&lt;p>我们设计了两个功能非常单一的接口：Updater 和 Viewer。ScheduledUpdater 只依赖 Updater 这个跟热更新相关的接口，不需要被强迫去依赖不需要的 Viewer 接口，满足接口隔离原则。同理，SimpleHttpServer 只依赖跟查看信息相关的 Viewer 接口，不依赖不需要的 Updater 接口，也满足接口隔离原则。&lt;/p>
+&lt;h2 id="课堂问题">课堂问题&lt;/h2>
+&lt;p>java.util.concurrent 并发包提供了 AtomicInteger 这样一个原子类，其中有一个函数 getAndIncrement() 是这样定义的：给整数增加一，并且返回未増之前的值。我的问题是，这个函数的设计是否符合单一职责原则和接口隔离原则？为什么？&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>设计原则03：里氏替换原则（LSP）</title><link>https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/liskov-substitution-principle/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/liskov-substitution-principle/</guid><pubDate>Thu, 17 Mar 2022 19:38:36 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>里式替换原则的英文翻译是：Liskov Substitution Principle，缩写为 LSP。这个原则最早是在 1986 年由 Barbara Liskov 提出，他是这么描述这条原则的：&lt;/p>
+&lt;blockquote>
+&lt;p>If S is a subtype of T, then objects of type T may be replaced with objects of type S, without breaking the program。&lt;/p>
+&lt;/blockquote>
+&lt;p>在 1996 年，Robert Martin 在他的 SOLID 原则中，重新描述了这个原则，英文原话是这样的：&lt;/p>
+&lt;blockquote>
+&lt;p>Functions that use pointers of references to base classes must be able to use objects of derived classes without knowing it。&lt;/p>
+&lt;/blockquote>
+&lt;p>综合这两者的描述，其中文含义可以表述为：&lt;/p>
+&lt;blockquote>
+&lt;p>子类对象（object of subtype/derived class）能够替换程序（program）中父类对象（object of base/parent class）出现的任何地方，并且保证原来程序的逻辑行为（behavior）不变及正确性不被破坏。&lt;/p>
+&lt;/blockquote>
+&lt;p>说起来仍然比较抽象，我们该如何理解这个原则呢？&lt;/p>
+&lt;h2 id="如何理解里氏替换原则">如何理解里氏替换原则？&lt;/h2>
+&lt;p>我们来举个例子解释一下，如下代码中，父类 Transporter 使用 org.apache.http 库中的 HttpClient 类来传输网络数据。子类 SecurityTransporter 继承父类 Transporter，增加了额外的功能，支持传输 appId 和 appToken 安全认证信息。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">Transporter&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">HttpClient&lt;/span> &lt;span class="n">httpClient&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="nf">Transporter&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">HttpClient&lt;/span> &lt;span class="n">httpClient&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">httpClient&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">httpClient&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">Response&lt;/span> &lt;span class="nf">sendRequest&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Request&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ...use httpClient to send request
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">SecurityTransporter&lt;/span> &lt;span class="kd">extends&lt;/span> &lt;span class="n">Transporter&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">appId&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">appToken&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="nf">SecurityTransporter&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">HttpClient&lt;/span> &lt;span class="n">httpClient&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">appId&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">appToken&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">super&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">httpClient&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">appId&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">appId&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">appToken&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">appToken&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">Response&lt;/span> &lt;span class="nf">sendRequest&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Request&lt;/span> &lt;span class="n">request&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">StringUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">isNotBlank&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">appId&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">StringUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">isNotBlank&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">appToken&lt;/span>&lt;span class="o">))&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">request&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">addPayload&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;app-id&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">appId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">request&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">addPayload&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;app-token&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">appToken&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kd">super&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">sendRequest&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">Demo&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">demoFunction&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Transporter&lt;/span> &lt;span class="n">transporter&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Reuqest&lt;/span> &lt;span class="n">request&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">Request&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//...省略设置request中数据值的代码...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">Response&lt;/span> &lt;span class="n">response&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">transporter&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">sendRequest&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//...省略其他逻辑...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 里式替换原则
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">Demo&lt;/span> &lt;span class="n">demo&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">Demo&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">demo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">demofunction&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">new&lt;/span> &lt;span class="n">SecurityTransporter&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="cm">/*省略参数*/&lt;/span>&lt;span class="o">););&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>在上面的代码中，子类 SecurityTransporter 的设计完全符合里式替换原则，可以替换父类出现的任何位置，并且原来代码的逻辑行为不变且正确性也没有被破坏。&lt;/p>
+&lt;p>不过，你可能会有这样的疑问，刚刚的代码设计不就是简单利用了面向对象的多态特性吗？多态和里式替换原则说的是不是一回事呢？从刚刚的例子和定义描述来看，里式替换原则跟多态看起来确实有点类似，但实际上它们完全是两回事。为什么这么说呢？&lt;/p>
+&lt;p>其实不然，假如说子类的sendRequest方法中，对于appId和appToken的校验修改一下，如果检验失败或者不传那么直接抛出异常。这时候虽然用子类替换父类的代码语法上不会有问题，但是整个程序的逻辑行为已经发生了改变，在不传入appId和appToken的情况下我们已经无法使用这个方法了。从设计思路上来讲，这时候SecurityTransporter 的设计是不符合里式替换原则的。&lt;/p>
+&lt;p>&lt;strong>与多态的区别&lt;/strong>&lt;/p>
+&lt;p>多态是面向对象编程的一大特性，也是面向对象编程语言的一种语法。它是一种代码实现的思路。而里式替换是一种设计原则，是用来指导继承关系中子类该如何设计的，子类的设计要保证在替换父类的时候，不改变原有程序的逻辑以及不破坏原有程序的正确性。&lt;/p>
+&lt;h2 id="哪些代码明显违背了里氏替换原则">哪些代码明显违背了里氏替换原则？&lt;/h2>
+&lt;p>实际上，里氏替换原则还有另外一个更加能落地的描述，那就是“Design By Contract”，中文翻译就是“按照协议来设计”。即子类在设计的时候要遵守父类的行为约定，这里的行为约定包括：&lt;strong>函数声明要实现的功能；对输入、输出、异常的约定；甚至包括注释中所罗列的任何特殊说明。&lt;/strong>&lt;/p>
+&lt;p>下面举几个明显违反里氏替换原则的反例来解释下。&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>子类违背父类声明要实现的功能&lt;/strong>&lt;/p>
+&lt;p>父类中提供的 sortOrdersByAmount() 订单排序函数，是按照金额从小到大来给订单排序的，而子类重写这个 sortOrdersByAmount() 订单排序函数之后，是按照创建日期来给订单排序的。那子类的设计就违背里式替换原则。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>子类违背父类对输入、输出、异常的约定&lt;/strong>&lt;/p>
+&lt;p>在父类中，某个函数约定：运行出错的时候返回 null；获取数据为空的时候返回空集合（empty collection）。而子类重载函数之后，实现变了，运行出错返回异常（exception），获取不到数据返回 null。那子类的设计就违背里式替换原则。&lt;/p>
+&lt;p>在父类中，某个函数约定，输入数据可以是任意整数，但子类实现的时候，只允许输入数据是正整数，负数就抛出，也就是说，子类对输入的数据的校验比父类更加严格，那子类的设计就违背了里式替换原则。&lt;/p>
+&lt;p>在父类中，某个函数约定，只会抛出 ArgumentNullException 异常，那子类的设计实现中只允许抛出 ArgumentNullException 异常，任何其他异常的抛出，都会导致子类违背里式替换原则。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>子类违背父类注释中所罗列的任何特殊说明&lt;/strong>&lt;/p>
+&lt;p>父类中定义的 withdraw() 提现函数的注释是这么写的：“用户的提现金额不得超过账户余额……”，而子类重写 withdraw() 函数之后，针对 VIP 账号实现了透支提现的功能，也就是提现金额可以大于账户余额，那这个子类的设计也是不符合里式替换原则的。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>​&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>设计原则02：开闭原则（OCP）</title><link>https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/open-closed-principle/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/open-closed-principle/</guid><pubDate>Tue, 15 Mar 2022 18:47:34 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>开闭原则（Open Closed Principle），英文描述为：Software entities(modules, classes, functions, etc.) should be open for extension, but closed for modification. 翻译过来就是对扩展开放、对修改关闭。&lt;/p>
+&lt;p>这条原则是SOLID中最难理解同时也是最有用的一条原则。&lt;/p>
+&lt;p>说难理解是因为“如何做到对扩展开放、对修改关闭？如何在项目中灵活的应用开闭原则？怎么才算满足或违反开闭原则？修改代码就一定意味着违反开闭原则吗？”这些问题都比较难理解。&lt;/p>
+&lt;p>而之所以这条原则最有用，是因为，扩展性是代码质量最重要的衡量标准之一。在23种经典的设计模式之中，大部分设计模式是为了解决代码的扩展性问题而存在的，主要遵从的设计原则就是开闭原则。&lt;/p>
+&lt;h2 id="如何理解对扩展开放对修改关闭">如何理解“对扩展开放、对修改关闭”？&lt;/h2>
+&lt;p>为了更好的理解这个原则，我们举一个例子。这是一段API接口监控告警的代码。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">Alert&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">AlertRule&lt;/span> &lt;span class="n">rule&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">Notification&lt;/span> &lt;span class="n">notification&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="nf">Alert&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">AlertRule&lt;/span> &lt;span class="n">rule&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">Notification&lt;/span> &lt;span class="n">notification&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">rule&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">rule&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">notification&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">notification&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">check&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">api&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="n">requestCount&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="n">errorCount&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="n">durationOfSeconds&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">long&lt;/span> &lt;span class="n">tps&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">requestCount&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="n">durationOfSeconds&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">tps&lt;/span> &lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">rule&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getMatchedRule&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">api&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">getMaxTps&lt;/span>&lt;span class="o">())&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">notification&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">notify&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">NotificationEmergencyLevel&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">URGENCY&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;...&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">errorCount&lt;/span> &lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">rule&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getMatchedRule&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">api&lt;/span>&lt;span class="o">).&lt;/span>&lt;span class="na">getMaxErrorCount&lt;/span>&lt;span class="o">())&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">notification&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">notify&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">NotificationEmergencyLevel&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">SEVERE&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;...&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>其中，AlertRule是存储告警规则，可以自由设置；Notification是通知类，支持邮件、短信、微信、手机等各种告警渠道。NotificationEmergencyLevel 表示通知的紧急程度，包括 SEVERE（严重）、URGENCY（紧急）、NORMAL（普通）、TRIVIAL（无关紧要），不同的紧急程度对应不同的发送渠道。&lt;/p>
+&lt;p>这段代码的逻辑非常简单，业务逻辑主要集中在check()函数中，当接口的TPS超过某个预先设置的最大值时，以及当接口请求出错数大于某个最大允许值时就会触发告警。现在我们要增加一个功能，当每秒钟接口超时请求个数超过预先设定的最大值，也要进行告警，那么我们该如何改动呢？&lt;/p>
+&lt;p>一般来说，我们会在方法的入参中增加timeoutCount，然后再在方法中加入对应的判断逻辑。但这样改动存在很多问题，一方面我们对接口进行了修改就意味着调用这个接口的代码都要修改，另一方面修改了check()函数，对应的单元测试都要修改。&lt;/p>
+&lt;p>上面的改动方法是基于“修改”的方式，如果我们遵循开闭原则，通过扩展的方式，来实现新的功能呢？&lt;/p>
+&lt;p>主要改动点如下：&lt;/p>
+&lt;ul>
+&lt;li>check()函数的入参封装成ApiStatInfo类&lt;/li>
+&lt;li>引入handler的概念，将if判断逻辑分散在各个handler中&lt;/li>
+&lt;/ul>
+&lt;p>具体代码改动后如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;span class="lnt">56
+&lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">Alert&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">AlertHandler&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">alertHandlers&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ArrayList&lt;/span>&lt;span class="o">&amp;lt;&amp;gt;();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">addAlertHandler&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">AlertHandler&lt;/span> &lt;span class="n">alertHandler&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">alertHandlers&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">alertHandler&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">check&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">ApiStatInfo&lt;/span> &lt;span class="n">apiStatInfo&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">AlertHandler&lt;/span> &lt;span class="n">handler&lt;/span> &lt;span class="o">:&lt;/span> &lt;span class="n">alertHandlers&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">handler&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">check&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">apiStatInfo&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">ApiStatInfo&lt;/span> &lt;span class="o">{&lt;/span>&lt;span class="c1">//省略constructor/getter/setter方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">api&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="n">requestCount&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="n">errorCount&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="n">durationOfSeconds&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">abstract&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">AlertHandler&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">protected&lt;/span> &lt;span class="n">AlertRule&lt;/span> &lt;span class="n">rule&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">protected&lt;/span> &lt;span class="n">Notification&lt;/span> &lt;span class="n">notification&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="nf">AlertHandler&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">AlertRule&lt;/span> &lt;span class="n">rule&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">Notification&lt;/span> &lt;span class="n">notification&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">rule&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">rule&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">notification&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">notification&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kd">abstract&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">check&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">ApiStatInfo&lt;/span> &lt;span class="n">apiStatInfo&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">TpsAlertHandler&lt;/span> &lt;span class="kd">extends&lt;/span> &lt;span class="n">AlertHandler&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="nf">TpsAlertHandler&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">AlertRule&lt;/span> &lt;span class="n">rule&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">Notification&lt;/span> &lt;span class="n">notification&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">super&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">rule&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">notification&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">check&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">ApiStatInfo&lt;/span> &lt;span class="n">apiStatInfo&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">long&lt;/span> &lt;span class="n">tps&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">apiStatInfo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getRequestCount&lt;/span>&lt;span class="o">()/&lt;/span> &lt;span class="n">apiStatInfo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getDurationOfSeconds&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">tps&lt;/span> &lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">rule&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getMatchedRule&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">apiStatInfo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getApi&lt;/span>&lt;span class="o">()).&lt;/span>&lt;span class="na">getMaxTps&lt;/span>&lt;span class="o">())&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">notification&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">notify&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">NotificationEmergencyLevel&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">URGENCY&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;...&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">ErrorAlertHandler&lt;/span> &lt;span class="kd">extends&lt;/span> &lt;span class="n">AlertHandler&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="nf">ErrorAlertHandler&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">AlertRule&lt;/span> &lt;span class="n">rule&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">Notification&lt;/span> &lt;span class="n">notification&lt;/span>&lt;span class="o">){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">super&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">rule&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">notification&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">check&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">ApiStatInfo&lt;/span> &lt;span class="n">apiStatInfo&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">apiStatInfo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getErrorCount&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">rule&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getMatchedRule&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">apiStatInfo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getApi&lt;/span>&lt;span class="o">()).&lt;/span>&lt;span class="na">getMaxErrorCount&lt;/span>&lt;span class="o">())&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">notification&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">notify&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">NotificationEmergencyLevel&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">SEVERE&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;...&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>上面就是对Alert的重构了，那么重构之后的代码如何使用呢？&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">ApplicationContext&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">AlertRule&lt;/span> &lt;span class="n">alertRule&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">Notification&lt;/span> &lt;span class="n">notification&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">Alert&lt;/span> &lt;span class="n">alert&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">initializeBeans&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">alertRule&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">AlertRule&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="cm">/*.省略参数.*/&lt;/span>&lt;span class="o">);&lt;/span> &lt;span class="c1">//省略一些初始化代码
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">notification&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">Notification&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="cm">/*.省略参数.*/&lt;/span>&lt;span class="o">);&lt;/span> &lt;span class="c1">//省略一些初始化代码
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">alert&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">Alert&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">alert&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">addAlertHandler&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">new&lt;/span> &lt;span class="n">TpsAlertHandler&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">alertRule&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">notification&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">alert&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">addAlertHandler&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="k">new&lt;/span> &lt;span class="n">ErrorAlertHandler&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">alertRule&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">notification&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">Alert&lt;/span> &lt;span class="nf">getAlert&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="n">alert&lt;/span>&lt;span class="o">;&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 饿汉式单例
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">private&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="kd">final&lt;/span> &lt;span class="n">ApplicationContext&lt;/span> &lt;span class="n">instance&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ApplicationContext&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="nf">ApplicationContext&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">initializeBeans&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="n">ApplicationContext&lt;/span> &lt;span class="nf">getInstance&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">instance&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">Demo&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">[]&lt;/span> &lt;span class="n">args&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ApiStatInfo&lt;/span> &lt;span class="n">apiStatInfo&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ApiStatInfo&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ...省略设置apiStatInfo数据值的代码
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">ApplicationContext&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getInstance&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">getAlert&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">check&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">apiStatInfo&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>其中，ApplicationContext 是一个单例类，负责 Alert 的创建、组装（alertRule 和 notification 的依赖注入）、初始化（添加 handlers）工作。&lt;/p>
+&lt;p>如果基于以上的代码，当我们新增上面的新功能点时，只需要去创建新的handler即可，不需要改动原本的check()函数，而且原本的单元测试也不会受到影响。&lt;/p>
+&lt;p>具体的改动点如下，代码略：&lt;/p>
+&lt;ul>
+&lt;li>第一处改动是：在 ApiStatInfo 类中添加新的属性 timeoutCount。&lt;/li>
+&lt;li>第二处改动是：添加新的 TimeoutAlertHander 类。&lt;/li>
+&lt;li>第三处改动是：在 ApplicationContext 类的 initializeBeans() 方法中，往 alert 对象中注册新的 timeoutAlertHandler。&lt;/li>
+&lt;li>第四处改动是：在使用 Alert 类的时候，需要给 check() 函数的入参 apiStatInfo 对象设置 timeoutCount 的值。&lt;/li>
+&lt;/ul>
+&lt;h2 id="修改代码就意味着违背开闭原则吗">修改代码就意味着违背开闭原则吗？&lt;/h2>
+&lt;p>上面的四点改动中，貌似只有第二点是基于扩展而非修改的，那么一三四违背开闭原则么？&lt;/p>
+&lt;p>&lt;strong>首先第一点，在 ApiStatInfo 类中添加新的属性 timeoutCount。&lt;/strong> 我们增加了新的属性，新的getter/setter方法。从类的层面来看确实修改了代码，但是从方法/属性这一层面相当于是增加了新的属性，又可以被认定为“扩展”。所以，只要它没有破坏原有的代码正常运行，没有破坏原有的单元测试，我们就可以说这是一个合格的代码改动。&lt;/p>
+&lt;p>&lt;strong>然后再分析一下改动三和改动四。&lt;/strong>&lt;/p>
+&lt;p>这两点无论怎么说都可以算是对代码的“修改”，但是我们需要知道的是，增加新功能不可能任何模块、类、方法的代码都不修改，我们要做的是尽量让修改操作更集中、更少、更上层，尽量让最核心、最复杂的那部分逻辑代码满足开闭原则。&lt;/p>
+&lt;h3 id="如何做到对扩展开放对修改关闭">如何做到对扩展开放、对修改关闭？&lt;/h3>
+&lt;p>上面那种handler的写法，你可能会想：这样的代码设计思路我怎么想不到呢？你是怎么想到的呢？&lt;/p>
+&lt;p>实际上，这靠的是理论知识和实战经验，先掌握理论知识，然后在实战中慢慢积攒经验即可。&lt;/p>
+&lt;h4 id="指导思想">指导思想&lt;/h4>
+&lt;p>&lt;strong>为了尽量写出扩展性好的代码，我们要时刻具备扩展意识、抽象意识、封装意识。这些“潜意识”可能比任何开发技巧都重要。&lt;/strong>&lt;/p>
+&lt;p>写代码的时候要做好充足的思考，事先留好扩展点，识别出代码的可变部分和不可变部分，当具体的实现发生变化的时候，我们只需要基于相同的抽象接口，扩展一个新的实现，替换掉老的实现即可。&lt;/p>
+&lt;h4 id="方法论">方法论&lt;/h4>
+&lt;p>代码的扩展性是评判代码质量最重要的标准之一。常用来提高扩展性的方法有：多态、依赖注入、基于接口而非实现编程、大部分的设计模式等等。而且，很多设计原则、思想、模式都是相通的。&lt;/p>
+&lt;h3 id="如何在项目中灵活应用开闭原则">如何在项目中灵活应用开闭原则？&lt;/h3>
+&lt;p>写出支持“对扩展开放、对修改关闭”的代码的关键是预留扩展点。那问题是如何才能识别出所有可能的扩展点呢？&lt;/p>
+&lt;p>软件开发中“唯一不变的就是变化本身”。我们很难识别出所有的扩展点，对于短期的、确定的扩展，我们可以实现做扩展性设计，对于长期的或者实现成本很高的扩展点，我们可以等到有需求驱动的时候进行重构。&lt;/p>
+&lt;p>另外开闭原则有时候会和可读性相冲突，我们也需要做一些平衡。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>设计原则01：单一职责原则（SRP）</title><link>https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/single-responsibility-principle/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/single-responsibility-principle/</guid><pubDate>Tue, 15 Mar 2022 18:07:00 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>我们都知道单一职责原则，其原本的英文描述是：A class or module should have a single responsibility。&lt;/p>
+&lt;p>这里描述的对象有两个，一个是class（类），一个是module（模块），模块是比类更加抽象的概念，但是原则上都是一样的。&lt;/p>
+&lt;p>单一职责的定义非常简单，一个类只负责一个职责或者功能。那么，如何判定这个类的职责是否足够“单一”呢？&lt;/p>
+&lt;h2 id="如何判断类的职责是否足够单一">如何判断类的职责是否足够单一？&lt;/h2>
+&lt;p>假如说在一个社交产品中，我们用下面的UserInfo来记录用户信息，判断一下这个类的职责是否满足“单一职责”呢？&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">UserInfo&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="n">userId&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">username&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">email&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">telephone&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="n">createTime&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">long&lt;/span> &lt;span class="n">lastLoginTime&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">avatarUrl&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">provinceOfAddress&lt;/span>&lt;span class="o">;&lt;/span> &lt;span class="c1">// 省
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">cityOfAddress&lt;/span>&lt;span class="o">;&lt;/span> &lt;span class="c1">// 市
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">regionOfAddress&lt;/span>&lt;span class="o">;&lt;/span> &lt;span class="c1">// 区
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">detailedAddress&lt;/span>&lt;span class="o">;&lt;/span> &lt;span class="c1">// 详细地址
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="c1">// ...省略其他属性和方法...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>对于这个问题的答案是要结合具体场景来看的，并不是一个固定的答案，在不同的场景甚至不同阶段的需求中，都有可能发生变化，这里举几个例子。&lt;/p>
+&lt;ul>
+&lt;li>地址信息只用来展示，那么这个类的设计就是合理的；如果有电商模块，那么地址的信息就应该被独立拆分出来；&lt;/li>
+&lt;li>如果公司发展出了独立的APP，需要做统一认证，那么跟身份相关的字段就应该抽取出来作为独立的类；&lt;/li>
+&lt;/ul>
+&lt;p>所以说，评价一个类的职责是否单一是需要结合具体业务的，通常情况下，我们可以先做一个粗粒度的划分，满足业务需求，随着业务的发展，可以逐步拆分成更细的类，这就是所谓的**“持续重构”**。&lt;/p>
+&lt;p>但是有几条判断原则是可以去参考的：&lt;/p>
+&lt;ul>
+&lt;li>类的代码行数、函数或属性过多；&lt;/li>
+&lt;li>类依赖的其他类过多，不符合高内聚、低耦合的设计思想；&lt;/li>
+&lt;li>私有方法过多；&lt;/li>
+&lt;li>比较难给类起一个合适的名字，很难用一个业务名词概括，说明职责定义不够清晰；&lt;/li>
+&lt;li>类中大量方法都在集中操作类中的几个属性，比如userInfo中很多方法都在操作address信息，就可以考虑将相关代码拆分出来&lt;/li>
+&lt;/ul>
+&lt;p>以上情况的代码，都是可以考虑将类进行拆分的。&lt;/p>
+&lt;h2 id="类的职责是否设计得越单一越好">类的职责是否设计得越单一越好？&lt;/h2>
+&lt;p>当然不是。比如类的序列化和反序列化功能，如果想让类的职责更加单一，我们将其拆为一个只负责序列化工作的 Serializer 类和另一个只负责反序列化工作的 Deserializer 类。&lt;/p>
+&lt;p>虽然拆分之后类的职责更加单一了，但是这样增加了代码维护的难度，比如我们修改了序列化方式，从XML修改为JSON，我们需要同时对这两个类和进行修改，代码的可维护性就变差了。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>面向对象编程05：如何利用面向对象编程开发接口鉴权功能？</title><link>https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/practice-oop-auth/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/practice-oop-auth/</guid><pubDate>Mon, 14 Mar 2022 16:47:37 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>对于面向对象的设计思想，大部分人还只是停留在理论层面，但更重要的是需要知道“怎么做”，也就是如何使用面向对象进行分析、设计和编程。下面将结合一个真实的开发案例，从基础的需求分析、职责划分、类的定义、交互、组装运行讲起，将最基础的面向对象分析、设计、编程讲清楚。&lt;/p>
 &lt;h2 id="一如何进行面向对象分析ooa">一、如何进行面向对象分析（OOA）&lt;/h2>
 &lt;h3 id="1案例介绍">1.案例介绍&lt;/h3>
 &lt;p>假设你正在开发一个微服务，通过HTTP协议暴露接口给其他系统调用。为了保证接口调用的安全性，我们希望设计一个接口调用鉴权功能，没有认证过的系统调用我们的接口会被拒绝。&lt;/p>
@@ -118,7 +972,7 @@ throw new RuntimeException(&amp;#34;Token verfication failed.&amp;#34;);
 }
 }
 }
-&lt;/code>&lt;/pre>&lt;p>不过，在平时的工作中，大部分程序员往往都是在脑子里或者草纸上完成面向对象分析和设计，然后就开始写代码了，边写边思考边重构，并不会严格地按照刚刚的流程来执行。而且，说实话，即便我们在写代码之前，花很多时间做分析和设计，绘制出完美的类图、UML 图，也不可能把每个细节、交互都想得很清楚。在落实到代码的时候，我们还是要反复迭代、重构、打破重写。毕竟，整个软件开发本来就是一个迭代、修修补补、遇到问题解决问题的过程，是一个不断重构的过程。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">极客时间 - 设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>面向对象编程04：贫血模型与充血模型</title><link>https://kiwi4814.github.io/posts/2022/anaemic-and-rich-domain-model/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/anaemic-and-rich-domain-model/</guid><pubDate>Sun, 13 Mar 2022 18:21:11 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>我们都知道，很多业务系统都是基于MVC三层架构来开发，实际上，这是一种基于贫血模型的MVC三层架构开发模式。虽然现在以及成为标准的web项目开发模式，但是却违反了面向对象编程风格，因而被人称为”反模式“。特别是&lt;strong>领域驱动设计&lt;/strong>（Domain Driven Design，简称DDD）盛行之后，这种基于贫血模型的传统的开发模式就更加被人诟病。&lt;/p>
+&lt;/code>&lt;/pre>&lt;p>不过，在平时的工作中，大部分程序员往往都是在脑子里或者草纸上完成面向对象分析和设计，然后就开始写代码了，边写边思考边重构，并不会严格地按照刚刚的流程来执行。而且，说实话，即便我们在写代码之前，花很多时间做分析和设计，绘制出完美的类图、UML 图，也不可能把每个细节、交互都想得很清楚。在落实到代码的时候，我们还是要反复迭代、重构、打破重写。毕竟，整个软件开发本来就是一个迭代、修修补补、遇到问题解决问题的过程，是一个不断重构的过程。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">极客时间 - 设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>面向对象编程04：贫血模型与充血模型</title><link>https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/anaemic-and-rich-domain-model/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/anaemic-and-rich-domain-model/</guid><pubDate>Sun, 13 Mar 2022 18:21:11 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>我们都知道，很多业务系统都是基于MVC三层架构来开发，实际上，这是一种基于贫血模型的MVC三层架构开发模式。虽然现在以及成为标准的web项目开发模式，但是却违反了面向对象编程风格，因而被人称为”反模式“。特别是&lt;strong>领域驱动设计&lt;/strong>（Domain Driven Design，简称DDD）盛行之后，这种基于贫血模型的传统的开发模式就更加被人诟病。&lt;/p>
 &lt;h2 id="充血模型与贫血模型">充血模型与贫血模型&lt;/h2>
 &lt;h3 id="1什么是基于贫血模型的传统开发模式">1.什么是基于贫血模型的传统开发模式？&lt;/h3>
 &lt;p>做过Java开发项目的，都知道MVC架构模式。MVC 三层架构中的 M 表示 Model，V 表示 View，C 表示 Controller。它将整个项目分为三层：展示层、逻辑层、数据层。MVC 三层开发架构是一个比较笼统的分层方式，落实到具体的开发层面，很多项目也并不会 100% 遵从 MVC 固定的分层方式，而是会根据具体的项目需求，做适当的调整。&lt;/p>
@@ -638,7 +1492,7 @@ throw new RuntimeException(&amp;#34;Token verfication failed.&amp;#34;);
 &lt;li>没有必要，Controller 层主要负责接口的暴露，Repository 层主要负责与数据库打交道，这两层包含的业务逻辑并不多&lt;/li>
 &lt;li>Repo层的Entity由于生命周期有限，一旦传递到Service层后就会被转化为BO或者Domain来处理后续逻辑，所以不需要充血模型&lt;/li>
 &lt;li>Controller层的VO实际上是一种DTO，从功能上来讲是不包含逻辑只包含数据的，所以设计成贫血模型也是合理的&lt;/li>
-&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">极客时间 - 设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>面向对象编程03：组合、继承与委托</title><link>https://kiwi4814.github.io/posts/2022/composition-inheritance-delegation/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/composition-inheritance-delegation/</guid><pubDate>Sun, 13 Mar 2022 18:00:56 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="多用组合少用继承">多用组合少用继承&lt;/h2>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">极客时间 - 设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>面向对象编程03：组合、继承与委托</title><link>https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/composition-inheritance-delegation/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/composition-inheritance-delegation/</guid><pubDate>Sun, 13 Mar 2022 18:00:56 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="多用组合少用继承">多用组合少用继承&lt;/h2>
 &lt;p>我们再来讲讲另外一个原则：&lt;strong>组合优于继承，多用组合少用继承。&lt;/strong>&lt;/p>
 &lt;p>为什么这么说呢？&lt;/p>
 &lt;h3 id="1为什么不推荐使用继承">1.为什么不推荐使用继承？&lt;/h3>
@@ -850,7 +1704,7 @@ throw new RuntimeException(&amp;#34;Token verfication failed.&amp;#34;);
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/li>
-&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">极客时间 - 设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>面向对象编程02：接口与抽象类</title><link>https://kiwi4814.github.io/posts/2022/interface-abstract-class/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/interface-abstract-class/</guid><pubDate>Fri, 11 Mar 2022 19:59:00 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一接口和抽象类">一、接口和抽象类&lt;/h2>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">极客时间 - 设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>面向对象编程02：接口与抽象类</title><link>https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/interface-abstract-class/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/interface-abstract-class/</guid><pubDate>Fri, 11 Mar 2022 19:59:00 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一接口和抽象类">一、接口和抽象类&lt;/h2>
 &lt;p>众所周知，我们可以使用接口来实现面向对象的&lt;strong>抽象特性&lt;/strong>、&lt;strong>多态特性&lt;/strong>和&lt;strong>基于接口而非实现&lt;/strong>的设计原则，使用抽象类来实现面向对象的&lt;strong>继承&lt;/strong>特性和&lt;strong>模板设计模式&lt;/strong>等等。&lt;/p>
 &lt;h3 id="1-接口和抽象类的区别">1. 接口和抽象类的区别&lt;/h3>
 &lt;h4 id="抽象类">抽象类&lt;/h4>
@@ -1175,7 +2029,7 @@ throw new RuntimeException(&amp;#34;Token verfication failed.&amp;#34;);
 &lt;li>函数的命名不能暴露任何实现细节&lt;/li>
 &lt;li>封装具体的实现细节&lt;/li>
 &lt;li>为实现类定义抽象的接口，具体的实现类都依赖统一的接口定义，使用者依赖接口而非具体的实现类编程&lt;/li>
-&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">极客时间 - 设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>面向对象编程01：面向对象与面向过程</title><link>https://kiwi4814.github.io/posts/2022/object-oriented-procedural/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/object-oriented-procedural/</guid><pubDate>Tue, 08 Mar 2022 22:40:15 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="理论一什么是面向对象">理论一：什么是面向对象？&lt;/h2>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">极客时间 - 设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>面向对象编程01：面向对象与面向过程</title><link>https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/object-oriented-procedural/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/object-oriented-procedural/</guid><pubDate>Tue, 08 Mar 2022 22:40:15 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="理论一什么是面向对象">理论一：什么是面向对象？&lt;/h2>
 &lt;p>面向对象编程和面向对象编程语言的区别？&lt;/p>
 &lt;blockquote>
 &lt;p>面向对象是一种编程风格，面向对象编程语言是支持类或者对象的语法机制，使用面向对象语言能够很方便的实现面向对象编程。&lt;/p>
