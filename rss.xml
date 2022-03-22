@@ -1,4 +1,248 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.95.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Mon, 21 Mar 2022 15:39:42 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>设计原则06：KISS原则和YAGNI原则</title><link>https://kiwi4814.github.io/posts/2022/design-patterns/kissyagni/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/design-patterns/kissyagni/</guid><pubDate>Mon, 21 Mar 2022 13:23:16 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>先看下面这些小问题。&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.95.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 22 Mar 2022 00:15:03 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>设计原则07：DRY原则和代码复用性</title><link>https://kiwi4814.github.io/posts/2022/design-patterns/drycode-reusability/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/design-patterns/drycode-reusability/</guid><pubDate>Mon, 21 Mar 2022 21:41:55 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>今天我们要研究的主题是DRY原则。&lt;/p>
+&lt;p>DRY原则，其英文原文是&lt;code>Don't Repeat Yourself.&lt;/code>,在编程中可以理解为&lt;strong>不要写重复的代码。&lt;/strong>&lt;/p>
+&lt;p>看似非常简单的一个原则，但其实有很多误区。重复的代码就一定违背DRY原则么？如何提高代码的复用性呢？&lt;/p>
+&lt;h2 id="dry原则">DRY原则&lt;/h2>
+&lt;p>我们从三种代码重复的实际具体情况来分析DRY原则的具体应用，这三种代码重复分别是实现逻辑重复、功能语义重复和代码执行重复。&lt;/p>
+&lt;h3 id="实现逻辑重复">实现逻辑重复&lt;/h3>
+&lt;p>假设现在有一个校验用户名和用户密码的功能，规则基本差不多，代码实现如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;span class="lnt">56
+&lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;span class="lnt">59
+&lt;/span>&lt;span class="lnt">60
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">UserAuthenticator&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">authenticate&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">username&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(!&lt;/span>&lt;span class="n">isValidUsername&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">username&lt;/span>&lt;span class="o">))&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ...throw InvalidUsernameException...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(!&lt;/span>&lt;span class="n">isValidPassword&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">password&lt;/span>&lt;span class="o">))&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ...throw InvalidPasswordException...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//...省略其他代码...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">boolean&lt;/span> &lt;span class="nf">isValidUsername&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">username&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// check not null, not empty
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">StringUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">isBlank&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">username&lt;/span>&lt;span class="o">))&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// check length: 4~64
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">length&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">username&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">length&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">length&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">4&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="n">length&lt;/span> &lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">64&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// contains only lowcase characters
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="o">(!&lt;/span>&lt;span class="n">StringUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">isAllLowerCase&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">username&lt;/span>&lt;span class="o">))&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// contains only a~z,0~9,dot
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">0&lt;/span>&lt;span class="o">;&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">length&lt;/span>&lt;span class="o">;&lt;/span> &lt;span class="o">++&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">char&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">username&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">charAt&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(!(&lt;/span>&lt;span class="n">c&lt;/span> &lt;span class="o">&amp;gt;=&lt;/span> &lt;span class="sc">&amp;#39;a&amp;#39;&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">&amp;lt;=&lt;/span> &lt;span class="sc">&amp;#39;z&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">c&lt;/span> &lt;span class="o">&amp;gt;=&lt;/span> &lt;span class="sc">&amp;#39;0&amp;#39;&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">&amp;lt;=&lt;/span> &lt;span class="sc">&amp;#39;9&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="sc">&amp;#39;.&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">true&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">boolean&lt;/span> &lt;span class="nf">isValidPassword&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// check not null, not empty
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">StringUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">isBlank&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">password&lt;/span>&lt;span class="o">))&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// check length: 4~64
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">length&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">length&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">length&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">4&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="n">length&lt;/span> &lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">64&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// contains only lowcase characters
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="o">(!&lt;/span>&lt;span class="n">StringUtils&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">isAllLowerCase&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">password&lt;/span>&lt;span class="o">))&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// contains only a~z,0~9,dot
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">0&lt;/span>&lt;span class="o">;&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">length&lt;/span>&lt;span class="o">;&lt;/span> &lt;span class="o">++&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">char&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">charAt&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(!(&lt;/span>&lt;span class="n">c&lt;/span> &lt;span class="o">&amp;gt;=&lt;/span> &lt;span class="sc">&amp;#39;a&amp;#39;&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">&amp;lt;=&lt;/span> &lt;span class="sc">&amp;#39;z&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">c&lt;/span> &lt;span class="o">&amp;gt;=&lt;/span> &lt;span class="sc">&amp;#39;0&amp;#39;&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">&amp;lt;=&lt;/span> &lt;span class="sc">&amp;#39;9&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="sc">&amp;#39;.&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">true&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>上面的isValidUserName()函数和isValidPassword()函数中的代码都是一样的，重复的代码被敲了两次，看起来明显违反DRY原则，完全可以合并到一个方法中。&lt;/p>
+&lt;p>事实上真的如此吗？&lt;/p>
+&lt;p>答案是否定的，如果我们将其合到一起，明显违反了单一职责原则和接口隔离原则。假如将来某一天，密码的校验增加了新的逻辑，那么刚才的两个函数实现逻辑就会不相同。&lt;/p>
+&lt;p>对于这种情况，我们可以将相同校验的部分封装成颗粒度更小的函数。&lt;/p>
+&lt;h3 id="功能语义重复">功能语义重复&lt;/h3>
+&lt;p>所谓的功能语义重复就是两段代码或者两个函数，虽然名称不同，实现逻辑不同，但是功能是相同的，比如上一节的校验IP地址是否合法的几个函数。&lt;/p>
+&lt;p>这种功能语义函数是明显违反DRY原则的，在项目中对于同一个功能我们应该统一实现思路，否则会给其他人带来困扰，同事在阅读相关代码的时候会觉得写代码的人是不是有更高深的考量才会有这样的写法。&lt;/p>
+&lt;h3 id="代码执行重复">代码执行重复&lt;/h3>
+&lt;p>前两个例子一个是实现逻辑重复，一个是语义重复，我们再来看第三个例子。其中，UserService 中 login() 函数用来校验用户登录是否成功。如果失败，就返回异常；如果成功，就返回用户信息。&lt;/p>
+&lt;p>具体代码如下所示：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">UserService&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">UserRepo&lt;/span> &lt;span class="n">userRepo&lt;/span>&lt;span class="o">;&lt;/span>&lt;span class="c1">//通过依赖注入或者IOC框架注入
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">User&lt;/span> &lt;span class="nf">login&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">email&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">boolean&lt;/span> &lt;span class="n">existed&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">userRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">checkIfUserExisted&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">email&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(!&lt;/span>&lt;span class="n">existed&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ... throw AuthenticationFailureException...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">User&lt;/span> &lt;span class="n">user&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">userRepo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getUserByEmail&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">email&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">user&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">UserRepo&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">boolean&lt;/span> &lt;span class="nf">checkIfUserExisted&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">email&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(!&lt;/span>&lt;span class="n">EmailValidation&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">validate&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">email&lt;/span>&lt;span class="o">))&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ... throw InvalidEmailException...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(!&lt;/span>&lt;span class="n">PasswordValidation&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">validate&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">password&lt;/span>&lt;span class="o">))&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ... throw InvalidPasswordException...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//...query db to check if email&amp;amp;password exists...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="n">User&lt;/span> &lt;span class="nf">getUserByEmail&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">email&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">(!&lt;/span>&lt;span class="n">EmailValidation&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">validate&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">email&lt;/span>&lt;span class="o">))&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ... throw InvalidEmailException...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//...query db to get user by email...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>上面的代码既没有逻辑重复，也没有语义重复，但仍然违反了DRY原则，这是因为代码执行重复了。重复执行最明显的一个地方，就是在 login() 函数中，email 的校验逻辑被执行了两次。&lt;/p>
+&lt;p>除此之外，代码中还有一处比较隐蔽的执行重复，不知道你发现了没有？实际上，login() 函数并不需要调用 checkIfUserExisted() 函数，只需要调用一次 getUserByEmail() 函数，从数据库中获取到用户的 email、password 等信息，然后跟用户输入的 email、password 信息做对比，依次判断是否登录成功。&lt;/p>
+&lt;p>实际上，这样的优化是很有必要的。因为 checkIfUserExisted() 函数和 getUserByEmail() 函数都需要查询数据库，而数据库这类的 I/O 操作是比较耗时的。我们在写代码的时候，应当尽量减少这类 I/O 操作。&lt;/p>
+&lt;h2 id="代码复用性code-reusability">代码复用性（Code Reusability）&lt;/h2>
+&lt;h3 id="什么是代码的复用性">什么是代码的复用性？&lt;/h3>
+&lt;p>我们先来区分三个概念，代码复用性（Code Reusability）、代码复用（Code Reuse）和DRY原则。&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>代码复用是一种行为：开发新功能的时候尽量复用已经存在的代码；&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>可复用性是表示一段代码可以被复用的特性和能力：我们编写代码的时候，让代码尽量可复用；&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>DRY原则是一条原则：不要写重复的代码。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="怎么提高代码复用性">怎么提高代码复用性？&lt;/h3>
+&lt;ol>
+&lt;li>减少代码耦合&lt;/li>
+&lt;li>满足单一职责原则&lt;/li>
+&lt;li>模块化（不仅仅指modules，单个类、函数都可以模块化，独立的模块就像积木，更易复用）&lt;/li>
+&lt;li>业务与非业务逻辑分离（越是与业务无关的代码越容易复用）&lt;/li>
+&lt;li>通用代码下沉&lt;/li>
+&lt;li>继承、多态、抽象、封装&lt;/li>
+&lt;li>应用模板模式等设计模式&lt;/li>
+&lt;/ol>
+&lt;p>实际上，除非有非常明确的复用需求，否则，为了暂时用不到的复用需求，花费太多的时间、精力，投入太多的开发成本，并不是一个值得推荐的做法。这也违反我们之前讲到的 YAGNI 原则。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>设计原则06：KISS原则和YAGNI原则</title><link>https://kiwi4814.github.io/posts/2022/design-patterns/kissyagni/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/design-patterns/kissyagni/</guid><pubDate>Mon, 21 Mar 2022 13:23:16 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>先看下面这些小问题。&lt;/p>
 &lt;ul>
 &lt;li>怎么理解 KISS 原则中“简单”两个字？&lt;/li>
 &lt;li>什么样的代码才算“简单”？&lt;/li>
