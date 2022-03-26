@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.95.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sat, 26 Mar 2022 18:35:48 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>一切反动派都是纸老虎！~ 学习Cron表达式</title><link>https://kiwi4814.github.io/posts/2022/cron-expression/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/cron-expression/</guid><pubDate>Sat, 26 Mar 2022 09:57:03 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>经常能看到形如&lt;code>0 */15 * ? * *&lt;/code>的的一些表达式用在项目中，表示定时任务的执行频率，但一直不明白其原理。由于自己懒惰的天性，每次用到的时候照葫芦画瓢写一个或者网上生成一个，就这样凑凑活活一直用到现在。最近关于定时任务的需求激增，终于忍无可忍，决定学一学这“该死”的cron表达式，然后竟然意外地发现很简单，果然一切反动派都是纸老虎。&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.95.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sat, 26 Mar 2022 18:53:42 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>一切反动派都是纸老虎！~ 学习Cron表达式</title><link>https://kiwi4814.github.io/posts/2022/cron-expression/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/cron-expression/</guid><pubDate>Sat, 26 Mar 2022 09:57:03 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>经常能看到形如&lt;code>0 */15 * ? * *&lt;/code>的的一些表达式用在项目中，表示定时任务的执行频率，但一直不明白其原理。由于自己懒惰的天性，每次用到的时候照葫芦画瓢写一个或者网上生成一个，就这样凑凑活活一直用到现在。最近关于定时任务的需求激增，终于忍无可忍，决定学一学这“该死”的cron表达式，然后竟然意外地发现很简单，果然一切反动派都是纸老虎。&lt;/p>
 &lt;p>并且，在翻阅资料的过程中，发现大部分网站尤其是一些中文网站的关于cron的文章质量简直惨不忍睹，而且有大量的翻译错误，所以多花了一些时间查阅了资料（遗憾是没有经过我自己的实战，这样可能要花更多的时间），也尽量记录了我的一些疑问，在后续的实战过程中有新的收获都会随时更新。&lt;/p>
 &lt;h2 id="一些问题和自己的理解">一些问题和自己的理解&lt;/h2>
 &lt;ul>
@@ -604,7 +604,7 @@ You can also use step intervals with &lt;code>H&lt;/code>, with or without range
 &lt;li>&lt;a href="https://chrome.google.com/webstore/category/extensions">Chrome 网上应用店 &lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>此外，在浏览器扩展页面（&lt;a href="chrome://extensions/">chrome&lt;/a>，&lt;a href="edge://extensions/">Edge&lt;/a>）打开开发人员模式，可以安装一些离线下载的或者只在chrome商店内上架的扩展，将解压后的文件夹拖到浏览器即可。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320143356407.png" alt="image-20220320143356407" style="zoom:33%;" />
+&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320143356407.png" referrerpolicy='no-referrer' alt="image-20220320143356407" referrerpolicy='no-referrer' style="zoom:33%;" />
 &lt;p>此外，关于浏览器扩展网上有很多推荐的帖子，这里仅列出我常用的一些，顺序也比较随心所欲，如果你想了解更多奇妙的浏览器扩展，可以在&lt;a href="https://zhaoolee.gitbooks.io/chrome/content/">Chrome插件英雄榜&lt;/a>去查找更多的推荐，也可以自行按照关键字搜索。&lt;/p>
 &lt;h3 id="油猴脚本">油猴脚本&lt;/h3>
 &lt;p>要说扩展类，最有名的应该是油猴了，这款最早出身于火狐浏览器的浏览器脚本扩展，可以说是浏览器里最强大的一个扩展了，其本质就是提供了一个脚本管理器（脚本就是一段代码，它们能够优化您的网页浏览体验），让浏览器在满足特定的条件下去执行什么样的代码。这么说可能有点抽象，列举几个我常用的脚本，你大概就能知道是干嘛的了。&lt;/p>
@@ -628,41 +628,41 @@ You can also use step intervals with &lt;code>H&lt;/code>, with or without range
 &lt;p>...&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220319224402775.png" alt="image-20220319224402775" style="zoom: 25%;" /> &lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320143603405.png" alt="image-20220320143603405" style="zoom: 40%;" />&lt;/p>
+&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220319224402775.png" alt="image-20220319224402775" referrerpolicy='no-referrer' style="zoom: 25%;" /> &lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320143603405.png" alt="image-20220320143603405" referrerpolicy='no-referrer' style="zoom: 40%;" />&lt;/p>
 &lt;p>&lt;strong>使用方法&lt;/strong>：先去安装一款名字&lt;font color="red">暴力猴&lt;/font>(&lt;a href="https://microsoftedge.microsoft.com/addons/detail/%E6%9A%B4%E5%8A%9B%E7%8C%B4/eeagobfjdenkkddmbclomhiblgggliao?hl=zh-CN">edge商店安装&lt;/a>)的扩展，这个扩展相当于一个容器，有了这个容器之后就可以往这里面添加各种功能了，脚本推荐在&lt;a href="https://greasyfork.org/zh-CN">这个网站&lt;/a>去查找和使用，如下图所示：&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220319224827220.png" alt="image-20220319224827220" style="zoom: 25%;" />
+&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220319224827220.png" alt="image-20220319224827220" referrerpolicy='no-referrer' style="zoom: 25%;" />
 &lt;p>当然了，脚本都是个人开发者上传的，其中质量好坏、是否好用是需要你自己去甄别的，而且官方会反制大部分“自动化”的脚本，不要过于依赖，尽量选择安装人数多的脚本。&lt;/p>
 &lt;h3 id="去广告类">去广告类&lt;/h3>
 &lt;p>很多网站为了生存下去，会在边边角角加上很多“很闪”的广告，非常影响浏览体验，所以我们一般会安装一款去广告的插件，这类型的插件有很多，Adblock、AdBlockPlus、AdGuard等等，其中AdGuard配合同名软件使用效果最佳，否则的话推荐使用ABP（&lt;font color="red">AdBlockPlus&lt;/font>&lt;a href="https://microsoftedge.microsoft.com/addons/detail/adblock-plus-%E5%85%8D%E8%B4%B9%E7%9A%84%E5%B9%BF%E5%91%8A%E6%8B%A6%E6%88%AA%E5%99%A8/gmgoamodcdcjnbaobigkjelfplakmdhh?hl=zh-CN">Edge商店安装&lt;/a>）即可，除了默认的规则之外，还能自己制定一些规则，比如遇到网站没有屏蔽完全的广告，随手加个规则就可以了。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220319230154173.png" alt="image-20220319230154173" style="zoom: 25%;" />
+&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220319230154173.png" alt="image-20220319230154173" referrerpolicy='no-referrer' style="zoom: 25%;" />
 &lt;h3 id="长截图">长截图&lt;/h3>
 &lt;p>有时候我们需要对一些网页进行长截图，试过很多插件，都不太如人意，后来发现Edge浏览器自带功能就完全满足需求了。&lt;/p>
 &lt;p>在网页中右键选择网页捕获或者Ctrl+Shift+S，然后选择捕获整页即可。&lt;/p>
 &lt;h3 id="翻译类">翻译类&lt;/h3>
 &lt;p>Edge浏览器可以一键翻译大部分的网页，效果其实还好，但是翻译软件翻译出来的总归错误点太多，只能看个大概，所以我一般会使用&lt;font color="red">沙拉查词&lt;/font>(&lt;a href="https://microsoftedge.microsoft.com/addons/detail/%E6%B2%99%E6%8B%89%E6%9F%A5%E8%AF%8D%E8%81%9A%E5%90%88%E8%AF%8D%E5%85%B8%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91/idghocbbahafpfhjnfhpbfbmpegphmmp?hl=zh-CN">Edge商店安装&lt;/a>)来进行&lt;strong>全文翻译和划词翻译&lt;/strong>，相比于自带的翻译，支持划词翻译、自定义翻译源（具体可参考提供的教程申请API）、网页一键翻译成双语（非常好用）以及生词典等等。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320134821344.png" alt="image-20220320134821344" style="zoom: 50%;" />
+&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320134821344.png" alt="image-20220320134821344" referrerpolicy='no-referrer' style="zoom: 50%;" />
 &lt;h3 id="剪藏类">剪藏类&lt;/h3>
 &lt;p>所谓的剪藏类，适合喜欢用电子笔记的朋友，当你浏览网页看到一篇很好的文章，想要收藏到自己的电子笔记时，如果手动复制的话会带来很多问题，格式、排版、图片等等需要花费很多精力，基于此很多电子笔记软件会额外提供剪藏插件，方便一键将网页保存到笔记中。比如Evernote的&lt;em>Evernote Web Clipper&lt;/em>，Notion的Notion Web Clipper等等。&lt;/p>
 &lt;p>当然了，现在电子笔记软件越来越多，如果你在同时用2到3个，那么这种方式也没有那么简单了，我目前在用的是&lt;font color="red">简悦 - SimpRead&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/%E7%AE%80%E6%82%A6-simpread/clgdhlhfiocphghdkdbgdlmfaafccfmc?hl=zh-CN">Edge商店安装&lt;/a>），算是这类软件的“集大成者”了，可以切换阅读模式、笔记标注、并且支持剪藏到市面上大部分笔记软件中。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320135003511.png" alt="image-20220320135003511" style="zoom: 33%;" />
+&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320135003511.png" alt="image-20220320135003511" referrerpolicy='no-referrer' style="zoom: 33%;" />
 &lt;h3 id="下载类">下载类&lt;/h3>
 &lt;p>浏览器自带的下载其实并不是很好用，对于Windows系统，我一般将其托管给IDM（需要安装&lt;font color="red">IDM Integration Module&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/idm-integration-module/llbjbkhnmlidjebalopleeepgdfgcpec?hl=zh-CN">Edge商店安装&lt;/a>）这个扩展），Mac下我将其托管为Aria2（使用的是&lt;font color="red">Aria2 for Chrome&lt;/font>（&lt;a href="https://chrome.google.com/webstore/detail/aria2-for-chrome/mpkodccbngfoacfalldjimigbofkhgjn">Chrome商店安装&lt;/a>）这个扩展作为客户端，服务端需要自行安装下）。&lt;/p>
 &lt;p>如果需要使用浏览器自带的下载（比如城通网盘），推荐开启浏览器的多线程下载（&lt;a href="chrome://flags/#enable-parallel-downloading">chrome浏览器&lt;/a>，&lt;a href="edge://flags/#enable-parallel-downloading">Edge浏览器&lt;/a>，将&lt;code>parallel-downloading&lt;/code>的选项改为enabled即可），如果觉得默认的下载界面不方面管理的话，可以安装&lt;font color="red">Chrono下载管理器&lt;/font>（&lt;a href="https://chrome.google.com/webstore/detail/chrono-download-manager/mciiogijehkdemklbdcbfkefimifhecn?hl=zh-CN">Chrome商店安装&lt;/a>）这个扩展。&lt;/p>
 &lt;h3 id="购物相关">购物相关&lt;/h3>
 &lt;p>使用电脑浏览商品（淘宝、京东、苏宁等等）时，自动在商品详情页面增加比价、价格曲线等按钮，鼠标悬浮即可看到。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320135159497.png" alt="image-20220320135159497" style="zoom: 33%;" />
+&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320135159497.png" alt="image-20220320135159497" referrerpolicy='no-referrer' style="zoom: 33%;" />
 &lt;p>这类型的比价扩展也很多，截图所示的是&lt;font color="red">购物党比价助手&lt;/font>（&lt;a href="https://chrome.google.com/webstore/detail/%E8%B4%AD%E7%89%A9%E5%85%9A%E8%87%AA%E5%8A%A8%E6%AF%94%E4%BB%B7%E5%B7%A5%E5%85%B7/jgphnjokjhjlcnnajmfjlacjnjkhleah?hl=zh-CN">Chrome商店安装&lt;/a>）。&lt;/p>
 &lt;p>另外，如果你使用京东比较多，可以安装&lt;font color="red">京价保&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/%E4%BA%AC%E4%BB%B7%E4%BF%9D-%E4%BA%AC%E4%B8%9C%E4%BB%B7%E4%BF%9D%E5%8A%A9%E6%89%8B/ljdjkkjiognkghfjndoddoplekppngge?hl=zh-CN">Edge商店安装&lt;/a>）这个插件，登陆账号后会帮你自动签到领京豆、自动抢优惠券，当然其主要的作用是申请价保，我们知道京东购买的商品如果30天内降价了是可以申请退款这个差价部分的，这个扩展会帮你自动检测价格并提交价格保护。当然了，这个扩展由于需要你登录京东账号，安全性请自行判断。&lt;/p>
 &lt;p>当然了，不止是普通的购物，游戏界的购物比价助手 —— &lt;font color="red">Augmented Steam&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/augmented-steam/dnpjkgmekpilchdgolfifobohlohlioc?hl=zh-CN">Edge商店安装&lt;/a>），可以在你访问steam游戏商店的时候也达到上面展示的效果。&lt;/p>
 &lt;h3 id="扩展管理">扩展管理&lt;/h3>
 &lt;p>浏览器扩展在浏览器运行就好比软件在Windows系统中运行，是需要占内存的，所以当你安装了很多浏览器扩展后，需要一个管理器来控制这些扩展，因为很多扩展在特定情况下才有用，只需要在想用的时候开启即可，这里推荐&lt;font color="red">Extension Manager&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/%E6%89%A9%E5%B1%95%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%88extension-manager%EF%BC%89/bhahgfgngfghgjhnpplmemebhenieijb?hl=zh-CN">Edge商店安装&lt;/a>）来进行扩展管理，支持扩展搜索、分组、一键开关，还可以制定扩展开启的规则，比如指定只有纽约客网站才开启bypass-paywalls插件等等。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320151813228.png" alt="image-20220320151813228" style="zoom: 50%;" />
+&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320151813228.png" alt="image-20220320151813228" referrerpolicy='no-referrer' style="zoom: 50%;" />
 &lt;h3 id="标签页管理">标签页管理&lt;/h3>
 &lt;p>虽然浏览器早就增加了标签页分组功能，但实际上使用的人并不多，虽然可以有效减轻混乱的情况，但是需要还是需要手动去维护的，而且我们知道Chrome浏览器号称内存杀手，尤其是我们找资料的时候，一次性打开几十个网页都是家常便饭，导致电脑非常卡顿，这种情况下，我一般使用&lt;font color="red">OneTab&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/onetab/hoimpamkkoehapgenciaoajfkfkpgfop?hl=zh-CN">Edge商店安装&lt;/a>）来一键缓存暂时用不到的网页，有点类似“Read Later”。&lt;/p>
 &lt;p>另外，如果你已经习惯了标签页分组功能，可以使用&lt;font color="red">标签分组扩展&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/%E6%A0%87%E7%AD%BE%E5%88%86%E7%BB%84%E6%89%A9%E5%B1%95/jgcmbjdhakghmngjkdpejdcchbigdmgf?hl=zh-CN">Edge商店安装&lt;/a>），能给你带来更好的体验。&lt;/p>
 &lt;h3 id="新标签页">新标签页&lt;/h3>
 &lt;p>用来替代新标签页的插件，默认的新标签页实在是太丑了。如果你是互联网从业者，可以使用&lt;font color="red">稀土掘金&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/%E7%A8%80%E5%9C%9F%E6%8E%98%E9%87%91/iblloeofmdhfkbkpjkkombjngddeocjk?hl=zh-CN">Edge商店安装&lt;/a>）来替代默认的新标签页，否则可以考虑&lt;font color="red">iTab新标签页&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/itab%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5/inedkoakiaeepjoblbiiipedngonadhn?hl=zh-CN">Edge商店安装&lt;/a>）。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/Snipaste_2022-03-20_14-09-21.jpg" alt="Snipaste_2022-03-20_14-09-21" style="zoom: 25%;" />
+&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/Snipaste_2022-03-20_14-09-21.jpg" alt="Snipaste_2022-03-20_14-09-21" referrerpolicy='no-referrer' style="zoom: 25%;" />
 &lt;p>此外，你可以将一些咨询整合类的网站设置为新标签页，这样就不会错过热点事件了，这里推荐两个：&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://www.anyknew.com/#/">AnyKnew&lt;/a>&lt;/li>
