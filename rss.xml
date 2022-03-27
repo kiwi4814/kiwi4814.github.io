@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.95.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sat, 26 Mar 2022 18:53:42 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>一切反动派都是纸老虎！~ 学习Cron表达式</title><link>https://kiwi4814.github.io/posts/2022/cron-expression/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/cron-expression/</guid><pubDate>Sat, 26 Mar 2022 09:57:03 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>经常能看到形如&lt;code>0 */15 * ? * *&lt;/code>的的一些表达式用在项目中，表示定时任务的执行频率，但一直不明白其原理。由于自己懒惰的天性，每次用到的时候照葫芦画瓢写一个或者网上生成一个，就这样凑凑活活一直用到现在。最近关于定时任务的需求激增，终于忍无可忍，决定学一学这“该死”的cron表达式，然后竟然意外地发现很简单，果然一切反动派都是纸老虎。&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.96.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 27 Mar 2022 07:39:19 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>一切反动派都是纸老虎！~ 学习Cron表达式</title><link>https://kiwi4814.github.io/posts/2022/cron-expression/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/cron-expression/</guid><pubDate>Sat, 26 Mar 2022 09:57:03 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>经常能看到形如&lt;code>0 */15 * ? * *&lt;/code>的的一些表达式用在项目中，表示定时任务的执行频率，但一直不明白其原理。由于自己懒惰的天性，每次用到的时候照葫芦画瓢写一个或者网上生成一个，就这样凑凑活活一直用到现在。最近关于定时任务的需求激增，终于忍无可忍，决定学一学这“该死”的cron表达式，然后竟然意外地发现很简单，果然一切反动派都是纸老虎。&lt;/p>
 &lt;p>并且，在翻阅资料的过程中，发现大部分网站尤其是一些中文网站的关于cron的文章质量简直惨不忍睹，而且有大量的翻译错误，所以多花了一些时间查阅了资料（遗憾是没有经过我自己的实战，这样可能要花更多的时间），也尽量记录了我的一些疑问，在后续的实战过程中有新的收获都会随时更新。&lt;/p>
 &lt;h2 id="一些问题和自己的理解">一些问题和自己的理解&lt;/h2>
 &lt;ul>
@@ -186,7 +186,16 @@ You can also use step intervals with &lt;code>H&lt;/code>, with or without range
 &lt;p>&lt;a href="https://www.gnu.org/software/mcron/manual/html_node/Crontab-file.html">Crontab file&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://www.baeldung.com/cron-expressions">A Guide To Cron Expressions | Baeldung&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://github.com/quartz-scheduler/quartz/blob/quartz-2.0.x/quartz/src/main/java/org/quartz/CronExpression.java">quartz/CronExpression.java at quartz-2.0.x · quartz-scheduler/quartz (github.com)&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://www.netiq.com/documentation/cloud-manager-2-5/ncm-reference/data/bexyssf.html">Understanding Cron Syntax in the Job Scheduler - Cloud Manager Administrator Reference (netiq.com)&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2022/03/cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">cron表达式</category></item><item><title>设计原则07：DRY原则和代码复用性</title><link>https://kiwi4814.github.io/posts/2022/design-patterns/dry-code-reusability/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/design-patterns/dry-code-reusability/</guid><pubDate>Mon, 21 Mar 2022 21:41:55 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>今天我们要研究的主题是DRY原则。&lt;/p>
+&lt;p>&lt;a href="https://www.netiq.com/documentation/cloud-manager-2-5/ncm-reference/data/bexyssf.html">Understanding Cron Syntax in the Job Scheduler - Cloud Manager Administrator Reference (netiq.com)&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2022/03/cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">cron表达式</category></item><item><title>设计原则08：迪米特法则（LOD）</title><link>https://kiwi4814.github.io/posts/2022/design-patterns/law-of-demeter/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/design-patterns/law-of-demeter/</guid><pubDate>Tue, 22 Mar 2022 22:03:12 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220327094446581.png" alt="image-20220327094446581">&lt;/p>
+&lt;h2 id="什么是高内聚低耦合">什么是”高内聚、低耦合“？&lt;/h2>
+&lt;p>”高内聚、低耦合“是一个非常重要的设计思想，能够有效提高代码的可读性和可维护性，缩小功能改动导致的代码改动范围。很多设计原则都是以实现代码的”高内聚、低耦合“为目的的，比如单一职责原则、基于接口而非实现编程等。&lt;/p>
+&lt;p>”高内聚、低耦合“可以用来指导不同粒度代码的设计与开发，比如系统、模块、类甚至是函数，为了方便理解，接下来以类作为这个设计思想的应用对象来展开讲解，其他场景可以自行类比。&lt;/p>
+&lt;p>在这个思想中，”高内聚“用来指导类本身的设计，”松耦合“用来指导类与类之间依赖关系的设计。&lt;/p>
+&lt;h3 id="高内聚">高内聚&lt;/h3>
+&lt;h3 id="低耦合">低耦合&lt;/h3>
+&lt;h3 id="内聚和耦合的关系">内聚和耦合的关系&lt;/h3>
+&lt;h2 id="迪米特法则">迪米特法则&lt;/h2>
+&lt;h3 id="理论描述">理论描述&lt;/h3></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/series/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/">设计模式之美</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category></item><item><title>设计原则07：DRY原则和代码复用性</title><link>https://kiwi4814.github.io/posts/2022/design-patterns/dry-code-reusability/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/design-patterns/dry-code-reusability/</guid><pubDate>Mon, 21 Mar 2022 21:41:55 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>今天我们要研究的主题是DRY原则。&lt;/p>
 &lt;p>DRY原则，其英文原文是&lt;code>Don't Repeat Yourself.&lt;/code>,在编程中可以理解为&lt;strong>不要写重复的代码。&lt;/strong>&lt;/p>
 &lt;p>看似非常简单的一个原则，但其实有很多误区。重复的代码就一定违背DRY原则么？如何提高代码的复用性呢？&lt;/p>
 &lt;h2 id="dry原则">DRY原则&lt;/h2>
@@ -604,7 +613,7 @@ You can also use step intervals with &lt;code>H&lt;/code>, with or without range
 &lt;li>&lt;a href="https://chrome.google.com/webstore/category/extensions">Chrome 网上应用店 &lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>此外，在浏览器扩展页面（&lt;a href="chrome://extensions/">chrome&lt;/a>，&lt;a href="edge://extensions/">Edge&lt;/a>）打开开发人员模式，可以安装一些离线下载的或者只在chrome商店内上架的扩展，将解压后的文件夹拖到浏览器即可。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320143356407.png" referrerpolicy='no-referrer' alt="image-20220320143356407" referrerpolicy='no-referrer' style="zoom:33%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220320143356407.png" referrerpolicy='no-referrer' alt="image-20220320143356407" referrerpolicy='no-referrer' style="zoom:33%;" />
 &lt;p>此外，关于浏览器扩展网上有很多推荐的帖子，这里仅列出我常用的一些，顺序也比较随心所欲，如果你想了解更多奇妙的浏览器扩展，可以在&lt;a href="https://zhaoolee.gitbooks.io/chrome/content/">Chrome插件英雄榜&lt;/a>去查找更多的推荐，也可以自行按照关键字搜索。&lt;/p>
 &lt;h3 id="油猴脚本">油猴脚本&lt;/h3>
 &lt;p>要说扩展类，最有名的应该是油猴了，这款最早出身于火狐浏览器的浏览器脚本扩展，可以说是浏览器里最强大的一个扩展了，其本质就是提供了一个脚本管理器（脚本就是一段代码，它们能够优化您的网页浏览体验），让浏览器在满足特定的条件下去执行什么样的代码。这么说可能有点抽象，列举几个我常用的脚本，你大概就能知道是干嘛的了。&lt;/p>
@@ -628,9 +637,9 @@ You can also use step intervals with &lt;code>H&lt;/code>, with or without range
 &lt;p>...&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220319224402775.png" alt="image-20220319224402775" referrerpolicy='no-referrer' style="zoom: 25%;" /> &lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320143603405.png" alt="image-20220320143603405" referrerpolicy='no-referrer' style="zoom: 40%;" />&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220319224402775.png" alt="image-20220319224402775" referrerpolicy='no-referrer' style="zoom: 25%;" /> &lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220320143603405.png" alt="image-20220320143603405" referrerpolicy='no-referrer' style="zoom: 40%;" />&lt;/p>
 &lt;p>&lt;strong>使用方法&lt;/strong>：先去安装一款名字&lt;font color="red">暴力猴&lt;/font>(&lt;a href="https://microsoftedge.microsoft.com/addons/detail/%E6%9A%B4%E5%8A%9B%E7%8C%B4/eeagobfjdenkkddmbclomhiblgggliao?hl=zh-CN">edge商店安装&lt;/a>)的扩展，这个扩展相当于一个容器，有了这个容器之后就可以往这里面添加各种功能了，脚本推荐在&lt;a href="https://greasyfork.org/zh-CN">这个网站&lt;/a>去查找和使用，如下图所示：&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220319224827220.png" alt="image-20220319224827220" referrerpolicy='no-referrer' style="zoom: 25%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220319224827220.png" alt="image-20220319224827220" referrerpolicy='no-referrer' style="zoom: 25%;" />
 &lt;p>当然了，脚本都是个人开发者上传的，其中质量好坏、是否好用是需要你自己去甄别的，而且官方会反制大部分“自动化”的脚本，不要过于依赖，尽量选择安装人数多的脚本。&lt;/p>
 &lt;h3 id="去广告类">去广告类&lt;/h3>
 &lt;p>很多网站为了生存下去，会在边边角角加上很多“很闪”的广告，非常影响浏览体验，所以我们一般会安装一款去广告的插件，这类型的插件有很多，Adblock、AdBlockPlus、AdGuard等等，其中AdGuard配合同名软件使用效果最佳，否则的话推荐使用ABP（&lt;font color="red">AdBlockPlus&lt;/font>&lt;a href="https://microsoftedge.microsoft.com/addons/detail/adblock-plus-%E5%85%8D%E8%B4%B9%E7%9A%84%E5%B9%BF%E5%91%8A%E6%8B%A6%E6%88%AA%E5%99%A8/gmgoamodcdcjnbaobigkjelfplakmdhh?hl=zh-CN">Edge商店安装&lt;/a>）即可，除了默认的规则之外，还能自己制定一些规则，比如遇到网站没有屏蔽完全的广告，随手加个规则就可以了。&lt;/p>
@@ -640,29 +649,29 @@ You can also use step intervals with &lt;code>H&lt;/code>, with or without range
 &lt;p>在网页中右键选择网页捕获或者Ctrl+Shift+S，然后选择捕获整页即可。&lt;/p>
 &lt;h3 id="翻译类">翻译类&lt;/h3>
 &lt;p>Edge浏览器可以一键翻译大部分的网页，效果其实还好，但是翻译软件翻译出来的总归错误点太多，只能看个大概，所以我一般会使用&lt;font color="red">沙拉查词&lt;/font>(&lt;a href="https://microsoftedge.microsoft.com/addons/detail/%E6%B2%99%E6%8B%89%E6%9F%A5%E8%AF%8D%E8%81%9A%E5%90%88%E8%AF%8D%E5%85%B8%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91/idghocbbahafpfhjnfhpbfbmpegphmmp?hl=zh-CN">Edge商店安装&lt;/a>)来进行&lt;strong>全文翻译和划词翻译&lt;/strong>，相比于自带的翻译，支持划词翻译、自定义翻译源（具体可参考提供的教程申请API）、网页一键翻译成双语（非常好用）以及生词典等等。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320134821344.png" alt="image-20220320134821344" referrerpolicy='no-referrer' style="zoom: 50%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220320134821344.png" alt="image-20220320134821344" referrerpolicy='no-referrer' style="zoom: 50%;" />
 &lt;h3 id="剪藏类">剪藏类&lt;/h3>
 &lt;p>所谓的剪藏类，适合喜欢用电子笔记的朋友，当你浏览网页看到一篇很好的文章，想要收藏到自己的电子笔记时，如果手动复制的话会带来很多问题，格式、排版、图片等等需要花费很多精力，基于此很多电子笔记软件会额外提供剪藏插件，方便一键将网页保存到笔记中。比如Evernote的&lt;em>Evernote Web Clipper&lt;/em>，Notion的Notion Web Clipper等等。&lt;/p>
 &lt;p>当然了，现在电子笔记软件越来越多，如果你在同时用2到3个，那么这种方式也没有那么简单了，我目前在用的是&lt;font color="red">简悦 - SimpRead&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/%E7%AE%80%E6%82%A6-simpread/clgdhlhfiocphghdkdbgdlmfaafccfmc?hl=zh-CN">Edge商店安装&lt;/a>），算是这类软件的“集大成者”了，可以切换阅读模式、笔记标注、并且支持剪藏到市面上大部分笔记软件中。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320135003511.png" alt="image-20220320135003511" referrerpolicy='no-referrer' style="zoom: 33%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220320135003511.png" alt="image-20220320135003511" referrerpolicy='no-referrer' style="zoom: 33%;" />
 &lt;h3 id="下载类">下载类&lt;/h3>
 &lt;p>浏览器自带的下载其实并不是很好用，对于Windows系统，我一般将其托管给IDM（需要安装&lt;font color="red">IDM Integration Module&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/idm-integration-module/llbjbkhnmlidjebalopleeepgdfgcpec?hl=zh-CN">Edge商店安装&lt;/a>）这个扩展），Mac下我将其托管为Aria2（使用的是&lt;font color="red">Aria2 for Chrome&lt;/font>（&lt;a href="https://chrome.google.com/webstore/detail/aria2-for-chrome/mpkodccbngfoacfalldjimigbofkhgjn">Chrome商店安装&lt;/a>）这个扩展作为客户端，服务端需要自行安装下）。&lt;/p>
 &lt;p>如果需要使用浏览器自带的下载（比如城通网盘），推荐开启浏览器的多线程下载（&lt;a href="chrome://flags/#enable-parallel-downloading">chrome浏览器&lt;/a>，&lt;a href="edge://flags/#enable-parallel-downloading">Edge浏览器&lt;/a>，将&lt;code>parallel-downloading&lt;/code>的选项改为enabled即可），如果觉得默认的下载界面不方面管理的话，可以安装&lt;font color="red">Chrono下载管理器&lt;/font>（&lt;a href="https://chrome.google.com/webstore/detail/chrono-download-manager/mciiogijehkdemklbdcbfkefimifhecn?hl=zh-CN">Chrome商店安装&lt;/a>）这个扩展。&lt;/p>
 &lt;h3 id="购物相关">购物相关&lt;/h3>
 &lt;p>使用电脑浏览商品（淘宝、京东、苏宁等等）时，自动在商品详情页面增加比价、价格曲线等按钮，鼠标悬浮即可看到。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320135159497.png" alt="image-20220320135159497" referrerpolicy='no-referrer' style="zoom: 33%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220320135159497.png" alt="image-20220320135159497" referrerpolicy='no-referrer' style="zoom: 33%;" />
 &lt;p>这类型的比价扩展也很多，截图所示的是&lt;font color="red">购物党比价助手&lt;/font>（&lt;a href="https://chrome.google.com/webstore/detail/%E8%B4%AD%E7%89%A9%E5%85%9A%E8%87%AA%E5%8A%A8%E6%AF%94%E4%BB%B7%E5%B7%A5%E5%85%B7/jgphnjokjhjlcnnajmfjlacjnjkhleah?hl=zh-CN">Chrome商店安装&lt;/a>）。&lt;/p>
 &lt;p>另外，如果你使用京东比较多，可以安装&lt;font color="red">京价保&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/%E4%BA%AC%E4%BB%B7%E4%BF%9D-%E4%BA%AC%E4%B8%9C%E4%BB%B7%E4%BF%9D%E5%8A%A9%E6%89%8B/ljdjkkjiognkghfjndoddoplekppngge?hl=zh-CN">Edge商店安装&lt;/a>）这个插件，登陆账号后会帮你自动签到领京豆、自动抢优惠券，当然其主要的作用是申请价保，我们知道京东购买的商品如果30天内降价了是可以申请退款这个差价部分的，这个扩展会帮你自动检测价格并提交价格保护。当然了，这个扩展由于需要你登录京东账号，安全性请自行判断。&lt;/p>
 &lt;p>当然了，不止是普通的购物，游戏界的购物比价助手 —— &lt;font color="red">Augmented Steam&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/augmented-steam/dnpjkgmekpilchdgolfifobohlohlioc?hl=zh-CN">Edge商店安装&lt;/a>），可以在你访问steam游戏商店的时候也达到上面展示的效果。&lt;/p>
 &lt;h3 id="扩展管理">扩展管理&lt;/h3>
 &lt;p>浏览器扩展在浏览器运行就好比软件在Windows系统中运行，是需要占内存的，所以当你安装了很多浏览器扩展后，需要一个管理器来控制这些扩展，因为很多扩展在特定情况下才有用，只需要在想用的时候开启即可，这里推荐&lt;font color="red">Extension Manager&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/%E6%89%A9%E5%B1%95%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%88extension-manager%EF%BC%89/bhahgfgngfghgjhnpplmemebhenieijb?hl=zh-CN">Edge商店安装&lt;/a>）来进行扩展管理，支持扩展搜索、分组、一键开关，还可以制定扩展开启的规则，比如指定只有纽约客网站才开启bypass-paywalls插件等等。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220320151813228.png" alt="image-20220320151813228" referrerpolicy='no-referrer' style="zoom: 50%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220320151813228.png" alt="image-20220320151813228" referrerpolicy='no-referrer' style="zoom: 50%;" />
 &lt;h3 id="标签页管理">标签页管理&lt;/h3>
 &lt;p>虽然浏览器早就增加了标签页分组功能，但实际上使用的人并不多，虽然可以有效减轻混乱的情况，但是需要还是需要手动去维护的，而且我们知道Chrome浏览器号称内存杀手，尤其是我们找资料的时候，一次性打开几十个网页都是家常便饭，导致电脑非常卡顿，这种情况下，我一般使用&lt;font color="red">OneTab&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/onetab/hoimpamkkoehapgenciaoajfkfkpgfop?hl=zh-CN">Edge商店安装&lt;/a>）来一键缓存暂时用不到的网页，有点类似“Read Later”。&lt;/p>
 &lt;p>另外，如果你已经习惯了标签页分组功能，可以使用&lt;font color="red">标签分组扩展&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/%E6%A0%87%E7%AD%BE%E5%88%86%E7%BB%84%E6%89%A9%E5%B1%95/jgcmbjdhakghmngjkdpejdcchbigdmgf?hl=zh-CN">Edge商店安装&lt;/a>），能给你带来更好的体验。&lt;/p>
 &lt;h3 id="新标签页">新标签页&lt;/h3>
 &lt;p>用来替代新标签页的插件，默认的新标签页实在是太丑了。如果你是互联网从业者，可以使用&lt;font color="red">稀土掘金&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/%E7%A8%80%E5%9C%9F%E6%8E%98%E9%87%91/iblloeofmdhfkbkpjkkombjngddeocjk?hl=zh-CN">Edge商店安装&lt;/a>）来替代默认的新标签页，否则可以考虑&lt;font color="red">iTab新标签页&lt;/font>（&lt;a href="https://microsoftedge.microsoft.com/addons/detail/itab%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5/inedkoakiaeepjoblbiiipedngonadhn?hl=zh-CN">Edge商店安装&lt;/a>）。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/Snipaste_2022-03-20_14-09-21.jpg" alt="Snipaste_2022-03-20_14-09-21" referrerpolicy='no-referrer' style="zoom: 25%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/Snipaste_2022-03-20_14-09-21.jpg" alt="Snipaste_2022-03-20_14-09-21" referrerpolicy='no-referrer' style="zoom: 25%;" />
 &lt;p>此外，你可以将一些咨询整合类的网站设置为新标签页，这样就不会错过热点事件了，这里推荐两个：&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://www.anyknew.com/#/">AnyKnew&lt;/a>&lt;/li>
@@ -1952,7 +1961,7 @@ You can also use step intervals with &lt;code>H&lt;/code>, with or without range
 &lt;h3 id="2定义类及其属性和方法">2.定义类及其属性和方法&lt;/h3>
 &lt;h4 id="authtoken">AuthToken&lt;/h4>
 &lt;p>接下来具体定义每个类的属性和方法，先看AuthToken：&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/202203141908823.jpg" alt="img">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/202203141908823.jpg" alt="img">&lt;/p>
 &lt;p>从上图中可以发现几个细节：&lt;/p>
 &lt;ul>
 &lt;li>并不是所有的名词都被定义为类的属性了，比如URL、AppID、密码、时间戳是定义为方法的参数的；&lt;/li>
@@ -1962,10 +1971,10 @@ You can also use step intervals with &lt;code>H&lt;/code>, with or without range
 &lt;p>这告诉我们，在业务模型上来说，不属于这个类的属性和方法，不应该被放到这个类里；此外，在设计类具有哪些属性和方法的时候，不止要分析当下，还要分析这个类从业务模型上来讲了理应有哪些属性和方法。&lt;/p>
 &lt;h4 id="url">Url&lt;/h4>
 &lt;p>虽然在需求描述中，我们定义这个类为URL，但实际的接口请求不一定是Url的形式，还有可能是Dubbo、RPC等其他形式，为了更加通用，我们命名为ApiRequest。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/202203141915811.jpg" alt="img">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/202203141915811.jpg" alt="img">&lt;/p>
 &lt;h4 id="credentialstorage">CredentialStorage&lt;/h4>
 &lt;p>CredentialStorage 类非常简单，类图如下所示。为了做到抽象封装具体的存储方式，我们将 CredentialStorage 设计成了接口，基于接口而非具体的实现编程。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/202203141918591.png" alt="image-20220314191859560">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/202203141918591.png" alt="image-20220314191859560">&lt;/p>
 &lt;h3 id="3定义类与类之间的交互关系">3.定义类与类之间的交互关系&lt;/h3>
 &lt;p>UML统一建模语言中定义了六种类之间的关系，它们分别是泛化、实现、关联、聚合、组合、依赖。&lt;/p>
 &lt;ul>
@@ -1982,7 +1991,7 @@ You can also use step intervals with &lt;code>H&lt;/code>, with or without range
 &lt;p>刚刚我们定义的类之间都有哪些关系呢？因为目前只有三个核心的类，所以只用到了实现关系，也即 CredentialStorage 和 MysqlCredentialStorage 之间的关系。&lt;/p>
 &lt;h3 id="4将类组装起来并提供执行入口">4.将类组装起来并提供执行入口&lt;/h3>
 &lt;p>接口鉴权并不是一个独立运行的系统，而是一个集成在系统上运行的组件，所以，我们封装所有的实现细节，设计了一个最顶层的 ApiAuthenticator 接口类，暴露一组给外部调用者使用的 API 接口，作为触发执行鉴权逻辑的入口。具体的类的设计如下所示：&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/202203150941804.jpg" alt="img">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/202203150941804.jpg" alt="img">&lt;/p>
 &lt;h2 id="三如何进行面向对象编程oop">三、如何进行面向对象编程（OOP）&lt;/h2>
 &lt;p>面向对象编程就是按照设计好的类，翻译成代码实现就行了，这部分工作比较简单，这里给出ApiAuthenticator的实现。&lt;/p>
 &lt;pre tabindex="0">&lt;code>
@@ -2082,7 +2091,7 @@ throw new RuntimeException(&amp;#34;Token verfication failed.&amp;#34;);
 &lt;h3 id="设计思路">设计思路&lt;/h3>
 &lt;p>我们可以把整个钱包系统的业务划分为两部分，其中一部分单纯跟应用内的虚拟钱包账户打交道，另一部分单纯跟银行账户打交道。我们基于这样一个业务划分，给系统解耦，将整个钱包系统拆分为两个子系统：虚拟钱包系统和三方支付系统。&lt;/p>
 &lt;p>我们在这里只讲解虚拟钱包系统。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/202203141253373.jpg" alt="img">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/202203141253373.jpg" alt="img">&lt;/p>
 &lt;p>从图中我们可以看出，虚拟钱包系统要支持的操作非常简单，就是余额的加加减减。其中，充值、提现、查询余额三个功能，只涉及一个账户余额的加减操作，而支付功能涉及两个账户的余额加减操作：一个账户减余额，另一个账户加余额。&lt;/p>
 &lt;p>至于交易流水，交易流水的数据格式包含两个钱包账号，一个是入账钱包账号，一个是出账钱包账号。为什么要有两个账号信息呢？这主要是为了兼容支付这种涉及两个账户的交易类型。不过，对于充值、提现这两种交易类型来说，我们只需要记录一个钱包账户信息就够了。&lt;/p>
 &lt;p>下面来看一下如何用两种模式来实现这样的虚拟钱包系统？&lt;/p>
@@ -2577,7 +2586,7 @@ throw new RuntimeException(&amp;#34;Token verfication failed.&amp;#34;);
 &lt;/div>
 &lt;/div>&lt;p>这种设计思路虽然可以解决问题，但是不够优美。因为还有很多其他鸟也不会飞，这样写增加了代码的维护量，也不符合最小知识原则。&lt;/p>
 &lt;p>所以我们提出另外一种方案，我们把AbstractBird派生出另外两个细分的抽象类：会飞的鸟类 AbstractFlyableBird 和不会飞的鸟类 AbstractUnFlyableBird，继承关系如下图所示：&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/1e27919f63ef615dba98bc00673914b7.jpg" alt="img" style="zoom: 33%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/1e27919f63ef615dba98bc00673914b7.jpg" alt="img" style="zoom: 33%;" />
 &lt;p>整体来讲，目前的继承关系还比较简洁，层次也不深，可以接受。但是实际情况中随着业务的深入，我们的实现会越来越复杂。比如说现在又增加了”鸟会不会叫“这个关注点，这时候我们又该如何设计呢？&lt;/p>
 &lt;p>按照刚才的设计思路，我们需要定义四个抽象类，如果再考虑”鸟会不会下蛋“，那这个抽象类的个数是指数级上升的。&lt;/p>
 &lt;p>类的继承层次越深，继承关系越复杂，代码的可读性就会越差。子类的实现依赖父类的实现，两者高度耦合，一旦父类代码修改就会影响所有子类的逻辑。&lt;/p>
@@ -3252,27 +3261,27 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;ol>
 &lt;li>
 &lt;p>打开&lt;a href="https://github.com/">Github官网&lt;/a>，然后点击右上角&lt;code>Sign Up&lt;/code>，如下图所示按照提示填写信息操作即可：&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github1.png" alt="github1">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/github1.png" alt="github1">&lt;/p>
 &lt;p>创建完之后会有一些初始化的过程，可以选择跳过，也可以根据需要勾选一些配置和选项。&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>账号注册后登录系统，点击右上角头像，在下拉选项中找到 &lt;code>your repositories&lt;/code>并打开，然后点击&lt;code>new&lt;/code>创建一个仓库：&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github2.png" alt="github2">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/github2.png" alt="github2">&lt;/p>
 &lt;p>点击&lt;code>new&lt;/code>创建一个新的仓库：&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github3.png" alt="github3">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/github3.png" alt="github3">&lt;/p>
 &lt;p>我们先来建立一个普通仓库：&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github4.png" alt="github4">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/github4.png" alt="github4">&lt;/p>
 &lt;p>创建后自动跳转到项目主页，如果你没勾选&lt;code>Add a README file&lt;/code>，那么看到的应该是如下页面，这里介绍了git的一些主要命令和用法，建议可以按照提示操作一下。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github5.png" alt="github5">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/github5.png" alt="github5">&lt;/p>
 &lt;/li>
 &lt;/ol>
 &lt;h3 id="2-github-pages">2. Github Pages&lt;/h3>
 &lt;p>下面我们来建立另外一个仓库，步骤与第一个一样，不同的是仓库名称有所区别。仓库名称固定为&lt;code>你的用户名+.github.io&lt;/code>，比如我上面截图的用户名是&lt;code>tsuchinoe&lt;/code>，那么我仓库的名称就应该写成&lt;code>tsuchinoe.github.io&lt;/code>&lt;strong>（注意这次勾选一下&lt;code>Add a README file&lt;/code>）&lt;/strong>&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github6.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/github6.png" alt="">&lt;/p>
 &lt;p>仓库创建完后，自动跳转到项目主页，可以看到仓库中已经存在一个&lt;code>README.md&lt;/code>，并且里面的内容中已经自动填充了仓库名以及仓库简介。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github7.png" alt="github7">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/github7.png" alt="github7">&lt;/p>
 &lt;p>接下来我们试试在浏览器中直接输入仓库名称，比如我直接在浏览器地址栏输入&lt;code>tsuchinoe.github.io&lt;/code>，会发现这个地址是可以打开的，而且里面的内容就是刚刚创建好的&lt;code>README.md&lt;/code>里面的内容，这就是Github Pages。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/github8.png" alt="github8">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/github8.png" alt="github8">&lt;/p>
 &lt;h3 id="3-git的简单用法">3. Git的简单用法&lt;/h3>
 &lt;h2 id="二安装hugo">二、安装Hugo&lt;/h2>
 &lt;h2 id="三购买自己的域名可选">三、购买自己的域名（可选）&lt;/h2></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2022/01/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">从零开始搭建个人博客</category><category domain="https://kiwi4814.github.io/tags/2022/01/hugo/">Hugo</category><category domain="https://kiwi4814.github.io/tags/2022/01/github/">Github</category><category domain="https://kiwi4814.github.io/tags/2022/01/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">个人博客</category></item><item><title>windows软件不完全推荐03：工具篇（施工中...）</title><link>https://kiwi4814.github.io/posts/2021/windows-software-tools/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/windows-software-tools/</guid><pubDate>Wed, 29 Dec 2021 22:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>本篇会放一些使用频率没那么高但也同样优秀的软件。也会按照第一章那样进行归类，同时也会介绍一些前文提到的同类软件。&lt;/p>
@@ -3388,7 +3397,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>我的理由&lt;/strong>：Kindle最佳伴侣。可以在电脑上管理和增加Kindle书籍，个性化修改书籍封面和内容，转换格式（epub、mobi、azw3），当然也可以直接当作电子书阅读器使用，是一个功能非常齐全的电子书管理器。&lt;/p>
-&lt;p>&lt;img src="https://i.loli.net/2021/11/28/wt9UqNFAC4pjaRI.png" alt="image-20211128202259395">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/wt9UqNFAC4pjaRI.png" alt="image-20211128202259395">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>授权方式&lt;/strong>：&lt;font style="background-color:#8bc34a">开源免费&lt;/font>&lt;/p>
@@ -3428,7 +3437,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>我的理由&lt;/strong>：如果你喜欢自己打造属于自己的电影墙，你肯定会爱上它，支持从各大数据库刮削电影和电视剧对的海报、简介、分集介绍等等。&lt;/p>
-&lt;p>&lt;img src="https://i.loli.net/2021/11/28/ir9kWldhb35v6LF.png" alt="image-20211128182340967">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/ir9kWldhb35v6LF.png" alt="image-20211128182340967">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>授权方式&lt;/strong>：使用免费的4.0.6版本即可&lt;/p>
@@ -3459,8 +3468,8 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>我的理由&lt;/strong>：搭配群晖QuickConnect、公网IP或者其他内网穿透软件就可以在任何地方观看你在家里存储的电影电视了，最终实现的效果可以参考下图所示。&lt;/p>
-&lt;p>&lt;img src="https://i.loli.net/2021/11/28/aR5Qmp3dYskSLj7.jpg" alt="image-20211128184640304 (1)">&lt;/p>
-&lt;p>&lt;img src="https://i.loli.net/2021/11/28/reO3KygQYZtVxL5.png" alt="image-20211128184015350">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/aR5Qmp3dYskSLj7.jpg" alt="image-20211128184640304 (1)">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/reO3KygQYZtVxL5.png" alt="image-20211128184015350">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>授权方式&lt;/strong>：&lt;font style="background-color:#8bc34a">开源免费&lt;/font>&lt;/p>
@@ -3486,7 +3495,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;blockquote>
 &lt;p>万彩办公大师OfficeBox是一款由广州万彩信息技术有限公司研发的免费办公工具软件超级套装，几乎可以满足日常各种办公工具需求。它内置了60多款强大的，无任何广告及插件的绿色办公组件，如PDF工具集（PDF转换（PDF 转 Word/Excel/PPT， PDF 合并分割水印）；文档/音视频/图片转换工具集；OCR工具集；屏幕录制工具集；图片处理工具集；文件处理工具集等。所有的套装工具不需要安装，直接可以绿色加载启动，省去了用户为安装各种办公软件而寻找工具、安装及卸载的麻烦。&lt;/p>
 &lt;/blockquote>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211127231339424.png" alt="image-20211127231339424">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20211127231339424.png" alt="image-20211127231339424">&lt;/p>
 &lt;h3 id="二office全家桶">二、Office全家桶&lt;/h3>
 &lt;p>说到办公，肯定离不开Office三件套，对于微软的Microsoft Office版本而言，目前最常用的应该是Office 2013，Office 2016，Office 2019以及随Windows11发布的Office 2021。&lt;/p>
 &lt;p>这里推荐大家直接使用Microsoft 365，如果有熟悉的小伙伴或者家人一起使用可以选择Microsoft 365 家庭版，最多支持6个人使用并且每个人附赠1T的OneDrive空间，官网购买即可，还是挺香的。&lt;/p>
@@ -3524,7 +3533,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>使用方法&lt;/strong>：安装后会额外多出方方格子和DIY工具箱两栏&lt;/p>
-&lt;p>&lt;img src="https://s2.loli.net/2021/12/06/97WVstQzOa1e6Zh.png" alt="image-20211206234550340">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/97WVstQzOa1e6Zh.png" alt="image-20211206234550340">&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;h4 id="datacharts-for-excel-34httpsclubexcelhomenetthread-1310268-1-1html">&lt;a href="https://club.excelhome.net/thread-1310268-1-1.html">&lt;strong>DataCharts For Excel 3.4&lt;/strong>&lt;/a>&lt;/h4>
@@ -3543,7 +3552,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>使用方法&lt;/strong>：按照指引安装后会在功能菜单最右边出现公文菜单。&lt;/p>
-&lt;p>&lt;img src="https://s2.loli.net/2021/12/07/gmA42kr8VyJqvYa.png" alt="image-20211207223022212">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/gmA42kr8VyJqvYa.png" alt="image-20211207223022212">&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;h3 id="三pdf处理">三、PDF处理&lt;/h3>
@@ -3562,7 +3571,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>我的理由&lt;/strong>：这款工具最大的几个优势：①线上工具，打开网页就能直接用；②完全免费，允许商业化使用；③不想线上的话安装客户端也支持&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211207224040240.png" alt="image-20211207224040240">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20211207224040240.png" alt="image-20211207224040240">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>授权方式&lt;/strong>：&lt;font style="background-color:#8bc34a">开源免费&lt;/font>&lt;/p>
@@ -3635,14 +3644,14 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>我的理由&lt;/strong>：对于会用git的人应该很熟悉show diff的操作，其实就是对比文件的历史版本的差异。而不熟悉git或者我们想要对比Office、图像文件时，Beyond Compare目前还是市面上首屈一指的对比软件。建议搭配git使用效果更佳，再也不怕自己写过的东西丢了。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211128105911299.png" alt="image-20211128105911299">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20211128105911299.png" alt="image-20211128105911299">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>授权方式&lt;/strong>：&lt;font>付费&lt;/font>，有点贵，用的话建议破解版就好&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>使用方法&lt;/strong>：拖动文件&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211128110108145.png" alt="image-20211128110108145">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20211128110108145.png" alt="image-20211128110108145">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>同类软件&lt;/strong>：git、&lt;a href="https://winmerge.org/">Winmerge&lt;/a>、&lt;a href="https://sourcegear.com/diffmerge/">DiffMerge&lt;/a>都是开源免费的，但是功能不如BC强大。&lt;/p>
@@ -3691,7 +3700,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;p>GTD类软件相信大家有这个习惯的肯定都有自己惯用的了，市面上能找到的GTD软件数不胜数，这里只列两个，一个是微软收购奇妙清单后开发的&lt;a href="https://todo.microsoft.com/tasks/">Microsoft To Do&lt;/a>，另外一个是辅助办公的番茄钟软件&lt;a href="https://pomofocus.io/">Pomofocus&lt;/a>。&lt;/p>
 &lt;p>目前前者已经被我用Notion替代掉了，Notion强大的定制化功能（&lt;del>抄别人模板很方便&lt;/del>）足以应对大部分的GTD需求。&lt;/p>
 &lt;p>Pomofocus则是我常用的另一款软件（PS：其网页端也可以集成在Notion里面，就不需要额外安装软件了），主要功能非常简单，就是计时，附带的任务管理和数据统计可以忽略，颜值尚可。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211128165134247.png" alt="image-20211128165134247">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20211128165134247.png" alt="image-20211128165134247">&lt;/p>
 &lt;h3 id="九协同办公">九、协同办公&lt;/h3>
 &lt;p>&lt;a href="https://docs.qq.com/desktop/">腾讯文档 (qq.com)&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://shimo.im/welcome">石墨文档-企业在线协同办公系统平台,支持云端多人在线协作编辑文档和表格 (shimo.im)&lt;/a>&lt;/p>
@@ -3737,7 +3746,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;li>&lt;strong>使用方法&lt;/strong>：使用6.29版本记得关闭自动更新。&lt;/li>
 &lt;li>&lt;strong>同类软件&lt;/strong>：WinRar、&lt;a href="http://7-zip.org/">7-Zip&lt;/a>等等&lt;/li>
 &lt;/ul>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211127161546420.png" alt="image-20211127161546420" style="zoom: 50%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20211127161546420.png" alt="image-20211127161546420" style="zoom: 50%;" />
 &lt;h3 id="02-浏览器">02. 浏览器&lt;/h3>
 &lt;h4 id="microsoft-edgehttpswwwmicrosoftcomen-usedgefeaturesformmy01rzocidmy01rz">&lt;a href="https://www.microsoft.com/en-us/edge/features?form=MY01RZ&amp;amp;OCID=MY01RZ">MicroSoft Edge&lt;/a>&lt;/h4>
 &lt;ul>
@@ -3785,7 +3794,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>我的理由&lt;/strong>：如果你喜欢用MacOS，那你一定知道Alfred，它基本上替代了苹果自家的Spotlight，在我看来，上面说的Wox及其同类软件做的就是Spotlight做的事情，而utools想做的是Alfred，虽然相比于万能的Alfred还逊色很多，但总归有这样的软件出现了，希望能越做越好。&lt;/p>
-&lt;p>&lt;img src="https://i.loli.net/2021/11/29/wD7RhGYyEpFImTo.png" alt="image-20211129213706647">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/wD7RhGYyEpFImTo.png" alt="image-20211129213706647">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>授权方式&lt;/strong>：&lt;font style="background-color:#8bc34a">免费&lt;/font>使用，升级VIP有更多功能&lt;/p>
@@ -3810,7 +3819,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>使用方法&lt;/strong>：使用起来非常简单，在桌面上绘制一个矩形，然后进行分类即可；双击隐藏所有文件（也可以设置哪些区域不隐藏）。&lt;/p>
-&lt;p>&lt;img src="https://s2.loli.net/2021/12/05/ROAW86uwKnJ1LBF.png" alt="image-20211205165111007">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/ROAW86uwKnJ1LBF.png" alt="image-20211205165111007">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>同类软件&lt;/strong>：&lt;a href="https://guanjia.qq.com/product/zmzl/">腾讯桌面&lt;/a>&lt;/p>
@@ -3839,7 +3848,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>使用方法&lt;/strong>：设置好自己熟悉的快捷键，比如我自己设置的时&lt;strong>Ctrl+`&lt;/strong>，当我想要使用的时候快速呼出，方向键选择或者直接搜索后按Enter即可。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/KIbCoPnzO891Eje.gif" alt="动画">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/KIbCoPnzO891Eje.gif" alt="动画">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>同类软件&lt;/strong>：windows自带的&lt;code>Win+V&lt;/code>、开源软件CopyQ，此外还有多平台支持的云剪切板工具&lt;a href="https://clipber.com/">快贴&lt;/a>&lt;/p>
@@ -3858,7 +3867,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>使用方法&lt;/strong>：两种，一种是快捷键呼出搜索常用短语，另外一种是设置快捷短语，比如我输入&lt;code>@163&lt;/code>这四个字符的时候，就会快速把我的网易邮箱替换上去，非常方便。&lt;/p>
-&lt;p>&lt;img src="https://s2.loli.net/2021/12/06/MbLpdKgjJCVmOHc.gif" alt="1">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/MbLpdKgjJCVmOHc.gif" alt="1">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>同类软件&lt;/strong>：几乎所有的输入法都带有自定义短语的功能，上面说的邮箱、电话也是可以实现的，但是d动态渲染、脚本之类的就不支持了；此外还有&lt;a href="https://textexpander.com/download">TextExpander&lt;/a>，价格太贵，同样不推荐。&lt;/p>
@@ -3872,7 +3881,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;li>
 &lt;p>&lt;strong>我的理由&lt;/strong>：Windows工作流的集大成者，将一套指令做成动作库。比如说有人发给我一张图片，里面的文字，我想要识别出里面的文字并使用Google搜索相关信息，正常我需要OCR识别，打开浏览器开始搜索，使用Quicker的话只需要触发一个动作即可。当然这是很基础的应用了，可以去官网的动作库去查看更多复杂的指令。&lt;/p>
 &lt;p>&lt;em>其实这个软件和上面的很多功能都有重叠，尤其是utools，都是集合了很多丰富功能的效率软件，但是Quicker侧重点在于工作流，utools本质还是启动器+工具。即便如此，要用的话只需要选一个使用就可以了。&lt;/em>&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/apOHgyohsntqX2Q.png" alt="image-20211205173110301">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/apOHgyohsntqX2Q.png" alt="image-20211205173110301">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>授权方式&lt;/strong>：免费使用，但有限制，收费的话是&lt;font>订阅制&lt;/font>的形式&lt;/p>
@@ -3967,7 +3976,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>使用方法&lt;/strong>：安装后设置常用的快捷键以及截图后的默认动作，比如我一般设置快捷键为Ctrl+Shift+A，录屏为Ctrl+Shift+PrintScreen，截图后复制到剪切板。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211127181335391.png" alt="image-20211127181335391">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20211127181335391.png" alt="image-20211127181335391">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>同类软件&lt;/strong>：Snipaste，FastStone等&lt;/p>
@@ -3992,12 +4001,12 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;li>&lt;strong>使用方法&lt;/strong>：默认快捷键与其他播放器不太一样，比如双击暂停、右键选项菜单、鼠标中键切换全屏等，不习惯的可以自定义。另外，倍速播放、切换音轨、切换字幕都是很方便的快捷键，可以自行搜索下，记住常用的即可。&lt;/li>
 &lt;li>&lt;strong>同类软件&lt;/strong>：KMPlayer 、迅雷影音等&lt;/li>
 &lt;/ul>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211127164723187.png" alt="image-20211127164723187" style="zoom:67%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20211127164723187.png" alt="image-20211127164723187" style="zoom:67%;" />
 &lt;h4 id="yesplaymusichttpsgithubcomqier222yesplaymusic">&lt;a href="https://github.com/qier222/YesPlayMusic">YesPlayMusic&lt;/a>&lt;/h4>
 &lt;ul>
 &lt;li>
 &lt;p>&lt;strong>软件简介&lt;/strong>：高颜值的第三方网易云播放器。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/2TvV3RA41xSltW6.png" alt="image-20211202221610043">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/2TvV3RA41xSltW6.png" alt="image-20211202221610043">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>我的理由&lt;/strong>：最近发现的一个三方客户端，颜值很高，喜欢折腾的可以去尝试&lt;a href="https://github.com/revincx/UnblockNeteaseMusic">UnblockNeteaseMusic&lt;/a>，这样最头疼的版权问题也能解决，顺便还支持Last.fm，喜欢看数据的话可以关联一下。&lt;/p>
@@ -4201,7 +4210,7 @@ NAS，全程是网络附属存储，本质就是你的另一台电脑，里面�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>我的理由&lt;/strong>：全局流量代理，界面符合审美，自定义规则&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/BUgi42AudjGprmP.png" alt="image-20211202235657168">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/BUgi42AudjGprmP.png" alt="image-20211202235657168">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>授权方式&lt;/strong>：&lt;font style="background-color:#8bc34a">开源免费&lt;/font>&lt;/p>
@@ -4220,7 +4229,7 @@ NAS，全程是网络附属存储，本质就是你的另一台电脑，里面�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>我的理由&lt;/strong>：~~steam上唯一的买了还要玩的游戏。~~桌面动态壁纸，不怎么占内存，创意工坊可以下载其他人制作的壁纸，甚至可以在桌面上玩互动游戏。&lt;/p>
-&lt;p>&lt;img src="https://i.loli.net/2021/12/02/DIxUnhTEtNoZS35.png" alt="image-20211202235140350">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/DIxUnhTEtNoZS35.png" alt="image-20211202235140350">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>授权方式&lt;/strong>：需通过&lt;a href="https://store.steampowered.com/">Steam&lt;/a>商店购买，18R&lt;/p>
@@ -4242,7 +4251,7 @@ NAS，全程是网络附属存储，本质就是你的另一台电脑，里面�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>使用方法&lt;/strong>：安装后任务管理器会出现音量图标，设置原本的音量图标不显示即可，单机图标即可出现下图所示的调节音量界面。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211127191256910.png" alt="image-20211127191256910" style="zoom:33%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20211127191256910.png" alt="image-20211127191256910" style="zoom:33%;" />
 &lt;/li>
 &lt;/ul>
 &lt;h4 id="fluxhttpsjustgetfluxcom">&lt;a href="https://justgetflux.com/">f.lux&lt;/a>&lt;/h4>
@@ -4258,7 +4267,7 @@ NAS，全程是网络附属存储，本质就是你的另一台电脑，里面�
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>使用方法&lt;/strong>：安装后设置经纬度就可以自动变化色温了，当然也有更专业的设置可以自己研究，&lt;strong>设计师慎用&lt;/strong>。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211127192252616.png" alt="image-20211127192252616" style="zoom:50%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20211127192252616.png" alt="image-20211127192252616" style="zoom:50%;" />
 &lt;/li>
 &lt;/ul>
 &lt;hr>
@@ -4356,7 +4365,7 @@ A（Answer）回答——我们的解决方案是……&lt;/p>
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-jsx" data-lang="jsx">&lt;span class="line">&lt;span class="cl">&lt;span class="o">**&lt;/span>&lt;span class="nx">Money&lt;/span> &lt;span class="nx">Heist&lt;/span> &lt;span class="nx">Complete&lt;/span> &lt;span class="nx">Series&lt;/span> &lt;span class="mi">1080&lt;/span>&lt;span class="nx">p&lt;/span> &lt;span class="nx">NF&lt;/span> &lt;span class="nx">WEB&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nx">DL&lt;/span> &lt;span class="nx">DDP5&lt;/span>&lt;span class="mf">.1&lt;/span> &lt;span class="nx">x264&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nx">DoA&lt;/span>&lt;span class="o">**&lt;/span>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-jsx" data-lang="jsx">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">Money&lt;/span> &lt;span class="nx">Heist&lt;/span> &lt;span class="nx">Complete&lt;/span> &lt;span class="nx">Series&lt;/span> &lt;span class="mi">1080&lt;/span>&lt;span class="nx">p&lt;/span> &lt;span class="nx">NF&lt;/span> &lt;span class="nx">WEB&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nx">DL&lt;/span> &lt;span class="nx">DDP5&lt;/span>&lt;span class="mf">.1&lt;/span> &lt;span class="nx">x264&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nx">DoA&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>其实从上面的经验我们就可以看出来，这是纸钞屋全五季的网飞1080P资源。其中NF代表网飞（Netflix），如果是HBO出品的这里就会变成HMAX，DDP5.1代表声道为杜比数字5.1声道，DoA为压制组。是不是很简单？&lt;/p>
@@ -4404,7 +4413,7 @@ A（Answer）回答——我们的解决方案是……&lt;/p>
 &lt;p>如果你在国外，可以直接去&lt;a href="https://thepiratebay.org/index.html">海盗湾&lt;/a>、&lt;a href="https://proxyrarbg.org/torrents.php">RARBG&lt;/a>、&lt;a href="https://yts.mx/">YTS&lt;/a>、&lt;a href="https://kickasscr.net/">KAT&lt;/a>等等“大站”搜索。&lt;/p>
 &lt;p>国内的话虽然也有很多很多磁力站，但除了少数几个，大部分站点存活时间都很短，这就导致我们如果要通过BT下载的话经常要更换站点，很是麻烦。&lt;/p>
 &lt;p>但是不用担心，已经有很多“网络大神”帮我们整理好了，也无需特地记忆，需要找的时候打开百度检索就好了，比如下图这样子的：&lt;/p>
-&lt;p>&lt;img src="%E6%B5%81%E5%AA%92%E4%BD%93%E6%97%B6%E4%BB%A3%E5%A6%82%E4%BD%95%205994dc91311e40fb887a92a286fa1298/Untitled.png" alt="Untitled">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220327153306501.png" alt="image-20220327153306501">&lt;/p>
 &lt;hr>
 &lt;ul>
 &lt;li>
@@ -4428,7 +4437,7 @@ A（Answer）回答——我们的解决方案是……&lt;/p>
 &lt;p>&lt;a href="https://www.notion.so/8878c1c1b1c24380a492502549b0fe51">附：一些资源站&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2021/12/%E6%95%B0%E5%AD%97%E7%94%9F%E6%B4%BB/">数字生活</category><category domain="https://kiwi4814.github.io/tags/2021/12/bt/">BT</category><category domain="https://kiwi4814.github.io/tags/2021/12/%E6%B5%81%E5%AA%92%E4%BD%93/">流媒体</category></item><item><title>WSL安装oh-my-posh踩坑记录</title><link>https://kiwi4814.github.io/posts/2021/wsl-oh-my-posh/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/wsl-oh-my-posh/</guid><pubDate>Sun, 21 Nov 2021 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>整体思路参考此文：&lt;a href="https://docs.microsoft.com/zh-cn/windows/terminal/tutorials/custom-prompt-setup">Windows Terminal Custom Prompt Setup | Microsoft Docs&lt;/a>&lt;/p>
 &lt;h3 id="一安装nerdfontshttpswwwnerdfontscomfont-downloads">一、安装&lt;a href="https://www.nerdfonts.com/font-downloads">NerdFonts&lt;/a>&lt;/h3>
 &lt;p>推荐安装&lt;strong>Caskaydia Cove Nerd Font&lt;/strong>&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211121161954784.png" alt="image-20211121161954784">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20211121161954784.png" alt="image-20211121161954784">&lt;/p>
 &lt;h3 id="二安装oh-my-posh">二、安装oh-my-posh&lt;/h3>
 &lt;p>文章中采用了两种方式，一种是为powershell单独安装，另外一种是使用包管理器Winget同时为WSL和PowerShell安装。下面采用的是第二种：&lt;/p>
 &lt;h4 id="1-安装winget">1. 安装Winget&lt;/h4>
@@ -4573,7 +4582,7 @@ Write-Host &amp;#34;&amp;#34;
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>最终效果：&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211121173415026.png" alt="image-20211121173415026">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20211121173415026.png" alt="image-20211121173415026">&lt;/p>
 &lt;h6 id="222-wsl">2.2.2 WSL&lt;/h6>
 &lt;p>对于WSL来说需要更新&lt;code>.bashrc&lt;/code>配置文件。&lt;/p>
 &lt;p>使用命令 &lt;code>nano .bashrc&lt;/code> 打开配置文件 并将下面的脚本放进去。（下面脚本中&lt;code>paradox.omp.json&lt;/code> 为主题部分，可自行替换，你可以在&lt;code>.poshthemes&lt;/code>这个文件夹下面看到所有的主题。 ）&lt;/p>
@@ -4605,7 +4614,7 @@ Write-Host &amp;#34;&amp;#34;
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> .bashrc
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20211121181139938.png" alt="image-20211121181139938">&lt;/p>
+&lt;/div>&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20211121181139938.png" alt="image-20211121181139938">&lt;/p>
 &lt;p>当然了，WSL下是可以使用oh-my-zsh的，这里预留个坑位： [WSL安装oh my zsh.md](WSL安装oh my zsh.md)&lt;/p>
 &lt;h6 id="223-附第一种方式的安装说明">2.2.3 附第一种方式的安装说明&lt;/h6>
 &lt;p>如果不考虑在WSL上使用oh-my-posh，可以完全参考下面这篇文章操作。&lt;/p>
@@ -4755,7 +4764,7 @@ git config --global --unset https.proxy
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>可恢复性&lt;/strong>：可恢复性指数据丢失后，是否可以通过某种手段进行恢复，如果数据可以恢复，至少说明对业务的影响不会那么大，这样可以相应地降低异地多活架构设计的复杂度。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313163546122.png" alt="image-20220313163546122">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313163546122.png" alt="image-20220313163546122">&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;/li>
@@ -4769,7 +4778,7 @@ git config --global --unset https.proxy
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>重复生成&lt;/strong>：数据不同步到异地机房，每个机房都可以生成数据，这个方案适合于可以重复生成的数据。例如，登录产生的 cookie、session 数据、缓存数据等。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313163605280.png" alt="image-20220313163605280">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313163605280.png" alt="image-20220313163605280">&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;/li>
@@ -4878,7 +4887,7 @@ git config --global --unset https.proxy
 &lt;h3 id="失效转移">失效转移&lt;/h3>
 &lt;p>失效转移是保证任意一个副本不可访问时，可以快速切换访问其他副本，保证系统整体可用。&lt;/p>
 &lt;h4 id="失效确认">失效确认&lt;/h4>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313163458193.png" alt="image-20220313163458193">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313163458193.png" alt="image-20220313163458193">&lt;/p>
 &lt;p>判断服务器宕机的手段有两种：&lt;strong>心跳检测&lt;/strong>和&lt;strong>访问失败报告&lt;/strong>。&lt;/p>
 &lt;p>对于应用程序的访问失败报告，控制中心还需要再一次发送心跳检测进行确认，以免错误判断服务器宕机。因为一旦进行数据访问的失效转移，意味着数据存储多份副本不一致，需要进行后续一系列的复杂动作。&lt;/p>
 &lt;h3 id="访问转移">访问转移&lt;/h3>
@@ -4896,7 +4905,7 @@ git config --global --unset https.proxy
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="服务高可用弹力设计">服务高可用——弹力设计&lt;/h2>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313162619060.png" alt="image-20220313162619060">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313162619060.png" alt="image-20220313162619060">&lt;/p>
 &lt;p>在上面这个图上，我们可以看到，有三大块的东西——&lt;/p>
 &lt;p>&lt;font color="red">&lt;strong>服务冗余：&lt;/strong>&lt;/font>通过冗余服务的副本数可以消除单点故障。这需要&lt;strong>服务发现【zookeeper、consul】，负载均衡【Nginx、HAProxy】，动态路由和健康检查&lt;/strong>四个功能或组件。&lt;/p>
 &lt;p>&lt;font color="red">&lt;strong>服务解耦：&lt;/strong>&lt;/font>通过解耦可以做到把业务隔离开来，不让服务间受影响，这样就可以有更好的稳定性。在水平层面上，需要把业务或用户分片分区（业分做隔离，用户做多租户）。在垂直层面上，需要&lt;strong>异步通讯&lt;/strong>机制。因为应用被分解成了一个一个的服务，所以在服务的编排和聚合上，需要有工作流（像 Spring 的 Stream 或 Akka 的 flow 或是 AWS 的 Simple Workflow）来把服务给串联起来。而一致性的问题又需要业务补偿机制来做反向交易。&lt;/p>
@@ -4904,17 +4913,17 @@ git config --global --unset https.proxy
 &lt;p>初看之下，我们可能对这些概念有些陌生，但其实都是我们日常开发和设计中“触手可及”的设计，下面我们来一一简单学习下这些设计思想：&lt;/p>
 &lt;h3 id="1服务隔离bulkheads">（1）服务隔离（Bulkheads）&lt;/h3>
 &lt;p>&lt;strong>水密舱壁&lt;/strong>是中国造船史上的一项重要发明，其原理是用隔舱板将船舱分成若干个互不相通的独立船舱，当船舶发生触礁、碰撞等造成船壳破损时，即使某一船舱破损进水，也不致于波及其它船舱，从而提高船舶的抗沉性。其原理如下图所示：&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/960a304e251f95cad1c8e606975b683e6709c93df465.jpg" alt="960a304e251f95cad1c8e606975b683e6709c93df465" style="zoom: 25%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/960a304e251f95cad1c8e606975b683e6709c93df465.jpg" alt="960a304e251f95cad1c8e606975b683e6709c93df465" style="zoom: 25%;" />
 &lt;p>我们的软件设计当然也可能会“漏水”，所以为了不让“故障”蔓延开来，需要使用“隔板”技术，来将架构分隔成多个“船舱”来隔离故障。&lt;/p>
 &lt;p>在分布式软件架构中，我们同样需要使用类似的技术来让我们的故障得到隔离。这就需要我们对系统进行分离。一般来说，对于系统的分离有两种方式，一种是以服务的种类来做分离，一种是以用户来做分离。&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>按照服务的种类——典型的例子：微服务&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313162919658.png" alt="image-20220313162919658">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313162919658.png" alt="image-20220313162919658">&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>按照用户的请求——典型的例子：多租户&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313162929855.png" alt="image-20220313162929855">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313162929855.png" alt="image-20220313162929855">&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;h3 id="2异步通讯asynchronous">（2）异步通讯（Asynchronous）&lt;/h3>
@@ -4929,7 +4938,7 @@ git config --global --unset https.proxy
 &lt;p>但是，在这种方式下，接收方需要向发送方订阅事件，所以是接收方依赖于发送方。这种方式还是有一定的耦合。&lt;/p>
 &lt;h4 id="中间订阅broker">③中间订阅（Broker）&lt;/h4>
 &lt;p>所谓 Broker，就是一个中间人，发送方（sender）和接收方（receiver）都互相看不到对方，它们看得到的是一个 Broker，发送方向 Broker 发送消息，接收方向 Broker 订阅消息。如下图所示。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313162946453.png" alt="image-20220313162946453">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313162946453.png" alt="image-20220313162946453">&lt;/p>
 &lt;p>这是完全的解耦。所有的服务都不需要相互依赖，而是依赖于一个中间件 Broker。这个 Broker 是一个像数据总线一样的东西，所有的服务要接收数据和发送数据都发到这个总线上，这个总线就像协议一样，让服务间的通讯变得标准和可控。&lt;/p>
 &lt;p>在 Broker 这种模式下，发送方的服务和接收方的服务最大程度地解耦。但是所有人都依赖于一个总线，所以这个总线就需要有如下的特性：&lt;/p>
 &lt;ul>
@@ -4939,7 +4948,7 @@ git config --global --unset https.proxy
 &lt;/ul>
 &lt;p>要做到这三条还是比较难的。当然，好在现在开源软件或云平台上 Broker 的软件是非常成熟的，所以节省了我们很多的精力。&lt;/p>
 &lt;p>✨&lt;strong>事件驱动架构（EDA – Event Driven Architecture）&lt;/strong>&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313162956535.png" alt="image-20220313162956535">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313162956535.png" alt="image-20220313162956535">&lt;/p>
 &lt;h3 id="3幂等性idempotency">（3）幂等性（Idempotency）&lt;/h3>
 &lt;p>编程中的“幂等性”是指任意多次执行所产生的影响，与一次执行的影响相同。一个拥有幂等性设计的接口，保证无论一次或多次来调用接口，都能够得到相同的结果。接口的幂等性设计在某些场景下是必需的，例如用户下单的场景。&lt;/p>
 &lt;p>我们知道，服务间的调用可能会有三个状态，一个是成功（Success），一个是失败（Failed），一个是超时（Timeout）。前两者都是明确的状态，而超时则是完全不知道是什么状态。比如，超时原因是网络传输丢包的问题，可能是请求时就没有请求到，也有可能是请求到了，返回结果时没有正常返回等等情况。于是我们完全不知道下游系统是否收到了请求，而收到了请求是否处理了，成功 / 失败的状态在返回时是否遇到了网络问题。总之，请求方完全不知道是怎么回事。&lt;/p>
@@ -4962,7 +4971,7 @@ git config --global --unset https.proxy
 &lt;li>10bits 作为机器编号（5bits 是数据中心，5bits 的机器 ID），支持 1024 个实例。&lt;/li>
 &lt;li>12bits 作为毫秒内的序列号。一毫秒可以生成 4096 个序号。&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313163012791.png" alt="image-20220313163012791">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313163012791.png" alt="image-20220313163012791">&lt;/p>
 &lt;p>当然，雪花片算法提供的只是一个思想，根据实际的具体情况我们可以适当调整每一部分的比例，比如在接处警的系统中，我们采用了改造过的雪花片算法——保证总长度在53位，并且加上区号的限制，以此来保证全国的接处警系统都能生成唯一的ID。&lt;/p>
 &lt;h4 id="设计幂等性接口">设计幂等性接口&lt;/h4>
 &lt;ul>
@@ -5112,7 +5121,7 @@ git config --global --unset https.proxy
 &lt;/ul>
 &lt;p>下面我们来看一下熔断机制的实现方法——熔断状态机。&lt;/p>
 &lt;h4 id="熔断状态机">熔断状态机&lt;/h4>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313163041303.png" alt="image-20220313163041303">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313163041303.png" alt="image-20220313163041303">&lt;/p>
 &lt;p>首先在熔断器内部维护者一个调用失败的计数器，如果调用服务方的接口失败，则使失败次数加 1。&lt;/p>
 &lt;p>然后在熔断器内部有3种状态，分别是：&lt;/p>
 &lt;ol>
@@ -5223,14 +5232,14 @@ git config --global --unset https.proxy
 &lt;li>
 &lt;p>&lt;strong>独立降级系统&lt;/strong>&lt;/p>
 &lt;p>为了解决系统后门降级方式的缺点，将降级操作独立到一个单独的系统中，可以实现复杂的权限管理、批量操作等功能。其基本架构如下：&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313163104940.png" alt="image-20220313163104940" style="zoom: 25%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313163104940.png" alt="image-20220313163104940" style="zoom: 25%;" />
 &lt;/li>
 &lt;/ul>
 &lt;h3 id="8排队">（8）排队&lt;/h3>
 &lt;p>排队实际上是限流的一个变种，限流是直接拒绝用户，排队是让用户等待一段时间，全世界最有名的排队当属 12306 网站排队了。排队虽然没有直接拒绝用户，但用户等了很长时间后进入系统，体验并不一定比限流好。&lt;/p>
 &lt;p>由于排队需要临时缓存大量的业务请求，单个系统内部无法缓存这么多数据，一般情况下，排队需要用独立的系统去实现，例如使用 Kafka 这类消息队列来缓存用户请求。&lt;/p>
 &lt;p>下面是 1 号店的“双 11”秒杀排队系统架构：&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313163140536.png" alt="image-20220313163140536" style="zoom:25%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313163140536.png" alt="image-20220313163140536" style="zoom:25%;" />
 &lt;p>其基本实现摘录如下：&lt;/p>
 &lt;blockquote>
 &lt;p>【排队模块】负责接收用户的抢购请求，将请求以先入先出的方式保存下来。每一个参加秒杀活动的商品保存一个队列，队列的大小可以根据参与秒杀的商品数量（或加点余量）自行定义。&lt;/p>
@@ -5311,7 +5320,7 @@ git config --global --unset https.proxy
 &lt;p>负载均衡，顾名思义，主要使用在业务量和数据量较高的情况下，当单台服务器不足以承担所有的负载压力时，通过负载均衡手段，将流量和数据分摊到一个集群组成的多台服务器上，以提高整体的负载处理能力。&lt;/p>
 &lt;p>&lt;strong>无状态应用的失效转移可以利用负载均衡来实现&lt;/strong>。&lt;/p>
 &lt;p>无状态的应用实现高可用架构十分简单，由于服务器不保存请求状态，那么所有服务器完全对等，在任意节点执行同样的请求，结果总是一致的。这种情况下，最简单的高可用方案就是使用负载均衡。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313162241918.png" alt="image-20220313162241918">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313162241918.png" alt="image-20220313162241918">&lt;/p>
 &lt;h3 id="2分布式session">（2）分布式Session&lt;/h3>
 &lt;p>应用服务器的高可用架构设计主要基于服务无状态这一特性。事实上，业务总是有状态的，如购物车记录用户的购买信息；用户的登录状态；最新发布的消息等等。&lt;/p>
 &lt;p>在分布式场景下，一个用户的 Session 如果只存储在一个服务器上，那么当负载均衡器把用户的下一个请求转发到另一个服务器上，该服务器没有用户的 Session，就可能导致用户需要重新进行登录等操作。&lt;/p>
@@ -5339,7 +5348,7 @@ git config --global --unset https.proxy
 &lt;hr>
 &lt;h2 id="如何设计一个高可用系统">如何设计一个高可用系统&lt;/h2>
 &lt;p>上一节我们已经介绍了什么是高可用以及高可用相关的一些概念，接下来我们分几个章节来介绍：&lt;strong>如何设计一个高可用系统？&lt;/strong>&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313160723990.png" alt="image-20220313160723990">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313160723990.png" alt="image-20220313160723990">&lt;/p>
 &lt;p>&lt;strong>大型系统的分层架构及物理服务器的分布式部署使得位于不同层次的服务器具有不同的可用性特点。关闭服务或服务器宕机时产生的影响也不相同，高可用的解决方案也差异甚大&lt;/strong>。大致可以分为：&lt;/p>
 &lt;ul>
 &lt;li>高可用的架构 - 主要方式是：主备、主从、双主、集群、分区&lt;/li>
@@ -5361,7 +5370,7 @@ git config --global --unset https.proxy
 &lt;/li>
 &lt;li>
 &lt;p>一旦主机宕机，可以通过人工手段，将其中一个备节点作为主节点。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313160803044.png" alt="image-20220313160803044">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313160803044.png" alt="image-20220313160803044">&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;p>&lt;strong>优点&lt;/strong>&lt;/p>
@@ -5378,7 +5387,7 @@ git config --global --unset https.proxy
 &lt;h3 id="2主从复制">（2）主从复制&lt;/h3>
 &lt;p>主从复制和主备复制只有一字之差，“从”意思是“随从、仆从”，“备”的意思是备份。我们可以理解为仆从是要帮主人干活的，这里的干活就是承担“读”的操作。也就是说，主机负责读写操作，从机只负责读操作，不负责写操作。&lt;/p>
 &lt;p>&lt;strong>主从模式&lt;/strong>其实不是主要解决高可用问题的，更多的是为了实现读写分离，来解决高并发问题。实际场景中通常不是一主一从，而是一主多从架构，因为大部分应用都是的读多写少。主节点处理写请求，从节点处理读请求。由于存在多从，读服务的可用性远高于写服务。另外，写服务会存在单点故障。这个问题可以通过集群动态选主来解决：当主节点不可用时，集群自动选出一台新的主节点。基于zookeeper，动态选主很容易实现。不过动态选主在MySQL集群架构中不会使用，原因是主从同步数据必须在部署时配置好，切换了主节点还是需要运维人工介入修改配置并重启服务。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313160959711.png" alt="image-20220313160959711" style="zoom: 80%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313160959711.png" alt="image-20220313160959711" style="zoom: 80%;" />
 &lt;p>&lt;strong>优缺点分析&lt;/strong>&lt;/p>
 &lt;p>主从复制与主备复制相比，优点有：&lt;/p>
 &lt;ul>
@@ -5412,9 +5421,9 @@ git config --global --unset https.proxy
 &lt;p>常见的主备切换架构有三种形式：互连式、中介式和模拟式。具体细节感兴趣可以参考这篇文章——&lt;a href="https://xiaojun90.github.io/blog/architecture/1018.html">高可用存储架构：双机架构&lt;/a>。&lt;/p>
 &lt;h3 id="4双主模式">（4）双主模式&lt;/h3>
 &lt;p>&lt;strong>双主模式&lt;/strong>中，两台服务是平等关系，同时对外提供读写服务，客户端任选一台即可。双主模式是可用性最好的，但是这种架构的一致性处理比较困难，需要两台服务进行双向数据同步。一旦它们之间的通信断开，就形成了网络分区，这种分区会带来&lt;a href="https://cloud.tencent.com/developer/article/1027323">脑裂&lt;/a>（brain-split）问题，并且系统对此无解，必须人工介入。所以在架构设计时极少选择双主模式。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313161033607.jpg" alt="image-20220313161033607" style="zoom: 25%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313161033607.jpg" alt="image-20220313161033607" style="zoom: 25%;" />
 &lt;h3 id="5数据集群">（5）数据集群&lt;/h3>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313161130766.png" alt="image-20220313161130766" style="zoom:50%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313161130766.png" alt="image-20220313161130766" style="zoom:50%;" />
 &lt;p>主备、主从、主主架构本质上都有一个隐含的假设：主机能够存储所有数据，但主机本身的存储和处理能力肯定是有极限的。早在 2013 年，Facebook 就有 2500 亿张上传照片，当时这些照片的容量就已经达到了 250 PB 字节（250 × 1024TB），平均一天上传的图片有 3 亿 5000 万张。如此大量的数据，单台服务器肯定是无法存储和处理的，我们必须使用多台服务器来存储数据，这就是数据集群架构。&lt;/p>
 &lt;p>简单来说，集群就是多台机器组合在一起形成一个统一的系统，这里的“多台”，数量上至少是 3 台；相比而言，主备、主从都是 2 台机器。根据集群中机器承担的不同角色来划分，集群可以分为两类：数据集中集群、数据分散集群。&lt;/p>
 &lt;h4 id="数据集中集群">①数据集中集群&lt;/h4>
@@ -5456,11 +5465,11 @@ git config --global --unset https.proxy
 &lt;p>其中最重要的就是数据复制的规则，在某些异常或者灾难情况下，虽然部分数据受影响，但整体数据并没有全部被影响，本身就相当于一个高可用方案了。但仅仅做到这点还不够，因为每个分区本身的数据量虽然只是整体数据的一部分，但还是很大，这部分数据如果损坏或者丢失，损失同样难以接受。&lt;strong>因此即使是分区架构，同样需要考虑复制方案。&lt;/strong>&lt;/p>
 &lt;p>常见的复制方法有集中式、互备式和独立式三种。&lt;/p>
 &lt;p>&lt;strong>集中式&lt;/strong>：所有数据存在一个总备份中心，设计简单，但是成本较高，需要建设一个独立的备份中心。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313161156097.png" alt="image-20220313161156097" style="zoom:25%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313161156097.png" alt="image-20220313161156097" style="zoom:25%;" />
 &lt;p>&lt;strong>互备式&lt;/strong>：每个分区备份另外一个分区的数据，设计复杂，并且扩展麻烦，优点是成本低，因为每台机器都承载两个身份。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313161206002.png" alt="image-20220313161206002" style="zoom:25%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313161206002.png" alt="image-20220313161206002" style="zoom:25%;" />
 &lt;p>&lt;strong>独立式&lt;/strong>：每个分区自己有独立的备份中心【非本分区的】，优点是设计简单，各个分区互不影响，但是成本极高。&lt;/p>
-&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313161215359.png" alt="image-20220313161215359" style="zoom:25%;" /></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category><category domain="https://kiwi4814.github.io/tags/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category></item><item><title>高可用01：什么是高可用系统？</title><link>https://kiwi4814.github.io/posts/2021/high-availability-concept/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-concept/</guid><pubDate>Fri, 08 Oct 2021 15:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;hr>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313161215359.png" alt="image-20220313161215359" style="zoom:25%;" /></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category><category domain="https://kiwi4814.github.io/tags/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category></item><item><title>高可用01：什么是高可用系统？</title><link>https://kiwi4814.github.io/posts/2021/high-availability-concept/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-concept/</guid><pubDate>Fri, 08 Oct 2021 15:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;hr>
 &lt;p>&lt;a href="https://kiwi4814.com/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用系列目录&lt;/a>&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-concept/">&lt;font color="orange">高可用01：什么是高可用系统？&lt;/font>&lt;/a>&lt;/li>
@@ -5500,7 +5509,7 @@ git config --global --unset https.proxy
 &lt;h3 id="cap和base理论">CAP和BASE理论&lt;/h3>
 &lt;p>CAP 定理（CAP theorem）又被称作布鲁尔定理（Brewer's theorem），是加州大学伯克利分校的计算机科学家埃里克·布鲁尔（Eric Brewer）在 2000 年的 ACM PODC 上提出的一个猜想。2002 年，麻省理工学院的赛斯·吉尔伯特（Seth Gilbert）和南希·林奇（Nancy Lynch）发表了布鲁尔猜想的证明，使之成为分布式计算领域公认的一个定理。&lt;/p>
 &lt;p>简单来说，CAP理论可以概括为：在一个分布式系统（指互相连接并共享数据的节点的集合）中，当涉及读写操作时，只能保证**&lt;code>一致性（Consistence）&lt;/code>&lt;strong>、&lt;/strong>&lt;code>可用性（Availability）&lt;/code>&lt;strong>、&lt;/strong>&lt;code>分区容错性（Partition Tolerance）&lt;/code>**三者中的两个，另外一个必须被牺牲。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/image-20220313154456757.png" alt="image-20220313154456757">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313154456757.png" alt="image-20220313154456757">&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -6054,7 +6063,6 @@ git config --global --unset https.proxy
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>从*&lt;code>dependency:tree&lt;/code>*中我们可以看到：&lt;/p>
-&lt;p>![image-20210527095848554](../../../../slipbox/ReadingNotes/极客时间学习/数据结构与算法之美/Users/heqifeng/Library/Application Support/typora-user-images/image-20210527095848554.png)&lt;/p>
 &lt;p>里面默认依赖了我们会可能会用到包：&lt;/p>
 &lt;ul>
 &lt;li>&lt;code>JUnit&lt;/code>，标准的单元测试Java应用程序；&lt;/li>
@@ -7164,7 +7172,7 @@ git config --global --unset https.proxy
 &lt;blockquote>
 &lt;p>MyISAM 引擎使用 B+Tree 作为索引结构，叶节点的 data 域存放的是数据记录的地址。下图是 MyISAM 索引的原理图：&lt;/p>
 &lt;/blockquote>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/3.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/3.png" alt="">&lt;/p>
 &lt;ul>
 &lt;li>这里设表一共有三列，假设我们以 Col1 为主键，则上图是一个 MyISAM 表的主索引（Primary key）示意。可以看出 MyISAM 的索引文件仅仅保存数据记录的地址。&lt;/li>
 &lt;/ul>
@@ -7172,7 +7180,7 @@ git config --global --unset https.proxy
 &lt;blockquote>
 &lt;p>在MyISAM中，主索引和辅助索引（Secondary key）在结构上没有任何区别，只是主索引要求 key 是唯一的，而辅助索引的 key 可以重复。如果我们在 Col2 上建立一个辅助索引，则此索引的结构如下图所示：&lt;/p>
 &lt;/blockquote>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/4.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/4.png" alt="">&lt;/p>
 &lt;ul>
 &lt;li>同样也是一颗 B+Tree，data 域保存数据记录的地址。因此，MyISAM 中索引检索的算法为首先按照 B+Tree 搜索算法搜索索引，如果指定的 Key 存在，则取出其 data 域的值，然后以 data 域的值为地址，读取相应数据记录。&lt;/li>
 &lt;li>MyISAM 的索引方式也叫做“非聚集”的，之所以这么称呼是为了与 InnoDB 的聚集索引区分。&lt;/li>
@@ -7185,13 +7193,13 @@ git config --global --unset https.proxy
 &lt;blockquote>
 &lt;p>与 MyISAM 第一个重大区别是 InnoDB 的数据文件本身就是索引文件。从上文知道，MyISAM 索引文件和数据文件是分离的，索引文件仅保存数据记录的地址。而在 InnoDB 中，表数据文件本身就是按 B+Tree 组织的一个索引结构，这棵树的叶节点 data 域保存了完整的数据记录。这个索引的 key 是数据表的主键，因此 InnoDB 表数据文件本身就是主索引。&lt;/p>
 &lt;/blockquote>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/2.png" alt="https://gitee.com/chenjiabing666/Blog-file/raw/master/%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86/2.png">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/2.png" alt="https://gitee.com/chenjiabing666/Blog-file/raw/master/%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86/2.png">&lt;/p>
 &lt;p>上图是 InnoDB 主索引（同时也是数据文件）的示意图，可以看到叶节点包含了完整的数据记录。这种索引叫做聚集索引。因为 InnoDB 的数据文件本身要按主键聚集，所以 InnoDB 要求表必须有主键（MyISAM 可以没有），如果没有显式指定，则 MySQL 系统会自动选择一个可以唯一标识数据记录的列作为主键，如果不存在这种列，则 MySQL 自动为 InnoDB 表生成一个隐含字段作为主键，这个字段长度为 6 个字节，类型为长整形。&lt;/p>
 &lt;p>&lt;strong>2. 辅助索引&lt;/strong>&lt;/p>
 &lt;blockquote>
 &lt;p>第二个与 MyISAM 索引的不同是 InnoDB 的辅助索引 data 域存储相应记录主键的值而不是地址。换句话说，InnoDB 的所有辅助索引都引用主键作为 data 域。例如，下图为定义在 Col3 上的一个辅助索引：&lt;/p>
 &lt;/blockquote>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/1.png" alt="https://gitee.com/chenjiabing666/Blog-file/raw/master/%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86/1.png">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/1.png" alt="https://gitee.com/chenjiabing666/Blog-file/raw/master/%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86/1.png">&lt;/p>
 &lt;ul>
 &lt;li>这里以英文字符的 ASCII 码作为比较准则。聚集索引这种实现方式使得按主键的搜索十分高效，但是辅助索引搜索需要检索两遍索引：首先检索辅助索引获得主键，然后用主键到主索引中检索获得记录。&lt;/li>
 &lt;li>&lt;strong>InnoDB 表是基于聚簇索引建立的&lt;/strong>。因此 InnoDB 的索引能提供一种非常快速的主键查找性能。不过，它的辅助索引也会包含主键列，所以，如果主键使用过长的字段，将会导致其他辅助索变得更大。如果想在表上定义 、很多索引，则争取尽量把主键定义得小一些。InnoDB 不会压缩索引。&lt;/li>
@@ -7627,7 +7635,7 @@ git config --global --unset https.proxy
 &lt;/div>
 &lt;/div>&lt;/li>
 &lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2020/08/linux%E8%BF%90%E7%BB%B4/">Linux运维</category><category domain="https://kiwi4814.github.io/tags/2020/08/linux/">Linux</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2020/09/mysql/">MySQL</category></item><item><title>JUC框架简介</title><link>https://kiwi4814.github.io/posts/2020/juc-summary/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2020/juc-summary/</guid><pubDate>Sat, 27 Jun 2020 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="一lock框架和tools类">一、Lock框架和Tools类&lt;/h1>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/java-thread-x-juc-overview-lock.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/java-thread-x-juc-overview-lock.png" alt="">&lt;/p>
 &lt;p>类结构总览&lt;/p>
 &lt;h2 id="接口condition">接口：Condition&lt;/h2>
 &lt;blockquote>
@@ -7686,7 +7694,7 @@ git config --global --unset https.proxy
 &lt;p>Exchanger是用于线程协作的工具类, 主要用于两个线程之间的数据交换。它提供一个同步点，在这个同步点，两个线程可以交换彼此的数据。这两个线程通过exchange()方法交换数据，当一个线程先执行exchange()方法后，它会一直等待第二个线程也执行exchange()方法，当这两个线程到达同步点时，这两个线程就可以交换数据了。&lt;/p>
 &lt;/blockquote>
 &lt;h1 id="二collections-并发集合">二、Collections: 并发集合&lt;/h1>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/java-thread-x-juc-overview-2.png" alt="类结构关系">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/java-thread-x-juc-overview-2.png" alt="类结构关系">&lt;/p>
 &lt;p>类结构关系&lt;/p>
 &lt;h2 id="queue-arrayblockingqueue">Queue: ArrayBlockingQueue&lt;/h2>
 &lt;blockquote>
@@ -7763,7 +7771,7 @@ git config --global --unset https.proxy
 &lt;p>AtomicLongFieldUpdater，AtomicIntegerFieldUpdater，AtomicReferenceFieldUpdater是FieldUpdater原子类。&lt;/p>
 &lt;/blockquote>
 &lt;h1 id="四executors-线程池">四、Executors: 线程池&lt;/h1>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/Untitled.png" alt="类结构关系">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/Untitled.png" alt="类结构关系">&lt;/p>
 &lt;p>类结构关系&lt;/p>
 &lt;h2 id="接口-executor">接口: Executor&lt;/h2>
 &lt;p>Executor接口提供一种将任务提交与每个任务将如何运行的机制(包括线程使用的细节、调度等)分离开来的方法。通常使用 Executor 而不是显式地创建线程。&lt;/p>
@@ -8955,7 +8963,7 @@ $[-0]_补$ = 0000 0000。&lt;/p>
 &lt;hr>
 &lt;h3 id="camunda和bpmn">Camunda和BPMN&lt;/h3>
 &lt;p>Camunda BPM （BPM，Business Process Manager，业务流程管理）是一个灵活的工作流和过程自动化框架，它的核心是一个在Java虚拟机内部运行的原生BPMN 2.0流程引擎，因此它可以嵌入到任何Java应用程序或运行时容器中。Camunda BPM与Java EE 6集成，并可以与Spring Framework完美匹配。 Camunda BPM附带了用于创建工作流和决策模型，在生产中操作已部署模型以及允许用户执行分配给他们的工作流任务的工具。&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/architecture-overview.png" alt="流程引擎架构图（来源：官方文档）">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/architecture-overview.png" alt="流程引擎架构图（来源：官方文档）">&lt;/p>
 &lt;p>流程引擎架构图（来源：官方文档）&lt;/p>
 &lt;p>&lt;strong>下面我们来看下维基百科对于BPMN的定义：&lt;/strong>&lt;/p>
 &lt;blockquote>
@@ -8966,7 +8974,7 @@ $[-0]_补$ = 0000 0000。&lt;/p>
 &lt;hr>
 &lt;h3 id="camunda-modelerhttpscamundacomproductsmodeler">&lt;a href="https://camunda.com/products/modeler/">Camunda Modeler&lt;/a>&lt;/h3>
 &lt;p>下面为使用Camunda Moleler设计的一张只含有基本元素的流程定义：&lt;/p>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/1559570847866.png" alt="一个普通的流程图示例">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/1559570847866.png" alt="一个普通的流程图示例">&lt;/p>
 &lt;p>一个普通的流程图示例&lt;/p>
 &lt;p>对应的BPMN源码为：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -9063,7 +9071,7 @@ $[-0]_补$ = 0000 0000。&lt;/p>
 &lt;p>Camunda BPM支持统一表达式语言（EL），它是JSP 2.1标准（JSR-245）的一部分，使用开源JUEL（Java Unified Expression Language，EL的Java实现）实现。在Camunda BPM的绝大多数地方都可以使用UEL表达式，主要支持两个UEL表达式：UEL-value 和 UEL-method。&lt;/p>
 &lt;hr>
 &lt;h3 id="流程引擎的生命周期">流程引擎的生命周期&lt;/h3>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/Camunda%E6%B5%81%E7%A8%8B%E5%BC%95%E6%93%8E%E7%AE%80%E4%BB%8B%20a4fe0f2279754a49b750f583f42fa27b.png" alt="流程引擎的生命周期">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/Camunda%E6%B5%81%E7%A8%8B%E5%BC%95%E6%93%8E%E7%AE%80%E4%BB%8B%20a4fe0f2279754a49b750f583f42fa27b.png" alt="流程引擎的生命周期">&lt;/p>
 &lt;p>流程引擎的生命周期&lt;/p>
 &lt;p>生命周期&lt;/p>
 &lt;ul>
@@ -9106,7 +9114,7 @@ $[-0]_补$ = 0000 0000。&lt;/p>
 &lt;h2 id="三表结构及接口设计">三、表结构及接口设计&lt;/h2>
 &lt;hr>
 &lt;h3 id="流程引擎表结构">流程引擎表结构&lt;/h3>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/erd_710_bpmn.svg" alt="流程引擎的表结构（来源：官方文档）">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/erd_710_bpmn.svg" alt="流程引擎的表结构（来源：官方文档）">&lt;/p>
 &lt;p>流程引擎的表结构（来源：官方文档）&lt;/p>
 &lt;p>根据前缀的不同，这些表可以分为以下几类：&lt;/p>
 &lt;ul>
@@ -9122,7 +9130,7 @@ $[-0]_补$ = 0000 0000。&lt;/p>
 &lt;p>&lt;a href="https://www.notion.so/a28f6f1ec71f42f6874f176ef24a77a8">拓展表部分表结构展示&lt;/a>&lt;/p>
 &lt;hr>
 &lt;h3 id="流程引擎api">流程引擎API&lt;/h3>
-&lt;p>&lt;img src="https://gitee.com/kiwi4814/pictures/raw/master/img/api.services.png" alt="流程引擎API（来源：官方文档）">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/api.services.png" alt="流程引擎API（来源：官方文档）">&lt;/p>
 &lt;p>流程引擎API（来源：官方文档）&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>RepositoryService&lt;/strong>提供了管理和控制发布包和流程定义的操作，发布一个流程定义意味着把它上传到引擎中，所有流程都会在保存进数据库之前分析解析好。
