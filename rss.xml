@@ -1,4 +1,867 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.101.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Thu, 28 Jul 2022 15:44:06 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>如何实现一个单例模式？</title><link>https://kiwi4814.github.io/posts/2022/singleton-impl/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/singleton-impl/</guid><pubDate>Mon, 20 Jun 2022 22:34:39 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>本文主要介绍了实现单例模式的一些方法、利弊等。&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.104.3 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Mon, 24 Oct 2022 13:58:32 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>Redis实战之分布式锁</title><link>https://kiwi4814.github.io/posts/2022/redis-distributed-locks/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/redis-distributed-locks/</guid><pubDate>Tue, 13 Sep 2022 20:13:58 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>接下来的几篇文章，会学习一下Redis除了用做缓存之外的一些实际使用方法。这篇文章主要探讨了分布式锁的几种实现机制和原理。&lt;/p>
+&lt;h2 id="本文涉及到的redis指令及语法">本文涉及到的Redis指令及语法&lt;/h2>
+&lt;h4 id="set-key-value-ex-seconds-px-milliseconds-nxxx">&lt;code>SET key value [EX seconds] [PX milliseconds] [NX|XX]&lt;/code>&lt;/h4>
+&lt;ul>
+&lt;li>&lt;code>EX seconds&lt;/code> ： 将键的过期时间设置为 &lt;code>seconds&lt;/code> 秒。 执行 &lt;code>SET key value EX seconds&lt;/code> 的效果等同于执行 &lt;code>SETEX key seconds value&lt;/code> 。&lt;/li>
+&lt;li>&lt;code>PX milliseconds&lt;/code> ： 将键的过期时间设置为 &lt;code>milliseconds&lt;/code> 毫秒。 执行 &lt;code>SET key value PX milliseconds&lt;/code> 的效果等同于执行 &lt;code>PSETEX key milliseconds value&lt;/code> 。&lt;/li>
+&lt;li>&lt;code>NX&lt;/code> ： 只在键不存在时， 才对键进行设置操作。 执行 &lt;code>SET key value NX&lt;/code> 的效果等同于执行 &lt;code>SETNX key value&lt;/code> 。&lt;/li>
+&lt;li>&lt;code>XX&lt;/code> ： 只在键已经存在时， 才对键进行设置操作。&lt;/li>
+&lt;/ul>
+&lt;h2 id="什么是分布式锁">什么是分布式锁？&lt;/h2>
+&lt;p>所谓分布式锁，指的是当多个进程不在同一个系统中，当访问共享资源时，需要使用分布式锁来控制这些不同的进程对资源的访问。&lt;/p>
+&lt;h3 id="分布式锁的设计原则安全性和有效性">分布式锁的设计原则——安全性和有效性&lt;/h3>
+&lt;p>&lt;a href="https://redis.io/docs/reference/patterns/distributed-locks/">Redis官网&lt;/a>上对分布式锁提出至少需要满足以下三个要求：&lt;/p>
+&lt;ol>
+&lt;li>互斥（属于安全性）—— 在任何给定时刻，只有一个客户端可以持有锁。&lt;/li>
+&lt;li>无死锁（属于有效性）—— 即使锁定资源的客户端奔溃或者被分区，也总是可以获得锁（通常通过超时机制实现）。&lt;/li>
+&lt;li>容错性（属于有效性）—— 只要大多数Redis节点都启动，客户端就可以获取和释放锁。&lt;/li>
+&lt;/ol>
+&lt;p>此外，分布式锁的设计中还需要考虑：&lt;/p>
+&lt;ol>
+&lt;li>加锁解锁的&lt;strong>同源性&lt;/strong>：A加的锁，不能被B解锁&lt;/li>
+&lt;li>获取锁是&lt;strong>非阻塞&lt;/strong>的：如果获取不到锁，不能无限期等待&lt;/li>
+&lt;li>&lt;strong>高性能&lt;/strong>：加锁和解锁是高性能的&lt;/li>
+&lt;/ol>
+&lt;h2 id="分布式锁的实现方案">分布式锁的实现方案&lt;/h2>
+&lt;p>分布式锁有很多种实现方案，基于不同的体系，比如基于数据库乐观锁和悲观锁实现、基于Redis实现、基于zookeeper实现等等，本文主要聊聊基于Redis实现的分布式锁。&lt;/p>
+&lt;h3 id="方案一单实例redis">方案一：单实例Redis&lt;/h3>
+&lt;p>所谓的分布式锁，其本质就是在分布式的系统中，当访问指定的资源时在Redis中占一个坑，当其他进程要来访问的时候，发现已经有其他进程访问了，只好放弃或者稍后重试。&lt;/p>
+&lt;p>一般使用 &lt;code>setnx&lt;/code> 命令来”占坑“，用完之后使用 &lt;code>del&lt;/code> 删除。&lt;/p>
+&lt;p>但是这种逻辑假如出现了异常，导致 &lt;code>del&lt;/code> 没有被执行，那么就会陷入死锁不是么？所以为了解决这个问题，我们一般还会使用 &lt;code>expire&lt;/code> 给锁加上一个过期时间，这样中间即使出现异常也可以自动释放锁。&lt;/p>
+&lt;p>这时候又出现问题了，假如在 &lt;code>setnx&lt;/code> 和 &lt;code>expire&lt;/code> 命令之间断电了导致进程挂掉了，那不也会造成死锁吗？&lt;/p>
+&lt;p>是的，这个问题的根源不在于设置过期时间，而是 &lt;code>setnx&lt;/code> 和 &lt;code>expire&lt;/code> 这两个命令不是原子性的，当然我们可以使用一些三方库来解决这个问题，但是这样未免有点大题小作。为了彻底解决这个问题，在Redis 2.8版本中，作者加入了 &lt;code>set&lt;/code> 指令的扩展参数，即命令 &lt;code>SET key value [EX seconds] [PX milliseconds] [NX|XX]&lt;/code> ，彻底解决了单实例下Redis分布式锁的乱象。&lt;/p>
+&lt;p>我们通过一个例子来看看这种方案具体是怎么实现分布式锁的。&lt;/p>
+&lt;h4 id="单实例redis分布式锁的解决方案">单实例Redis分布式锁的解决方案&lt;/h4>
+&lt;h5 id="1-加锁">1. 加锁&lt;/h5>
+&lt;p>首先，当我们需要分布式锁的时候，向Redis发起如下命令：&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-redis" data-lang="redis">SET scanId:lock a947a56f9b40402b9db6e6be657cb9af NX PX 10000
+&lt;/code>&lt;/pre>&lt;p>其中，&lt;code>scanId:lock&lt;/code> 是自己定义的，再细分的话，scanId可以代指某次扫描任务的ID，而 &lt;code>:lock&lt;/code> 中的&lt;code>:&lt;/code>只是一种写法，代表这个key是用来做分布式锁的。&lt;code>a947a56f9b40402b9db6e6be657cb9af&lt;/code>是一个随机生成的字符，必须保证全局唯一。&lt;code>NX&lt;/code>即&lt;code>setnx&lt;/code>，只有当&lt;code>scanId:lock&lt;/code> 不存在时才执行成功。&lt;code>PX 10000&lt;/code> 指的是过期时间10秒。执行此命令后成功则表明服务成功的获得了锁。&lt;/p>
+&lt;h5 id="2-解锁">2. 解锁&lt;/h5>
+&lt;p>在加锁的时候，我们注意到value是一个随机的字符串，这么设计的原因是我们需要保证加锁和解锁的一定是同一个进程。那么我们在解锁的时候需要对这一点进行校验，也就是判断进程持有的value和Redis内存储的value是不是一致的。由于这个校验需要两个命令，所以我们使用lua脚本来解决（lua脚本可以保证连续多个指令的原子性执行）：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-lua" data-lang="lua">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">if&lt;/span> &lt;span class="n">redis.call&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;get&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">KEYS&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">])&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="n">ARGV&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="kr">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">return&lt;/span> &lt;span class="n">redis.call&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;del&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">KEYS&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">])&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">return&lt;/span> &lt;span class="mi">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>但这也不是一个完美的方案，只是相对安全一点，因为如果真的超时了，当前线程的逻辑没有执行完，其他线程也会乘虚而入。当然我们可以考虑引入可重入锁来解决，但是大部分情况下没有必要，这增加了客户端的复杂性。&lt;/p>
+&lt;h3 id="方案二redis集群模式">方案二：Redis集群模式&lt;/h3>
+&lt;p>假设有两个服务A、B都希望获得锁，有一个包含了5个redis master的Redis Cluster，执行过程大致如下:&lt;/p>
+&lt;ol>
+&lt;li>客户端获取当前时间戳，单位: 毫秒&lt;/li>
+&lt;li>服务A轮寻每个master节点，尝试创建锁。(这里锁的过期时间比较短，一般就几十毫秒) RedLock算法会尝试在大多数节点上分别创建锁，假如节点总数为n，那么大多数节点指的是n/2+1。&lt;/li>
+&lt;li>客户端计算成功建立完锁的时间，如果建锁时间小于超时时间，就可以判定锁创建成功。如果锁创建失败，则依次(遍历master节点)删除锁。&lt;/li>
+&lt;li>只要有其它服务创建过分布式锁，那么当前服务就必须轮寻尝试获取锁。&lt;/li>
+&lt;/ol>
+&lt;h4 id="进一步理解">进一步理解&lt;/h4>
+&lt;ol>
+&lt;li>借助Redis实现分布式锁时，有一个共同的缺陷: 当获取锁被拒绝后，需要不断的循环，重新发送获取锁(创建key)的请求，直到请求成功。这就造成空转，浪费宝贵的CPU资源。&lt;/li>
+&lt;li>RedLock算法本身有争议，具体看这篇文章&lt;a href="https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html">How to do distributed locking&lt;/a> 以及作者的回复&lt;a href="http://antirez.com/news/101">Is Redlock safe?&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;p>有人可能要进一步问了，那该怎么做才能保证锁的绝对安全呢？&lt;/p>
+&lt;p>对此我只能说，鱼和熊掌不可兼得，我们之所以用Redis作为分布式锁的工具，很大程度上是因为Redis本身效率高且单进程的特点，即使在高并发的情况下也能很好的保证性能，但很多时候，性能和安全不能完全兼顾，如果你一定要保证锁的安全性的话，可以用其他的中间件如db、zookeeper来做控制，这些工具能很好的保证锁的安全，但性能方面只能说是差强人意，否则大家早就用上了。&lt;/p>
+&lt;p>一般来说，用Redis控制共享资源并且还要求数据安全要求较高的话，最终的保底方案是对业务数据做幂等控制，这样一来，即使出现多个客户端获得锁的情况也不会影响数据的一致性。当然，也不是所有的场景都适合这么做，具体怎么取舍就需要各位看官自己处理啦，毕竟，没有完美的技术，只有适合的才是最好的。&lt;/p>
+&lt;h2 id="基于客户端的实现方式">基于客户端的实现方式&lt;/h2>
+&lt;p>待续..&lt;/p></description><category domain="https://kiwi4814.github.io/series/2022/09/redis%E5%AE%9E%E6%88%98/">Redis实战</category><category domain="https://kiwi4814.github.io/tags/2022/09/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2022/09/redis/">Redis</category></item><item><title>Redis缓存相关问题总结</title><link>https://kiwi4814.github.io/posts/2022/redis-cache/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/redis-cache/</guid><pubDate>Mon, 12 Sep 2022 08:50:47 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;blockquote>
+&lt;p>本文为阅读笔记，主要内容源自极客时间蒋德均老师的《Redis核心技术与实战》。&lt;/p>
+&lt;/blockquote>
+&lt;p>我们知道，我们使用Redis的主要用途就是做缓存，一般来说，根据Redis缓存是否接受读写请求，我们可以把它分为只读缓存和读写缓存。&lt;/p>
+&lt;p>所谓的&lt;strong>只读缓存&lt;/strong>，指的是查询数据的时候先从Redis查询，如果未命中那么才会从数据库查询并SET到Redis缓存中，而在对数据进行删改的时候，除了本身操作数据库之外，还会把相应的缓存数据删除，保证Redis下次查询的时候不会命中。而&lt;strong>读写缓存&lt;/strong>指的是对数据的所有读请求和写请求都会发送到缓存中，在缓存中对数据进行增删改操作。另外，对于读写缓存来说，还存在同步直写和异步写回两种策略，具体的区别可以根据下图理解。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com//img009d055bb91d42c28b9316c649f87f66.jpg" alt="img" style="zoom:50%;" />
+&lt;p>但是在实际的应用过程中，我们经常会遇到一些异常问题，总结下来有以下几点：&lt;/p>
+&lt;ul>
+&lt;li>缓存和数据库的一致性问题&lt;/li>
+&lt;li>缓存雪崩&lt;/li>
+&lt;li>缓存击穿&lt;/li>
+&lt;li>缓存穿透&lt;/li>
+&lt;/ul>
+&lt;p>本文将对这几个问题进行展开，具体讲讲 什么时候下会引起这些问题 以及解决的方案是什么。&lt;/p>
+&lt;h2 id="数据一致性问题">数据一致性问题&lt;/h2>
+&lt;p>所谓的数据一致性问题，就是因为某些原因导致的Redis缓存中数据与数据库数据不一致的问题。&lt;/p>
+&lt;p>对于读写缓存来说，如果缓存的数据本身对数据一致性要求不高，是可以采用性能更好的异步写回策略的；对于其他数据，想要保证数据一致性，那么就要采用同步直写策略。&lt;/p>
+&lt;p>但是无论是只读缓存还是读写缓存的同步直写策略，都必须保证对Redis和数据库的操作必须是原子性的，两者有任何一边失败，都会带来数据一致性问题。
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com//img2c376b536aff9d14d8606499f401cdac.jpg" alt="img" style="zoom:50%;" />&lt;/p>
+&lt;p>对于上面这两种情况，我们可以根据实际情况（是否有并发请求）来决定采用什么方案。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com//img11ae5e620c63de76448bc658fe6a496f.jpg" alt="img" style="zoom:50%;" />
+&lt;p>在大多数业务场景下，我们会把 Redis 作为只读缓存使用。针对只读缓存来说，我们既可以先删除缓存值再更新数据库，也可以先更新数据库再删除缓存。我的建议是，优先使用先更新数据库再删除缓存的方法，原因主要有两个：&lt;/p>
+&lt;ul>
+&lt;li>先删除缓存值再更新数据库，有可能导致请求因缓存缺失而访问数据库，给数据库带来压力；&lt;/li>
+&lt;li>如果业务应用中读取数据库和写缓存的时间不好估算，那么，延迟双删中的等待时间就不好设置。&lt;/li>
+&lt;/ul>
+&lt;p>不过，当使用先更新数据库再删除缓存时，也有个地方需要注意，如果业务层要求必须读取一致的数据，那么，我们就需要在更新数据库时，先在 Redis 缓存客户端暂存并发读请求，等数据库更新完、缓存值删除后，再读取数据，从而保证数据一致性。&lt;/p>
+&lt;h2 id="缓存雪崩">缓存雪崩&lt;/h2>
+&lt;h3 id="定义">定义&lt;/h3>
+&lt;p>所谓缓存雪崩，指的是大量的应用请求无法在Redis缓存中进行处理，从而导致大量请求发到数据库层，导致数据库层的压力激增。&lt;/p>
+&lt;h3 id="原因及处理方案">原因及处理方案&lt;/h3>
+&lt;p>一般由两个原因导致，针对两种原因的处理方案也不一样。&lt;/p>
+&lt;p>&lt;strong>第一种，缓存中有大量数据同时过期，导致应用直接去请求数据库。&lt;/strong>&lt;/p>
+&lt;p>针对这种情况，我们可以通过避免给大量数据设置同样的过期时间，如果确实有需求要求缓存同时失效，也可以给失效时间加上一个随机数（比如1~3分钟）。&lt;/p>
+&lt;p>此外，我们还可以通过服务降级来应对缓存雪崩。&lt;/p>
+&lt;p>所谓服务降级，是指发生缓存雪崩时，针对不同的数据采取不同的处理方式。例如，针对非核心数据，可以暂时停止查询缓存，直接返回预定义信息或者错误信息；针对核心数据，仍然允许查缓存并且读取数据库，这样数据库的压力就不会那么大了。&lt;/p>
+&lt;p>&lt;strong>第二种，Redis缓存实例发生故障宕机了。&lt;/strong>&lt;/p>
+&lt;p>如果是重度依赖Redis缓存的系统，由于Redis的吞吐量和数据库相比远远超出，所以这种情况下数据库很可能因为压力过大而崩溃。&lt;/p>
+&lt;p>如果出现这种情况，我们可以在业务系统中实现服务熔断或请求限流机制。通过限制Redis缓存请求或者限制请求的频率，避免过多的请求到达数据库来临时应对；当然了，为了防止这种情况的发生，最重要的还是要做好事前预防。比如通过哨兵、集群来尽量保证Redis的高可用。&lt;/p>
+&lt;h2 id="缓存击穿">缓存击穿&lt;/h2>
+&lt;p>缓存击穿指的是，针对某些访问特别频繁的热点数据的请求，无法在缓存中处理，紧接着全部到达了后端数据库，导致数据库压力激增而影像处理其他请求。对于这种情况，建议不要给热点数据设置过期时间了，这样一来，对热点数据的访问请求，都可以在缓存中进行处理，而 Redis 数万级别的高吞吐量可以很好地应对大量的并发请求访问。&lt;/p>
+&lt;h2 id="缓存穿透">缓存穿透&lt;/h2>
+&lt;h3 id="定义-1">定义&lt;/h3>
+&lt;p>缓存穿透是指要访问的数据既不在Redis中，也不在数据库中，导致每次这样的请求都会先访问缓存，再去访问数据库，如果短时间内有大量这样的请求，那么就会同时给缓存和数据库带来压力。&lt;/p>
+&lt;h3 id="原因及处理方案-1">原因及处理方案&lt;/h3>
+&lt;p>一般来说，有两种情况：第一种是业务层误操作，误删除了数据，导致缓存和数据库中都没有数据，第二种是有人恶心攻击，即专门访问数据库中没有的数据。&lt;/p>
+&lt;p>这里提供三种处理方案。&lt;/p>
+&lt;p>**第一种方案是，缓存空值或者缺省值。**这个很好理解，当出现这种数据时，在Redis中缓存空值或者缺省值，这样就避免了大量请求到数据库了。&lt;/p>
+&lt;p>&lt;strong>第二种方案是，使用布隆过滤器快速判断数据是否存在，避免从数据库中查询。&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>第三种方案是，在请求入口的前端进行请求检测。&lt;/strong> 缓存穿透的一个原因是有大量的恶意数据请求访问不存在的数据，这时候可以在前端对请求进行合法性检测，过滤恶意的请求（例如参数不合理、非法值等等），这样就不会出现缓存穿透问题了。&lt;/p>
+&lt;h2 id="总结">总结&lt;/h2>
+&lt;p>针对缓存雪崩、缓存击穿、缓存穿透这三种缓存异常，对应的原因处理方案，整理在下图了，方便快速复习。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com//imgb5bd931239be18bef24b2ef36c70e9e1.jpg" alt="img" style="zoom:50%;" />
+&lt;p>其中，服务熔断、服务降级、请求限流这些方法都是属于“有损”方案，在保证数据库和整体系统稳定的同时，会对业务应用带来负面影响。所以，在实际开发中，尽量使用”预防式方案“：&lt;/p>
+&lt;ul>
+&lt;li>针对缓存雪崩，合理设置数据过期时间以及搭建高可用的集群&lt;/li>
+&lt;li>针对缓存击穿，不要给热点数据设置过期时间&lt;/li>
+&lt;li>针对缓存穿透，提前在入口前端实现恶意请求检测，或者规范删除操作防止误删除&lt;/li>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/series/2022/09/redis%E5%AE%9E%E6%88%98/">Redis实战</category><category domain="https://kiwi4814.github.io/tags/2022/09/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2022/09/redis/">Redis</category></item><item><title>Redis常用数据结构小结</title><link>https://kiwi4814.github.io/posts/2022/redis-data-structures/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/redis-data-structures/</guid><pubDate>Sun, 11 Sep 2022 22:50:47 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;blockquote>
+&lt;p>本文的内容为阅读笔记，主要内容源自&lt;a href="https://xiaolincoding.com/Redis/data_struct/data_struct.html">图解 Redis 数据结构&lt;/a>以及&lt;a href="https://time.geekbang.org/column/article/268253">Redis核心技术与实战 | 数据结构&lt;/a>，仅为了总结和方便理解。&lt;/p>
+&lt;/blockquote>
+&lt;p>如果被问到Redis支持哪些数据结构，我们一般都会脱口而出这五种：String、List、Hash、Set、Sorted Set，但其实严格来说这五种只是Redis键值对种值得数据类型，也就是数据得保存形式。而我们所说的数据结构，其实是Redis底层的实现，如下图所示，Redis底层的实现有很多种，在不同的版本也在不断的迭代，而这些数据结构正是【Redis为什么这么快】这个问题的主要原因之一。&lt;/p>
+&lt;blockquote>
+&lt;p>【题外话】&lt;/p>
+&lt;p>我们经常能看到有序列表（Sorted Set）也被称作为Zset，这种叫法的直接来源是因为有序列表的命令就是zset，而设计者为什么这么命名的原因其实并不复杂，只是一种文化而已，在redis的issue中有人提到了&lt;a href="https://github.com/redis/redis/issues/4024">这个问题&lt;/a>，感兴趣的可以看看原答案。&lt;/p>
+&lt;/blockquote>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com//img202208161405062.png" alt="img" style="zoom: 50%;" />
+&lt;p>接下来，让我们具体分析下Redis底层的数据结构，当然，在分析键值对种“值”的底层结构之前，我们需要先了解下键和值是如何映射的。&lt;/p>
+&lt;h2 id="键和值的结构组织">键和值的结构组织&lt;/h2>
+&lt;p>为了实现从键到值得快速访问，Redis使用了一个hash表来保存所有键值对。hash表中的每一个元素叫hash桶，hash桶中包含两个指针，分别指向实际的键和值，这样即使值是一个集合，也可以被查找到。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com//img1cc8eaed5d1ca4e3cdbaa5a3d48dfb5f.jpg" alt="img" style="zoom: 50%;" />
+&lt;p>&lt;strong>第一个问题：hash冲突&lt;/strong>&lt;/p>
+&lt;p>我们知道Hash表查找的时间复杂度是O(1)，其查找过程主要依赖哈希计算，但是我们知道hash计算是会有冲突的，所以当Redis中被写入越来越多的数据时，hash冲突就在所难免。&lt;/p>
+&lt;p>解决的方法很简单，Redis采用了链式哈希，类似Java 8之前的HashMap的数据结构，当哈希冲突时，落到同一个Hash桶的数据用一个链表保存。但是，这样仍然有问题，随着数据越来越多，链表上的数据也会越来越多，会导致某些元素的查找时间会变长，这对于追求快的Redis来说是不可接受的。&lt;/p>
+&lt;p>&lt;strong>第二个问题：链表过长导致查询效率降低&lt;/strong>&lt;/p>
+&lt;p>首先说解决方案：Redis会对哈希表做rehash操作，也就是增加现有的哈希桶数量，让元素分散保存。为了让rehash操作更高效，Redis默认使用两个全局哈希表，一开始插入数据时只会使用哈希表1，随着数据逐渐增多，Redis开始进行rehash操作：&lt;/p>
+&lt;ul>
+&lt;li>给哈希表2分配更大的空间&lt;/li>
+&lt;li>将哈希表1的数据拷贝到哈希表2&lt;/li>
+&lt;li>释放哈希表1的空间&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>第三个问题：rehash导致的线程阻塞&lt;/strong>&lt;/p>
+&lt;p>rehash的过程中涉及到大量的数据拷贝，这时候是会导致线程阻塞，为了解决这个问题，redis采用了&lt;strong>渐进式 rehash&lt;/strong>。&lt;/p>
+&lt;p>简单来说，拷贝数据时，redis仍然正常处理客户端请求，但是每处理一个请求时，都会将哈希表1中的对应索引位置的数据拷贝到哈希表2，这样就巧妙的将一次拷贝的开销，分摊到了多次处理请求的过程中，避免了耗时操作。&lt;/p>
+&lt;h2 id="底层数据结构">底层数据结构&lt;/h2>
+&lt;p>对于String来说，找到哈希桶就可以直接进行增删改查操作了，所以复杂度仍然是O(1)。但是对于集合类型来说，其操作效率取决于集合底层的数据结构。&lt;/p>
+&lt;p>对于集合类型而言，底层的数据结构主要包括：&lt;strong>整数数组、双向链表、哈希表、压缩列表和跳表&lt;/strong>，redis新版本中还引入了quicklist和listpack，用来替换双向链表和压缩链表。接下来，让我们逐一分析下这几种数据结构的特点。&lt;/p>
+&lt;h3 id="哈希表">哈希表&lt;/h3>
+&lt;p>哈希表的特质在键值对的结构组织中基本已经说过了，这里有几点需要注意下。&lt;/p>
+&lt;ol>
+&lt;li>当我们存入的数据类型为hash对象时，底层编码不一定是hash。当哈希中的元素个数比较少并且每个元素的值占用空间比较小的时候，Redis就会使用压缩列表做为哈希的内部编码。&lt;/li>
+&lt;li>rehash是一个过程，在这个过程中，查找值的时候会先去哈希表1查再去哈希表2查，因为新增的数据会增加到哈希表2，哈希表1的数据会越来越少，直到完成rehash操作。&lt;/li>
+&lt;/ol>
+&lt;h3 id="整数数组">整数数组&lt;/h3>
+&lt;p>整数集合是 Set 对象的底层实现之一。当一个 Set 对象只包含整数值元素，并且元素数量不大时，就会使用整数集这个数据结构作为底层实现。&lt;/p>
+&lt;p>整数集合本质上是一块连续的内存空间，整数数组有个扩容升级的过程，当你存入超过阈值大小的数据时触发且不会降级。&lt;/p>
+&lt;h3 id="双向链表">双向链表&lt;/h3>
+&lt;p>在Redis 3.0 的版本中，Redis 的 List 对象的底层实现之一就是双向链表。&lt;/p>
+&lt;p>双向链表的优点在于获取表头节点、表尾节点，以及任意节点的前置节点和后置节点的时候时间复杂度只需要O(1)，并且由于redis的链表结构存储了节点数量，所以获取链表的节点数量也仅需要O(1)的时间复杂度。&lt;/p>
+&lt;p>但是链表的缺点也很明显，链表每个节点之间的内存是不连续的，意味着无法很好地利用CPU缓存。因此，Redis 3.0 的 List 对象在数据量比较少的情况下，会采用「压缩列表」作为底层数据结构的实现，它的优势是节省内存空间，并且是内存紧凑型的数据结构。而在Redis3.2之后，List 对象的底层改由 「&lt;strong>quicklist&lt;/strong>」数据结构实现。&lt;/p>
+&lt;h3 id="压缩列表">压缩列表&lt;/h3>
+&lt;p>压缩列表是由一个&lt;strong>连续内存组成的顺序型数据结构&lt;/strong>。一个压缩列表可以包含任意多个节点，每个节点上可以保存一个字节数组或整数值。它是Redis为了节省内存空间而开发的。与数组不同的是，压缩列表在表头有三个字段 zlbytes、zltail 和 zllen，分别表示列表长度、列表尾的偏移量和列表中的 entry 个数；压缩列表在表尾还有一个 zlend，表示列表结束。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com//img9587e483f6ea82f560ff10484aaca4a0.jpg" alt="img" style="zoom:50%;" />
+&lt;p>在压缩列表中，如果我们要查找定位第一个元素和最后一个元素，可以通过表头三个字段的长度直接定位，复杂度是 O(1)。而查找其他元素时，就没有这么高效了，只能逐个查找，此时的复杂度就是 O(N) 了。&lt;/p>
+&lt;p>在redis中，下面的这些情况都会使用到压缩列表：&lt;/p>
+&lt;ul>
+&lt;li>当哈希（hash）中的元素个数比较少并且每个元素的值占用空间比较小的时候，Redis就会使用压缩列表做为哈希的内部编码。&lt;/li>
+&lt;li>当有序集合（zset）中的元素个数比较少并且每个元素的值占用空间比较小的时候，Redis也会使用压缩列表做为有序集合的内部编码。&lt;/li>
+&lt;/ul>
+&lt;h3 id="quicklist">quicklist&lt;/h3>
+&lt;p>在 Redis 3.2 的时候，List 对象的底层改由 quicklist 数据结构实现。&lt;/p>
+&lt;p>其实 quicklist 就是「双向链表 + 压缩列表」组合，因为一个 quicklist 就是一个链表，而链表中的每个元素又是一个压缩列表。结构如下所示：&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com//imgf46cbe347f65ded522f1cc3fd8dba549.png" alt="img" style="zoom: 88%;" />
+&lt;p>在向 quicklist 添加一个元素的时候，不会像普通的链表那样，直接新建一个链表节点。而是会检查插入位置的压缩列表是否能容纳该元素，如果能容纳就直接保存到 quicklistNode 结构里的压缩列表，如果不能容纳，才会新建一个新的 quicklistNode 结构。&lt;/p>
+&lt;h3 id="跳表">跳表&lt;/h3>
+&lt;p>跳表是有序列表（zset）的内部编码之一，也是一种重要的数据结构。&lt;/p>
+&lt;p>我们知道zset可以将元素及其score值加到有序集中，那么作为底层数据结构的跳表，具体是怎么实现的呢？&lt;/p>
+&lt;p>首先，我们知道对于有序数组，我们可以使用二分查找的方式快速定位一个数字，是因为数组具有随机查找的特性，每次找中位数比较即可。但如果对于一个有序的链表，二分查找就不适用了。所以对于链表，出现了一种跳表的数据结构，其原理就是在有序链表上面增加了多级索引，下图演示了在跳表的结构下查找数据的过程：&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com//img1eca7135d38de2yy16681c2bbc4f3fb4.jpg" alt="img" style="zoom:50%;" />
+&lt;p>Redis对于增加到zset中的每一个元素，其层数都是随机分配的。跳表采取了一种空间换时间的方法，将链表的时间复杂度降到了O(logN)。至于为什么不采用平衡树？主要是基于以下几点：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>从内存占用上来比较，跳表比平衡树更灵活一些&lt;/strong>。&lt;/li>
+&lt;li>&lt;strong>在做范围查找的时候，跳表比平衡树操作要简单&lt;/strong>。&lt;/li>
+&lt;li>&lt;strong>从算法实现难度上来比较，跳表比平衡树要简单得多&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;h2 id="总结">总结&lt;/h2>
+&lt;p>Redis 之所以能快速操作键值对，一方面是因为 O(1) 复杂度的哈希表被广泛使用，包括 String、Hash 和 Set，它们的操作复杂度基本由哈希表决定，另一方面，Sorted Set 也采用了 O(logN) 复杂度的跳表。不过，集合类型的范围操作，因为要遍历底层数据结构，复杂度通常是 O(N)。这里，我的建议是：用其他命令来替代，例如可以用 SCAN 来代替，避免在 Redis 内部产生费时的全集合遍历操作。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com//imgfb7e3612ddee8a0ea49b7c40673a0cf0.jpg" alt="img" style="zoom:50%;" />
+&lt;p>当然，我们不能忘了复杂度较高的 List 类型，它的两种底层实现结构：双向链表和压缩列表的操作复杂度都是 O(N)。因此，我的建议是：因地制宜地使用 List 类型。例如，既然它的 POP/PUSH 效率很高，那么就将它主要用于 FIFO 队列场景，而不是作为一个可以随机读写的集合。&lt;/p></description><category domain="https://kiwi4814.github.io/series/2022/09/redis%E5%AE%9E%E6%88%98/">Redis实战</category><category domain="https://kiwi4814.github.io/tags/2022/09/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2022/09/redis/">Redis</category></item><item><title>腾讯云服务器安装MySQL 5.7</title><link>https://kiwi4814.github.io/posts/2022/centos-mysql/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/centos-mysql/</guid><pubDate>Thu, 08 Sep 2022 23:24:20 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>操作系统： CentOS 7.6 64bit&lt;/p>
+&lt;h3 id="安装步骤">安装步骤&lt;/h3>
+&lt;h4 id="1-下载mysql-yum包">1. 下载MySQL yum包&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">wget http://repo.mysql.com/mysql57-community-release-el7-11.noarch.rpm
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>安装日志：&lt;/p>
+&lt;pre tabindex="0">&lt;code>--2022-09-08 22:55:04-- http://repo.mysql.com/mysql57-community-release-el7-11.noarch.rpm
+Resolving repo.mysql.com (repo.mysql.com)... 23.206.160.230
+Connecting to repo.mysql.com (repo.mysql.com)|23.206.160.230|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 25680 (25K) [application/x-redhat-package-manager]
+Saving to: ‘mysql57-community-release-el7-11.noarch.rpm’
+100%[=========================================================================================================================================================================&amp;gt;] 25,680 31.8KB/s in 0.8s
+2022-09-08 22:55:06 (31.8 KB/s) - ‘mysql57-community-release-el7-11.noarch.rpm’ saved [25680/25680]
+&lt;/code>&lt;/pre>&lt;h4 id="2-安装mysql源">2. 安装MySQL源&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">rpm -Uvh mysql57-community-release-el7-11.noarch.rpm
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>安装日志：&lt;/p>
+&lt;pre tabindex="0">&lt;code>warning: mysql57-community-release-el7-11.noarch.rpm: Header V3 DSA/SHA1 Signature, key ID 5072e1f5: NOKEY
+Preparing... ################################# [100%]
+Updating / installing...
+1:mysql57-community-release-el7-11 ################################# [100%]
+&lt;/code>&lt;/pre>&lt;h4 id="3-安装mysql服务端需要等待一段时间">3. 安装MySQL服务端（需要等待一段时间）&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">yum install -y mysql-community-server
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>安装过程报错：&lt;/p>
+&lt;pre tabindex="0">&lt;code>......
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+Importing GPG key 0x5072E1F5:
+Userid : &amp;#34;MySQL Release Engineering &amp;lt;mysql-build@oss.oracle.com&amp;gt;&amp;#34;
+Fingerprint: a4a9 4068 76fc bd3c 4567 70c8 8c71 8d3b 5072 e1f5
+Package : mysql57-community-release-el7-11.noarch (installed)
+From : /etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+Public key for mysql-community-client-5.7.39-1.el7.x86_64.rpm is not installed
+Failing package is: mysql-community-client-5.7.39-1.el7.x86_64
+GPG Keys are configured as: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+&lt;/code>&lt;/pre>&lt;p>原因是Mysql的GPG升级了，需要重新获取:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后再次执行&lt;code>yum install -y mysql-community-server&lt;/code>:&lt;/p>
+&lt;pre tabindex="0">&lt;code>......
+Total size: 210 M
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+Warning: RPMDB altered outside of yum.
+Installing : mysql-community-common-5.7.39-1.el7.x86_64 1/6
+Installing : mysql-community-libs-5.7.39-1.el7.x86_64 2/6
+Installing : mysql-community-client-5.7.39-1.el7.x86_64 3/6
+Installing : mysql-community-server-5.7.39-1.el7.x86_64 4/6
+Installing : mysql-community-libs-compat-5.7.39-1.el7.x86_64 5/6
+Erasing : 1:mariadb-libs-5.5.68-1.el7.x86_64 6/6
+Verifying : mysql-community-client-5.7.39-1.el7.x86_64 1/6
+Verifying : mysql-community-server-5.7.39-1.el7.x86_64 2/6
+Verifying : mysql-community-common-5.7.39-1.el7.x86_64 3/6
+Verifying : mysql-community-libs-5.7.39-1.el7.x86_64 4/6
+Verifying : mysql-community-libs-compat-5.7.39-1.el7.x86_64 5/6
+Verifying : 1:mariadb-libs-5.5.68-1.el7.x86_64 6/6
+Installed:
+mysql-community-libs.x86_64 0:5.7.39-1.el7 mysql-community-libs-compat.x86_64 0:5.7.39-1.el7 mysql-community-server.x86_64 0:5.7.39-1.el7
+Dependency Installed:
+mysql-community-client.x86_64 0:5.7.39-1.el7 mysql-community-common.x86_64 0:5.7.39-1.el7
+Replaced:
+mariadb-libs.x86_64 1:5.5.68-1.el7
+Complete!
+&lt;/code>&lt;/pre>&lt;h4 id="4-启动mysql">4. 启动MySQL&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">systemctl start mysqld.service
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="5-检查是否启动成功">5. 检查是否启动成功&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">systemctl status mysqld.service
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;pre tabindex="0">&lt;code> mysqld.service - MySQL Server
+Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; vendor preset: disabled)
+Active: active (running) since Thu 2022-09-08 23:08:46 CST; 7s ago
+Docs: man:mysqld(8)
+http://dev.mysql.com/doc/refman/en/using-systemd.html
+Process: 22378 ExecStart=/usr/sbin/mysqld --daemonize --pid-file=/var/run/mysqld/mysqld.pid $MYSQLD_OPTS (code=exited, status=0/SUCCESS)
+Process: 22290 ExecStartPre=/usr/bin/mysqld_pre_systemd (code=exited, status=0/SUCCESS)
+Main PID: 22381 (mysqld)
+Tasks: 27
+Memory: 327.0M
+CGroup: /system.slice/mysqld.service
+└─22381 /usr/sbin/mysqld --daemonize --pid-file=/var/run/mysqld/mysqld.pid
+Sep 08 23:08:35 VM-12-8-centos systemd[1]: Starting MySQL Server...
+Sep 08 23:08:46 VM-12-8-centos systemd[1]: Started MySQL Server.
+&lt;/code>&lt;/pre>&lt;h4 id="6-获取临时密码mysql57为root用户随机生成了一个密码">6. 获取临时密码（MySQL5.7为root用户随机生成了一个密码）&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">grep &lt;span class="s1">&amp;#39;temporary password&amp;#39;&lt;/span> /var/log/mysqld.log
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>输出如下：&lt;/p>
+&lt;pre tabindex="0">&lt;code>2022-09-08T15:08:41.707233Z 1 [Note] A temporary password is generated for root@localhost: 5I:Mpir0*Vco
+&lt;/code>&lt;/pre>&lt;h4 id="7-通过临时密码登录mysql进行修改密码操作">7. 通过临时密码登录MySQL，进行修改密码操作&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mysql -uroot -p
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>使用临时密码登录后，不能进行其他的操作，否则会报错，这时候我们进行修改密码操作。&lt;/p>
+&lt;p>&lt;strong>因为MySQL的密码规则需要很复杂，我们一般自己设置的不会设置成这样，所以我们全局修改一下。&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="line">&lt;span class="cl">&lt;span class="n">mysql&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">set&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">global&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">validate_password_policy&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">mysql&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">set&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">global&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">validate_password_length&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>这时候我们就可以自己设置想要的密码了：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="line">&lt;span class="cl">&lt;span class="n">mysql&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">ALTER&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">USER&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;root&amp;#39;&lt;/span>&lt;span class="o">@&lt;/span>&lt;span class="s1">&amp;#39;localhost&amp;#39;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">IDENTIFIED&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">BY&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;yourpassword&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后，授权其他机器远程登录：&lt;/p>
+&lt;pre tabindex="0">&lt;code>ALTER USER &amp;#39;root&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;yourpassword&amp;#39;;
+&lt;/code>&lt;/pre>&lt;h4 id="8-开机自启动">8. 开机自启动&lt;/h4>
+&lt;p>先退出mysql命令行，然后输入以下命令&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">systemctl &lt;span class="nb">enable&lt;/span> mysqld
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">systemctl daemon-reload
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="9-修改mysql配置">9. 修改MySQL配置&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vim /etc/my.cnf
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>修改成如下配置：&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-cnf" data-lang="cnf"># For advice on how to change settings please see
+# http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html
+[mysql]
+default-character-set=utf8
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+default-storage-engine=INNODB
+character_set_server=utf8
+symbolic-links=0
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+&lt;/code>&lt;/pre>&lt;p>重启：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">service mysqld restart
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="10-防火墙开放3306端口">10. 防火墙开放3306端口&lt;/h4>
+&lt;pre tabindex="0">&lt;code>firewall-cmd --state
+firewall-cmd --zone=public --add-port=3306/tcp --permanent
+firewall-cmd --reload
+&lt;/code>&lt;/pre>&lt;p>这一步骤服务器警告：&lt;/p>
+&lt;pre tabindex="0">&lt;code>➜ / firewall-cmd --state
+not running
+&lt;/code>&lt;/pre>&lt;p>改为在腾讯云控制台增加防火墙规则，同样生效：&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com//imgimage-20220908233313450.png" alt="image-20220908233313450">&lt;/p>
+&lt;h4 id="11-卸载mysql仓库">11. 卸载MySQL仓库&lt;/h4>
+&lt;p>一开始的时候我们安装的yum，每次yum操作都会更新一次，耗费时间，我们把他卸载掉&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">rpm -qa &lt;span class="p">|&lt;/span> grep mysql
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>卸载日志:&lt;/p>
+&lt;pre tabindex="0">&lt;code>➜ / rpm -qa | grep mysql
+mysql-community-common-5.7.39-1.el7.x86_64
+mysql-community-server-5.7.39-1.el7.x86_64
+mysql-community-client-5.7.39-1.el7.x86_64
+mysql57-community-release-el7-11.noarch
+mysql-community-libs-5.7.39-1.el7.x86_64
+mysql-community-libs-compat-5.7.39-1.el7.x86_64
+&lt;/code>&lt;/pre>&lt;p>然后执行：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">yum -y remove mysql57-community-release-el7-11.noarch
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>日志：&lt;/p>
+&lt;pre tabindex="0">&lt;code>Loaded plugins: fastestmirror, langpacks
+Resolving Dependencies
+--&amp;gt; Running transaction check
+---&amp;gt; Package mysql57-community-release.noarch 0:el7-11 will be erased
+--&amp;gt; Finished Dependency Resolution
+Dependencies Resolved
+===================================================================================================================================================================================================================
+Package Arch Version Repository Size
+===================================================================================================================================================================================================================
+Removing:
+mysql57-community-release noarch el7-11 installed 31 k
+Transaction Summary
+===================================================================================================================================================================================================================
+Remove 1 Package
+Installed size: 31 k
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+Erasing : mysql57-community-release-el7-11.noarch 1/1
+Verifying : mysql57-community-release-el7-11.noarch 1/1
+Removed:
+mysql57-community-release.noarch 0:el7-11
+Complete!
+&lt;/code>&lt;/pre>&lt;h3 id="数据库操作小结">数据库操作小结&lt;/h3>
+&lt;p>（1）查看mysql是否启动：service mysqld status&lt;/p>
+&lt;p>启动mysql：service mysqld start&lt;/p>
+&lt;p>停止mysql：service mysqld stop&lt;/p>
+&lt;p>重启mysql：service mysqld restart&lt;/p>
+&lt;p>（2）查看临时密码：grep password /var/log/mysqld.log&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2022/09/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2022/09/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category></item><item><title>再读JDK8中的函数式编程</title><link>https://kiwi4814.github.io/posts/2022/java8-functional-programming/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/java8-functional-programming/</guid><pubDate>Tue, 26 Jul 2022 21:40:15 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>用了好几年的JDK8 “函数式编程”，类似stream流、lambda等语法都用的“炉火纯青”了，却仍然还是免不了有时候还是需要检索一些复杂的语法，比如&lt;code>flatmap&lt;/code>、&lt;code>mapreduce&lt;/code>等平时很少用到的语法。想起来自己也好像只是粗略的读过，并没有任何精读，于是便有了这篇文章，在这次重新去了解函数式编程的过程中，记录了一些知识要点以及疑惑。&lt;/p>
+&lt;p>如果想要完整的了解JDK8的新特性，推荐&lt;a href="https://wizardforcel.gitbooks.io/java8-new-features/content/index.html">读这里&lt;/a>。当然在下文中也会摘录很多其他文章，都是在看的过程中针对自己的疑问检索的，对相关章节感兴趣的也可以跳转查看。&lt;/p>
+&lt;h2 id="1-函数式编程">1. 函数式编程&lt;/h2>
+&lt;p>对于函数式编程，能讲的有很多，我自己也没有完全理解，想要深入研究的小伙伴可以参见&lt;a href="https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/">函数式编程指北&lt;/a>。&lt;/p>
+&lt;p>下面是结合一些文章总结出来的概述：&lt;/p>
+&lt;p>**Java语言的面向对象编程是对数据进行抽象；而函数式编程是对行为本身进行抽象。**其核心思想是: 使用不可变值和函数，函数对一个值进行处理，映射成另一个值。&lt;/p>
+&lt;p>我们知道lambda表达式本质上就是一个匿名函数，而Java8引入这一点：&lt;strong>把函数行为本身作为参数往下传递&lt;/strong>，才正式开始让Java走向函数式编程。&lt;/p>
+&lt;blockquote>
+&lt;p>扩展阅读 —— 《架构整洁之道》对于这几种编程方式的总结&lt;/p>
+&lt;ul>
+&lt;li>结构化编程是对程序控制权的直接转移的限制（Structured programming is discipline imposed upon direct transfer of control.）&lt;/li>
+&lt;li>面向对象编程是对程序控制权的间接转移的限制（Object-oriented programming is discipline imposed upon indirect transfer of control.）&lt;/li>
+&lt;li>函数式编程是对程序中赋值操作的限制（Functional programming is discipline imposed upon variable assignment.）&lt;/li>
+&lt;/ul>
+&lt;/blockquote>
+&lt;h2 id="2函数式接口">2.函数式接口&lt;/h2>
+&lt;h3 id="default方法">default方法&lt;/h3>
+&lt;p>在说函数式接口之前，我觉得有必要说说Java8中新增的关键字 —— default。其定义很简单，接口可以有默认的实现，不需要其实现类去实现这个方法，只需要在这个方法之前加上default关键字即可。&lt;/p>
+&lt;p>&lt;strong>那么，为什么Java8中要增加这个关键字呢？&lt;/strong>&lt;/p>
+&lt;p>首先，最直接的原因，Java8中增加了lambda表达式，需要在原本的接口中增加新的方法（比如 foreach 方法），然而接口的规范要求其实现类必须实现所有的方法，所以没办法无缝兼容之前的发布版本；其次，以前只有抽象类可以增加方法体，所以当一个接口需要有一个通用的方法的时候，需要为每个实现类都复制一份相同的实现，或者写一个抽象方法去继承，但是这种方式破坏了接口设计的初衷（抽象类表示”is-a“，接口表示”like-a“）。&lt;/p>
+&lt;h3 id="函数式接口">函数式接口&lt;/h3>
+&lt;p>我们知道接口中的方法一定是抽象的，默认情况下可以省略 public 和 abstract 。平时在开发功能的时候，一般会在一个接口中定义不少抽象方法（拿一个最简单的功能来说至少有增删改查对吧），但是如果我们定义一个仅包含单个抽象方法的接口，那么这个接口就可以被称为函数式接口（&lt;strong>Functional Interface&lt;/strong>），也叫做单抽象方法接口（SAM, &lt;strong>Single Abstract Method interfaces&lt;/strong>）。&lt;/p>
+&lt;p>在 &lt;code>FunctionalInterface&lt;/code> 的源码中，清晰的列出了以下说明：&lt;/p>
+&lt;blockquote>
+&lt;p>An informative annotation type used to indicate that an interface type declaration is intended to be a functional interface as defined by the Java Language Specification. Conceptually, a functional interface has exactly one abstract method. Since default methods have an implementation, they are not abstract. If an interface declares an abstract method overriding one of the public methods of java.lang.Object, that also does not count toward the interface's abstract method count since any implementation of the interface will have an implementation from java.lang.Object or elsewhere.&lt;/p>
+&lt;p>Note that instances of functional interfaces can be created with lambda expressions, method references, or constructor references.&lt;/p>
+&lt;p>If a type is annotated with this annotation type, compilers are required to generate an error message unless:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>The type is an interface type and not an annotation type, enum, or class.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The annotated type satisfies the requirements of a functional interface.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>However, the compiler will treat any interface meeting the definition of a functional interface as a functional interface regardless of whether or not a FunctionalInterface annotation is present on the interface declaration.&lt;/p>
+&lt;/blockquote>
+&lt;p>上面的这段注释中包含了以下几点：&lt;/p>
+&lt;ul>
+&lt;li>创建函数式接口的实例可以通过 &lt;strong>lambda 表达式&lt;/strong>、方法引用或者构造器引用&lt;/li>
+&lt;li>除了唯一的抽象方法外，函数式接口中还可以包含 &lt;strong>default 方法&lt;/strong>（有自己的实现，并不算抽象方法）或者重写了 Object 类的方法&lt;/li>
+&lt;li>函数式接口并不需要强制加上 &lt;code>@FunctionalInterface&lt;/code> 注解，但是加了这个注解后，编译器会去检查代码是否符合函数式接口的要求&lt;/li>
+&lt;/ul>
+&lt;p>另外，上面的注释中没有提到的，&lt;strong>static方法也是允许存在的&lt;/strong>，对此我们可以看下Java中&lt;code>Comparator&lt;/code>接口的源码：（类似的还有 Runnable、Comparable 或者 Callable 接口）&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@FunctionalInterface&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">interface&lt;/span> &lt;span class="nc">Comparator&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">T&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 此方法即为唯一的抽象方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="nf">compare&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">T&lt;/span> &lt;span class="n">var1&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">T&lt;/span> &lt;span class="n">var2&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 此方法继承自Object类
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kt">boolean&lt;/span> &lt;span class="nf">equals&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Object&lt;/span> &lt;span class="n">var1&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// default方法，有默认的实现
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">default&lt;/span> &lt;span class="n">Comparator&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">T&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="nf">thenComparing&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">Comparator&lt;/span>&lt;span class="o">&amp;lt;?&lt;/span> &lt;span class="kd">super&lt;/span> &lt;span class="n">T&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">var1&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">requireNonNull&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">var1&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">Comparator&lt;/span>&lt;span class="o">)((&lt;/span>&lt;span class="n">Serializable&lt;/span>&lt;span class="o">)((&lt;/span>&lt;span class="n">var2x&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">var3&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">var4&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">this&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">compare&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">var2x&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">var3&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">var4&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="n">0&lt;/span> &lt;span class="o">?&lt;/span> &lt;span class="n">var4&lt;/span> &lt;span class="o">:&lt;/span> &lt;span class="n">var1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">compare&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">var2x&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">var3&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ...这里省略了其他default方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// static方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">T&lt;/span> &lt;span class="kd">extends&lt;/span> &lt;span class="n">Comparable&lt;/span>&lt;span class="o">&amp;lt;?&lt;/span> &lt;span class="kd">super&lt;/span> &lt;span class="n">T&lt;/span>&lt;span class="o">&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">Comparator&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">T&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="nf">reverseOrder&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">Collections&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">reverseOrder&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ...这里省略了其他static类型的方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>当然了，我们也可以自己实现自己的函数式接口，最简单的实现：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 接口，@FunctionalInterface注解其实只要满足规范是可有可无的
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="nd">@FunctionalInterface&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">interface&lt;/span> &lt;span class="nc">TestInterface&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="nf">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 实际使用
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">TestInterface&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">sum&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">i&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">1&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">3&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>另外，JDK8本身新增了四个函数式接口，&lt;/p>
+&lt;h3 id="参考文档">参考文档&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;a href="https://howtodoinjava.com/java8/default-methods-in-java-8/">Java Default Methods&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://howtodoinjava.com/java/stream/functional-interface-tutorial/">Functional Interfaces in Java&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="3-lambda表达式">3. lambda表达式&lt;/h2>
+&lt;p>首先我们还是继续以上一节中 Comparator 接口为例简单讲一下 lambda 的语法。&lt;/p>
+&lt;p>对于 Comparator 接口，我们可以像下面这样使用：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 下面的comparator1、2、3、4完全是等效的写法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">Comparator&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">comparator1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span> &lt;span class="n">o1&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">o2&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="o">{&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="n">o1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">length&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">o2&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">length&lt;/span>&lt;span class="o">();&lt;/span> &lt;span class="o">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Comparator&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">comparator2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">o1&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">o2&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">o1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">length&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">o2&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">length&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Comparator&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">comparator3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Comparator&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">comparingInt&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">o&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">o&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">length&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Comparator&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">comparator4&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Comparator&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">comparingInt&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">length&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 下面的comparator5、6、7、8也完全是等效的写法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">Comparator&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Student&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">comparator5&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">Student&lt;/span> &lt;span class="n">student1&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">Student&lt;/span> &lt;span class="n">student2&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">student1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getId&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">compareTo&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">student2&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getId&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Comparator&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Student&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">comparator6&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">student1&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">student2&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">student1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getId&lt;/span>&lt;span class="o">().&lt;/span>&lt;span class="na">compareTo&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">student2&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getId&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Comparator&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Student&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">comparator7&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Comparator&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">comparing&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">e&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getId&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Comparator&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Student&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">comparator8&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Comparator&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">comparing&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">JbxxVO&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">getId&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>注意到其中的区别了吗，其中comparator1的写法是完整的，&lt;code>(String o1, String o2)&lt;/code>代表函数的入参，箭头符号 &lt;code>-&amp;gt;&lt;/code> 则是固定的格式，后面的&lt;code>{}&lt;/code>括起来的部分则是函数的方法体。&lt;/p>
+&lt;p>而第二种写法则表明入参的类型是可以省略的，而且如果方法体只有一行，那么&lt;code>{}&lt;/code>也是可以省略的。&lt;/p>
+&lt;p>至于comparator3和comparator4的写法是因为Comparator接口中封装了一个&lt;code>comparingInt&lt;/code>的静态方法，进一步简化了写法：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">T&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">Comparator&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">T&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="nf">comparingInt&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">ToIntFunction&lt;/span>&lt;span class="o">&amp;lt;?&lt;/span> &lt;span class="kd">super&lt;/span> &lt;span class="n">T&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">keyExtractor&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Objects&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">requireNonNull&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">keyExtractor&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">Comparator&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">T&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="o">&amp;amp;&lt;/span> &lt;span class="n">Serializable&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">(&lt;/span>&lt;span class="n">c1&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">c2&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">Integer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">compare&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">keyExtractor&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">applyAsInt&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">c1&lt;/span>&lt;span class="o">),&lt;/span> &lt;span class="n">keyExtractor&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">applyAsInt&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">c2&lt;/span>&lt;span class="o">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>而3和4的区别则是因为Java8中引入了**方法引用（method references）**的简写，可以通过这种形式访问静态方法、实例方法以及构造函数。具体格式为：&lt;/p>
+&lt;ol>
+&lt;li>如果是静态方法，则是 &lt;code>ClassName::methodName&lt;/code>，如 &lt;code>Object::equals&lt;/code>&lt;/li>
+&lt;li>如果是实例方法，则 是 &lt;code>Instance::methodName&lt;/code> ，如&lt;code>Object obj=new Object(); obj::equals; &lt;/code>&lt;/li>
+&lt;li>如果是构造函数，则是 &lt;code>ClassName::new&lt;/code>，如&lt;code>Student::new&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;h3 id="有效最终effectively-final">有效最终（effectively final）&lt;/h3>
+&lt;p>我们知道lambda表达式中如果要使用局部变量的话，这个变量必须是最终（final）或者有效最终（effectively final）的，关于这一点，具体篇幅的展开可以查看上一篇博文。&lt;/p>
+&lt;h3 id="参考文档-1">参考文档&lt;/h3>
+&lt;ol>
+&lt;li>&lt;a href="https://www.baeldung.com/java-8-lambda-expressions-tips">Lambda Expressions and Functional Interfaces: Tips and Best Practices&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-15.html#jls-15.27.2">Expressions (jsl-15)&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h2 id="4-stream流">4. stream流&lt;/h2>
+&lt;p>未完待续...&lt;/p>
+&lt;p>&lt;a href="https://medium.com/swlh/understanding-java-8s-consumer-supplier-predicate-and-function-c1889b9423d">Understanding Java 8’s Consumer, Supplier, Predicate and Function | by Somnath Musib | The Startup | Medium&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/07/java/">Java</category><category domain="https://kiwi4814.github.io/tags/2022/09/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2022/07/java-8/">Java 8</category></item><item><title>为什么lambda表达式中的局部变量必须是有效或者最终有效的？</title><link>https://kiwi4814.github.io/posts/2022/why-do-we-need-effectively-final/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/why-do-we-need-effectively-final/</guid><pubDate>Mon, 25 Jul 2022 21:40:15 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;blockquote>
+&lt;p>本文主要思路源自&lt;a href="https://www.baeldung.com/java-lambda-effectively-final-local-variables">Why Do We Need Effectively Final? &lt;/a>一文并结合自己的思考所成。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="有效最终effectively-final">有效最终（effectively final）&lt;/h2>
+&lt;p>从 Java8 开始，本地类可以访问&lt;strong>最终或有效最终&lt;/strong>的封闭块的局部变量和参数。那么，什么是有效最终（effectively final）变量呢？&lt;/p>
+&lt;p>通常来讲，满足以下三个条件的变量我们即可以把这个变量称为有效最终（ effectively final （&lt;a href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-4.html#jls-4.12.4">§4.12.4&lt;/a>））：&lt;/p>
+&lt;ul>
+&lt;li>该参数没有声明 final 关键字（其实是废话，加了final的肯定就被称为 final 而非 effectively final 了）&lt;/li>
+&lt;li>该参数永远不会出现在赋值表达式的左侧（除了初始化变量的时候，比如&lt;code>String s; s = &amp;quot;hello world!&amp;quot;;&lt;/code>）&lt;/li>
+&lt;li>永远作为递增或递减的前缀和后缀运算的运算数出现（比如 &lt;code>i++&lt;/code>中的i）&lt;/li>
+&lt;/ul>
+&lt;p>简单来说，在初始化之后就不会再进行赋值的参数或者变量，我们就可以称之为“有效最终”了。（原文为 A variable or parameter whose value is never changed after it is initialized is effectively final. ）&lt;/p>
+&lt;h2 id="lambda表达式的限制">lambda表达式的限制&lt;/h2>
+&lt;p>在&lt;a href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-15.html#jls-15.27.2">JLS&lt;/a>中，明确指出，在lambda表达式内部使用的任何&lt;strong>未在lambda表达式中声明的&lt;/strong>局部变量（&lt;strong>local variable&lt;/strong>）、形式参数（&lt;strong>formal parameter&lt;/strong>）以及异常参数（&lt;strong>exception parameter&lt;/strong>）都必须是final或effectively final的，否则将会出现编译错误。另外，局部变量在lambda中使用时必须时初始化过的。&lt;/p>
+&lt;p>在下面的代码示例中，列出了几种常见的错误情况：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">TestLambda&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">iv&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;初始化成员变量&amp;#34;&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">test&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">list&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Collections&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">singletonList&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;1&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">List&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">newList&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ArrayList&lt;/span>&lt;span class="o">&amp;lt;&amp;gt;();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 如果newList出现赋值，lambda表达式中就会报错
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">newList&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Collections&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">singletonList&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;2&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">String&lt;/span> &lt;span class="n">s1&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">s2&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">1&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 这样的初始化并不影响s1是有效最终的局部变量
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">s1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;初始化的S1&amp;#34;&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 成员变量不受这个限制，可以随意赋值
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">iv&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;修改成员变量&amp;#34;&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">list&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">forEach&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">t&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// newList必须是最终或者有效最终
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">newList&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">t&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// s1是有效最终，所以是可以使用的
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">newList&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">s1&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 报错，lambda表示式中无法对s2进行初始化了
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">s2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;lambda中初始化S2&amp;#34;&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">newList&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">s2&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 报错，i++出现了赋值行为，破坏了i的有效最终
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">newList&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="o">++);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">iv&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">iv&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="s">&amp;#34;1&amp;#34;&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 成员变量iv是没问题的
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">iv&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;lambda&amp;#34;&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">newList&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">add&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">iv&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">System&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">out&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">println&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">t&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 后续有任何赋值操作，lambda表达式中也会报错
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">newList&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Collections&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">singletonList&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;2&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>对于这种限制的原因，JLS中给出的原因是 &lt;em>&lt;strong>The restriction to effectively final variables prohibits access to dynamically-changing local variables, whose capture would likely introduce concurrency problems.&lt;/strong>&lt;/em> 翻译过来就是，Lambda表达式中禁止捕获动态变化的局部变量是因为可能会导致并发问题。&lt;/p>
+&lt;p>下面我们具体来看下到底会有哪些问题。&lt;/p>
+&lt;h3 id="1-捕获局部变量">1. 捕获局部变量&lt;/h3>
+&lt;p>我们先来看这么一段代码：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Supplier&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Integer&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="nf">incrementer&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">start&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="o">()&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">start&lt;/span>&lt;span class="o">++;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>当然这里是无法编译的，报错如下图所示：&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com//imgimage-20220725221949827.png" alt="image-20220725221949827" style="zoom: 50%;" />
+&lt;p>上面的代码中，lambda表达式的部分（&lt;code>start++&lt;/code>）在&lt;code>Supplier.get()&lt;/code>方法被调用之前都不会执行的，所以在lambda表达式捕获到局部变量start的值的时候会复制start的一份副本到lambda内部，而要求局部变量必须为最终或有效最终也是为了防止给人留下这样的印象：对lambda内部的start变量的修改可以影响到局部变量start。&lt;/p>
+&lt;p>再来看这段代码：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">localVariableMultithreading&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">boolean&lt;/span> &lt;span class="n">run&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">true&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">executor&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">execute&lt;/span>&lt;span class="o">(()&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">run&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// do operation
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">run&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>上面的代码有很明显的“可见性”问题，我们知道每个线程都有自己的堆栈，那么我们如何确保while循环看到另一个堆栈中run变量的变化呢？答案可能是使用&lt;em>synchronized&lt;/em>或&lt;em>volatile&lt;/em>关键字。然而，由于lambda表达式中有效最终的限制，我们可以不必担心这样的复杂性。&lt;/p>
+&lt;h3 id="2-捕获成员变量或静态变量">2. 捕获成员变量或静态变量&lt;/h3>
+&lt;p>在本章一开始的代码示例中，我们可以看到成员变量是不受final或者有效final的限制的，这是因为成员变量是存储在堆（heap）内存的，编译器可以保证同一个线程内永远能够获取到成员变量的最新的值。&lt;/p>
+&lt;p>对于多线程的情况，我们可以使用&lt;code>volatile&lt;/code>关键字来保证可见性。&lt;/p>
+&lt;p>上小节的代码我们用成员变量可以改写为：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">private&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">start&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">0&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Supplier&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Integer&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="nf">incrementer&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="o">()&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">start&lt;/span>&lt;span class="o">++;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">private&lt;/span> &lt;span class="kd">volatile&lt;/span> &lt;span class="kt">boolean&lt;/span> &lt;span class="n">run&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">true&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">instanceVariableMultithreading&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">executor&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">execute&lt;/span>&lt;span class="o">(()&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="n">run&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// do operation
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">run&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="总结">总结&lt;/h2>
+&lt;p>Java8 限制lambda表达式中使用的局部变量必须是最终或者有效最终，是因为任何在该lambda类中使用的变量都会通过自动生成的构造函数复制一份新的变量，为了保证这种同步性并且防止引起不必要的并发问题，所以做此限制。&lt;/p>
+&lt;h2 id="参考文档">参考文档&lt;/h2>
+&lt;ol>
+&lt;li>&lt;a href="https://stackoverflow.com/questions/20938095/difference-between-final-and-effectively-final">Difference between final and effectively final&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.baeldung.com/java-lambda-effectively-final-local-variables">Why Do We Need Effectively Final?&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://stackoverflow.com/questions/58527869/why-do-local-variables-used-in-lambdas-have-to-be-final-or-effectively-final">Why do local variables used in lambdas have to be final or effectively final?&lt;/a>&lt;/li>
+&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2022/07/java/">Java</category><category domain="https://kiwi4814.github.io/tags/2022/09/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2022/07/java-8/">Java 8</category></item><item><title>如何实现一个单例模式？</title><link>https://kiwi4814.github.io/posts/2022/singleton-impl/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/singleton-impl/</guid><pubDate>Mon, 20 Jun 2022 22:34:39 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>本文主要介绍了实现单例模式的一些方法、利弊等。&lt;/p>
 &lt;h2 id="前言">前言&lt;/h2>
 &lt;p>网上已经有太多的文章介绍如何实现一个单例模式了，但是请记住，无论怎么实现，我们需要关注的点无外乎下面几个：&lt;/p>
 &lt;ul>
@@ -793,7 +1656,7 @@
 &lt;p>最后，我们在环境设置页面的全局参数中增加全局变量，就可以默认让每个接口都带上jwt-token参数&lt;/p>
 &lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com//img202206201914710.png" alt="image-20220620191356450" style="zoom:50%;" />
 &lt;p>当我们请求接口的时候，可以设置预执行脚本，选到我们刚才增加的脚本，就可以自动更新jwt-token了。&lt;/p>
-&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com//img202206201916786.png" alt="image-20220620191600744">&lt;/p></description><category domain="https://kiwi4814.github.io/series/2022/06/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2022/06/%E5%B7%A5%E5%85%B7/">工具</category><category domain="https://kiwi4814.github.io/tags/2022/06/%E6%8A%80%E6%9C%AF/">技术</category></item><item><title>代码重构实战：实现一个ID生成器</title><link>https://kiwi4814.github.io/posts/2022/design-patterns/id-generator/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/design-patterns/id-generator/</guid><pubDate>Tue, 14 Jun 2022 09:04:26 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>所谓重构，就是发现代码质量问题，并且对其进行优化的过程。今天借助一个ID生成器的代码来实际展示一下重构的大概过程。&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com//img202206201916786.png" alt="image-20220620191600744">&lt;/p></description><category domain="https://kiwi4814.github.io/series/2022/06/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2022/06/%E5%B7%A5%E5%85%B7/">工具</category><category domain="https://kiwi4814.github.io/tags/2022/09/%E6%8A%80%E6%9C%AF/">技术</category></item><item><title>代码重构实战：实现一个ID生成器</title><link>https://kiwi4814.github.io/posts/2022/design-patterns/id-generator/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/design-patterns/id-generator/</guid><pubDate>Tue, 14 Jun 2022 09:04:26 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>所谓重构，就是发现代码质量问题，并且对其进行优化的过程。今天借助一个ID生成器的代码来实际展示一下重构的大概过程。&lt;/p>
 &lt;h2 id="需求背景介绍">需求背景介绍&lt;/h2>
 &lt;p>ID生成器在每个系统中几乎都可以见到，假设你正在参与一个后端业务系统的开发，为了方便在请求出错时排查问题，我们编写代码时会在关键路径上打上日志，某个请求出错后我们希望能搜索出对应这个请求的所有日志以方便查找问题原因。但是实际情况是，日志文件中不同的请求日志会交织到一起，如果没有标识哪些日志属于同一个请求，我们就无法关联同一个请求的所有日志。&lt;/p>
 &lt;p>借助微服务调用链追踪的实现思路，我们可以给每个请求分配一个唯一ID，并且保存在请求的上下文（context）中，比如处理请求的工作线程的局部变量中。在Java语言中，我们可以将ID存储在Servlet线程的ThreadLocal中，或者利用Slf4j日志框架的MDC（Mapped Diagnostic Contexts）来实现（实际上底层原理也是基于线程的ThreadLocal）。每次打印日志的时候，我们从请求上下文中请求ID，跟日志一块输出。这样，同一个请求的所有日志都包含同样的请求ID信息，我们就可以通过请求ID来搜索同一个请求的所有日志了。&lt;/p>
