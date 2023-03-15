@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.111.3 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 14 Mar 2023 07:10:52 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>使用ZeroTier实现内网穿透教程</title><link>https://kiwi4814.github.io/posts/2023/zerotier/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/zerotier/</guid><pubDate>Sat, 11 Mar 2023 15:05:47 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一前言">一、前言&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.111.3 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Wed, 15 Mar 2023 14:51:44 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>使用ZeroTier实现内网穿透教程</title><link>https://kiwi4814.github.io/posts/2023/zerotier/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/zerotier/</guid><pubDate>Sat, 11 Mar 2023 15:05:47 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一前言">一、前言&lt;/h2>
 &lt;p>上一篇文章主要讲解了如何使用 &lt;code>VPS + frp&lt;/code> 搭建内网穿透服务以实现在外面随时访问家里的设备（NAS、路由器等），虽然最终实现了效果，但是使用下来后发现了一些弊端：&lt;/p>
 &lt;ul>
 &lt;li>速度受限于VPS本身的网络带宽，即使VPS带宽很足，也有可能因为网络高峰期而出现明显的卡顿&lt;/li>
@@ -304,7 +304,163 @@ FreeBSD/OpenBSD: /var/db/zerotier-one
 &lt;h2 id="参考链接">参考链接&lt;/h2>
 &lt;p>&lt;a href="https://docs.zerotier.com/getting-started/getting-started">ZeroTier Documentation&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://blog.zczc.cz/2018/03/14/ZeroTier-moon-%E8%AE%BE%E7%BD%AE%E6%95%99%E7%A8%8B/">ZeroTier moon 设置教程&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://tvtv.fun/vps/001.html">简单搭建 Zerotier Moon 为虚拟网络加速&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2023/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2023/03/nas/">NAS</category></item><item><title>Redis实战之分布式锁</title><link>https://kiwi4814.github.io/posts/2022/redis-distributed-locks/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/redis-distributed-locks/</guid><pubDate>Tue, 13 Sep 2022 20:13:58 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>接下来的几篇文章，会学习一下Redis除了用做缓存之外的一些实际使用方法。这篇文章主要探讨了分布式锁的几种实现机制和原理。&lt;/p>
+&lt;p>&lt;a href="https://tvtv.fun/vps/001.html">简单搭建 Zerotier Moon 为虚拟网络加速&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2023/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2023/03/nas/">NAS</category></item><item><title>Mac环境搭建之iTerm2折腾之路</title><link>https://kiwi4814.github.io/posts/2023/mac-iterm2/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/mac-iterm2/</guid><pubDate>Wed, 01 Feb 2023 22:50:03 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>最近Mac电脑送修重做了系统，在搭建环境的过程中记录了一些软件的折腾记录，本文为iTerm2的相关设置。&lt;/p>
+&lt;p>本文默认读者已经自行安装HomeBrew、Git以及Python等开发常用工具，另外笔者所用系统版本为 macOS Ventura 13.2。&lt;/p>
+&lt;h3 id="一iterm2软件设置">一、iTerm2软件设置&lt;/h3>
+&lt;p>iTerm2的安装很简单，去&lt;a href="https://iterm2.com/">官网&lt;/a>下载或者使用HomBbrew安装均可，这里不做展开，将重点放在初始化的一些设置上。&lt;/p>
+&lt;p>iTerm2的主要设置都在 Settings -&amp;gt; Profiles里面，打开后可以设置字体、配色方案、窗口样式、ssh等，并且可以导入导出为JSON（建议设置完成后导出进行备份）。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230201144115407.webp" alt="image-20230201144115407" style="zoom: 33%;" />
+&lt;p>在iTerm2初始化的过程中，我主要修改了代码字体、配色方案、初始化窗口的大小（默认打开iTerm界面时的窗口大小，稍微改大了一些）以及背景壁纸等外观方面的改动。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230201150934590.webp" alt="image-20230201150934590" style="zoom: 33%;" />
+&lt;p>&lt;strong>1.字体&lt;/strong>&lt;/p>
+&lt;p>在字体的选择上，建议使用针对icon字符做了补全的&lt;a href="https://www.nerdfonts.com/">Nerd Fonts&lt;/a>作为主要显示字体，官网提供了50多种程序员常用的字体打了补丁，并提供了下载，我选择了其中的Hack Nerd Font以及MesloLG Nerd Font，并使用HomeBrew进行了安装，安装命令为：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew tap homebrew/cask-fonts &lt;span class="o">&amp;amp;&amp;amp;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">brew install --cask font-&amp;lt;FONT NAME&amp;gt;-nerd-font
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>将上面的&lt;code>&amp;lt;FONT NAME&amp;gt;&lt;/code>换成想要安装的字体名称即可，比如：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew tap homebrew/cask-fonts &lt;span class="o">&amp;amp;&amp;amp;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">brew install --cask font-meslo-lg-nerd-font
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后在Profiles中的Text下面选择下载好的字体即可。&lt;/p>
+&lt;p>&lt;strong>2.主题&lt;/strong>&lt;/p>
+&lt;p>iTerm2最常用的主题是&lt;a href="https://github.com/altercation/solarized">Solarized&lt;/a>，官网是：https://ethanschoonover.com/solarized/&lt;/p>
+&lt;p>下载后解压文件夹，在文件夹中找到 &lt;code>iterm2-colors-solarized&lt;/code> ，然后安装里面的 &lt;code>Solarized Dark.itermcolors&lt;/code> 和 &lt;code>Solarized Light.itermcolors&lt;/code> ，也可以在 Profiles 的 Colors 标签下面选择导入安装，安装完成选择对应的主题即可，当然根据自己的背景壁纸和字体颜色可以对主题做一些定制化的修改，自己看着舒服即可。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230201154934113.webp" alt="image-20230201154934113" style="zoom: 33%;" />
+&lt;h3 id="二安装oh-my-zshhttpsgithubcomohmyzshohmyzsh">二、安装&lt;a href="https://github.com/ohmyzsh/ohmyzsh">oh-my-zsh&lt;/a>&lt;/h3>
+&lt;p>经常使用终端的程序员肯定都知道，相比于bash，zsh的功能强大很多，可以自动补全命令、参数、文件名、进程、用户名、变量、权限符等等。在Mac系统中，从 macOS Catalina 开始，就已经使用 zsh 作为默认登录 Shell 和交互式 Shell 了，如果你是更早的版本，可以参照&lt;a href="https://support.apple.com/zh-cn/HT208050">官网的文章&lt;/a>将zsh设置为默认shell。&lt;/p>
+&lt;p>而Oh My Zsh 是一款社区驱动的命令行工具，正如它的主页上说的，Oh My Zsh 是一种生活方式。它基于 zsh 命令行，提供了主题配置，插件机制，已经内置的便捷操作。给我们一种全新的方式使用命令行。&lt;/p>
+&lt;p>下面来逐步安装和配置oh-my-zsh。&lt;/p>
+&lt;p>使用curl或者wget的方式进行安装：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># curl 安装方式&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sh -c &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># wget 安装方式&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sh -c &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>由于网络问题，可能会出现如下报错：&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-log" data-lang="log">https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+正在解析主机 raw.githubusercontent.com (raw.githubusercontent.com)... 0.0.0.0
+正在连接 raw.githubusercontent.com (raw.githubusercontent.com)|0.0.0.0|:443... 失败：Connection refused。
+&lt;/code>&lt;/pre>&lt;p>这里再提供一种离线安装的方法，使用&lt;a href="https://gitee.com/mirrors/oh-my-zsh">gitee上的镜像项目&lt;/a>，然后在tools中找到&lt;code>install.sh&lt;/code>脚本，并在脚本目录下执行安装命令：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo sh ./install.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后按照提示操作即可（Y），安装成功后显示如下界面：&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230131151313028.webp" alt="image-20230131151313028" style="zoom:50%;" />
+&lt;h3 id="三安装powerlinehttpspowerlinereadthedocsioenlatestinstallationhtml">三、安装&lt;a href="https://powerline.readthedocs.io/en/latest/installation.html">PowerLine&lt;/a>&lt;/h3>
+&lt;p>Powerline 是一个极棒的 Vim 编辑器的状态行插件，主要用于显示状态行和提示信息，适用于很多软件，比如 bash、zsh、tmux 等等。&lt;/p>
+&lt;p>PowerLine是基于python开发的，所以需要使用pip安装，如果你的电脑里安装的事python2，那么命令为：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip install powerline-status --user
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>python3把pip改成pip3即可:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip3 install powerline-status --user
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后等待安装成功即可。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230131152454149.webp" alt="image-20230131152454149" style="zoom:50%;" />
+&lt;h3 id="四配置oh-my-zsh主题">四、配置oh-my-zsh主题&lt;/h3>
+&lt;p>oh-my-zsh支持配置丰富的主题，本文使用当下最流行的&lt;a href="https://github.com/romkatv/powerlevel10k">powerlevel10k&lt;/a>主题来做演示，想要寻找更多好看的主题，可以去&lt;a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">社区&lt;/a>或者参考&lt;a href="https://www.slant.co/topics/7553/~theme-for-oh-my-zsh">此文&lt;/a>中的投票。&lt;/p>
+&lt;p>执行安装命令：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone --depth&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> https://github.com/romkatv/powerlevel10k.git &lt;span class="nv">$ZSH_CUSTOM&lt;/span>/themes/powerlevel10k
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>下载完成后需要修改 &lt;code>.zshrc&lt;/code> 来配置oh-my-zsh使用powerlevel10k主题：&lt;/p>
+&lt;p>（1）执行 &lt;code>vi ~/.zshrc&lt;/code> 编辑配置文件，修改主题：&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230131161302199.webp" alt="image-20230131161302199" style="zoom: 50%;" />
+&lt;p>（2）将图中主体部分修改为：&lt;code>ZSH_THEME=&amp;quot;powerlevel10k/powerlevel10k&amp;quot;&lt;/code>，退出VIM编辑界面后（:wq）执行 &lt;code>source ~/.zshrc&lt;/code> ，然后自动进入powerlevel10k初始化设置界面：&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230131162633820.webp" alt="image-20230131162633820" style="zoom: 50%;" />
+&lt;p>第一步是安装推荐的字体，这里推荐选n，因为网络原因大概率会安装失败，最好是手动安装需要的字体。&lt;/p>
+&lt;p>从第二步开始，就是选择界面的一些风格样式，基本都是界面美化相关的（毕竟是主题设置嘛），这里不多做介绍了，大家按照提示选择对应的选项即可。&lt;/p>
+&lt;p>如果后续想要修改配置，再次执行 &lt;code>p10k configure&lt;/code> 命令即可。&lt;/p>
+&lt;h3 id="五安装oh-my-zsh插件">五、安装oh-my-zsh插件&lt;/h3>
+&lt;p>oh-my-zsh支持非常多插件，都在 &lt;code>~/.oh-my-zsh/plugins&lt;/code> 路径下，可以根据&lt;a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins">官网文档&lt;/a>选择合适的启用。除了官方提供的插件之外，还支持自定义插件，这些插件可以安装在 &lt;code>~/.oh-my-zsh/custom/plugins/&lt;/code> 路径下，这里演示其中两个插件的安装。&lt;/p>
+&lt;p>&lt;strong>1.zsh-autosuggestions&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>命令自动提示插件&lt;/strong>，能够记住你平时输入的命令，下次再输入的时候就会有相应的提示。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> ~/.oh-my-zsh/custom/plugins/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git clone https://github.com/zsh-users/zsh-autosuggestions
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>2.zsh-syntax-highlighting&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>语法高亮插件&lt;/strong>，为zsh语法提供突出展示。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> ~/.oh-my-zsh/custom/plugins/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>如果你使用的是 &lt;code>Solarized Dark&lt;/code> 主题，并且使用深色壁纸的话，高亮显示的语法可能不是很清晰，这时候可以将修改配置项的值：&lt;/p>
+&lt;p>（1）找到并编辑 &lt;code>.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh&lt;/code>&lt;/p>
+&lt;p>（2）修改 &lt;code>ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=30'&lt;/code> 的配置值为30（默认是8）&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230201164334524.webp" alt="image-20230201164334524" style="zoom:33%;" />
+&lt;/blockquote>
+&lt;p>安装完成后，需要编辑 &lt;code>.zshrc&lt;/code> 配置文件来启用插件（与前面安装主题的步骤相同）。&lt;/p>
+&lt;p>找到原本plugins的位置，将其替换为&lt;/p>
+&lt;pre tabindex="0">&lt;code>plugins=(
+git
+zsh-autosuggestions
+zsh-syntax-highlighting
+)
+&lt;/code>&lt;/pre>&lt;p>至此，关于iTerm2的安装和配置就大公告成了，最终效果如下（不喜欢彩虹图标以及各类配色的可以选择更简洁的主题或者配置）。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230201164529759.webp" alt="image-20230201164529759" style="zoom:50%;" />
+&lt;h3 id="参考链接">参考链接&lt;/h3>
+&lt;p>&lt;a href="https://mrseawave.github.io/blogs/articles/2021/08/29/oh-my-zsh/">oh-my-zsh - Sea's Blog&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://segmentfault.com/a/1190000014992947">iTerm2 + Oh My Zsh 打造舒适终端体验&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2023/02/mac/">Mac</category></item><item><title>Redis实战之分布式锁</title><link>https://kiwi4814.github.io/posts/2022/redis-distributed-locks/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/redis-distributed-locks/</guid><pubDate>Tue, 13 Sep 2022 20:13:58 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>接下来的几篇文章，会学习一下Redis除了用做缓存之外的一些实际使用方法。这篇文章主要探讨了分布式锁的几种实现机制和原理。&lt;/p>
 &lt;h2 id="本文涉及到的redis指令及语法">本文涉及到的Redis指令及语法&lt;/h2>
 &lt;h4 id="set-key-value-ex-seconds-px-milliseconds-nxxx">&lt;code>SET key value [EX seconds] [PX milliseconds] [NX|XX]&lt;/code>&lt;/h4>
 &lt;ul>
@@ -3862,7 +4018,7 @@ You can also use step intervals with &lt;code>H&lt;/code>, with or without range
 &lt;li>NeatDownloadManager Extension&lt;/li>
 &lt;li>Notion Web Clipper&lt;/li>
 &lt;li>迅雷下载支持&lt;/li>
-&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E6%89%A9%E5%B1%95/">扩展</category></item><item><title>设计原则05：控制反转原则（DIP）</title><link>https://kiwi4814.github.io/posts/2022/design-patterns/inversion-of-control/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/design-patterns/inversion-of-control/</guid><pubDate>Sat, 19 Mar 2022 17:46:18 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>前面的四节课分别讲了SOLID原则中的单一职责、开闭、里式替换、接口隔离原则，今天要讲的是依赖反转原则（DIP）。&lt;/p>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E6%89%A9%E5%B1%95/">扩展</category></item><item><title>设计原则05：控制反转原则（DIP）</title><link>https://kiwi4814.github.io/posts/2022/design-patterns/inversion-of-control/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/design-patterns/inversion-of-control/</guid><pubDate>Sat, 19 Mar 2022 17:46:18 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>前面的四节课分别讲了SOLID原则中的单一职责、开闭、里式替换、接口隔离原则，今天要讲的是依赖反转原则（DIP）。&lt;/p>
 &lt;p>先来看下这几个问题。&lt;/p>
 &lt;ul>
 &lt;li>“依赖反转”这个概念指的是“谁跟谁”的“什么依赖”被反转了？“反转”两个字该如何理解？&lt;/li>
@@ -6623,7 +6779,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;li>
 &lt;p>&lt;strong>同类软件&lt;/strong>：&lt;a href="https://www.plex.tv/">plex&lt;/a>，&lt;a href="https://emby.media/">emby&lt;/a>，&lt;a href="https://jellyfin.org/">Jellyfin&lt;/a>一般我们并称家庭影院三剑客，其中Plex体验最好但也最贵，emby和jellyfin同出一源，Jellyfin为emby的开源免费版。另外两个不再做过多的额外介绍了。&lt;/p>
 &lt;/li>
-&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2021/12/windows%E8%BD%AF%E4%BB%B6%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8E%A8%E8%8D%90/">windows软件不完全推荐</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>windows软件不完全推荐02：办公篇</title><link>https://kiwi4814.github.io/posts/2021/windows-software-work/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/windows-software-work/</guid><pubDate>Tue, 28 Dec 2021 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>&lt;em>&lt;strong>其实大部分行业我都不太了解，所以这里也就只能放放一些我认为比较通用的办公软件了。&lt;/strong>&lt;/em>&lt;/p>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2021/12/windows%E8%BD%AF%E4%BB%B6%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8E%A8%E8%8D%90/">windows软件不完全推荐</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>windows软件不完全推荐02：办公篇</title><link>https://kiwi4814.github.io/posts/2021/windows-software-work/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/windows-software-work/</guid><pubDate>Tue, 28 Dec 2021 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>&lt;em>&lt;strong>其实大部分行业我都不太了解，所以这里也就只能放放一些我认为比较通用的办公软件了。&lt;/strong>&lt;/em>&lt;/p>
 &lt;h2 id="办公软件">办公软件&lt;/h2>
 &lt;h3 id="零一些在线网站">零：一些在线网站&lt;/h3>
 &lt;p>&lt;a href="https://tophub.today/">今日热榜&lt;/a>：嗯，每天摸鱼看热搜&lt;/p>
@@ -6844,7 +7000,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;h3 id="九协同办公">九、协同办公&lt;/h3>
 &lt;p>&lt;a href="https://docs.qq.com/desktop/">腾讯文档 (qq.com)&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://shimo.im/welcome">石墨文档-企业在线协同办公系统平台,支持云端多人在线协作编辑文档和表格 (shimo.im)&lt;/a>&lt;/p>
-&lt;h3 id="十开会">十、开会&lt;/h3></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2021/12/windows%E8%BD%AF%E4%BB%B6%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8E%A8%E8%8D%90/">windows软件不完全推荐</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>windows软件不完全推荐01：常用篇</title><link>https://kiwi4814.github.io/posts/2021/windows-software-common/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/windows-software-common/</guid><pubDate>Mon, 27 Dec 2021 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="前言">前言&lt;/h2>
+&lt;h3 id="十开会">十、开会&lt;/h3></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2021/12/windows%E8%BD%AF%E4%BB%B6%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8E%A8%E8%8D%90/">windows软件不完全推荐</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>windows软件不完全推荐01：常用篇</title><link>https://kiwi4814.github.io/posts/2021/windows-software-common/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/windows-software-common/</guid><pubDate>Mon, 27 Dec 2021 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="前言">前言&lt;/h2>
 &lt;ol>
 &lt;li>
 &lt;p>初衷：除了分享给大家之外，也用来备份大部分我平时使用频率很低的软件；&lt;/p>
@@ -7412,7 +7568,7 @@ NAS，全程是网络附属存储，本质就是你的另一台电脑，里面�
 &lt;/ul>
 &lt;hr>
 &lt;p>本文涉及到的一些软件的安装包已经上传到&lt;a href="https://www.aliyundrive.com/s/6P9Ftt2bD6v">阿里云盘&lt;/a>，方便某些开源软件网络问题无法下载的小伙伴们获取。&lt;/p>
-&lt;p>完。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2021/12/windows%E8%BD%AF%E4%BB%B6%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8E%A8%E8%8D%90/">windows软件不完全推荐</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>常见方法论和心理效应</title><link>https://kiwi4814.github.io/posts/2021/methodology/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/methodology/</guid><pubDate>Wed, 22 Dec 2021 22:42:13 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一思考技巧与模板">一、思考技巧与模板&lt;/h2>
+&lt;p>完。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2021/12/windows%E8%BD%AF%E4%BB%B6%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8E%A8%E8%8D%90/">windows软件不完全推荐</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>常见方法论和心理效应</title><link>https://kiwi4814.github.io/posts/2021/methodology/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/methodology/</guid><pubDate>Wed, 22 Dec 2021 22:42:13 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一思考技巧与模板">一、思考技巧与模板&lt;/h2>
 &lt;h3 id="1-scqa">1. SCQA&lt;/h3>
 &lt;p>SCQA模型是一个“结构化表达”工具，是麦肯锡咨询顾问芭芭拉·明托在《金字塔原理》中提出的。&lt;/p>
 &lt;p>S（Situation）情景——由大家都熟悉的情景、事实引入。
@@ -7841,7 +7997,7 @@ git config --global https.proxy https://127.0.0.1:1080
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 &lt;/code>&lt;/pre>&lt;/li>
-&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>高可用06：高可用系统设计之「其他辅助手段」</title><link>https://kiwi4814.github.io/posts/2021/high-availability-aids/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-aids/</guid><pubDate>Tue, 12 Oct 2021 16:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;hr>
+&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>高可用06：高可用系统设计之「其他辅助手段」</title><link>https://kiwi4814.github.io/posts/2021/high-availability-aids/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-aids/</guid><pubDate>Tue, 12 Oct 2021 16:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;hr>
 &lt;p>&lt;a href="https://kiwi4814.com/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用系列目录&lt;/a>&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-concept/">高可用01：什么是高可用系统？&lt;/a>&lt;/li>
@@ -9361,7 +9517,7 @@ git config --global --unset https.proxy
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/li>
-&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2020/08/linux%E8%BF%90%E7%BB%B4/">Linux运维</category><category domain="https://kiwi4814.github.io/tags/2020/08/linux/">Linux</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2020/09/mysql/">MySQL</category></item><item><title>JUC框架简介</title><link>https://kiwi4814.github.io/posts/2020/juc-summary/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2020/juc-summary/</guid><pubDate>Sat, 27 Jun 2020 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="一lock框架和tools类">一、Lock框架和Tools类&lt;/h1>
+&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2020/08/linux%E8%BF%90%E7%BB%B4/">Linux运维</category><category domain="https://kiwi4814.github.io/tags/2020/08/linux/">Linux</category><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2020/09/mysql/">MySQL</category></item><item><title>JUC框架简介</title><link>https://kiwi4814.github.io/posts/2020/juc-summary/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2020/juc-summary/</guid><pubDate>Sat, 27 Jun 2020 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="一lock框架和tools类">一、Lock框架和Tools类&lt;/h1>
 &lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/java-thread-x-juc-overview-lock.png" alt="">&lt;/p>
 &lt;p>类结构总览&lt;/p>
 &lt;h2 id="接口condition">接口：Condition&lt;/h2>
