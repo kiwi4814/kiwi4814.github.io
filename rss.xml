@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.111.3 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Wed, 15 Mar 2023 14:51:44 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>使用ZeroTier实现内网穿透教程</title><link>https://kiwi4814.github.io/posts/2023/zerotier/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/zerotier/</guid><pubDate>Sat, 11 Mar 2023 15:05:47 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一前言">一、前言&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.111.3 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Fri, 17 Mar 2023 07:44:31 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>使用ZeroTier实现内网穿透教程</title><link>https://kiwi4814.github.io/posts/2023/zerotier/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/zerotier/</guid><pubDate>Sat, 11 Mar 2023 15:05:47 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一前言">一、前言&lt;/h2>
 &lt;p>上一篇文章主要讲解了如何使用 &lt;code>VPS + frp&lt;/code> 搭建内网穿透服务以实现在外面随时访问家里的设备（NAS、路由器等），虽然最终实现了效果，但是使用下来后发现了一些弊端：&lt;/p>
 &lt;ul>
 &lt;li>速度受限于VPS本身的网络带宽，即使VPS带宽很足，也有可能因为网络高峰期而出现明显的卡顿&lt;/li>
@@ -304,7 +304,164 @@ FreeBSD/OpenBSD: /var/db/zerotier-one
 &lt;h2 id="参考链接">参考链接&lt;/h2>
 &lt;p>&lt;a href="https://docs.zerotier.com/getting-started/getting-started">ZeroTier Documentation&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://blog.zczc.cz/2018/03/14/ZeroTier-moon-%E8%AE%BE%E7%BD%AE%E6%95%99%E7%A8%8B/">ZeroTier moon 设置教程&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://tvtv.fun/vps/001.html">简单搭建 Zerotier Moon 为虚拟网络加速&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2023/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2023/03/nas/">NAS</category></item><item><title>Mac环境搭建之iTerm2折腾之路</title><link>https://kiwi4814.github.io/posts/2023/mac-iterm2/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/mac-iterm2/</guid><pubDate>Wed, 01 Feb 2023 22:50:03 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>最近Mac电脑送修重做了系统，在搭建环境的过程中记录了一些软件的折腾记录，本文为iTerm2的相关设置。&lt;/p>
+&lt;p>&lt;a href="https://tvtv.fun/vps/001.html">简单搭建 Zerotier Moon 为虚拟网络加速&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2023/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2023/03/nas/">NAS</category></item><item><title>centos 安装及配置 oh-my-zsh</title><link>https://kiwi4814.github.io/posts/2023/linux-zsh/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/linux-zsh/</guid><pubDate>Fri, 03 Feb 2023 15:42:09 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>上篇文章主要演示了如何在Mac电脑的iTerm2软件上安装和配置 &lt;code>oh-my-zsh&lt;/code> , 本文将演示如何在云服务器上安装 &lt;code>oh-my-zsh&lt;/code> , 由于整体过程大同小异，所以只记录安装命令以及执行结果，然后重点记录与上篇文章中不太一样的地方。&lt;/p>
+&lt;p>系统版本：CentOS Linux release 7.9.2009&lt;/p>
+&lt;h2 id="准备工作">准备工作&lt;/h2>
+&lt;p>查看当前shell：&lt;code>echo $SHELL&lt;/code>&lt;/p>
+&lt;p>安装git：&lt;code>yum install -y git&lt;/code>&lt;/p>
+&lt;p>安装zsh：&lt;code>yum install -y zsh&lt;/code>&lt;/p>
+&lt;p>切换为zsh：&lt;code>chsh -s /bin/zsh&lt;/code>&lt;/p>
+&lt;p>&lt;strong>✨✨✨✨说明：&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>在安装过程中可能需要克隆很多github项目，如果你使用的是国内服务器，可能会卡在这一步，这时候可以采用另一种思路，使用&lt;a href="https://gitee.com/">gitee&lt;/a>的镜像项目替换，本文中所有安装以github项目为例，无特殊情况外不再说明，相信在阅读本文的你肯定能找到合适的办法。&lt;/strong>&lt;/p>
+&lt;h2 id="安装oh-my-zsh">安装oh-my-zsh&lt;/h2>
+&lt;p>使用curl或者wget的方式进行安装：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># curl 安装方式&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sh -c &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># wget 安装方式&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sh -c &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230309132920921.webp" alt="image-20230309132920921" style="zoom: 50%;" />
+&lt;p>由于网络问题，国内的服务器（如阿里云、腾讯云等）可能无法访问github，可以克隆&lt;a href="https://gitee.com/mirrors/oh-my-zsh">gitee的镜像&lt;/a>，然后在tools中找到&lt;code>install.sh&lt;/code>脚本，并在脚本目录下执行安装命令：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo sh ./install.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="安装powerline">安装powerline&lt;/h2>
+&lt;p>执行命令（python3）：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip3 install powerline-status --user
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>结果：&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230309133852565.webp" alt="image-20230309133852565" style="zoom:50%;" />
+&lt;h2 id="安装主题powerlevel10k">安装主题Powerlevel10k&lt;/h2>
+&lt;p>克隆项目&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone --depth&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> https://github.com/romkatv/powerlevel10k.git &lt;span class="nv">$ZSH_CUSTOM&lt;/span>/themes/powerlevel10k
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后编辑配置文件&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 1. 编辑配置文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vi ~/.zshrc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 2. 按照下图的方式修改为：ZSH_THEME=&amp;#34;powerlevel10k/powerlevel10k&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 3. 使配置文件生效&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> ~/.zshrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230317142345658.webp" alt="image-20230317142345658" style="zoom:50%;" />
+&lt;p>这时候可能会提示：&lt;code>You are using ZSH version 5.0.2. The minimum required version for Powerlevel10k is 5.1.&lt;/code>&lt;/p>
+&lt;p>这是因为 yum 中 zsh 的最新版本5.0.2，而我们要安装的 Powerlevel10k 主题对版本的最低要求是 5.1 ，然后在github的issues中找到了&lt;a href="https://github.com/Powerlevel9k/powerlevel9k/issues/1355">解决方案&lt;/a>：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo yum update -y
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo yum install -y git make ncurses-devel gcc autoconf man
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git clone -b zsh-5.8.1 https://github.com/zsh-users/zsh.git /tmp/zsh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> /tmp/zsh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./Util/preconfig
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./configure
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo make -j &lt;span class="m">20&lt;/span> install.bin install.modules install.fns
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>在执行完上面的过程，可以通过命令 &lt;code>zsh --version&lt;/code> 查看版本，这时候大概率仍然是 5.0.2 ，需要我们重新登录下系统。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230317141927648.webp" alt="image-20230317141927648" style="zoom:50%;" />
+&lt;p>重新登录后，出现以下提示，按照提示操作切换为最新版本即可。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230317145430715.webp" alt="image-20230317145430715" style="zoom:50%;" />
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> /usr/local/bin/zsh &lt;span class="p">|&lt;/span> sudo tee -a /etc/shells
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">chsh -s /usr/local/bin/zsh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>执行完成后发现版本已经切换到最新版本 5.8.1 了，这时候再次登录系统，发现会自动进入主题Powerlevel10k的配置界面，按照提示选择自己想要的样式即可。&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230317145809815.webp" alt="image-20230317145809815">&lt;/p>
+&lt;h2 id="安装插件">安装插件&lt;/h2>
+&lt;p>插件的安装方式几乎都一样，同上篇文章，命令如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> ~/.oh-my-zsh/custom/plugins/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git clone https://github.com/zsh-users/zsh-autosuggestions
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>安装完成后仍然像修改主题那样修改配置文件：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 1. 编辑配置文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vi ~/.zshrc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 2. 按照下图的方式修改为:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">plugins&lt;/span>&lt;span class="o">=(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> zsh-autosuggestions
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> zsh-syntax-highlighting
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 3. 使配置文件生效&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> ~/.zshrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230317150822467.webp" alt="image-20230317150822467">&lt;/p>
+&lt;p>至此，安装完成。&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2023/02/linux/">Linux</category><category domain="https://kiwi4814.github.io/tags/2023/02/oh-my-zsh/">oh-my-zsh</category></item><item><title>Mac环境搭建之iTerm2折腾之路</title><link>https://kiwi4814.github.io/posts/2023/mac-iterm2/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/mac-iterm2/</guid><pubDate>Wed, 01 Feb 2023 22:50:03 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>最近Mac电脑送修重做了系统，在搭建环境的过程中记录了一些软件的折腾记录，本文为iTerm2的相关设置。&lt;/p>
 &lt;p>本文默认读者已经自行安装HomeBrew、Git以及Python等开发常用工具，另外笔者所用系统版本为 macOS Ventura 13.2。&lt;/p>
 &lt;h3 id="一iterm2软件设置">一、iTerm2软件设置&lt;/h3>
 &lt;p>iTerm2的安装很简单，去&lt;a href="https://iterm2.com/">官网&lt;/a>下载或者使用HomBbrew安装均可，这里不做展开，将重点放在初始化的一些设置上。&lt;/p>
@@ -460,7 +617,7 @@ zsh-syntax-highlighting
 &lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230201164529759.webp" alt="image-20230201164529759" style="zoom:50%;" />
 &lt;h3 id="参考链接">参考链接&lt;/h3>
 &lt;p>&lt;a href="https://mrseawave.github.io/blogs/articles/2021/08/29/oh-my-zsh/">oh-my-zsh - Sea's Blog&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://segmentfault.com/a/1190000014992947">iTerm2 + Oh My Zsh 打造舒适终端体验&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2023/02/mac/">Mac</category></item><item><title>Redis实战之分布式锁</title><link>https://kiwi4814.github.io/posts/2022/redis-distributed-locks/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/redis-distributed-locks/</guid><pubDate>Tue, 13 Sep 2022 20:13:58 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>接下来的几篇文章，会学习一下Redis除了用做缓存之外的一些实际使用方法。这篇文章主要探讨了分布式锁的几种实现机制和原理。&lt;/p>
+&lt;p>&lt;a href="https://segmentfault.com/a/1190000014992947">iTerm2 + Oh My Zsh 打造舒适终端体验&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2023/02/mac/">Mac</category><category domain="https://kiwi4814.github.io/tags/2023/02/oh-my-zsh/">oh-my-zsh</category></item><item><title>Redis实战之分布式锁</title><link>https://kiwi4814.github.io/posts/2022/redis-distributed-locks/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/redis-distributed-locks/</guid><pubDate>Tue, 13 Sep 2022 20:13:58 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>接下来的几篇文章，会学习一下Redis除了用做缓存之外的一些实际使用方法。这篇文章主要探讨了分布式锁的几种实现机制和原理。&lt;/p>
 &lt;h2 id="本文涉及到的redis指令及语法">本文涉及到的Redis指令及语法&lt;/h2>
 &lt;h4 id="set-key-value-ex-seconds-px-milliseconds-nxxx">&lt;code>SET key value [EX seconds] [PX milliseconds] [NX|XX]&lt;/code>&lt;/h4>
 &lt;ul>
@@ -9517,7 +9674,7 @@ git config --global --unset https.proxy
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/li>
-&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2020/08/linux%E8%BF%90%E7%BB%B4/">Linux运维</category><category domain="https://kiwi4814.github.io/tags/2020/08/linux/">Linux</category><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2020/09/mysql/">MySQL</category></item><item><title>JUC框架简介</title><link>https://kiwi4814.github.io/posts/2020/juc-summary/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2020/juc-summary/</guid><pubDate>Sat, 27 Jun 2020 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="一lock框架和tools类">一、Lock框架和Tools类&lt;/h1>
+&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2020/08/linux%E8%BF%90%E7%BB%B4/">Linux运维</category><category domain="https://kiwi4814.github.io/tags/2023/02/linux/">Linux</category><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2020/09/mysql/">MySQL</category></item><item><title>JUC框架简介</title><link>https://kiwi4814.github.io/posts/2020/juc-summary/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2020/juc-summary/</guid><pubDate>Sat, 27 Jun 2020 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="一lock框架和tools类">一、Lock框架和Tools类&lt;/h1>
 &lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/java-thread-x-juc-overview-lock.png" alt="">&lt;/p>
 &lt;p>类结构总览&lt;/p>
 &lt;h2 id="接口condition">接口：Condition&lt;/h2>
