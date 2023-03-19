@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.111.3 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 19 Mar 2023 08:06:30 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>使用ZeroTier实现内网穿透教程</title><link>https://kiwi4814.github.io/posts/2023/zerotier/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/zerotier/</guid><pubDate>Sat, 11 Mar 2023 15:05:47 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一前言">一、前言&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.111.3 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 19 Mar 2023 08:33:40 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>使用ZeroTier实现内网穿透教程</title><link>https://kiwi4814.github.io/posts/2023/zerotier/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/zerotier/</guid><pubDate>Sat, 11 Mar 2023 15:05:47 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一前言">一、前言&lt;/h2>
 &lt;p>上一篇文章主要讲解了如何使用 &lt;code>VPS + frp&lt;/code> 搭建内网穿透服务以实现在外面随时访问家里的设备（NAS、路由器等），虽然最终实现了效果，但是使用下来后发现了一些弊端：&lt;/p>
 &lt;ul>
 &lt;li>速度受限于VPS本身的网络带宽，即使VPS带宽很足，也有可能因为网络高峰期而出现明显的卡顿&lt;/li>
@@ -760,7 +760,242 @@ FreeBSD/OpenBSD: /var/db/zerotier-one
 &lt;p>然后需要注意的是 frp 中映射的端口为 6690 （PC端）而不是上图中的 7006，然后在群晖初始化连接的时候，可以直接填域名或者IP，这是由于群晖的默认设置造成的。这里的默认设置端口是指，&lt;strong>NAS 端的 Drive 服务对 PC 端 Drive 程序开放的默认访问端口为 6690，对移动端的 App 开放的默认访问端口为 5000&lt;/strong>。此外，Drive 客户端程序在你输入域名后，会检测你输入的域名是不是带有端口号，如果没有填写端口号，客户端程序会自动添加上默认的访问端口去访问 NAS 端的 Drive，PC 端就自动添加 6690，移动端就自动添加 5000。但如果你自己填写了端口号，就会使用你填写的端口号去访问 NAS 端的 Drive。所以在局域网中直接输入群晖的 IP，加不加 6690 端口都能连接上 Drive 服务，但在外网下就需要用一个端口转发到群晖所在 IP 的 6690 端口。&lt;/p>
 &lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230319154737684.webp" alt="image-20230319154737684" style="zoom:50%;" />
 &lt;h2 id="七总结">七、总结&lt;/h2>
-&lt;p>本文简要介绍了如何使用一台VPS，在外网服务器和家里的NAS服务器分别安装 frp 进行通信并且绑定到指定的二级域名的过程。但是经过实际的测试，由于这种方式所有的流量都要依赖于这个第三方服务器，所以网速势必不会太理想，尤其是晚高峰时期，但是优势在于任何时候都可以直接访问到我们的内网服务而没有设备上的限制。由于笔者本人需要进行内网穿透访问家中设备的场景有限并且设备也很固定，所以下一篇文章中我们将使用另一种方式来实现稳定高速的内网穿透。&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2023/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2023/03/nas/">NAS</category></item><item><title>centos 安装及配置 oh-my-zsh</title><link>https://kiwi4814.github.io/posts/2023/linux-zsh/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/linux-zsh/</guid><pubDate>Fri, 03 Feb 2023 15:42:09 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>上篇文章主要演示了如何在Mac电脑的iTerm2软件上安装和配置 &lt;code>oh-my-zsh&lt;/code> , 本文将演示如何在云服务器上安装 &lt;code>oh-my-zsh&lt;/code> , 由于整体过程大同小异，所以只记录安装命令以及执行结果，然后重点记录与上篇文章中不太一样的地方。&lt;/p>
+&lt;p>本文简要介绍了如何使用一台VPS，在外网服务器和家里的NAS服务器分别安装 frp 进行通信并且绑定到指定的二级域名的过程。但是经过实际的测试，由于这种方式所有的流量都要依赖于这个第三方服务器，所以网速势必不会太理想，尤其是晚高峰时期，但是优势在于任何时候都可以直接访问到我们的内网服务而没有设备上的限制。由于笔者本人需要进行内网穿透访问家中设备的场景有限并且设备也很固定，所以下一篇文章中我们将使用另一种方式来实现稳定高速的内网穿透。&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2023/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2023/03/nas/">NAS</category></item><item><title>群晖开启ssh root</title><link>https://kiwi4814.github.io/posts/2023/nas-ssh-root/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/nas-ssh-root/</guid><pubDate>Tue, 07 Mar 2023 21:05:47 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h5 id="1控制面板-终端机和snmp里开启ssh功能">1、控制面板—-终端机和SNMP里，开启SSH功能&lt;/h5>
+&lt;h5 id="2登陆群晖的ssh用系统默认用户登陆">2、登陆群晖的SSH，用系统默认用户登陆&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ssh admin@192.168.50.100
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="3登陆后输入以下命令切换至root账号这时还需在输入一次你的群晖登陆密码">3、登陆后输入以下命令切换至root账号，这时还需在输入一次你的群晖登陆密码&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo -i
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="4输入以下命令进入到ssh的目录">4、输入以下命令进入到ssh的目录&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> /etc/ssh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="5给sshd_config赋予755的权限">5、给sshd_config赋予755的权限&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">chmod &lt;span class="m">755&lt;/span> sshd_config
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="6修改config配置文件内容">6、修改config配置文件内容&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vi /etc/ssh/sshd_config
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>参考下面的修改，将&lt;code>#PermitRootLogin prohibit-password&lt;/code>那一行的注释取消，然后后面的值改为yes&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="line">&lt;span class="cl">&lt;span class="na">&amp;#34;/etc/ssh/sshd_config&amp;#34; 127L, 3398C&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># $OpenBSD: sshd_config,v 1.100 2016/08/15 12:32:04 naddy Exp $&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># This is the sshd server system-wide configuration file. See&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># sshd_config(5) for more information.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># This sshd was compiled with PATH=/usr/bin:/bin:/usr/sbin:/sbin&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># The strategy used for options in the default sshd_config shipped with&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># OpenSSH is to specify options with their default value where&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># possible, but leave them commented. Uncommented options override the&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># default value.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Port 22&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#AddressFamily any&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#ListenAddress 0.0.0.0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#ListenAddress ::&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#HostKey /etc/ssh/ssh_host_rsa_key&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#HostKey /etc/ssh/ssh_host_dsa_key&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#HostKey /etc/ssh/ssh_host_ecdsa_key&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#HostKey /etc/ssh/ssh_host_ed25519_key&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Ciphers and keying&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#RekeyLimit default none&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Logging&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#SyslogFacility AUTH&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#LogLevel INFO&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Authentication:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#LoginGraceTime 2m&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">PermitRootLogin yes&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#StrictModes yes&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#MaxAuthTries 6&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#MaxSessions 10&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#PubkeyAuthentication yes&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># but this is overridden so installations will only check .ssh/authorized_keys&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#AuthorizedKeysFile .ssh/authorized_keys&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="7重启群晖">7、重启群晖&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">reboot
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="8重启完成再次以系统默认账户登录群晖ssh">8、重启完成再次以系统默认账户登录群晖SSH&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ssh admin@192.168.50.100
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="9再次输入以下命令切换至root账号这时还需在输入一次你的群晖登陆密码">9、再次输入以下命令切换至root账号，这时还需在输入一次你的群晖登陆密码&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo -i
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="10输入下面命令修改root默认密码xxx改为你要设置的密码回车没有任何提示即可">10、输入下面命令修改root默认密码，xxx改为你要设置的密码，回车没有任何提示即可&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">synouser --setpw root xxx
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="11这时再从新以root权限就可以登陆到ssh了ip记得改为你群晖的ip哦">11、这时再从新以root权限就可以登陆到ssh了，ip记得改为你群晖的ip哦。&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ssh root@192.168.50.100
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="附录群晖的内核版本">附录（群晖的内核版本）&lt;/h3>
+&lt;p>查看命令：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>cat /etc/issue&lt;/code>：这个命令会输出当前系统的版本信息，包括发行版名称和版本号。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>uname -a&lt;/code>：这个命令会输出当前系统的内核版本信息。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>cat /proc/version&lt;/code>：这个命令会输出当前系统的版本信息，包括内核版本、gcc版本和发行版信息等。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>uname -a 的执行结果是 &lt;code>Linux kiwinas 4.4.59+ #23739 SMP PREEMPT Tue Jul 3 19:51:03 CST 2018 x86_64 GNU/Linux synology_apollolake_918+&lt;/code>，具体含义为：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>Linux&lt;/code>：操作系统的内核类型，这里表示当前系统使用的是 Linux 内核。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>kiwinas&lt;/code>：系统的主机名，也就是机器的名称。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>4.4.59+&lt;/code>：当前系统使用的 Linux 内核版本号。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>#23739 SMP PREEMPT Tue Jul 3 19:51:03 CST 2018&lt;/code>：内核编译的时间和日期，以及所使用的编译选项。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>x86_64&lt;/code>：系统的处理器架构类型，这里表示当前系统使用的是 64 位处理器架构。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>GNU/Linux&lt;/code>：系统的操作系统名称，这里表示当前系统是一个基于 GNU 工具集的 Linux 操作系统。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>synology_apollolake_918+&lt;/code>：这是群晖 NAS 所使用的芯片型号，Apollolake 代表芯片架构，918 + 代表机型号。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>在群晖系统的命令中，需要使用 &lt;code>synopkg&lt;/code> 命令来管理软件包。&lt;code>synopkg&lt;/code> 命令是群晖自带的软件包管理工具，它可以用来安装、升级和删除软件包。以下是一些常用的 &lt;code>synopkg&lt;/code> 命令：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>synopkg list&lt;/code>：列出所有已安装的软件包。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>synopkg install &amp;lt;package-name&amp;gt;&lt;/code>：安装指定的软件包。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>synopkg remove &amp;lt;package-name&amp;gt;&lt;/code>：删除指定的软件包。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>synopkg upgrade &amp;lt;package-name&amp;gt;&lt;/code>：升级指定的软件包。&lt;/p>
+&lt;/li>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/tags/2023/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2023/03/nas/">NAS</category></item><item><title>centos 安装及配置 oh-my-zsh</title><link>https://kiwi4814.github.io/posts/2023/linux-zsh/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/linux-zsh/</guid><pubDate>Fri, 03 Feb 2023 15:42:09 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>上篇文章主要演示了如何在Mac电脑的iTerm2软件上安装和配置 &lt;code>oh-my-zsh&lt;/code> , 本文将演示如何在云服务器上安装 &lt;code>oh-my-zsh&lt;/code> , 由于整体过程大同小异，所以只记录安装命令以及执行结果，然后重点记录与上篇文章中不太一样的地方。&lt;/p>
 &lt;p>系统版本：CentOS Linux release 7.9.2009&lt;/p>
 &lt;h2 id="准备工作">准备工作&lt;/h2>
 &lt;p>查看当前shell：&lt;code>echo $SHELL&lt;/code>&lt;/p>
