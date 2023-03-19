@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.111.3 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Fri, 17 Mar 2023 07:44:31 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>使用ZeroTier实现内网穿透教程</title><link>https://kiwi4814.github.io/posts/2023/zerotier/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/zerotier/</guid><pubDate>Sat, 11 Mar 2023 15:05:47 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一前言">一、前言&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.111.3 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 19 Mar 2023 08:02:47 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>使用ZeroTier实现内网穿透教程</title><link>https://kiwi4814.github.io/posts/2023/zerotier/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/zerotier/</guid><pubDate>Sat, 11 Mar 2023 15:05:47 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一前言">一、前言&lt;/h2>
 &lt;p>上一篇文章主要讲解了如何使用 &lt;code>VPS + frp&lt;/code> 搭建内网穿透服务以实现在外面随时访问家里的设备（NAS、路由器等），虽然最终实现了效果，但是使用下来后发现了一些弊端：&lt;/p>
 &lt;ul>
 &lt;li>速度受限于VPS本身的网络带宽，即使VPS带宽很足，也有可能因为网络高峰期而出现明显的卡顿&lt;/li>
@@ -304,7 +304,463 @@ FreeBSD/OpenBSD: /var/db/zerotier-one
 &lt;h2 id="参考链接">参考链接&lt;/h2>
 &lt;p>&lt;a href="https://docs.zerotier.com/getting-started/getting-started">ZeroTier Documentation&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://blog.zczc.cz/2018/03/14/ZeroTier-moon-%E8%AE%BE%E7%BD%AE%E6%95%99%E7%A8%8B/">ZeroTier moon 设置教程&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://tvtv.fun/vps/001.html">简单搭建 Zerotier Moon 为虚拟网络加速&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2023/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2023/03/nas/">NAS</category></item><item><title>centos 安装及配置 oh-my-zsh</title><link>https://kiwi4814.github.io/posts/2023/linux-zsh/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/linux-zsh/</guid><pubDate>Fri, 03 Feb 2023 15:42:09 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>上篇文章主要演示了如何在Mac电脑的iTerm2软件上安装和配置 &lt;code>oh-my-zsh&lt;/code> , 本文将演示如何在云服务器上安装 &lt;code>oh-my-zsh&lt;/code> , 由于整体过程大同小异，所以只记录安装命令以及执行结果，然后重点记录与上篇文章中不太一样的地方。&lt;/p>
+&lt;p>&lt;a href="https://tvtv.fun/vps/001.html">简单搭建 Zerotier Moon 为虚拟网络加速&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2023/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2023/03/nas/">NAS</category></item><item><title>VPS + FRP 实现内网穿透及域名反向代理</title><link>https://kiwi4814.github.io/posts/2023/frp/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/frp/</guid><pubDate>Thu, 09 Mar 2023 16:01:35 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>最近入手了一个搬瓦工 CN2 GIA 服务器，目的之一是打算给家里的黑群晖做内网穿透用，稍微比较了下目前内网穿透的一些方案，最后决定使用 frp 来实现。此外，我在NameSilo上注册了一个域名&lt;/p>
+&lt;p>&lt;code>xxx.com&lt;/code>，最终想实现的效果是，当我访问 &lt;code>dsm.xxx.com&lt;/code> 的时候自动跳转到群晖管理入口，而当我访问 &lt;code>plex.xxx.com&lt;/code> 跳转到家庭影院系统，等等以此类推。&lt;/p>
+&lt;p>下面记录下安装的过程，仅供参考。&lt;/p>
+&lt;p>&lt;strong>VPS公网IP：111.22.33.44&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>VPS系统信息：CentOS Linux release 7.9.2009&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>群晖系统版本：DSM 6.2-23739&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>安装的 frp 版本：0.48.0&lt;/strong>&lt;/p>
+&lt;h2 id="一frp-介绍">一、frp 介绍&lt;/h2>
+&lt;p>frp 全称为 &amp;quot;Fast Reverse Proxy&amp;quot;，是一种可以将内网服务暴露到外网的工具。通常情况下，如果我们想要从外部访问内网中的服务（比如在公司网络访问家里的设备），需要将内网中的设备（比如路由器）进行端口映射，让外网的请求能够被正确转发到内网中的对应设备上。但是这样做存在一些问题，比如安全性较差、配置复杂等。&lt;/p>
+&lt;p>而 frp 则提供了一种更加便捷、安全的方法。它可以将内网中的服务通过一个代理服务器暴露到外网，而无需进行端口映射。具体来说，frp 会在内网设备上运行一个客户端程序，将内网服务的请求发送给代理服务器，代理服务器再将请求转发给外网的访问者。这样就能够实现外网访问内网服务的目的。&lt;/p>
+&lt;p>frp 还具有一些其他的功能，比如支持 TCP/UDP 流量转发、支持多种协议等。它的配置相对简单，且性能较为优秀，因此被广泛应用于内网穿透、反向代理等场景中。&lt;/p>
+&lt;p>以下是官网对于 frp 的更为专业的介绍：&lt;/p>
+&lt;blockquote>
+&lt;p>frp 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS 等多种协议。可以将内网服务以安全、便捷的方式通过具有公网 IP 节点的中转暴露到公网。&lt;/p>
+&lt;h4 id="为什么使用-frp-">为什么使用 frp ？&lt;/h4>
+&lt;p>通过在具有公网 IP 的节点上部署 frp 服务端，可以轻松地将内网服务穿透到公网，同时提供诸多专业的功能特性，这包括：&lt;/p>
+&lt;ul>
+&lt;li>客户端服务端通信支持 TCP、KCP 以及 Websocket 等多种协议。&lt;/li>
+&lt;li>采用 TCP 连接流式复用，在单个连接间承载更多请求，节省连接建立时间。&lt;/li>
+&lt;li>代理组间的负载均衡。&lt;/li>
+&lt;li>端口复用，多个服务通过同一个服务端端口暴露。&lt;/li>
+&lt;li>多个原生支持的客户端插件（静态文件查看，HTTP、SOCK5 代理等），便于独立使用 frp 客户端完成某些工作。&lt;/li>
+&lt;li>高度扩展性的服务端插件系统，方便结合自身需求进行功能扩展。&lt;/li>
+&lt;li>服务端和客户端 UI 页面。&lt;/li>
+&lt;/ul>
+&lt;h4 id="原理">原理&lt;/h4>
+&lt;p>frp 主要由 &lt;strong>客户端 (frpc)&lt;/strong> 和 &lt;strong>服务端 (frps)&lt;/strong> 组成，服务端通常部署在具有公网 IP 的机器上，客户端通常部署在需要穿透的内网服务所在的机器上。&lt;/p>
+&lt;p>内网服务由于没有公网 IP，不能被非局域网内的其他用户访问。&lt;/p>
+&lt;p>用户通过访问服务端的 frps，由 frp 负责根据请求的端口或其他信息将请求路由到对应的内网机器，从而实现通信。&lt;/p>
+&lt;/blockquote>
+&lt;p>接下来我们将分别在具有公网IP的服务器上和内网NAS设备上安装 frp 的服务端和客户端，以实现外网和内网机器（本文中就是NAS）的通信。&lt;/p>
+&lt;h2 id="二服务端frps安装">二、服务端（frps）安装&lt;/h2>
+&lt;p>&lt;font color = "red">【注意】：在本节中安装 frps 的时候使用了 frp 默认的80端口，这里建议改为其他端口号，因为Nginx默认也会使用80端口，启动过程中会与 frp 冲突。&lt;/font>&lt;/p>
+&lt;p>关于如何安装和使用示例 &lt;a href="https://gofrp.org/docs/">frp官方中文文档&lt;/a> 有比较详细的介绍了，此外官网还有很多不同场景下的使用方法，本文主要是入门使用，故对更加深入的使用方法感兴趣的可以自行跳转研究。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230317155233056.webp" alt="image-20230317155233056" style="zoom:50%;" />
+&lt;p>此外，想要省事一点的可以直接使用&lt;a href="https://github.com/MvsCode/frps-onekey">一键安装脚本&lt;/a>来进行安装，以下内容引用自安装脚本主页的介绍，感谢原作者的无私奉献。&lt;/p>
+&lt;blockquote>
+&lt;h3 id="frps-服务端一键配置脚本frp-最新版本0480">Frps 服务端一键配置脚本，Frp 最新版本：0.48.0&lt;/h3>
+&lt;p>&lt;em>Frp 是一个高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务，支持 tcp, http, https 等协议类型，并且 web 服务支持根据域名进行路由转发。&lt;/em>&lt;/p>
+&lt;ul>
+&lt;li>详情：fatedier (&lt;a href="https://github.com/fatedier/frp">https://github.com/fatedier/frp&lt;/a>)&lt;/li>
+&lt;li>此脚本原作者：clangcn (&lt;a href="https://github.com/clangcn/onekey-install-shell">https://github.com/clangcn/onekey-install-shell&lt;/a>)&lt;/li>
+&lt;/ul>
+&lt;h4 id="install安装">Install（安装）&lt;/h4>
+&lt;h5 id="gitee">Gitee&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">wget https://gitee.com/mvscode/frps-onekey/raw/master/install-frps.sh -O ./install-frps.sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">chmod &lt;span class="m">700&lt;/span> ./install-frps.sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./install-frps.sh install
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="github">Github&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">chmod &lt;span class="m">700&lt;/span> ./install-frps.sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./install-frps.sh install
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="uninstall卸载">Uninstall（卸载）&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">./install-frps.sh uninstall
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="update更新">Update（更新）&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">./install-frps.sh update
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="server-management服务管理器">Server management（服务管理器）&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">Usage: /etc/init.d/frps &lt;span class="o">{&lt;/span>start&lt;span class="p">|&lt;/span>stop&lt;span class="p">|&lt;/span>restart&lt;span class="p">|&lt;/span>status&lt;span class="p">|&lt;/span>config&lt;span class="p">|&lt;/span>version&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/blockquote>
+&lt;p>安装过程中，根据提示输入或选择自己想要配置的值即可。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230317163306465.webp" alt="image-20230317163306465" style="zoom:50%;" />
+&lt;p>另外，这里选择的接口需要在防火墙中放开（centos7 使用 firewalld 管理防火墙）,防火墙相关的命令参考如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看防火墙状态&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl status firewalld
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 开启防火墙&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl start firewalld
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 临时关闭防火墙&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl stop firewalld
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 永久关闭防火墙&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl disable firewalld
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 开放指定端口&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo firewall-cmd --zone&lt;span class="o">=&lt;/span>public --add-port&lt;span class="o">=&lt;/span>82/tcp --permanent
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 重载配置&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo firewall-cmd --reload
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看当前开放的端口及服务&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo firewall-cmd --list-ports
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>此外，如果你使用的是国内运营商的服务器或者安装了iptables，还需要在防火墙管理页面允许对应的端口通过：&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230317172328845.webp" alt="image-20230317172328845" style="zoom:50%;" />
+&lt;p>最终生成的配置文件如下：（路径在 &lt;code>/usr/local/frps/frps.ini&lt;/code> ）&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># [common] is integral section&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">[common]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># A literal address or host name for IPv6 must be enclosed&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># in square brackets, as in &amp;#34;[::1]:80&amp;#34;, &amp;#34;[ipv6-host]:http&amp;#34; or &amp;#34;[ipv6-host%zone]:80&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">bind_addr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">0.0.0.0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">bind_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">5443&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># udp port used for kcp protocol, it can be same with &amp;#39;bind_port&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># if not set, kcp is disabled in frps&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">kcp_bind_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">5443&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># if you want to configure or reload frps by dashboard, dashboard_port must be set&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">dashboard_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">6443&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># dashboard assets directory(only for debug mode)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">dashboard_user&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">admin&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">dashboard_pwd&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">6pH3CLS6&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># assets_dir = ./static&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">vhost_http_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">82&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">vhost_https_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">443&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># console or real logFile path like ./frps.log&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">log_file&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">./frps.log&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># debug, info, warn, error&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">log_level&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">info&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">log_max_days&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># auth token&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">token&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">EA6QYpVmefiBsPRe&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># It is convenient to use subdomain configure for http、https type when many people use one frps server together.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">subdomain_host&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">111.22.33.44&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># only allow frpc to bind ports you list, if you set nothing, there won&amp;#39;t be any limit&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#allow_ports = 1-65535&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># pool_count in each proxy will change to max_pool_count if they exceed the maximum value&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">max_pool_count&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">50&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># if tcp stream multiplexing is used, default is true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">tcp_mux&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">true&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>安装完成后，启动&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">frps start
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>启动成功后即可在浏览器中直接访问 http://111.22.33.44:6443 来打开管理界面。&lt;/p>
+&lt;h2 id="三客户端frpc安装">三、客户端（frpc）安装&lt;/h2>
+&lt;p>首先要说明的一点是，这里的客户端其实可以是所有你需要穿透出去的设备，比如家里的主机、服务器等等，另外各个系统安装的方式可能会有所差异，比如在Mac电脑下可以很方便使用HomeBrew安装： &lt;code>brew install frpc&lt;/code>，这里以群晖NAS系统下的Docker环境来演示安装方法，其他平台使用Docker也可以照此方式安装。&lt;/p>
+&lt;p>这里演示两种安装方法，第一种是命令式安装，群晖的话需要开启 ssh root 后，进入到后台安装，如何开启可以看前面的文章，第二种是直接在群晖的Docker软件可视化界面上操作，Docker镜像用的是snowdreamtech 大神封装的 &lt;a href="https://hub.docker.com/r/snowdreamtech/frpc">docker镜像&lt;/a> 。&lt;/p>
+&lt;h3 id="第一种-命令">第一种 命令&lt;/h3>
+&lt;p>按照下面的步骤操作即可：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 1. 创建配置文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo mkdir -p /etc/frp &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> sudo touch /etc/frp/frpc.ini
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 2. 编辑配置文件（配置文件示例见本节末尾）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vi /etc/frp/frpc.ini
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 3. 拉取镜像&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker pull snowdreamtech/frpc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 4. 运行&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker run --network host -d -v /etc/frp/frpc.ini:/etc/frp/frpc.ini --name frpc snowdreamtech/frpc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>在启动完成后，我们可以使用Docker的相关命令查看日志和管理：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-dockerfile" data-lang="dockerfile">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 查看启动日志&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>docker logs frpc&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c"># 启动&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>docker start frpc&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c"># 停止&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>docker stop frpc&lt;span class="err">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="第二种-gui">第二种 GUI&lt;/h3>
+&lt;p>在NAS下推荐使用此种方式，比较简单也方便统一管理，当然其实使用第一种方式这里也能展示出来，只是配置文件的位置不同罢了。&lt;/p>
+&lt;p>（1）打开 &lt;code>filestation&lt;/code> ，创建或者上传配置文件 &lt;code>frpc.ini&lt;/code> , 配置文件的内容和配置项参见本节末尾。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230317175234625.webp" alt="image-20230317175234625" style="zoom:50%;" />
+&lt;p>（2）打开 &lt;code>Docker套件&lt;/code>， 在注册表中搜索frpc，选择第一个 &lt;code>snowdreamtech/frpc&lt;/code> 双击选择 latest 并下载&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230317175712133.webp" alt="image-20230317175712133" style="zoom:50%;" />
+&lt;p>（3）在 映像 中双击刚才下载的&lt;code>snowdreamtech/frpc:lastest&lt;/code> 并双击，开始创建容器，并打开高级设置&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230317175621520.webp" alt="image-20230317175621520" style="zoom: 50%;" />
+&lt;p>（4）高级配置按照下面的步骤操作即可，要点：自启动、映射配置文件、使用与 Docker Host 相同的网络&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230317175523854.webp" alt="image-20230317175523854" style="zoom:50%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230317175507025.webp" alt="image-20230317175507025" style="zoom:50%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230317175541261.webp" alt="image-20230317175541261" style="zoom:50%;" />
+&lt;p>（5）应用后就会自动运行 frpc&lt;/p>
+&lt;h3 id="客户端参考配置">客户端参考配置&lt;/h3>
+&lt;p>下面的截图中列出了客户端配置及含义：&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230317181102512.webp" alt="image-20230317181102512" style="zoom:50%;" />
+&lt;p>完整的配置如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="line">&lt;span class="cl">&lt;span class="k">[common]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">server_addr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">111.22.33.44&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">server_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">5443&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">token&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">EA6QYpVmefiBsPRe&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">[80]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">type&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">tcp&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">local_ip&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">192.168.50.100&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">local_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">80&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">remote_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">82&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">[dsm]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">type&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">tcp&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">local_ip&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">192.168.50.100&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">local_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">5000&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">remote_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">5000&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">[drive_web]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">type&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">tcp&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">local_ip&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">192.168.50.100&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">local_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">6690&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">remote_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">6690&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">[plex]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">type&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">tcp&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">local_ip&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">192.168.50.100&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">local_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">32400&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">remote_port&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">32400&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>启动成功后，如果客户端配置正确，且服务端和客户端之间的网络连接畅通，我们就可以通过 http://111.22.33.44:5000/ 来访问群晖的管理页面了，其他服务的地址以此类推即可。&lt;/p>
+&lt;p>但是这样的地址，首先我们可能根本记不住自己的服务器IP，也搞不清楚这么多域名映射关系，所以最好的方法是，我们把这几个地址反代成一个个方便的二级域名，就像文章开头说的那样，当我访问 &lt;a href="http://dsm.xxx.com/">http://dsm.xxx.com/&lt;/a> 的时候，就能跳转到 http://111.22.33.44:5000/ 了，这样的映射，实现方法又很多，下面记录一下我自己的实现方式，仅供参考。&lt;/p>
+&lt;h2 id="四域名配置">四、域名配置&lt;/h2>
+&lt;p>首先我们要去注册一个域名，提供商有很多，腾讯云、阿里云、GoDaddy、Namecheap、Namesilo等等，我是在Namesilo上注册的域名，在购买域名的时候要注意初次购买价格和续费价格，有的域名第一年很便宜，但是续费很贵，最好买续费价格不变的，然后域名的后缀可以选冷门一点的 xyz、club、top等等。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230319150117132.webp" alt="image-20230319150117132" style="zoom:50%;" />
+&lt;p>注册完成后我们访问 &lt;a href="https://www.namesilo.com/account_home.php">个人账户管理主页&lt;/a>，然后点击右上角 Manage My Domains ,打开域名的管理界面。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230319150555414.webp" alt="image-20230319150555414" style="zoom:50%;" />
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230319150728119.webp" alt="image-20230319150728119" style="zoom:50%;" />
+&lt;p>按照下图中的方式增加A记录：&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230319151311076.webp" alt="image-20230319151311076" style="zoom:50%;" />
+&lt;p>域名相关的设置就到这里，至于具体配置的含义和原理，笔者本身也是一知半解，就不做展开了。&lt;/p>
+&lt;p>接下来我们回到VPS服务器，使用Nginx来反向代理我们的应用。&lt;/p>
+&lt;h2 id="五nginx映射">五、Nginx映射&lt;/h2>
+&lt;p>这里 Nginx 的安装位置与第二节相同，在VPS上服务器上安装，由于官方 yum 包是没有 Nginx 的，所以我们需要先安装三方软件源 —— EPEL-RELEASE。&lt;/p>
+&lt;p>安装：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo yum install epel-release
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo yum install nginx
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>启动并确认启动状态：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 启动&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl start nginx
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看启动状态，显示为 active（running）的时候则代表启动成功了&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl status nginx
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后，我们来编辑配置文件 &lt;code>vim /etc/nginx/nginx.conf&lt;/code>（默认的位置）：&lt;/p>
+&lt;p>找到server的位置：&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230319153604893.webp" alt="image-20230319153604893" style="zoom:50%;" />
+&lt;p>将其替换为我们需要映射的域名和服务，其他的服务继续在底下增加新的server配置即可。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230319153807057.webp" alt="image-20230319153807057" style="zoom:50%;" />
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 群晖控制面板&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">server {&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">listen 80;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">server_name dsm.xxx.com;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">root /usr/share/nginx/html;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">include /etc/nginx/default.d/*.conf;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">error_page 404 /404.html;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">location&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">/404.html {
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"> }&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">error_page 500 502 503 504 /50x.html;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">location&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">/50x.html {
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s"> }&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">location / {&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">proxy_pass http://111.22.33.44:5000/;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">proxy_set_header Host $host;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">proxy_set_header X-Real-IP $remote_addr;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后重新载入nginx配置使其生效：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-nginx" data-lang="nginx">&lt;span class="line">&lt;span class="cl">&lt;span class="k">nginx&lt;/span> &lt;span class="s">-s&lt;/span> &lt;span class="s">reload&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>稍等一会，我们就可以在浏览器中通过 &lt;a href="http://drive.xxx.com/">http://drive.xxx.com/&lt;/a> 来访问到我们的群晖管理界面了。&lt;/p>
+&lt;h2 id="六群晖网盘">六、群晖网盘&lt;/h2>
+&lt;p>最后，简单介绍下群晖网盘的同步，首选我们在群晖的控制面板中去开启群晖Drive的web管理：&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230319155046586.webp" alt="image-20230319155046586" style="zoom:50%;" />
+&lt;p>然后需要注意的是 frp 中映射的端口为 6690 而不是上图中的 7006，然后在群晖初始化连接的时候，可以直接填域名或者IP（不需要带端口号），这是由于群晖的默认设置造成的。&lt;/p>
+&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230319154737684.webp" alt="image-20230319154737684" style="zoom:50%;" />
+&lt;h2 id="七总结">七、总结&lt;/h2>
+&lt;p>本文简要介绍了如何使用一台VPS，在外网服务器和家里的NAS服务器分别安装 frp 进行通信并且绑定到指定的二级域名的过程。但是经过实际的测试，由于这种方式所有的流量都要依赖于这个第三方服务器，所以网速势必不会太理想，尤其是晚高峰时期，但是优势在于任何时候都可以直接访问到我们的内网服务而没有设备上的限制。由于笔者本人需要进行内网穿透访问家中设备的场景有限并且设备也很固定，所以下一篇文章中我们将使用另一种方式来实现稳定高速的内网穿透。&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2023/03/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2023/03/nas/">NAS</category></item><item><title>centos 安装及配置 oh-my-zsh</title><link>https://kiwi4814.github.io/posts/2023/linux-zsh/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/linux-zsh/</guid><pubDate>Fri, 03 Feb 2023 15:42:09 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>上篇文章主要演示了如何在Mac电脑的iTerm2软件上安装和配置 &lt;code>oh-my-zsh&lt;/code> , 本文将演示如何在云服务器上安装 &lt;code>oh-my-zsh&lt;/code> , 由于整体过程大同小异，所以只记录安装命令以及执行结果，然后重点记录与上篇文章中不太一样的地方。&lt;/p>
 &lt;p>系统版本：CentOS Linux release 7.9.2009&lt;/p>
 &lt;h2 id="准备工作">准备工作&lt;/h2>
 &lt;p>查看当前shell：&lt;code>echo $SHELL&lt;/code>&lt;/p>
