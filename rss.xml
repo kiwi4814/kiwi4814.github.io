@@ -1,4 +1,127 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.111.3 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Wed, 29 Mar 2023 09:03:56 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>使用ZeroTier实现内网穿透教程</title><link>https://kiwi4814.github.io/posts/2023/zerotier/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/zerotier/</guid><pubDate>Sat, 11 Mar 2023 15:05:47 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一前言">一、前言&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.111.3 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Wed, 29 Mar 2023 09:08:32 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>Edge浏览器关闭 Bing 发现按钮</title><link>https://kiwi4814.github.io/posts/2023/edge-bing-icon/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/edge-bing-icon/</guid><pubDate>Wed, 29 Mar 2023 16:46:31 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>Microsoft Edge 111 正式版发布时，微软在Edge浏览器右上角添加了一个硕大的 Bing 按钮，而且无法直接在设置里禁用。&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230329164353034.webp" alt="image-20230329164353034">&lt;/p>
+&lt;p>在 版本 111.0.1661.54发布后，这个按钮可以通过设置关掉了。&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230329164317594.webp" alt="image-20230329164317594">&lt;/p>
+&lt;p>关闭方法如下：&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230329093528766.webp" alt="image-20230329093528766">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230329164605056.webp" alt="image-20230329164605056">&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2023/03/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/">软件教程</category><category domain="https://kiwi4814.github.io/series/2023/03/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</category><category domain="https://kiwi4814.github.io/tags/2023/03/edge/">edge</category><category domain="https://kiwi4814.github.io/tags/2023/03/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>Edge浏览器安装未上架的crx插件.md</title><link>https://kiwi4814.github.io/posts/2023/edge-crx/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/edge-crx/</guid><pubDate>Wed, 29 Mar 2023 15:18:55 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>今天尝试安装一个扩展商店没有上架的Chrome插件，在 github 的 release 界面下载后缀为 &lt;code>crx&lt;/code> 的扩展文件安装后，却发现安装后为关闭状态并且无法启用，其实可以理解，毕竟不小心下载到并且双击安装也是有可能的。&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230329153908029.webp" alt="image-20230329153908029">&lt;/p>
+&lt;p>经过一番检索，遂有如下的解决办法：&lt;/p>
+&lt;h3 id="方法一推荐">方法一（推荐）&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>在扩展管理界面开启开发人员模式；&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230329145847217.webp" alt="image-20230329145847217">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>将 &lt;code>crx&lt;/code> 后缀改为 &lt;code>rar&lt;/code> ，然后解压为文件夹；&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>将解压后的文件夹拖入浏览器或者点击“加载解压缩的扩展”然后选择安装即可，也就是说用文件夹的形式去安装是可以的。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="方法二">方法二&lt;/h3>
+&lt;p>Windows下可以通过修改注册表解决，本人没有实践过，网上文章很多，故不再展开，只希望解决问题的可以尝试第一种方法，想深入了解的可以通过检索资料或者&lt;a href="https://learn.microsoft.com/zh-cn/deployedge/microsoft-edge-manage-extensions-ref-guide">官方文档&lt;/a>了解。&lt;/p>
+&lt;p>下面重点说下 Mac系统 下如何解决:&lt;/p>
+&lt;p>【注意】本方法需要使用 &lt;code>python&lt;/code> , 并且依赖 &lt;code>pyobjc&lt;/code> , 可以通过这个命令安装：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># python3 安装示例&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">brew install python
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用pip3安装pyobjc&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pip install pyobjc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>如果你想装 &lt;code>python3&lt;/code>，那么将 &lt;code>python&lt;/code> 和 &lt;code>pip&lt;/code> 分别换成 &lt;code>python&lt;/code> 和 &lt;code>pip3&lt;/code> 即可。&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>查看所需要安装的扩展的ID&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230329160255153.webp" alt="image-20230329160255153">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>创建一个plist配置文件，内容如下，ID替换为对应的插件ID：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&amp;lt;!DOCTYPE plist PUBLIC &amp;#34;-//Apple//DTD PLIST 1.0//EN&amp;#34; &amp;#34;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;#34;&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;plist&lt;/span> &lt;span class="na">version=&lt;/span>&lt;span class="s">&amp;#34;1.0&amp;#34;&lt;/span>&lt;span class="nt">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dict&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c">&amp;lt;!-- 政策名称 --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;key&amp;gt;&lt;/span>ExtensionInstallAllowlist&lt;span class="nt">&amp;lt;/key&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c">&amp;lt;!-- 值类型为数组 --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;array&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c">&amp;lt;!-- 数组内元素为字符串扩展 ID，一行一个 --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;string&amp;gt;&lt;/span>dcpihecpambacapedldabdbpakmachpb&lt;span class="nt">&amp;lt;/string&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;/array&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c">&amp;lt;!-- 强制安装的应用和扩展程序的列表 --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c">&amp;lt;!-- 如果浏览器提示扩展不安全，可通过该项强制锁定浏览器强制禁用扩展功能 --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;key&amp;gt;&lt;/span>ExtensionInstallForcelist&lt;span class="nt">&amp;lt;/key&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;array&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;string&amp;gt;&lt;/span>dcpihecpambacapedldabdbpakmachpb&lt;span class="nt">&amp;lt;/string&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;/array&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dict&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/plist&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>附件：https://raw.githubusercontent.com/kiwi4814/slipbox/master/Resources/Config/com.microsoft.Edge.plist&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>生成Mac描述文件&lt;/p>
+&lt;p>接下来我们按照github的开源项目项目 &lt;a href="https://github.com/timsutton/mcxToProfile">timsutton/mcxToProfile&lt;/a> 的指引来生成Mac用的描述文件，下载项目中的 &lt;a href="https://raw.githubusercontent.com/timsutton/mcxToProfile/master/mcxToProfile.py">mcxToProfile.py&lt;/a> 脚本文件，与刚刚创建的 &lt;code>com.microsoft.Edge.plist&lt;/code> 文件放在同一个目录下，并且在当前目录下执行下面的命令：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">./mcxToProfile.py --plist ./com.microsoft.Edge.plist --identifier com.microsoft.Edge
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>如果本地安装的是python3，那么可以将首行改为：&lt;code>#!/usr/bin/env python3&lt;/code>，或者使用这个&lt;a href="https://raw.githubusercontent.com/kiwi4814/slipbox/master/Resources/Scripts/mcxToProfile.py">修改好的版本&lt;/a>。&lt;/p>
+&lt;p>执行成功后会在当前目录下生成文件 &lt;code>com.microsoft.Edge.mobileconfig&lt;/code>，双击安装会在电脑右上角提示去系统设置中进行安装：&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230329162447846.webp" alt="image-20230329162447846">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>安装生成的脚本文件&lt;/p>
+&lt;p>我们打开系统设置 -&amp;gt; 隐私与安全性 -&amp;gt; 描述文件，然后双击刚才安装的配置，确认无误后安装即可。&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230329162557971.webp" alt="image-20230329162557971">&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230329162700105.webp" alt="">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>检查安装结果&lt;/p>
+&lt;p>安装完成后重启浏览器，可以在 &lt;code>edge://policy/&lt;/code> 中查看，刚才的几个政策已经被安装了。&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230329162941454.webp" alt="image-20230329162941454">&lt;/p>
+&lt;p>同时再去查看扩展界面，发现扩展已经被启用了。&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230329163041106.webp" alt="image-20230329163041106">&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>最后，如果你使用的是 Chrome浏览器，就把上面命名和脚本中的 &lt;code>com.microsoft.Edge&lt;/code> 替换为 &lt;code>com.google.Chrome&lt;/code> 即可。不过，一般第一种方法就可以了，第二种方法只是提供一种思路，在想要修改其他政策（不仅仅是扩展）的时候可以使用。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2023/03/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/">软件教程</category><category domain="https://kiwi4814.github.io/series/2023/03/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</category><category domain="https://kiwi4814.github.io/tags/2023/03/edge/">edge</category><category domain="https://kiwi4814.github.io/tags/2023/03/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>使用ZeroTier实现内网穿透教程</title><link>https://kiwi4814.github.io/posts/2023/zerotier/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/zerotier/</guid><pubDate>Sat, 11 Mar 2023 15:05:47 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一前言">一、前言&lt;/h2>
 &lt;p>上一篇文章主要讲解了如何使用 &lt;code>VPS + frp&lt;/code> 搭建内网穿透服务以实现在外面随时访问家里的设备（NAS、路由器等），虽然最终实现了效果，但是使用下来后发现了一些弊端：&lt;/p>
 &lt;ul>
 &lt;li>速度受限于VPS本身的网络带宽，即使VPS带宽很足，也有可能因为网络高峰期而出现明显的卡顿&lt;/li>
@@ -1308,7 +1431,7 @@ zsh-syntax-highlighting
 &lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20230201164529759.webp" alt="image-20230201164529759" style="zoom:50%;" />
 &lt;h3 id="参考链接">参考链接&lt;/h3>
 &lt;p>&lt;a href="https://mrseawave.github.io/blogs/articles/2021/08/29/oh-my-zsh/">oh-my-zsh - Sea's Blog&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://segmentfault.com/a/1190000014992947">iTerm2 + Oh My Zsh 打造舒适终端体验&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2023/02/mac/">Mac</category><category domain="https://kiwi4814.github.io/tags/2023/02/oh-my-zsh/">oh-my-zsh</category></item><item><title>Redis实战之分布式锁</title><link>https://kiwi4814.github.io/posts/2022/redis-distributed-locks/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/redis-distributed-locks/</guid><pubDate>Tue, 13 Sep 2022 20:13:58 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>接下来的几篇文章，会学习一下Redis除了用做缓存之外的一些实际使用方法。这篇文章主要探讨了分布式锁的几种实现机制和原理。&lt;/p>
+&lt;p>&lt;a href="https://segmentfault.com/a/1190000014992947">iTerm2 + Oh My Zsh 打造舒适终端体验&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/tags/2023/03/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2023/02/mac/">Mac</category><category domain="https://kiwi4814.github.io/tags/2023/02/oh-my-zsh/">oh-my-zsh</category></item><item><title>Redis实战之分布式锁</title><link>https://kiwi4814.github.io/posts/2022/redis-distributed-locks/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/redis-distributed-locks/</guid><pubDate>Tue, 13 Sep 2022 20:13:58 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>接下来的几篇文章，会学习一下Redis除了用做缓存之外的一些实际使用方法。这篇文章主要探讨了分布式锁的几种实现机制和原理。&lt;/p>
 &lt;h2 id="本文涉及到的redis指令及语法">本文涉及到的Redis指令及语法&lt;/h2>
 &lt;h4 id="set-key-value-ex-seconds-px-milliseconds-nxxx">&lt;code>SET key value [EX seconds] [PX milliseconds] [NX|XX]&lt;/code>&lt;/h4>
 &lt;ul>
@@ -4866,7 +4989,7 @@ You can also use step intervals with &lt;code>H&lt;/code>, with or without range
 &lt;li>NeatDownloadManager Extension&lt;/li>
 &lt;li>Notion Web Clipper&lt;/li>
 &lt;li>迅雷下载支持&lt;/li>
-&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E6%89%A9%E5%B1%95/">扩展</category></item><item><title>设计原则05：控制反转原则（DIP）</title><link>https://kiwi4814.github.io/posts/2022/design-patterns/inversion-of-control/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/design-patterns/inversion-of-control/</guid><pubDate>Sat, 19 Mar 2022 17:46:18 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>前面的四节课分别讲了SOLID原则中的单一职责、开闭、里式替换、接口隔离原则，今天要讲的是依赖反转原则（DIP）。&lt;/p>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/tags/2023/03/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2022/03/%E6%89%A9%E5%B1%95/">扩展</category></item><item><title>设计原则05：控制反转原则（DIP）</title><link>https://kiwi4814.github.io/posts/2022/design-patterns/inversion-of-control/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2022/design-patterns/inversion-of-control/</guid><pubDate>Sat, 19 Mar 2022 17:46:18 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>前面的四节课分别讲了SOLID原则中的单一职责、开闭、里式替换、接口隔离原则，今天要讲的是依赖反转原则（DIP）。&lt;/p>
 &lt;p>先来看下这几个问题。&lt;/p>
 &lt;ul>
 &lt;li>“依赖反转”这个概念指的是“谁跟谁”的“什么依赖”被反转了？“反转”两个字该如何理解？&lt;/li>
@@ -7627,7 +7750,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;li>
 &lt;p>&lt;strong>同类软件&lt;/strong>：&lt;a href="https://www.plex.tv/">plex&lt;/a>，&lt;a href="https://emby.media/">emby&lt;/a>，&lt;a href="https://jellyfin.org/">Jellyfin&lt;/a>一般我们并称家庭影院三剑客，其中Plex体验最好但也最贵，emby和jellyfin同出一源，Jellyfin为emby的开源免费版。另外两个不再做过多的额外介绍了。&lt;/p>
 &lt;/li>
-&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2021/12/windows%E8%BD%AF%E4%BB%B6%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8E%A8%E8%8D%90/">windows软件不完全推荐</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>windows软件不完全推荐02：办公篇</title><link>https://kiwi4814.github.io/posts/2021/windows-software-work/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/windows-software-work/</guid><pubDate>Tue, 28 Dec 2021 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>&lt;em>&lt;strong>其实大部分行业我都不太了解，所以这里也就只能放放一些我认为比较通用的办公软件了。&lt;/strong>&lt;/em>&lt;/p>
+&lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2021/12/windows%E8%BD%AF%E4%BB%B6%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8E%A8%E8%8D%90/">windows软件不完全推荐</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2023/03/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>windows软件不完全推荐02：办公篇</title><link>https://kiwi4814.github.io/posts/2021/windows-software-work/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/windows-software-work/</guid><pubDate>Tue, 28 Dec 2021 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>&lt;em>&lt;strong>其实大部分行业我都不太了解，所以这里也就只能放放一些我认为比较通用的办公软件了。&lt;/strong>&lt;/em>&lt;/p>
 &lt;h2 id="办公软件">办公软件&lt;/h2>
 &lt;h3 id="零一些在线网站">零：一些在线网站&lt;/h3>
 &lt;p>&lt;a href="https://tophub.today/">今日热榜&lt;/a>：嗯，每天摸鱼看热搜&lt;/p>
@@ -7848,7 +7971,7 @@ C语言带来的问题是内存越界、野指针、内存泄露等。它只关�
 &lt;h3 id="九协同办公">九、协同办公&lt;/h3>
 &lt;p>&lt;a href="https://docs.qq.com/desktop/">腾讯文档 (qq.com)&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://shimo.im/welcome">石墨文档-企业在线协同办公系统平台,支持云端多人在线协作编辑文档和表格 (shimo.im)&lt;/a>&lt;/p>
-&lt;h3 id="十开会">十、开会&lt;/h3></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2021/12/windows%E8%BD%AF%E4%BB%B6%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8E%A8%E8%8D%90/">windows软件不完全推荐</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>windows软件不完全推荐01：常用篇</title><link>https://kiwi4814.github.io/posts/2021/windows-software-common/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/windows-software-common/</guid><pubDate>Mon, 27 Dec 2021 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="前言">前言&lt;/h2>
+&lt;h3 id="十开会">十、开会&lt;/h3></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2021/12/windows%E8%BD%AF%E4%BB%B6%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8E%A8%E8%8D%90/">windows软件不完全推荐</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2023/03/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>windows软件不完全推荐01：常用篇</title><link>https://kiwi4814.github.io/posts/2021/windows-software-common/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/windows-software-common/</guid><pubDate>Mon, 27 Dec 2021 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="前言">前言&lt;/h2>
 &lt;ol>
 &lt;li>
 &lt;p>初衷：除了分享给大家之外，也用来备份大部分我平时使用频率很低的软件；&lt;/p>
@@ -8416,7 +8539,7 @@ NAS，全程是网络附属存储，本质就是你的另一台电脑，里面�
 &lt;/ul>
 &lt;hr>
 &lt;p>本文涉及到的一些软件的安装包已经上传到&lt;a href="https://www.aliyundrive.com/s/6P9Ftt2bD6v">阿里云盘&lt;/a>，方便某些开源软件网络问题无法下载的小伙伴们获取。&lt;/p>
-&lt;p>完。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2021/12/windows%E8%BD%AF%E4%BB%B6%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8E%A8%E8%8D%90/">windows软件不完全推荐</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>常见方法论和心理效应</title><link>https://kiwi4814.github.io/posts/2021/methodology/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/methodology/</guid><pubDate>Wed, 22 Dec 2021 22:42:13 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一思考技巧与模板">一、思考技巧与模板&lt;/h2>
+&lt;p>完。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2021/12/windows%E8%BD%AF%E4%BB%B6%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8E%A8%E8%8D%90/">windows软件不完全推荐</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2023/03/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>常见方法论和心理效应</title><link>https://kiwi4814.github.io/posts/2021/methodology/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/methodology/</guid><pubDate>Wed, 22 Dec 2021 22:42:13 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="一思考技巧与模板">一、思考技巧与模板&lt;/h2>
 &lt;h3 id="1-scqa">1. SCQA&lt;/h3>
 &lt;p>SCQA模型是一个“结构化表达”工具，是麦肯锡咨询顾问芭芭拉·明托在《金字塔原理》中提出的。&lt;/p>
 &lt;p>S（Situation）情景——由大家都熟悉的情景、事实引入。
@@ -8845,7 +8968,7 @@ git config --global https.proxy https://127.0.0.1:1080
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 &lt;/code>&lt;/pre>&lt;/li>
-&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>高可用06：高可用系统设计之「其他辅助手段」</title><link>https://kiwi4814.github.io/posts/2021/high-availability-aids/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-aids/</guid><pubDate>Tue, 12 Oct 2021 16:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;hr>
+&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">windows</category><category domain="https://kiwi4814.github.io/tags/2023/03/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>高可用06：高可用系统设计之「其他辅助手段」</title><link>https://kiwi4814.github.io/posts/2021/high-availability-aids/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-aids/</guid><pubDate>Tue, 12 Oct 2021 16:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;hr>
 &lt;p>&lt;a href="https://kiwi4814.com/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用系列目录&lt;/a>&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-concept/">高可用01：什么是高可用系统？&lt;/a>&lt;/li>
@@ -10365,7 +10488,7 @@ git config --global --unset https.proxy
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/li>
-&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2020/08/linux%E8%BF%90%E7%BB%B4/">Linux运维</category><category domain="https://kiwi4814.github.io/tags/2023/02/linux/">Linux</category><category domain="https://kiwi4814.github.io/tags/2023/02/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2020/09/mysql/">MySQL</category></item><item><title>JUC框架简介</title><link>https://kiwi4814.github.io/posts/2020/juc-summary/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2020/juc-summary/</guid><pubDate>Sat, 27 Jun 2020 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="一lock框架和tools类">一、Lock框架和Tools类&lt;/h1>
+&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/series/2020/08/linux%E8%BF%90%E7%BB%B4/">Linux运维</category><category domain="https://kiwi4814.github.io/tags/2023/02/linux/">Linux</category><category domain="https://kiwi4814.github.io/tags/2023/03/%E8%BD%AF%E4%BB%B6/">软件</category><category domain="https://kiwi4814.github.io/tags/2020/09/mysql/">MySQL</category></item><item><title>JUC框架简介</title><link>https://kiwi4814.github.io/posts/2020/juc-summary/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2020/juc-summary/</guid><pubDate>Sat, 27 Jun 2020 20:35:47 +0800</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="一lock框架和tools类">一、Lock框架和Tools类&lt;/h1>
 &lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/java-thread-x-juc-overview-lock.png" alt="">&lt;/p>
 &lt;p>类结构总览&lt;/p>
 &lt;h2 id="接口condition">接口：Condition&lt;/h2>
