@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.127.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 11 Feb 2025 12:20:38 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>再读JDK8中的函数式编程</title><link>https://kiwi4814.github.io/posts/2024/java8-functional-programming/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2024/java8-functional-programming/</guid><pubDate>Fri, 26 Jul 2024 21:40:15 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>用了好几年的JDK8 “函数式编程”，类似stream流、lambda等语法都用的“炉火纯青”了，却仍然还是免不了有时候还是需要检索一些复杂的语法，比如&lt;code>flatmap&lt;/code>、&lt;code>mapreduce&lt;/code>等平时很少用到的语法。想起来自己也好像只是粗略的读过，并没有任何精读，于是便有了这篇文章，在这次重新去了解函数式编程的过程中，记录了一些知识要点以及疑惑。&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.127.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 11 Feb 2025 12:25:53 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>再读JDK8中的函数式编程</title><link>https://kiwi4814.github.io/posts/2024/java8-functional-programming/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2024/java8-functional-programming/</guid><pubDate>Fri, 26 Jul 2024 21:40:15 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>用了好几年的JDK8 “函数式编程”，类似stream流、lambda等语法都用的“炉火纯青”了，却仍然还是免不了有时候还是需要检索一些复杂的语法，比如&lt;code>flatmap&lt;/code>、&lt;code>mapreduce&lt;/code>等平时很少用到的语法。想起来自己也好像只是粗略的读过，并没有任何精读，于是便有了这篇文章，在这次重新去了解函数式编程的过程中，记录了一些知识要点以及疑惑。&lt;/p>
 &lt;p>如果想要完整的了解JDK8的新特性，推荐&lt;a href="https://wizardforcel.gitbooks.io/java8-new-features/content/index.html">读这里&lt;/a>。当然在下文中也会摘录很多其他文章，都是在看的过程中针对自己的疑问检索的，对相关章节感兴趣的也可以跳转查看。&lt;/p>
 &lt;h2 id="1-函数式编程">1. 函数式编程&lt;/h2>
 &lt;p>对于函数式编程，能讲的有很多，我自己也没有完全理解，想要深入研究的小伙伴可以参见&lt;a href="https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/">函数式编程指北&lt;/a>。&lt;/p>
@@ -3360,7 +3360,7 @@ Complete!
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="二如何实现一个单例">二、如何实现一个单例&lt;/h2>
-&lt;p>由于篇幅太长，而且参考了其他很多文章，所以将这部分单独分了出来，详见文章&lt;a href="https://kiwi4814.com/posts/2022/singleton-impl/">如何实现一个单例模式？&lt;/a>。&lt;/p>
+&lt;p>由于篇幅太长，而且参考了其他很多文章，所以将这部分单独分了出来，详见文章&lt;a href="https://kiwi4814.github.io/posts/2022/singleton-impl/">如何实现一个单例模式？&lt;/a>。&lt;/p>
 &lt;h2 id="三单例存在的问题以及替代方案">三、单例存在的问题以及替代方案&lt;/h2>
 &lt;h3 id="31-单例存在的问题">3.1 单例存在的问题&lt;/h3>
 &lt;p>单例是一种很常见的设计模式，在很多类库的源码以及日常开发中都会使用到，但是，有人认为单例是一种反模式（anti-pattern），又是为什么呢？我们知道使用单例的情况一般是表示全局唯一类，比如配置信息类、连接池类、ID生成器类等等，在代码中，我们一般只需要调用类似&lt;code>IdGenerator.getInstance().getId()&lt;/code>这样的代码就可以了，使用非常简单，但是这样的方式是有一些问题的。&lt;/p>
@@ -9257,14 +9257,14 @@ git config --global --unset http.proxy
 git config --global --unset https.proxy
 &lt;/code>&lt;/pre>&lt;/li>
 &lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2022/03/%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%B7%A5%E5%85%B7/">软件与工具</category><category domain="https://kiwi4814.github.io/tags/2021/12/windows/">Windows</category><category domain="https://kiwi4814.github.io/tags/2024/01/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>高可用06：高可用系统设计之「其他辅助手段」</title><link>https://kiwi4814.github.io/posts/2021/high-availability-aids/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-aids/</guid><pubDate>Tue, 12 Oct 2021 16:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;hr>
-&lt;p>&lt;a href="https://kiwi4814.com/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用系列目录&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用系列目录&lt;/a>&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-concept/">高可用01：什么是高可用系统？&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-architecture/">高可用02：高可用系统设计之「架构高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-application/">高可用03：高可用系统设计之「应用高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-server/">高可用04：高可用系统设计之「服务高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-storage/">高可用05：高可用系统设计之「存储高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-aids/">&lt;font color="orange">高可用06：高可用系统设计之「其他辅助手段」&lt;/font>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-concept/">高可用01：什么是高可用系统？&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-architecture/">高可用02：高可用系统设计之「架构高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-application/">高可用03：高可用系统设计之「应用高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-server/">高可用04：高可用系统设计之「服务高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-storage/">高可用05：高可用系统设计之「存储高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-aids/">&lt;font color="orange">高可用06：高可用系统设计之「其他辅助手段」&lt;/font>&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="其他辅助手段">其他辅助手段&lt;/h2>
@@ -9417,14 +9417,14 @@ git config --global --unset https.proxy
 &lt;/ul>
 &lt;/li>
 &lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2023/08/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category><category domain="https://kiwi4814.github.io/tags/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category></item><item><title>高可用05：高可用系统设计之「存储高可用」</title><link>https://kiwi4814.github.io/posts/2021/high-availability-storage/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-storage/</guid><pubDate>Tue, 12 Oct 2021 15:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;hr>
-&lt;p>&lt;a href="https://kiwi4814.com/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用系列目录&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用系列目录&lt;/a>&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-concept/">高可用01：什么是高可用系统？&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-architecture/">高可用02：高可用系统设计之「架构高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-application/">高可用03：高可用系统设计之「应用高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-server/">高可用04：高可用系统设计之「服务高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-storage/">&lt;font color="orange">高可用05：高可用系统设计之「存储高可用」&lt;/font>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-aids/">高可用06：高可用系统设计之「其他辅助手段」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-concept/">高可用01：什么是高可用系统？&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-architecture/">高可用02：高可用系统设计之「架构高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-application/">高可用03：高可用系统设计之「应用高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-server/">高可用04：高可用系统设计之「服务高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-storage/">&lt;font color="orange">高可用05：高可用系统设计之「存储高可用」&lt;/font>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-aids/">高可用06：高可用系统设计之「其他辅助手段」&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="存储高可用">存储高可用&lt;/h2>
@@ -9449,14 +9449,14 @@ git config --global --unset https.proxy
 &lt;p>确认某台数据服务器宕机后，就需要将数据读写访问重新路由到其他服务器上。对于完全对等存储的服务器，当其中一台宕机后，应用程序根据配置直接切换到对等服务器上。如果存储不对等，就需要重新计算路由，选择存储服务器。&lt;/p>
 &lt;h3 id="数据恢复">数据恢复&lt;/h3>
 &lt;p>因为某台服务器宕机，所以数据存储的副本数目会减少，必须将副本的数目恢复到系统设定的值，否则，再有服务器宕机时，就可能出现无法访问转移，数据永久丢失的情况。因此系统需要从健康的服务器复制数据，将数据副本数目恢复到设定值。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2023/08/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category><category domain="https://kiwi4814.github.io/tags/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category></item><item><title>高可用04：高可用系统设计之「服务高可用」</title><link>https://kiwi4814.github.io/posts/2021/high-availability-server/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-server/</guid><pubDate>Mon, 11 Oct 2021 15:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;hr>
-&lt;p>&lt;a href="https://kiwi4814.com/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用系列目录&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用系列目录&lt;/a>&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-concept/">高可用01：什么是高可用系统？&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-architecture/">高可用02：高可用系统设计之「架构高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-application/">高可用03：高可用系统设计之「应用高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-server/">&lt;font color="orange">高可用04：高可用系统设计之「服务高可用」&lt;/font>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-storage/">高可用05：高可用系统设计之「存储高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-aids/">高可用06：高可用系统设计之「其他辅助手段」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-concept/">高可用01：什么是高可用系统？&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-architecture/">高可用02：高可用系统设计之「架构高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-application/">高可用03：高可用系统设计之「应用高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-server/">&lt;font color="orange">高可用04：高可用系统设计之「服务高可用」&lt;/font>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-storage/">高可用05：高可用系统设计之「存储高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-aids/">高可用06：高可用系统设计之「其他辅助手段」&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="服务高可用弹力设计">服务高可用——弹力设计&lt;/h2>
@@ -9844,14 +9844,14 @@ git config --global --unset https.proxy
 &lt;p>自动化运维方面：网关流量调度，服务监控。&lt;/p>
 &lt;/li>
 &lt;/ul></description><category domain="https://kiwi4814.github.io/categories/2023/08/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category><category domain="https://kiwi4814.github.io/tags/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category></item><item><title>高可用03：高可用系统设计之「应用高可用」</title><link>https://kiwi4814.github.io/posts/2021/high-availability-application/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-application/</guid><pubDate>Sun, 10 Oct 2021 15:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;hr>
-&lt;p>&lt;a href="https://kiwi4814.com/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用系列目录&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用系列目录&lt;/a>&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-concept/">高可用01：什么是高可用系统？&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-architecture/">高可用02：高可用系统设计之「架构高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-application/">&lt;font color="orange">高可用03：高可用系统设计之「应用高可用」&lt;/font>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-server/">高可用04：高可用系统设计之「服务高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-storage/">高可用05：高可用系统设计之「存储高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-aids/">高可用06：高可用系统设计之「其他辅助手段」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-concept/">高可用01：什么是高可用系统？&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-architecture/">高可用02：高可用系统设计之「架构高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-application/">&lt;font color="orange">高可用03：高可用系统设计之「应用高可用」&lt;/font>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-server/">高可用04：高可用系统设计之「服务高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-storage/">高可用05：高可用系统设计之「存储高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-aids/">高可用06：高可用系统设计之「其他辅助手段」&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="应用高可用">应用高可用&lt;/h2>
@@ -9891,14 +9891,14 @@ git config --global --unset https.proxy
 &lt;p>如何选择最优路径，把每个角落的请求快速的传递到机房，这就是CDN的功能。&lt;/p>
 &lt;h3 id="html页面静态化">HTML页面静态化&lt;/h3>
 &lt;p>静态页面部署在NGNIX中，收到用户请求，Ngnix不需要访问Webapp即可响应用户，减少应用渲染页面的时间，同时也降低了应用的压力。&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2023/08/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category><category domain="https://kiwi4814.github.io/tags/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category></item><item><title>高可用02：高可用系统设计之「架构高可用」</title><link>https://kiwi4814.github.io/posts/2021/high-availability-architecture/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-architecture/</guid><pubDate>Sat, 09 Oct 2021 15:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;hr>
-&lt;p>&lt;a href="https://kiwi4814.com/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用系列目录&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用系列目录&lt;/a>&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-concept/">高可用01：什么是高可用系统？&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-architecture/">&lt;font color="orange">高可用02：高可用系统设计之「架构高可用」&lt;/font>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-application/">高可用03：高可用系统设计之「应用高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-server/">高可用04：高可用系统设计之「服务高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-storage/">高可用05：高可用系统设计之「存储高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-aids/">高可用06：高可用系统设计之「其他辅助手段」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-concept/">高可用01：什么是高可用系统？&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-architecture/">&lt;font color="orange">高可用02：高可用系统设计之「架构高可用」&lt;/font>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-application/">高可用03：高可用系统设计之「应用高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-server/">高可用04：高可用系统设计之「服务高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-storage/">高可用05：高可用系统设计之「存储高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-aids/">高可用06：高可用系统设计之「其他辅助手段」&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="如何设计一个高可用系统">如何设计一个高可用系统&lt;/h2>
@@ -10025,14 +10025,14 @@ git config --global --unset https.proxy
 &lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313161206002.png" alt="image-20220313161206002" style="zoom:25%;" />
 &lt;p>&lt;strong>独立式&lt;/strong>：每个分区自己有独立的备份中心【非本分区的】，优点是设计简单，各个分区互不影响，但是成本极高。&lt;/p>
 &lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20220313161215359.png" alt="image-20220313161215359" style="zoom:25%;" /></description><category domain="https://kiwi4814.github.io/categories/2023/08/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category><category domain="https://kiwi4814.github.io/tags/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用</category></item><item><title>高可用01：什么是高可用系统？</title><link>https://kiwi4814.github.io/posts/2021/high-availability-concept/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2021/high-availability-concept/</guid><pubDate>Fri, 08 Oct 2021 15:42:40 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;hr>
-&lt;p>&lt;a href="https://kiwi4814.com/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用系列目录&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://kiwi4814.github.io/series/2021/10/%E9%AB%98%E5%8F%AF%E7%94%A8/">高可用系列目录&lt;/a>&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-concept/">&lt;font color="orange">高可用01：什么是高可用系统？&lt;/font>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-architecture/">高可用02：高可用系统设计之「架构高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-application/">高可用03：高可用系统设计之「应用高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-server/">高可用04：高可用系统设计之「服务高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-storage/">高可用05：高可用系统设计之「存储高可用」&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kiwi4814.com/posts/2021/high-availability-aids/">高可用06：高可用系统设计之「其他辅助手段」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-concept/">&lt;font color="orange">高可用01：什么是高可用系统？&lt;/font>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-architecture/">高可用02：高可用系统设计之「架构高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-application/">高可用03：高可用系统设计之「应用高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-server/">高可用04：高可用系统设计之「服务高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-storage/">高可用05：高可用系统设计之「存储高可用」&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kiwi4814.github.io/posts/2021/high-availability-aids/">高可用06：高可用系统设计之「其他辅助手段」&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="前言">前言&lt;/h2>
