@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.127.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 11 Feb 2025 12:25:53 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>再读JDK8中的函数式编程</title><link>https://kiwi4814.github.io/posts/2024/java8-functional-programming/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2024/java8-functional-programming/</guid><pubDate>Fri, 26 Jul 2024 21:40:15 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>用了好几年的JDK8 “函数式编程”，类似stream流、lambda等语法都用的“炉火纯青”了，却仍然还是免不了有时候还是需要检索一些复杂的语法，比如&lt;code>flatmap&lt;/code>、&lt;code>mapreduce&lt;/code>等平时很少用到的语法。想起来自己也好像只是粗略的读过，并没有任何精读，于是便有了这篇文章，在这次重新去了解函数式编程的过程中，记录了一些知识要点以及疑惑。&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.127.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 11 Feb 2025 12:36:18 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>再读JDK8中的函数式编程</title><link>https://kiwi4814.github.io/posts/2024/java8-functional-programming/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2024/java8-functional-programming/</guid><pubDate>Fri, 26 Jul 2024 21:40:15 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>用了好几年的JDK8 “函数式编程”，类似stream流、lambda等语法都用的“炉火纯青”了，却仍然还是免不了有时候还是需要检索一些复杂的语法，比如&lt;code>flatmap&lt;/code>、&lt;code>mapreduce&lt;/code>等平时很少用到的语法。想起来自己也好像只是粗略的读过，并没有任何精读，于是便有了这篇文章，在这次重新去了解函数式编程的过程中，记录了一些知识要点以及疑惑。&lt;/p>
 &lt;p>如果想要完整的了解JDK8的新特性，推荐&lt;a href="https://wizardforcel.gitbooks.io/java8-new-features/content/index.html">读这里&lt;/a>。当然在下文中也会摘录很多其他文章，都是在看的过程中针对自己的疑问检索的，对相关章节感兴趣的也可以跳转查看。&lt;/p>
 &lt;h2 id="1-函数式编程">1. 函数式编程&lt;/h2>
 &lt;p>对于函数式编程，能讲的有很多，我自己也没有完全理解，想要深入研究的小伙伴可以参见&lt;a href="https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/">函数式编程指北&lt;/a>。&lt;/p>
@@ -196,7 +196,640 @@
 &lt;/ol>
 &lt;h2 id="4-stream流">4. stream流&lt;/h2>
 &lt;p>未完待续...&lt;/p>
-&lt;p>&lt;a href="https://medium.com/swlh/understanding-java-8s-consumer-supplier-predicate-and-function-c1889b9423d">Understanding Java 8’s Consumer, Supplier, Predicate and Function | by Somnath Musib | The Startup | Medium&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2024/07/java/">Java</category><category domain="https://kiwi4814.github.io/tags/2024/07/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2024/07/java-8/">Java 8</category></item><item><title>Docker安装oracle数据库</title><link>https://kiwi4814.github.io/posts/2024/docker-oracle/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2024/docker-oracle/</guid><pubDate>Sat, 06 Jan 2024 16:46:31 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>现在因为业务需求我要在我的macos系统上（inter芯片）安装一个oracle数据库，对方指定了版本为oracle_11g，并提供了创建表空间和用户的脚本以及相应的dmp文件。&lt;/p>
+&lt;p>&lt;a href="https://medium.com/swlh/understanding-java-8s-consumer-supplier-predicate-and-function-c1889b9423d">Understanding Java 8’s Consumer, Supplier, Predicate and Function | by Somnath Musib | The Startup | Medium&lt;/a>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2024/07/java/">Java</category><category domain="https://kiwi4814.github.io/tags/2024/07/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2024/07/java-8/">Java 8</category></item><item><title>Docker安装openwrt作为旁路有使用</title><link>https://kiwi4814.github.io/posts/2024/docker-compose-openwrt/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2024/docker-compose-openwrt/</guid><pubDate>Tue, 16 Jul 2024 16:46:31 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>在 飞牛（Debian） 系统上使用多网卡方案，在 Docker 中安装 OpenWrt 作为旁路由，并使用 enp5s0 网卡，且设置 OpenWrt 的 IP 地址为 10.0.0.10。主路由器的 IP 地址为 10.0.0.1，Debian 系统使用的 IP 地址为 10.0.0.200 (在 enp3s0 上)。&lt;/p>
+&lt;p>&lt;strong>详细步骤：&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>确认网卡状态:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>使用 ip link 或 ifconfig -a 命令确认 enp5s0 确实没有被使用（没有 IP 地址）。&lt;/p>
+&lt;pre tabindex="0">&lt;code>ip link
+# 或
+ifconfig -a
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>确保 enp5s0 上没有连接网线（或者暂时断开），避免 IP 冲突。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>设置 enp5s0 为混杂模式:&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>sudo ip link set enp5s0 promisc on
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>创建 macvlan 网络:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>--subnet&lt;/code> 参数：指定 OpenWrt 网络使用的子网，这里是你的主路由器所在的网段。&lt;/li>
+&lt;li>&lt;code>--gateway&lt;/code> 参数：指定 OpenWrt 网络的网关，即你的主路由器的 IP 地址。&lt;/li>
+&lt;li>&lt;code>parent&lt;/code> 参数：使用 enp5s0 作为父级网卡。&lt;/li>
+&lt;li>&lt;code>macnet&lt;/code>：你创建的 macvlan 网络的名称。&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>docker network create -d macvlan --subnet=10.0.0.0/24 --gateway=10.0.0.1 -o parent=enp5s0 macnet
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>验证 macvlan 网络:&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>docker network ls
+&lt;/code>&lt;/pre>&lt;p>确认列表中有 macnet。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>拉取 OpenWrt 镜像:&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>docker pull registry.cn-hangzhou.aliyuncs.com/zzsrv/openwrt:latest
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>创建并运行 OpenWrt 容器:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>--name openwrt&lt;/code>：给容器命名为 openwrt。&lt;/li>
+&lt;li>&lt;code>-d&lt;/code>：后台运行。&lt;/li>
+&lt;li>&lt;code>--network macnet&lt;/code>：指定使用 macnet 网络。&lt;/li>
+&lt;li>&lt;code>--privileged&lt;/code>：给予容器特权权限。&lt;/li>
+&lt;li>&lt;code>registry.cn-hangzhou.aliyuncs.com/zzsrv/openwrt /sbin/init&lt;/code>：使用的镜像和启动命令。&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>docker run --restart always --name openwrt -d --network macnet --privileged registry.cn-hangzhou.aliyuncs.com/zzsrv/openwrt /sbin/init
+docker run --restart always --name openwrt -d --network macnet --privileged zzsrv/openwrt /sbin/init
+&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>docker run --restart always --name istoreos -d --network macnet --ip 10.0.0.10 --privileged fingerboy/istoreos-x86-64 /sbin/init
+docker run --restart always --name istoreos -d --network macnet --privileged --dns none fingerboy/istoreos-x86-64 /sbin/init
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>进入 OpenWrt 容器:&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>docker exec -it openwrt bash
+docker exec -it istoreos bash
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>配置 OpenWrt 网络 (关键步骤):&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>编辑 &lt;code>/etc/config/network&lt;/code> 文件。&lt;/p>
+&lt;pre tabindex="0">&lt;code>vi /etc/config/network
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>配置以下内容，确保以下配置中 OpenWrt 的 IP 地址 10.0.0.10 和你主路由器的 IP 地址 10.0.0.1 在同一个网段，且不相同。&lt;/p>
+&lt;pre tabindex="0">&lt;code>config interface &amp;#39;loopback&amp;#39;
+option proto &amp;#39;static&amp;#39;
+option ipaddr &amp;#39;127.0.0.1&amp;#39;
+option netmask &amp;#39;255.0.0.0&amp;#39;
+option device &amp;#39;lo&amp;#39;
+config globals &amp;#39;globals&amp;#39;
+option packet_steering &amp;#39;1&amp;#39;
+config interface &amp;#39;lan&amp;#39;
+option proto &amp;#39;static&amp;#39;
+option netmask &amp;#39;255.255.255.0&amp;#39;
+option ip6assign &amp;#39;60&amp;#39;
+option ipaddr &amp;#39;10.0.0.10&amp;#39; # 修改为 10.0.0.10
+option gateway &amp;#39;10.0.0.1&amp;#39; # 修改为 10.0.0.1 (你的主路由 IP)
+option dns &amp;#39;10.0.0.1&amp;#39; # 修改为 10.0.0.1 (你的主路由 IP)
+option device &amp;#39;br-lan&amp;#39; # 保持不变，使用桥接接口 br-lan
+config device
+option name &amp;#39;br-lan&amp;#39;
+option type &amp;#39;bridge&amp;#39;
+list ports &amp;#39;eth0&amp;#39;
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>&lt;strong>loopback 接口：&lt;/strong> 这是回环接口，配置正确。&lt;/li>
+&lt;li>&lt;strong>globals 配置：&lt;/strong> &lt;code>option packet_steering '1'&lt;/code> 表示开启数据包转向，一般保留。&lt;/li>
+&lt;li>&lt;strong>lan 接口：&lt;/strong>
+&lt;ul>
+&lt;li>&lt;code>option proto 'static'&lt;/code>：使用静态 IP 地址。&lt;/li>
+&lt;li>&lt;code>option netmask '255.255.255.0'&lt;/code>：子网掩码。&lt;/li>
+&lt;li>&lt;code>option ip6assign '60'&lt;/code>：IPv6 地址分配前缀长度。&lt;/li>
+&lt;li>&lt;code>option ipaddr '192.168.0.8'&lt;/code>：当前 IP 地址，你需要修改为 10.0.0.10。&lt;/li>
+&lt;li>&lt;code>option gateway '192.168.0.1'&lt;/code>：当前网关，你需要修改为 10.0.0.1 (你的主路由 IP)。&lt;/li>
+&lt;li>&lt;code>option dns '192.168.0.1'&lt;/code>：当前 DNS，你需要修改为 10.0.0.1 (你的主路由 IP) 或者公共 DNS。&lt;/li>
+&lt;li>&lt;code>option device 'br-lan'&lt;/code>：使用的接口是 br-lan（桥接接口）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>device 配置：&lt;/strong>
+&lt;ul>
+&lt;li>&lt;code>option name 'br-lan'&lt;/code>：桥接接口名称。&lt;/li>
+&lt;li>&lt;code>option type 'bridge'&lt;/code>：接口类型为桥接。&lt;/li>
+&lt;li>&lt;code>list ports 'eth0'&lt;/code>：桥接接口包含 eth0 接口。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>重启 OpenWrt 容器:&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>etc/init.d/network restart
+exit
+docker container restart openwrt
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>配置 OpenClash：&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>访问 OpenWrt 的 LuCI 管理界面（通常是 http://10.0.0.10，如果访问不了，请检查你电脑的网络设置，确保你电脑的网关也设置为了 10.0.0.1），安装 OpenClash 插件。&lt;/li>
+&lt;li>配置 OpenClash，使其只负责流量转发，而不是作为 DHCP 服务。&lt;/li>
+&lt;li>根据你的需求进行相关设置，例如选择节点和代理模式。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>配置主路由器或客户端：&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>方法一 (路由器配置)：&lt;/strong>
+&lt;ul>
+&lt;li>在你的主路由器中设置静态路由，将需要走代理的流量（例如特定 IP 地址或域名）指向 OpenWrt 的 IP 地址 10.0.0.10。具体设置方法请参考你主路由器的说明书。&lt;/li>
+&lt;li>例如，如果你的主路由器支持设置“策略路由”，你可以设置目标网络为你要代理的 IP 或域名，下一跳网关设置为 10.0.0.10。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>方法二 (客户端配置):&lt;/strong>
+&lt;ul>
+&lt;li>对于需要走旁路网关的设备（例如你的电脑），手动设置其网关为 10.0.0.10。&lt;/li>
+&lt;li>或者，你可以设置 DNS 服务器为 10.0.0.10，并使用 OpenClash 的 DNS 功能进行分流。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>重要注意事项：&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>IP 地址冲突：&lt;/strong> 确保 10.0.0.10 没有被网络中的其他设备占用。&lt;/li>
+&lt;li>&lt;strong>防火墙：&lt;/strong> 确保宿主机 (Debian) 的防火墙没有阻止 OpenWrt 的网络流量。&lt;/li>
+&lt;li>&lt;strong>网络连通性测试：&lt;/strong> 完成配置后，尝试在需要走旁路网关的设备上访问外网，检查是否可以通过 OpenWrt 的 OpenClash 进行代理。&lt;/li>
+&lt;li>&lt;strong>OpenWrt 访问：&lt;/strong> 如果你无法访问 OpenWrt 的 LuCI 管理界面，请检查你的电脑是否和 OpenWrt 在同一个网段，或者电脑的网关是否设置正确。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>配置总结：&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>使用独立的物理网卡 enp5s0。&lt;/li>
+&lt;li>创建 macvlan 网络。&lt;/li>
+&lt;li>在 OpenWrt 中配置正确的 IP 地址 10.0.0.10、网关 10.0.0.1 和 DNS 10.0.0.1。&lt;/li>
+&lt;li>在主路由器或者客户端设备上，设置需要走代理的流量指向 OpenWrt 的 IP 地址 10.0.0.10。&lt;/li>
+&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2024/07/docker/">Docker</category><category domain="https://kiwi4814.github.io/series/2024/07/docker/">Docker</category><category domain="https://kiwi4814.github.io/tags/2024/07/docker/">Docker</category></item><item><title>Docker 部署 Watchtower 自动更新容器</title><link>https://kiwi4814.github.io/posts/2024/docker-compose-watchtower/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2024/docker-compose-watchtower/</guid><pubDate>Tue, 09 Apr 2024 16:46:31 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h3 id="项目概述">项目概述&lt;/h3>
+&lt;p>Watchtower 是一款开源的 Docker 容器自动更新工具，能够持续监控运行中的容器是否具有可用的新镜像版本。当检测到更新时，Watchtower 会自动拉取新镜像，并采用优雅的方式（发送 SIGTERM 信号）重启容器。&lt;/p>
+&lt;p>主要特性包括：&lt;/p>
+&lt;ul>
+&lt;li>支持定时任务调度（Cron 表达式）&lt;/li>
+&lt;li>可配置自动清理旧镜像&lt;/li>
+&lt;li>邮件/Webhook 等通知集成&lt;/li>
+&lt;li>精确控制更新范围（通过标签或容器名称）&lt;/li>
+&lt;li>兼容 Docker Swarm 集群环境&lt;/li>
+&lt;/ul>
+&lt;h3 id="docker-compose-搭建-watchtower">docker-compose 搭建 watchtower&lt;/h3>
+&lt;p>【注】下面代码块中给出的代码都是&lt;code>compose.yml&lt;/code>的完整代码，复制到一个新建的&lt;code>compose.yml&lt;/code>文件中，然后在所在的目录下命名行执行 &lt;code>docker compose up -d&lt;/code> 即可启动项目。&lt;/p>
+&lt;h4 id="简版无通知自动监测所有容器更新">简版（无通知，自动监测所有容器更新）&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">services&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">watchtower&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">containrrr/watchtower&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">container_name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">watchtower&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">restart&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">unless-stopped&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">TZ=Asia/Shanghai&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_SCHEDULE=0 0 2 * * *&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_CLEANUP=true&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">/var/run/docker.sock:/var/run/docker.sock&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>参数说明：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>WATCHTOWER_SCHEDULE&lt;/code> 使用六位的 cron 表达式，控制 watchtower 的检查时间&lt;/li>
+&lt;li>&lt;code>WATCHTOWER_CLEANUP&lt;/code> 参数控制是否在更新后删除旧镜像&lt;/li>
+&lt;li>必须挂载 Docker 套接字以控制容器&lt;/li>
+&lt;/ul>
+&lt;p>其中 environment 中的几个配置也可以写成 command 的形式：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">services&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">watchtower&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">containrrr/watchtower&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">container_name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">watchtower&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">restart&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">unless-stopped&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">TZ=Asia/Shanghai&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">/var/run/docker.sock:/var/run/docker.sock&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">command&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>--&lt;span class="l">schedule &amp;#34;0 0 2 * * *&amp;#34; --cleanup&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>--schedule&lt;/code> 等价于 &lt;code>WATCHTOWER_SCHEDULE&lt;/code>，&lt;code>--cleanup&lt;/code> 等价于 &lt;code>WATCHTOWER_CLEANUP&lt;/code>，这两者如何对应可以参照&lt;a href="https://containrrr.dev/watchtower/arguments/">官方文档&lt;/a>，为了方便统一观看，本文后续统一采用 Environment Variable 的方式。&lt;/p>
+&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20250210182513381.webp" alt="image-20250210182513381">&lt;/p>
+&lt;h4 id="指定要更新的项目">指定要更新的项目&lt;/h4>
+&lt;p>如果我们只想要自动更新指定的几个项目的话，有两种方案：&lt;/p>
+&lt;p>第一种是&lt;strong>在启动的时候指定&lt;/strong>：
+&lt;code>docker run&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker run -d &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --name watchtower &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -v /var/run/docker.sock:/var/run/docker.sock &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> containrrr/watchtower &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> allinone ddns-go
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>docker compose&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">services&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">watchtower&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">containrrr/watchtower&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">container_name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">watchtower&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">restart&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">unless-stopped&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">TZ=Asia/Shanghai&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_SCHEDULE=0 0 2 * * *&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_CLEANUP=true&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">/var/run/docker.sock:/var/run/docker.sock&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">command&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">allinone&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">ddns-go&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>上面的命令指定了要更新的两个容器名称：&lt;code>allinone&lt;/code> 和 &lt;code>ddns-go&lt;/code>，更新的时候只会检查这两个容器。&lt;/p>
+&lt;p>启动日志：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker logs watchtower
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Watchtower 1.7.1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Using no notifications&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Only checking containers which name matches \&amp;#34;allinone\&amp;#34; or \&amp;#34;ddns-go\&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Scheduling first run: 2025-02-12 02:00:00 +0800 CST&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Note that the first check will be performed in 16 hours, 36 minutes, 10 seconds&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>这种方式有个弊端，就是当我们手动执行单次监听更新的时候，还是会监控更新所有容器的：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker &lt;span class="nb">exec&lt;/span> watchtower /watchtower --run-once
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">......
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Checking all containers (except explicitly disabled with label)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">......
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>第二种方式，&lt;strong>启用标签监控 (WATCHTOWER_LABEL_ENABLE=true)&lt;/strong>，然后在要更新的容器的配置里手动增加 label 来表示这个容器需要自动更新，如果你要更新的项目在 watchtower 之后部署的，那么推荐这种方式来精准定位要更新的容器，这也是最一劳永逸的。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">services&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">watchtower&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">containrrr/watchtower&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">container_name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">watchtower&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">labels&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;com.centurylinklabs.watchtower.enable=true&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">restart&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">unless-stopped&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">TZ=Asia/Shanghai&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_SCHEDULE=0 0 2 * * *&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_CLEANUP=true&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_LABEL_ENABLE=true&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">/var/run/docker.sock:/var/run/docker.sock&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后在要自动更新的容器的 &lt;code>compose.yml&lt;/code> 中增加：&lt;code>labels: - &amp;quot;com.centurylinklabs.watchtower.enable=true&amp;quot;&lt;/code>即可。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">services:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> someimage:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> container_name: someimage
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> labels:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - &lt;span class="s2">&amp;#34;com.centurylinklabs.watchtower.enable=true&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>如果是正在运行的容器需要在 &lt;code>compose.yml&lt;/code> 中新增 &lt;code>label&lt;/code>，然后重新创建下容器：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 清理旧容器（保留数据卷）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker compose down
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 强制重建容器（使用新配置）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker compose up -d --force-recreate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>再次执行测试的时候就可以看到只会监听我们设置好label的容器了。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker &lt;span class="nb">exec&lt;/span> watchtower /watchtower --run-once
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Watchtower 1.7.1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Using no notifications&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Only checking containers using enable label&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Running a one time update.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Session done&amp;#34;&lt;/span> &lt;span class="nv">Failed&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">0&lt;/span> &lt;span class="nv">Scanned&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">2&lt;/span> &lt;span class="nv">Updated&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">0&lt;/span> &lt;span class="nv">notify&lt;/span>&lt;span class="o">=&lt;/span>no
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Waiting for the notification goroutine to finish&amp;#34;&lt;/span> &lt;span class="nv">notify&lt;/span>&lt;span class="o">=&lt;/span>no
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="通知">通知&lt;/h4>
+&lt;p>Watchtower 可以在每次执行后通过邮件或者其他类型的消息通知，邮件通知的版本如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">services&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">watchtower&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">containrrr/watchtower&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">container_name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">watchtower&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">labels&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;com.centurylinklabs.watchtower.enable=true&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">restart&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">unless-stopped&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">TZ=Asia/Shanghai&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_SCHEDULE=0 0 2 * * *&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_CLEANUP=true&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_LABEL_ENABLE=true&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c"># 通知的部分&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATIONS=email &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 启用邮件通知&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATION_EMAIL_FROM=xxxx@163.com &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 发件人邮箱&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATION_EMAIL_TO=xxxx@qq.com &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 收件人邮箱&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATION_EMAIL_SERVER=smtp.163.com &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 邮件服务器地址&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PORT=587 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 邮件服务器端口&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATION_EMAIL_SERVER_USER=xxxx@163.com &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 邮箱&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PASSWORD=shydihdlneq &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 邮件服务器密码&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATION_EMAIL_DELAY=30 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 邮件通知延迟，单位：秒&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">/var/run/docker.sock:/var/run/docker.sock&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description><category domain="https://kiwi4814.github.io/categories/2024/07/docker/">Docker</category><category domain="https://kiwi4814.github.io/series/2024/07/docker/">Docker</category><category domain="https://kiwi4814.github.io/tags/2024/07/docker/">Docker</category></item><item><title>我的Docker最佳实践</title><link>https://kiwi4814.github.io/posts/2024/docker-best-practices/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2024/docker-best-practices/</guid><pubDate>Fri, 29 Mar 2024 16:46:31 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="我的docker最佳实践">我的Docker最佳实践&lt;/h2>
+&lt;h3 id="1-网络加速">1. 网络加速&lt;/h3>
+&lt;p>Docker Desktop：Settings -&amp;gt; Resources -&amp;gt; Proxies -&amp;gt; ✅ Manual proxy configuration&lt;/p>
+&lt;p>镜像&lt;/p>
+&lt;p>推荐使用：&lt;a href="https://1ms.run/">毫秒镜像&lt;/a>&lt;/p>
+&lt;p>其他汇总：&lt;a href="https://www.coderjia.cn/archives/dba3f94c-a021-468a-8ac6-e840f85867ea">目前国内可用Docker镜像源汇总（截至2025年1月） - CoderJia&lt;/a>&lt;/p>
+&lt;h3 id="2-部署方式及路径统一">2. 部署方式及路径统一&lt;/h3>
+&lt;p>通过 docker compose 的方式进行部署，所有的&lt;code>compose.yml&lt;/code>以及容器的数据都存储在一个文件夹下的不同 container 名称对应的文件夹下面，最终生成大概如下的数据结构：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">📂docker
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── 📂allinone
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   └── 📄compose.yml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── 📂allinone_format
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   ├── 📄compose.yml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   └── config
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── 📂ddns-go
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   └── 📄compose.yml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── 📂moviepilot
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   ├── 📄compose.yml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   ├── 📂config
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   └── 📂core
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── 📂portainer-ce
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   ├── 📄compose.yml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   └── 📂data
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── 📂qbittorrent
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   ├── 📂appdata
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   └── 📄compose.yml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── 📂qinglong
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── 📄compose.yaml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── 📂data
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>另外，我这里遇到的问题比较特殊，这里也列举出来，我是在 Win11 安装的 Docker Desktop，然后出于一些原因又安装了&lt;code>WSL2（ Ubuntu 24.04.1 LTS）&lt;/code>并且集成了 WSL integration，然后在 WSL 上面部署了一些 Docker 项目，这就导致了我的 compose.yml 很乱，绝对路径和相对路径两种写法混杂，另外 windows 的路径和 Ubuntu 的路径也都有，很不方便未来的迁移，于是我统一了 compose 文件中关于路径的处理，相关的流程如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### 在 Windows PowerShell（管理员权限）中执行&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir C:&lt;span class="se">\o&lt;/span>pt&lt;span class="se">\d&lt;/span>ocker
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>Environment&lt;span class="o">]&lt;/span>::SetEnvironmentVariable&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;DOCKER_DIR&amp;#34;&lt;/span>, &lt;span class="s2">&amp;#34;C:\opt\docker&amp;#34;&lt;/span>, &lt;span class="s2">&amp;#34;User&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### 在 WSL 终端中执行&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;export DOCKER_DIR=&amp;#34;/mnt/c/opt/docker&amp;#34;&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.bashrc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> ~/.bashrc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### WSL中执行迁移（假设原WSL项目在 /home/kiwi4814/docker/ ）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo rsync -avh --progress /home/kiwi4814/docker/ /mnt/c/opt/docker/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo rm -rf ~/docker
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### 在 Windows 验证迁移结果&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dir C:&lt;span class="se">\o&lt;/span>pt&lt;span class="se">\d&lt;/span>ocker
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### 修改 compose.yml 文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">volumes:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">DOCKER_DIR&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/project_name/config:/config&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">DOCKER_DIR&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/project_name/data:/data&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">DOCKER_DIR&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/common:/shared&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### 验证 - windows&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> C:&lt;span class="se">\o&lt;/span>pt&lt;span class="se">\d&lt;/span>ocker&lt;span class="se">\p&lt;/span>roject_name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker-compose up -d
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker &lt;span class="nb">exec&lt;/span> moviepilot cmd /c &lt;span class="s2">&amp;#34;dir C:\config&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### 验证 - WSL&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> /mnt/c/opt/docker/moviepilot
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker-compose up -d
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker &lt;span class="nb">exec&lt;/span> -it moviepilot ls /config
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### Docker项目迁移并重启&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 清理旧容器（保留数据卷）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker compose down
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 这里是更新的命令，不更新则不执行&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker-compose pull
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 强制重建容器（使用新配置）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker compose up -d --force-recreate
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看启动日志&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker-compose logs -f --tail&lt;span class="o">=&lt;/span>&lt;span class="m">100&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>此外，在执行完上面的步骤之后，建议到 WSL 下去执行Docker容器的启动，因为有一些映射的绝对路径仍然必须使用 Ubuntu 下的绝对路径，比如使用 cifs-utils 挂载了 SMB 硬盘的路径以及 docker的套接字 &lt;code>/var/run/docker.sock&lt;/code>等等。&lt;/p>
+&lt;h3 id="3-数据备份">3. 数据备份&lt;/h3>
+&lt;p>在上一步把所有的 docker 配置及数据都存储在一个地方之后，就可以利用各种网盘的同步功能进行备份了，也可以用&lt;a href="https://github.com/restic/restic">restic&lt;/a>等开源项目来备份。&lt;/p>
+&lt;h3 id="4-数据清理">4. 数据清理&lt;/h3>
+&lt;p>日志&lt;/p>
+&lt;p>镜像&lt;/p>
+&lt;h2 id="常用的docker项目">常用的Docker项目&lt;/h2>
+&lt;p>&lt;a href="https://hub.docker.com/r/6053537/portainer-ce">portainer-ce&lt;/a>：docker管理工具，汉化版&lt;/p>
+&lt;p>&lt;a href="https://github.com/containrrr/watchtower">containrrr/watchtower&lt;/a>：自动更新Docker镜像&lt;/p>
+&lt;p>&lt;a href="https://github.com/jeessy2/ddns-go">jeessy2/ddns-go&lt;/a>：自动解析DNS，绑定域名&lt;/p>
+&lt;p>&lt;a href="https://github.com/whyour/qinglong">whyour/qinglong）&lt;/a>：青龙面板&lt;/p>
+&lt;p>&lt;a href="https://hub.docker.com/r/qierkang/golang-reverseproxy">golang-reverseproxy &lt;/a>：Jrebel破解&lt;/p>
+&lt;h3 id="自建服务">自建服务&lt;/h3>
+&lt;p>漫画：&lt;a href="https://github.com/gotson/komga">komga&lt;/a>&lt;/p>
+&lt;p>音乐：&lt;a href="https://hub.docker.com/r/deluan/navidrome">navidrome&lt;/a>&lt;/p>
+&lt;p>影视：&lt;a href="https://github.com/plexinc/pms-docker">Plex&lt;/a>、&lt;a href="https://hub.docker.com/r/jellyfin/jellyfin/">jellyfin&lt;/a>、&lt;a href="https://hub.docker.com/r/nyanmisaka/jellyfin">jellyfin特供版&lt;/a>&lt;/p>
+&lt;p>IPTV：&lt;a href="https://hub.docker.com/r/youshandefeiyang/allinone">youshandefeiyang/allinone&lt;/a>+&lt;a href="https://github.com/FanchangWang/allinone_format">FanchangWang/allinone_format&lt;/a>&lt;/p>
+&lt;h3 id="系统相关">系统相关&lt;/h3>
+&lt;p>&lt;a href="https://hub.docker.com/r/zzsrv/openwrt">zzsrv/openwrt&lt;/a>：PassWall &amp;amp; OpenClash，基于ImmortalWrt OpenWrt-23.05(每日更新)。&lt;/p>
+&lt;p>&lt;a href="https://hub.docker.com/r/piaoyizy/openwrt-x86">piaoyizy/openwrt-x86&lt;/a>：基于Lean-X86最新源码编译，集成ssrplus+，openclash，passwall，&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2024/07/docker/">Docker</category><category domain="https://kiwi4814.github.io/series/2024/07/docker/">Docker</category><category domain="https://kiwi4814.github.io/tags/2024/07/docker/">Docker</category></item><item><title>Docker安装Oracle 11G</title><link>https://kiwi4814.github.io/posts/2024/docker-oracle/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2024/docker-oracle/</guid><pubDate>Sat, 06 Jan 2024 16:46:31 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>现在因为业务需求我要在我的macos系统上（inter芯片）安装一个oracle数据库，对方指定了版本为oracle_11g，并提供了创建表空间和用户的脚本以及相应的dmp文件。&lt;/p>
 &lt;p>创建表空间的SQL文件（create_tablespaces.sql）如下：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -461,7 +1094,7 @@ ORA-39143: dump file &amp;#34;/opt/oracle/dmp/20240208.dmp&amp;#34; may be an or
 &lt;p>使用旧的命令&lt;/p>
 &lt;pre tabindex="0">&lt;code>imp XF119/1234@//localhost:1521/orcl file=/opt/oracle/dmp/20240208.dmp full=y log=test.log commit=y ignore=y;
 &lt;/code>&lt;/pre>&lt;/li>
-&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2024/01/docker/">Docker</category><category domain="https://kiwi4814.github.io/series/2024/01/docker/">Docker</category><category domain="https://kiwi4814.github.io/tags/2024/01/docker/">Docker</category><category domain="https://kiwi4814.github.io/tags/2024/01/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>一切反动派都是纸老虎！~ 学习Cron表达式</title><link>https://kiwi4814.github.io/posts/2023/cron-expression/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/cron-expression/</guid><pubDate>Sat, 26 Aug 2023 09:57:03 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>经常能看到形如&lt;code>0 */15 * ? * *&lt;/code>的的一些表达式用在项目中，表示定时任务的执行频率，但一直不明白其原理。由于自己懒惰的天性，每次用到的时候照葫芦画瓢写一个或者网上生成一个，就这样凑凑活活一直用到现在。最近关于定时任务的需求激增，终于忍无可忍，决定学一学这“该死”的cron表达式，然后竟然意外地发现很简单，果然一切反动派都是纸老虎。&lt;/p>
+&lt;/ol></description><category domain="https://kiwi4814.github.io/categories/2024/07/docker/">Docker</category><category domain="https://kiwi4814.github.io/series/2024/07/docker/">Docker</category><category domain="https://kiwi4814.github.io/tags/2024/07/docker/">Docker</category><category domain="https://kiwi4814.github.io/tags/2024/01/%E8%BD%AF%E4%BB%B6/">软件</category></item><item><title>一切反动派都是纸老虎！~ 学习Cron表达式</title><link>https://kiwi4814.github.io/posts/2023/cron-expression/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2023/cron-expression/</guid><pubDate>Sat, 26 Aug 2023 09:57:03 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>经常能看到形如&lt;code>0 */15 * ? * *&lt;/code>的的一些表达式用在项目中，表示定时任务的执行频率，但一直不明白其原理。由于自己懒惰的天性，每次用到的时候照葫芦画瓢写一个或者网上生成一个，就这样凑凑活活一直用到现在。最近关于定时任务的需求激增，终于忍无可忍，决定学一学这“该死”的cron表达式，然后竟然意外地发现很简单，果然一切反动派都是纸老虎。&lt;/p>
 &lt;p>并且，在翻阅资料的过程中，发现大部分网站尤其是一些中文网站的关于cron的文章质量简直惨不忍睹，而且有大量的翻译错误，所以多花了一些时间查阅了资料（遗憾是没有经过我自己的实战，这样可能要花更多的时间），也尽量记录了我的一些疑问，在后续的实战过程中有新的收获都会随时更新。&lt;/p>
 &lt;h2 id="一些问题和自己的理解">一些问题和自己的理解&lt;/h2>
 &lt;ul>
@@ -12494,754 +13127,4 @@ U+0020 160 无中断空格（SPACE），可命名文件的空格类型
 &lt;/div>
 &lt;/div>&lt;p>这样就可以在&lt;code>js&lt;/code>代码中使用&lt;code>replaceAll&lt;/code>方法了。&lt;/p>
 &lt;p>oracle去空格&lt;/p>
-&lt;p>&lt;code>SELECT REGEXP_REPLACE('dark souls sin', '\s', NULL) FROM DUAL;&lt;/code>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2023/08/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2020/06/java/">Java</category><category domain="https://kiwi4814.github.io/tags/2019/12/javascript/">JavaScript</category></item><item><title/><link>https://kiwi4814.github.io/posts/2024/20240305-docker-%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2024/20240305-docker-%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97/</guid><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="常用的docker项目">常用的Docker项目&lt;/h2>
-&lt;h3 id="容器管理">容器管理&lt;/h3>
-&lt;p>&lt;a href="https://hub.docker.com/r/6053537/portainer-ce">portainer-ce汉化版&lt;/a>&lt;/p>
-&lt;h5 id="watchtower自动更新容器">watchtower：自动更新容器&lt;/h5>
-&lt;p>&lt;a href="https://github.com/containrrr/watchtower">containrrr/watchtower: A process for automating Docker container base image updates.&lt;/a>&lt;/p>
-&lt;h5 id="ddns-goddns自动检测">ddns-go：DDNS自动检测&lt;/h5>
-&lt;p>&lt;a href="https://github.com/jeessy2/ddns-go">jeessy2/ddns-go: Simple and easy to use DDNS. Support Aliyun, Tencent Cloud, Dnspod, Cloudflare, Callback, Huawei Cloud, Baidu Cloud, Porkbun, GoDaddy, Namecheap, NameSilo...&lt;/a>&lt;/p>
-&lt;h5 id="qinglong青龙面板">qinglong：青龙面板&lt;/h5>
-&lt;p>&lt;a href="https://github.com/whyour/qinglong">whyour/qinglong: 支持 Python3、JavaScript、Shell、Typescript 的定时任务管理平台（Timed task management platform supporting Python3, JavaScript, Shell, Typescript）&lt;/a>&lt;/p>
-&lt;h5 id="golang-reverseproxyjrebel破解">golang-reverseproxy：jrebel破解&lt;/h5>
-&lt;p>&lt;a href="https://hub.docker.com/r/qierkang/golang-reverseproxy">qierkang/golang-reverseproxy - Docker Image | Docker Hub&lt;/a>&lt;/p>
-&lt;h3 id="自建服务">自建服务&lt;/h3>
-&lt;p>漫画：&lt;a href="https://github.com/gotson/komga">komga&lt;/a>&lt;/p>
-&lt;p>音乐：&lt;a href="https://hub.docker.com/r/deluan/navidrome">navidrome&lt;/a>&lt;/p>
-&lt;p>影视：&lt;a href="https://github.com/plexinc/pms-docker">Plex&lt;/a>、&lt;a href="https://hub.docker.com/r/jellyfin/jellyfin/">jellyfin&lt;/a>、&lt;a href="https://hub.docker.com/r/nyanmisaka/jellyfin">jellyfin特供版&lt;/a>&lt;/p>
-&lt;p>IPTV：&lt;a href="https://hub.docker.com/r/youshandefeiyang/allinone">youshandefeiyang/allinone&lt;/a>+&lt;a href="https://github.com/FanchangWang/allinone_format">FanchangWang/allinone_format&lt;/a>&lt;/p>
-&lt;h3 id="系统">系统&lt;/h3>
-&lt;p>&lt;a href="https://hub.docker.com/r/zzsrv/openwrt">zzsrv/openwrt&lt;/a>：PassWall &amp;amp; OpenClash，基于ImmortalWrt OpenWrt-23.05(每日更新)。&lt;/p>
-&lt;p>&lt;a href="https://hub.docker.com/r/piaoyizy/openwrt-x86">piaoyizy/openwrt-x86&lt;/a>：基于Lean-X86最新源码编译，集成ssrplus+，openclash，passwall，&lt;/p>
-&lt;h2 id="docker实践">Docker实践&lt;/h2>
-&lt;h3 id="1-网络加速">1. 网络加速&lt;/h3>
-&lt;p>Docker Desktop：Settings -&amp;gt; Resources -&amp;gt; Proxies -&amp;gt; ✅ Manual proxy configuration&lt;/p>
-&lt;p>镜像&lt;/p>
-&lt;p>推荐使用：&lt;a href="https://1ms.run/">毫秒镜像&lt;/a>&lt;/p>
-&lt;p>其他汇总：&lt;a href="https://www.coderjia.cn/archives/dba3f94c-a021-468a-8ac6-e840f85867ea">目前国内可用Docker镜像源汇总（截至2025年1月） - CoderJia&lt;/a>&lt;/p>
-&lt;h3 id="2-部署方式及路径统一">2. 部署方式及路径统一&lt;/h3>
-&lt;p>通过 docker compose 的方式进行部署，所有的&lt;code>compose.yml&lt;/code>以及容器的数据都存储在一个文件夹下的不同 container 名称对应的文件夹下面，最终生成大概如下的数据结构：&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">📂docker
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── 📂allinone
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   └── 📄compose.yml
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── 📂allinone_format
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   ├── 📄compose.yml
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   └── config
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── 📂ddns-go
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   └── 📄compose.yml
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── 📂moviepilot
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   ├── 📄compose.yml
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   ├── 📂config
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   └── 📂core
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── 📂portainer-ce
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   ├── 📄compose.yml
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   └── 📂data
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── 📂qbittorrent
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   ├── 📂appdata
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   └── 📄compose.yml
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── 📂qinglong
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── 📄compose.yaml
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── 📂data
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>另外，我这里遇到的问题比较特殊，这里也列举出来，我是在 Win11 安装的 Docker Desktop，然后出于一些原因又安装了&lt;code>WSL2（ Ubuntu 24.04.1 LTS）&lt;/code>并且集成了 WSL integration，然后在 WSL 上面部署了一些 Docker 项目，这就导致了我的 compose.yml 很乱，绝对路径和相对路径两种写法混杂，另外 windows 的路径和 Ubuntu 的路径也都有，很不方便未来的迁移，于是我统一了 compose 文件中关于路径的处理，相关的流程如下：&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;span class="lnt">26
-&lt;/span>&lt;span class="lnt">27
-&lt;/span>&lt;span class="lnt">28
-&lt;/span>&lt;span class="lnt">29
-&lt;/span>&lt;span class="lnt">30
-&lt;/span>&lt;span class="lnt">31
-&lt;/span>&lt;span class="lnt">32
-&lt;/span>&lt;span class="lnt">33
-&lt;/span>&lt;span class="lnt">34
-&lt;/span>&lt;span class="lnt">35
-&lt;/span>&lt;span class="lnt">36
-&lt;/span>&lt;span class="lnt">37
-&lt;/span>&lt;span class="lnt">38
-&lt;/span>&lt;span class="lnt">39
-&lt;/span>&lt;span class="lnt">40
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### 在 Windows PowerShell（管理员权限）中执行&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir C:&lt;span class="se">\o&lt;/span>pt&lt;span class="se">\d&lt;/span>ocker
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>Environment&lt;span class="o">]&lt;/span>::SetEnvironmentVariable&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;DOCKER_DIR&amp;#34;&lt;/span>, &lt;span class="s2">&amp;#34;C:\opt\docker&amp;#34;&lt;/span>, &lt;span class="s2">&amp;#34;User&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### 在 WSL 终端中执行&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;export DOCKER_DIR=&amp;#34;/mnt/c/opt/docker&amp;#34;&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.bashrc
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> ~/.bashrc
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### WSL中执行迁移（假设原WSL项目在 /home/kiwi4814/docker/ ）&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo rsync -avh --progress /home/kiwi4814/docker/ /mnt/c/opt/docker/
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo rm -rf ~/docker
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### 在 Windows 验证迁移结果&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dir C:&lt;span class="se">\o&lt;/span>pt&lt;span class="se">\d&lt;/span>ocker
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### 修改 compose.yml 文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">volumes:
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">DOCKER_DIR&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/project_name/config:/config&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">DOCKER_DIR&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/project_name/data:/data&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">DOCKER_DIR&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">/common:/shared&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### 验证 - windows&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> C:&lt;span class="se">\o&lt;/span>pt&lt;span class="se">\d&lt;/span>ocker&lt;span class="se">\p&lt;/span>roject_name
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker-compose up -d
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker &lt;span class="nb">exec&lt;/span> moviepilot cmd /c &lt;span class="s2">&amp;#34;dir C:\config&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### 验证 - WSL&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> /mnt/c/opt/docker/moviepilot
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker-compose up -d
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker &lt;span class="nb">exec&lt;/span> -it moviepilot ls /config
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### Docker项目迁移并重启&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 清理旧容器（保留数据卷）&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker compose down
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 这里是更新的命令，不更新则不执行&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker-compose pull
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 强制重建容器（使用新配置）&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker compose up -d --force-recreate
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看启动日志&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker-compose logs -f --tail&lt;span class="o">=&lt;/span>&lt;span class="m">100&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>此外，在执行完上面的步骤之后，建议到 WSL 下去执行Docker容器的启动，因为有一些映射的绝对路径仍然必须使用 Ubuntu 下的绝对路径，比如使用 cifs-utils 挂载了 SMB 硬盘的路径以及 docker的套接字 &lt;code>/var/run/docker.sock&lt;/code>等等。&lt;/p>
-&lt;h3 id="3-数据备份">3. 数据备份&lt;/h3>
-&lt;p>在上一步把所有的 docker 配置及数据都存储在一个地方之后，就可以利用各种网盘的同步功能进行备份了，也可以用&lt;a href="https://github.com/restic/restic">restic&lt;/a>等开源项目来备份。&lt;/p>
-&lt;h3 id="4-数据清理">4. 数据清理&lt;/h3>
-&lt;p>日志
-参见 [[Docker清理日志]]&lt;/p>
-&lt;p>镜像&lt;/p></description></item><item><title/><link>https://kiwi4814.github.io/posts/2024/20240308-docker-%E9%83%A8%E7%BD%B2-watchtower-%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%AE%B9%E5%99%A8/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2024/20240308-docker-%E9%83%A8%E7%BD%B2-watchtower-%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%AE%B9%E5%99%A8/</guid><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h3 id="项目概述">项目概述&lt;/h3>
-&lt;p>Watchtower 是一款开源的 Docker 容器自动更新工具，能够持续监控运行中的容器是否具有可用的新镜像版本。当检测到更新时，Watchtower 会自动拉取新镜像，并采用优雅的方式（发送 SIGTERM 信号）重启容器。&lt;/p>
-&lt;p>主要特性包括：&lt;/p>
-&lt;ul>
-&lt;li>支持定时任务调度（Cron 表达式）&lt;/li>
-&lt;li>可配置自动清理旧镜像&lt;/li>
-&lt;li>邮件/Webhook 等通知集成&lt;/li>
-&lt;li>精确控制更新范围（通过标签或容器名称）&lt;/li>
-&lt;li>兼容 Docker Swarm 集群环境&lt;/li>
-&lt;/ul>
-&lt;h3 id="docker-compose-搭建-watchtower">docker-compose 搭建 watchtower&lt;/h3>
-&lt;p>【注】下面代码块中给出的代码都是&lt;code>compose.yml&lt;/code>的完整代码，复制到一个新建的&lt;code>compose.yml&lt;/code>文件中，然后在所在的目录下命名行执行 &lt;code>docker compose up -d&lt;/code> 即可启动项目。&lt;/p>
-&lt;h4 id="简版无通知自动监测所有容器更新">简版（无通知，自动监测所有容器更新）&lt;/h4>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">services&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">watchtower&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">containrrr/watchtower&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">container_name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">watchtower&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">restart&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">unless-stopped&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">TZ=Asia/Shanghai&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_SCHEDULE=0 0 2 * * *&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_CLEANUP=true&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">/var/run/docker.sock:/var/run/docker.sock&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>参数说明：&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>WATCHTOWER_SCHEDULE&lt;/code> 使用六位的 cron 表达式，控制 watchtower 的检查时间&lt;/li>
-&lt;li>&lt;code>WATCHTOWER_CLEANUP&lt;/code> 参数控制是否在更新后删除旧镜像&lt;/li>
-&lt;li>必须挂载 Docker 套接字以控制容器&lt;/li>
-&lt;/ul>
-&lt;p>其中 environment 中的几个配置也可以写成 command 的形式：&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">services&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">watchtower&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">containrrr/watchtower&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">container_name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">watchtower&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">restart&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">unless-stopped&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">TZ=Asia/Shanghai&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">/var/run/docker.sock:/var/run/docker.sock&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">command&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>--&lt;span class="l">schedule &amp;#34;0 0 2 * * *&amp;#34; --cleanup&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;code>--schedule&lt;/code> 等价于 &lt;code>WATCHTOWER_SCHEDULE&lt;/code>，&lt;code>--cleanup&lt;/code> 等价于 &lt;code>WATCHTOWER_CLEANUP&lt;/code>，这两者如何对应可以参照&lt;a href="https://containrrr.dev/watchtower/arguments/">官方文档&lt;/a>，为了方便统一观看，本文后续统一采用 Environment Variable 的方式。&lt;/p>
-&lt;p>&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/image-20250210182513381.webp" alt="image-20250210182513381">&lt;/p>
-&lt;h4 id="指定要更新的项目">指定要更新的项目&lt;/h4>
-&lt;p>如果我们只想要自动更新指定的几个项目的话，有两种方案：&lt;/p>
-&lt;p>第一种是&lt;strong>在启动的时候指定&lt;/strong>：
-&lt;code>docker run&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker run -d &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --name watchtower &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> -v /var/run/docker.sock:/var/run/docker.sock &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> containrrr/watchtower &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> allinone ddns-go
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;code>docker compose&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">services&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">watchtower&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">containrrr/watchtower&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">container_name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">watchtower&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">restart&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">unless-stopped&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">TZ=Asia/Shanghai&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_SCHEDULE=0 0 2 * * *&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_CLEANUP=true&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">/var/run/docker.sock:/var/run/docker.sock&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">command&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">allinone&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">ddns-go&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>上面的命令指定了要更新的两个容器名称：&lt;code>allinone&lt;/code> 和 &lt;code>ddns-go&lt;/code>，更新的时候只会检查这两个容器。&lt;/p>
-&lt;p>启动日志：&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker logs watchtower
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Watchtower 1.7.1&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Using no notifications&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Only checking containers which name matches \&amp;#34;allinone\&amp;#34; or \&amp;#34;ddns-go\&amp;#34;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Scheduling first run: 2025-02-12 02:00:00 +0800 CST&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Note that the first check will be performed in 16 hours, 36 minutes, 10 seconds&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>这种方式有个弊端，就是当我们手动执行单次监听更新的时候，还是会监控更新所有容器的：&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker &lt;span class="nb">exec&lt;/span> watchtower /watchtower --run-once
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">......
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Checking all containers (except explicitly disabled with label)&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">......
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>第二种方式，&lt;strong>启用标签监控 (WATCHTOWER_LABEL_ENABLE=true)&lt;/strong>，然后在要更新的容器的配置里手动增加 label 来表示这个容器需要自动更新，如果你要更新的项目在 watchtower 之后部署的，那么推荐这种方式来精准定位要更新的容器，这也是最一劳永逸的。&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">services&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">watchtower&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">containrrr/watchtower&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">container_name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">watchtower&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">labels&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;com.centurylinklabs.watchtower.enable=true&amp;#34;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">restart&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">unless-stopped&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">TZ=Asia/Shanghai&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_SCHEDULE=0 0 2 * * *&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_CLEANUP=true&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_LABEL_ENABLE=true&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">/var/run/docker.sock:/var/run/docker.sock&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>然后在要自动更新的容器的 &lt;code>compose.yml&lt;/code> 中增加：&lt;code>labels: - &amp;quot;com.centurylinklabs.watchtower.enable=true&amp;quot;&lt;/code>即可。&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">services:
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> someimage:
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> container_name: someimage
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> labels:
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - &lt;span class="s2">&amp;#34;com.centurylinklabs.watchtower.enable=true&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>如果是正在运行的容器需要在 &lt;code>compose.yml&lt;/code> 中新增 &lt;code>label&lt;/code>，然后重新创建下容器：&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 清理旧容器（保留数据卷）&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker compose down
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 强制重建容器（使用新配置）&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker compose up -d --force-recreate
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>再次执行测试的时候就可以看到只会监听我们设置好label的容器了。&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;span class="lnt">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker &lt;span class="nb">exec&lt;/span> watchtower /watchtower --run-once
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Watchtower 1.7.1&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Using no notifications&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Only checking containers using enable label&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Running a one time update.&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Session done&amp;#34;&lt;/span> &lt;span class="nv">Failed&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">0&lt;/span> &lt;span class="nv">Scanned&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">2&lt;/span> &lt;span class="nv">Updated&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">0&lt;/span> &lt;span class="nv">notify&lt;/span>&lt;span class="o">=&lt;/span>no
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">level&lt;/span>&lt;span class="o">=&lt;/span>info &lt;span class="nv">msg&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Waiting for the notification goroutine to finish&amp;#34;&lt;/span> &lt;span class="nv">notify&lt;/span>&lt;span class="o">=&lt;/span>no
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="通知">通知&lt;/h4>
-&lt;p>Watchtower 可以在每次执行后通过邮件或者其他类型的消息通知，邮件通知的版本如下：&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">services&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">watchtower&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">containrrr/watchtower&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">container_name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">watchtower&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">labels&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;com.centurylinklabs.watchtower.enable=true&amp;#34;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">restart&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">unless-stopped&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">TZ=Asia/Shanghai&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_SCHEDULE=0 0 2 * * *&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_CLEANUP=true&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_LABEL_ENABLE=true&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c"># 通知的部分&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATIONS=email &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 启用邮件通知&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATION_EMAIL_FROM=xxxx@163.com &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 发件人邮箱&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATION_EMAIL_TO=xxxx@qq.com &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 收件人邮箱&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATION_EMAIL_SERVER=smtp.163.com &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 邮件服务器地址&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PORT=587 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 邮件服务器端口&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATION_EMAIL_SERVER_USER=xxxx@163.com &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 邮箱&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PASSWORD=shydihdlneq &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 邮件服务器密码&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">WATCHTOWER_NOTIFICATION_EMAIL_DELAY=30 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 邮件通知延迟，单位：秒&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">/var/run/docker.sock:/var/run/docker.sock&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item><item><title/><link>https://kiwi4814.github.io/posts/2024/20240706-docker%E5%AE%89%E8%A3%85-openwrt-%E4%BD%9C%E4%B8%BA%E6%97%81%E8%B7%AF%E7%94%B1/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2024/20240706-docker%E5%AE%89%E8%A3%85-openwrt-%E4%BD%9C%E4%B8%BA%E6%97%81%E8%B7%AF%E7%94%B1/</guid><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>机器：R1安装了飞牛 OS&lt;/p>
-&lt;p>网卡信息：&lt;/p>
-&lt;blockquote>
-&lt;ol>
-&lt;li>
-&lt;h2 id="br-84c6cfce7a94">&lt;strong>br-84c6cfce7a94:&lt;/strong>&lt;/h2>
-&lt;ul>
-&lt;li>&lt;strong>类型：&lt;/strong> Bridge (网桥) 接口，通常由 Docker 等虚拟化工具创建。&lt;/li>
-&lt;li>&lt;strong>标志位:&lt;/strong> UP, BROADCAST, RUNNING, MULTICAST，表示接口已启用、支持广播、正在运行、支持组播。&lt;/li>
-&lt;li>&lt;strong>IPv4 地址：&lt;/strong> 172.19.0.1，子网掩码 255.255.0.0，广播地址 172.19.255.255。&lt;/li>
-&lt;li>&lt;strong>IPv6 地址：&lt;/strong> 有一个 Link-local IPv6 地址 fe80::42:45ff:fef2:fac7。&lt;/li>
-&lt;li>&lt;strong>MAC 地址：&lt;/strong> 02:42:45:f2:fa:c7。&lt;/li>
-&lt;li>&lt;strong>流量信息:&lt;/strong> 有接收和发送数据包，说明该网桥接口在工作。&lt;/li>
-&lt;li>&lt;strong>总结：&lt;/strong> 这是一个由 Docker 创建的桥接网络接口。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;h2 id="br-8cf9796bedaf">&lt;strong>br-8cf9796bedaf:&lt;/strong>&lt;/h2>
-&lt;ul>
-&lt;li>&lt;strong>类型：&lt;/strong> Bridge (网桥) 接口，通常由 Docker 等虚拟化工具创建。&lt;/li>
-&lt;li>&lt;strong>标志位:&lt;/strong> UP, BROADCAST, MULTICAST，表示接口已启用、支持广播、支持组播。&lt;/li>
-&lt;li>&lt;strong>IPv4 地址：&lt;/strong> 172.18.0.1，子网掩码 255.255.0.0，广播地址 172.18.255.255。&lt;/li>
-&lt;li>&lt;strong>MAC 地址：&lt;/strong> 02:42:6b:51:79:cf。&lt;/li>
-&lt;li>&lt;strong>流量信息:&lt;/strong> 没有接收和发送的数据包，说明可能这个网桥没有容器在使用。&lt;/li>
-&lt;li>&lt;strong>总结：&lt;/strong> 另一个由 Docker 创建的桥接网络接口。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;h2 id="docker0">&lt;strong>docker0:&lt;/strong>&lt;/h2>
-&lt;ul>
-&lt;li>&lt;strong>类型：&lt;/strong> Bridge (网桥) 接口，由 Docker 创建。&lt;/li>
-&lt;li>&lt;strong>标志位:&lt;/strong> UP, BROADCAST, MULTICAST，表示接口已启用、支持广播、支持组播。&lt;/li>
-&lt;li>&lt;strong>IPv4 地址：&lt;/strong> 172.17.0.1，子网掩码 255.255.0.0，广播地址 172.17.255.255。&lt;/li>
-&lt;li>&lt;strong>MAC 地址：&lt;/strong> 02:42:e7:12:c4:f8。&lt;/li>
-&lt;li>&lt;strong>流量信息:&lt;/strong> 没有接收和发送的数据包，说明可能没有容器在使用该网络。&lt;/li>
-&lt;li>&lt;strong>总结：&lt;/strong> 这是 Docker 默认的桥接网络接口。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;h2 id="enp2s0">&lt;strong>enp2s0:&lt;/strong>&lt;/h2>
-&lt;ul>
-&lt;li>&lt;strong>类型：&lt;/strong> 以太网接口（物理网卡）。&lt;/li>
-&lt;li>&lt;strong>标志位:&lt;/strong> UP, BROADCAST, MULTICAST，表示接口已启用、支持广播、支持组播。&lt;/li>
-&lt;li>&lt;strong>MAC 地址：&lt;/strong> 00:90:27:f1:52:40。&lt;/li>
-&lt;li>&lt;strong>流量信息:&lt;/strong> 没有接收和发送的数据包，说明该网卡可能没有连接网线或没有配置 IP 地址。&lt;/li>
-&lt;li>&lt;strong>总结：&lt;/strong> 这是一个物理网卡，但当前没有配置网络。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;h2 id="enp3s0">&lt;strong>enp3s0:&lt;/strong>&lt;/h2>
-&lt;ul>
-&lt;li>&lt;strong>类型：&lt;/strong> 以太网接口（物理网卡）。&lt;/li>
-&lt;li>&lt;strong>标志位:&lt;/strong> UP, BROADCAST, RUNNING, MULTICAST，表示接口已启用、支持广播、正在运行、支持组播。&lt;/li>
-&lt;li>&lt;strong>IPv4 地址：&lt;/strong> 10.0.0.200，子网掩码 255.255.255.0，广播地址 10.0.0.255。&lt;/li>
-&lt;li>&lt;strong>IPv6 地址：&lt;/strong> 有 Link-local IPv6 地址和 Global IPv6 地址。&lt;/li>
-&lt;li>&lt;strong>MAC 地址：&lt;/strong> 00:90:27:f1:52:41。&lt;/li>
-&lt;li>&lt;strong>流量信息:&lt;/strong> 有大量的接收和发送数据包，说明该网卡正在使用，且有网络连接。&lt;/li>
-&lt;li>&lt;strong>总结：&lt;/strong> 这是你的主要网络接口，有 IP 地址且正在工作。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;h2 id="enp4s0">&lt;strong>enp4s0:&lt;/strong>&lt;/h2>
-&lt;ul>
-&lt;li>&lt;strong>类型：&lt;/strong> 以太网接口（物理网卡）。&lt;/li>
-&lt;li>&lt;strong>标志位:&lt;/strong> UP, BROADCAST, MULTICAST，表示接口已启用、支持广播、支持组播。&lt;/li>
-&lt;li>&lt;strong>MAC 地址：&lt;/strong> 00:90:27:f1:52:42。&lt;/li>
-&lt;li>&lt;strong>流量信息:&lt;/strong> 没有接收和发送的数据包，说明该网卡可能没有连接网线或没有配置 IP 地址。&lt;/li>
-&lt;li>&lt;strong>总结：&lt;/strong> 这是一个物理网卡，但当前没有配置网络。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;h2 id="enp5s0">&lt;strong>enp5s0:&lt;/strong>&lt;/h2>
-&lt;ul>
-&lt;li>&lt;strong>类型：&lt;/strong> 以太网接口（物理网卡）。&lt;/li>
-&lt;li>&lt;strong>标志位:&lt;/strong> UP, BROADCAST, MULTICAST，表示接口已启用、支持广播、支持组播。&lt;/li>
-&lt;li>&lt;strong>MAC 地址：&lt;/strong> 00:90:27:f1:52:43。&lt;/li>
-&lt;li>&lt;strong>流量信息:&lt;/strong> 没有接收和发送的数据包，说明该网卡可能没有连接网线或没有配置 IP 地址。&lt;/li>
-&lt;li>&lt;strong>总结：&lt;/strong> 这是一个物理网卡，但当前没有配置网络。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;h2 id="lo">&lt;strong>lo:&lt;/strong>&lt;/h2>
-&lt;ul>
-&lt;li>&lt;strong>类型：&lt;/strong> Loopback (回环) 接口，用于本机内部通信。&lt;/li>
-&lt;li>&lt;strong>标志位:&lt;/strong> UP, LOOPBACK, RUNNING，表示接口已启用、回环、正在运行。&lt;/li>
-&lt;li>&lt;strong>IPv4 地址：&lt;/strong> 127.0.0.1。&lt;/li>
-&lt;li>&lt;strong>IPv6 地址：&lt;/strong> ::1。&lt;/li>
-&lt;li>&lt;strong>总结：&lt;/strong> 这是一个标准的本地回环接口，用于本机网络测试。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;h2 id="vethe9eadc3">&lt;strong>vethe9eadc3:&lt;/strong>&lt;/h2>
-&lt;ul>
-&lt;li>&lt;strong>类型：&lt;/strong> 虚拟以太网接口 (virtual Ethernet interface)，通常与 Docker 网络一起创建。&lt;/li>
-&lt;li>&lt;strong>标志位:&lt;/strong> UP, BROADCAST, RUNNING, MULTICAST，表示接口已启用、支持广播、正在运行、支持组播。&lt;/li>
-&lt;li>&lt;strong>IPv6 地址：&lt;/strong> 有 Link-local IPv6 地址&lt;/li>
-&lt;li>&lt;strong>流量信息:&lt;/strong> 有接收和发送数据包&lt;/li>
-&lt;li>&lt;strong>总结：&lt;/strong> 这是 Docker 创建的虚拟网络接口，和容器的网络相关。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;p>&lt;strong>总结：&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;/li>
-&lt;li>br-xxxx 和 docker0 开头的接口是 Docker 创建的桥接网络接口，用于容器之间的通信。&lt;/li>
-&lt;li>enp2s0, enp3s0, enp4s0, enp5s0 是你的物理网卡接口。&lt;/li>
-&lt;li>enp3s0 有 IP 地址，并有数据包接收和发送，说明它当前正在被使用。&lt;/li>
-&lt;li>lo 是本地回环接口，用于本机内部通信。&lt;/li>
-&lt;li>vethe9eadc3 是虚拟网络接口。&lt;/li>
-&lt;/ul>
-&lt;/blockquote>
-&lt;p>在 飞牛（Debian） 系统上使用多网卡方案，在 Docker 中安装 OpenWrt 作为旁路由，并使用 enp5s0 网卡，且设置 OpenWrt 的 IP 地址为 10.0.0.10。主路由器的 IP 地址为 10.0.0.1，Debian 系统使用的 IP 地址为 10.0.0.200 (在 enp3s0 上)。&lt;/p>
-&lt;p>&lt;strong>详细步骤：&lt;/strong>&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>确认网卡状态:&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>使用 ip link 或 ifconfig -a 命令确认 enp5s0 确实没有被使用（没有 IP 地址）。&lt;/p>
-&lt;pre tabindex="0">&lt;code>ip link
-# 或
-ifconfig -a
-&lt;/code>&lt;/pre>&lt;/li>
-&lt;li>
-&lt;p>确保 enp5s0 上没有连接网线（或者暂时断开），避免 IP 冲突。&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>设置 enp5s0 为混杂模式:&lt;/strong>&lt;/p>
-&lt;pre tabindex="0">&lt;code>sudo ip link set enp5s0 promisc on
-&lt;/code>&lt;/pre>&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>创建 macvlan 网络:&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>--subnet&lt;/code> 参数：指定 OpenWrt 网络使用的子网，这里是你的主路由器所在的网段。&lt;/li>
-&lt;li>&lt;code>--gateway&lt;/code> 参数：指定 OpenWrt 网络的网关，即你的主路由器的 IP 地址。&lt;/li>
-&lt;li>&lt;code>parent&lt;/code> 参数：使用 enp5s0 作为父级网卡。&lt;/li>
-&lt;li>&lt;code>macnet&lt;/code>：你创建的 macvlan 网络的名称。&lt;/li>
-&lt;/ul>
-&lt;pre tabindex="0">&lt;code>docker network create -d macvlan --subnet=10.0.0.0/24 --gateway=10.0.0.1 -o parent=enp5s0 macnet
-&lt;/code>&lt;/pre>&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>验证 macvlan 网络:&lt;/strong>&lt;/p>
-&lt;pre tabindex="0">&lt;code>docker network ls
-&lt;/code>&lt;/pre>&lt;p>确认列表中有 macnet。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>拉取 OpenWrt 镜像:&lt;/strong>&lt;/p>
-&lt;pre tabindex="0">&lt;code>docker pull registry.cn-hangzhou.aliyuncs.com/zzsrv/openwrt:latest
-&lt;/code>&lt;/pre>&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>创建并运行 OpenWrt 容器:&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>--name openwrt&lt;/code>：给容器命名为 openwrt。&lt;/li>
-&lt;li>&lt;code>-d&lt;/code>：后台运行。&lt;/li>
-&lt;li>&lt;code>--network macnet&lt;/code>：指定使用 macnet 网络。&lt;/li>
-&lt;li>&lt;code>--privileged&lt;/code>：给予容器特权权限。&lt;/li>
-&lt;li>&lt;code>registry.cn-hangzhou.aliyuncs.com/zzsrv/openwrt /sbin/init&lt;/code>：使用的镜像和启动命令。&lt;/li>
-&lt;/ul>
-&lt;pre tabindex="0">&lt;code>docker run --restart always --name openwrt -d --network macnet --privileged registry.cn-hangzhou.aliyuncs.com/zzsrv/openwrt /sbin/init
-docker run --restart always --name openwrt -d --network macnet --privileged zzsrv/openwrt /sbin/init
-&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>docker run --restart always --name istoreos -d --network macnet --ip 10.0.0.10 --privileged fingerboy/istoreos-x86-64 /sbin/init
-docker run --restart always --name istoreos -d --network macnet --privileged --dns none fingerboy/istoreos-x86-64 /sbin/init
-&lt;/code>&lt;/pre>&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>进入 OpenWrt 容器:&lt;/strong>&lt;/p>
-&lt;pre tabindex="0">&lt;code>docker exec -it openwrt bash
-docker exec -it istoreos bash
-&lt;/code>&lt;/pre>&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>配置 OpenWrt 网络 (关键步骤):&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>编辑 &lt;code>/etc/config/network&lt;/code> 文件。&lt;/p>
-&lt;pre tabindex="0">&lt;code>vi /etc/config/network
-&lt;/code>&lt;/pre>&lt;/li>
-&lt;li>
-&lt;p>配置以下内容，确保以下配置中 OpenWrt 的 IP 地址 10.0.0.10 和你主路由器的 IP 地址 10.0.0.1 在同一个网段，且不相同。&lt;/p>
-&lt;pre tabindex="0">&lt;code>config interface &amp;#39;loopback&amp;#39;
-option proto &amp;#39;static&amp;#39;
-option ipaddr &amp;#39;127.0.0.1&amp;#39;
-option netmask &amp;#39;255.0.0.0&amp;#39;
-option device &amp;#39;lo&amp;#39;
-config globals &amp;#39;globals&amp;#39;
-option packet_steering &amp;#39;1&amp;#39;
-config interface &amp;#39;lan&amp;#39;
-option proto &amp;#39;static&amp;#39;
-option netmask &amp;#39;255.255.255.0&amp;#39;
-option ip6assign &amp;#39;60&amp;#39;
-option ipaddr &amp;#39;10.0.0.10&amp;#39; # 修改为 10.0.0.10
-option gateway &amp;#39;10.0.0.1&amp;#39; # 修改为 10.0.0.1 (你的主路由 IP)
-option dns &amp;#39;10.0.0.1&amp;#39; # 修改为 10.0.0.1 (你的主路由 IP)
-option device &amp;#39;br-lan&amp;#39; # 保持不变，使用桥接接口 br-lan
-config device
-option name &amp;#39;br-lan&amp;#39;
-option type &amp;#39;bridge&amp;#39;
-list ports &amp;#39;eth0&amp;#39;
-&lt;/code>&lt;/pre>&lt;ul>
-&lt;li>&lt;strong>loopback 接口：&lt;/strong> 这是回环接口，配置正确。&lt;/li>
-&lt;li>&lt;strong>globals 配置：&lt;/strong> &lt;code>option packet_steering '1'&lt;/code> 表示开启数据包转向，一般保留。&lt;/li>
-&lt;li>&lt;strong>lan 接口：&lt;/strong>
-&lt;ul>
-&lt;li>&lt;code>option proto 'static'&lt;/code>：使用静态 IP 地址。&lt;/li>
-&lt;li>&lt;code>option netmask '255.255.255.0'&lt;/code>：子网掩码。&lt;/li>
-&lt;li>&lt;code>option ip6assign '60'&lt;/code>：IPv6 地址分配前缀长度。&lt;/li>
-&lt;li>&lt;code>option ipaddr '192.168.0.8'&lt;/code>：当前 IP 地址，你需要修改为 10.0.0.10。&lt;/li>
-&lt;li>&lt;code>option gateway '192.168.0.1'&lt;/code>：当前网关，你需要修改为 10.0.0.1 (你的主路由 IP)。&lt;/li>
-&lt;li>&lt;code>option dns '192.168.0.1'&lt;/code>：当前 DNS，你需要修改为 10.0.0.1 (你的主路由 IP) 或者公共 DNS。&lt;/li>
-&lt;li>&lt;code>option device 'br-lan'&lt;/code>：使用的接口是 br-lan（桥接接口）。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>device 配置：&lt;/strong>
-&lt;ul>
-&lt;li>&lt;code>option name 'br-lan'&lt;/code>：桥接接口名称。&lt;/li>
-&lt;li>&lt;code>option type 'bridge'&lt;/code>：接口类型为桥接。&lt;/li>
-&lt;li>&lt;code>list ports 'eth0'&lt;/code>：桥接接口包含 eth0 接口。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>重启 OpenWrt 容器:&lt;/strong>&lt;/p>
-&lt;pre tabindex="0">&lt;code>etc/init.d/network restart
-exit
-docker container restart openwrt
-&lt;/code>&lt;/pre>&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>配置 OpenClash：&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>访问 OpenWrt 的 LuCI 管理界面（通常是 http://10.0.0.10，如果访问不了，请检查你电脑的网络设置，确保你电脑的网关也设置为了 10.0.0.1），安装 OpenClash 插件。&lt;/li>
-&lt;li>配置 OpenClash，使其只负责流量转发，而不是作为 DHCP 服务。&lt;/li>
-&lt;li>根据你的需求进行相关设置，例如选择节点和代理模式。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>配置主路由器或客户端：&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>方法一 (路由器配置)：&lt;/strong>
-&lt;ul>
-&lt;li>在你的主路由器中设置静态路由，将需要走代理的流量（例如特定 IP 地址或域名）指向 OpenWrt 的 IP 地址 10.0.0.10。具体设置方法请参考你主路由器的说明书。&lt;/li>
-&lt;li>例如，如果你的主路由器支持设置“策略路由”，你可以设置目标网络为你要代理的 IP 或域名，下一跳网关设置为 10.0.0.10。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>方法二 (客户端配置):&lt;/strong>
-&lt;ul>
-&lt;li>对于需要走旁路网关的设备（例如你的电脑），手动设置其网关为 10.0.0.10。&lt;/li>
-&lt;li>或者，你可以设置 DNS 服务器为 10.0.0.10，并使用 OpenClash 的 DNS 功能进行分流。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;p>&lt;strong>重要注意事项：&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>IP 地址冲突：&lt;/strong> 确保 10.0.0.10 没有被网络中的其他设备占用。&lt;/li>
-&lt;li>&lt;strong>防火墙：&lt;/strong> 确保宿主机 (Debian) 的防火墙没有阻止 OpenWrt 的网络流量。&lt;/li>
-&lt;li>&lt;strong>网络连通性测试：&lt;/strong> 完成配置后，尝试在需要走旁路网关的设备上访问外网，检查是否可以通过 OpenWrt 的 OpenClash 进行代理。&lt;/li>
-&lt;li>&lt;strong>OpenWrt 访问：&lt;/strong> 如果你无法访问 OpenWrt 的 LuCI 管理界面，请检查你的电脑是否和 OpenWrt 在同一个网段，或者电脑的网关是否设置正确。&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>配置总结：&lt;/strong>&lt;/p>
-&lt;ol>
-&lt;li>使用独立的物理网卡 enp5s0。&lt;/li>
-&lt;li>创建 macvlan 网络。&lt;/li>
-&lt;li>在 OpenWrt 中配置正确的 IP 地址 10.0.0.10、网关 10.0.0.1 和 DNS 10.0.0.1。&lt;/li>
-&lt;li>在主路由器或者客户端设备上，设置需要走代理的流量指向 OpenWrt 的 IP 地址 10.0.0.10。&lt;/li>
-&lt;/ol></description></item></channel></rss>
+&lt;p>&lt;code>SELECT REGEXP_REPLACE('dark souls sin', '\s', NULL) FROM DUAL;&lt;/code>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2023/08/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2020/06/java/">Java</category><category domain="https://kiwi4814.github.io/tags/2019/12/javascript/">JavaScript</category></item></channel></rss>
