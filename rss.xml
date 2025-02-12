@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.127.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Wed, 12 Feb 2025 02:14:42 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>DeepSeek R1 使用全指引</title><link>https://kiwi4814.github.io/posts/2025/aigc-deepseek-r1/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2025/aigc-deepseek-r1/</guid><pubDate>Sun, 09 Feb 2025 16:46:31 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h3 id="目前可流畅使用的方式总结">目前可流畅使用的方式总结&lt;/h3>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>客驿风尘面，花坐墨痕枝</title><link>https://kiwi4814.github.io/</link><description>这是kiwi4814的个人博客！</description><generator>Hugo 0.127.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>m4814@outlook.com (kiwi4814)</managingEditor><webMaster>m4814@outlook.com (kiwi4814)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Wed, 12 Feb 2025 02:51:27 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://kiwi4814.github.io/rss.xml"/><item><title>DeepSeek R1 使用全指引</title><link>https://kiwi4814.github.io/posts/2025/aigc-deepseek-r1/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2025/aigc-deepseek-r1/</guid><pubDate>Sun, 09 Feb 2025 16:46:31 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h3 id="目前可流畅使用的方式总结">目前可流畅使用的方式总结&lt;/h3>
 &lt;p>整个春节期间最火的可能就当属 DeepSeek R1了，&lt;code>deepseek-reasoner&lt;/code> 是 DeepSeek 推出的推理模型。在输出最终回答之前，模型会先输出一段思维链内容，以提升最终答案的准确性。我们的 API 向用户开放 &lt;code>deepseek-reasoner&lt;/code> 思维链的内容，以供用户查看、展示、蒸馏使用。&lt;/p>
 &lt;p>在回答过程中展现出来的思考过程有时候比回答本身对我更有意义，让我知道AI是如何去思考的，也更方便我在与AI沟通的过程中更好的提问，但是正是由于太火爆，网页版经常出现无响应的情况，所以这里列一些能够稳定使用的方法。&lt;/p>
 &lt;h4 id="最方便替代的网站">最方便：替代的网站&lt;/h4>
@@ -83,43 +83,43 @@
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/menu.svg" alt="img"> &lt;strong>平替网站&lt;/strong>&lt;/td>
+&lt;td style="text-align:left">&lt;strong>平替网站&lt;/strong>&lt;/td>
 &lt;td>&lt;strong>简介&lt;/strong>&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://flowith.io/blank">Flowith&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://flowith.io/blank">Flowith&lt;/a>&lt;/td>
 &lt;td>要登录，中文网站，支持满血版 R1，免费无限制。&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://metaso.cn/">秘塔AI&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://metaso.cn/">秘塔AI&lt;/a>&lt;/td>
 &lt;td>要登录，中文网站，支持满血版 R1，免费无限制，倾向于搜索。&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://monica.im/">Monica&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://monica.im/">Monica&lt;/a>&lt;/td>
 &lt;td>要登录，中文网站，支持满血版 R1，每天免费 40 次。&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://lambda.chat/">Lambda&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://lambda.chat/">Lambda&lt;/a>&lt;/td>
 &lt;td>要登录，英文网站，支持满血版 R1，免费无限制。&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://deepinfra.com/chat">Deep Infra&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://deepinfra.com/chat">Deep Infra&lt;/a>&lt;/td>
 &lt;td>要登录，英文网站，支持满血版 R1，免费无限制。&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://openrouter.ai/chat?models=deepseek/deepseek-r1:free">Openrouter&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://openrouter.ai/chat?models=deepseek/deepseek-r1:free">Openrouter&lt;/a>&lt;/td>
 &lt;td>要登录，英文网站，支持满血版 R1，免费无限制。&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://huggingface.co/deepseek-ai/DeepSeek-R1">Huggingface&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://huggingface.co/deepseek-ai/DeepSeek-R1">Huggingface&lt;/a>&lt;/td>
 &lt;td>要登录，英文网站，支持满血版 R1，免费无限制。&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://www.perplexity.ai/">Perplexity&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://www.perplexity.ai/">Perplexity&lt;/a>&lt;/td>
 &lt;td>要登录，英文网站，支持满血版 R1，倾向于搜索，每天免费 5 次。&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://chat.groq.com/?model=deepseek-r1-distill-llama-70b">Groq&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://chat.groq.com/?model=deepseek-r1-distill-llama-70b">Groq&lt;/a>&lt;/td>
 &lt;td>要登录，英文网站，支持蒸馏版 70B，免费无限制，速度很快。&lt;/td>
 &lt;/tr>
 &lt;/tbody>
@@ -133,39 +133,39 @@
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/menu.svg" alt="img"> &lt;strong>通用客户端&lt;/strong>&lt;/td>
+&lt;td style="text-align:left">&lt;strong>通用客户端&lt;/strong>&lt;/td>
 &lt;td>&lt;strong>简介&lt;/strong>&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/pc.svg" alt="img"> &lt;a href="https://cherry-ai.com/">Cherry Studio&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://cherry-ai.com/">Cherry Studio&lt;/a>&lt;/td>
 &lt;td>支持多平台本地客户端。&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/pc.svg" alt="img"> &lt;a href="https://nextchat.dev/chat">Nextchat&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://nextchat.dev/chat">Nextchat&lt;/a>&lt;/td>
 &lt;td>支持多平台本地客户端，支持网页端。&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/pc.svg" alt="img"> &lt;a href="https://web.chatboxai.app/">Chatbox&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://web.chatboxai.app/">Chatbox&lt;/a>&lt;/td>
 &lt;td>支持多平台本地客户端，支持网页端。&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/menu.svg" alt="img"> &lt;strong>编程客户端&lt;/strong>&lt;/td>
+&lt;td style="text-align:left">&lt;strong>编程客户端&lt;/strong>&lt;/td>
 &lt;td>简介&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/pc.svg" alt="img"> &lt;a href="https://www.cursor.com/">Cursor&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://www.cursor.com/">Cursor&lt;/a>&lt;/td>
 &lt;td>支持多平台本地客户端。&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/pc.svg" alt="img"> &lt;a href="https://codeium.com/">Windsurf&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://codeium.com/">Windsurf&lt;/a>&lt;/td>
 &lt;td>支持多平台本地客户端。&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/pc.svg" alt="img"> &lt;a href="https://marketplace.visualstudio.com/items?itemName=Continue.continue">Continue&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://marketplace.visualstudio.com/items?itemName=Continue.continue">Continue&lt;/a>&lt;/td>
 &lt;td>VS Code 插件，可能是目前最好用的。&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/pc.svg" alt="img"> &lt;a href="https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev">Cline&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev">Cline&lt;/a>&lt;/td>
 &lt;td>VS Code 插件，但网上有人说太费 Token 了。&lt;/td>
 &lt;/tr>
 &lt;/tbody>
@@ -179,51 +179,51 @@
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/menu.svg" alt="img"> &lt;strong>国内平台&lt;/strong>&lt;/td>
+&lt;td style="text-align:left">&lt;strong>国内平台&lt;/strong>&lt;/td>
 &lt;td>&lt;strong>简介&lt;/strong>&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://cloud.siliconflow.cn/">硅基流动&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://cloud.siliconflow.cn/">硅基流动&lt;/a>&lt;/td>
 &lt;td>全国产组合，支持满血 R1，注册送 14 元，永久有效。[ &lt;a href="https://cloud.siliconflow.cn/account/ak">API &lt;/a>] [ &lt;a href="https://docs.siliconflow.cn/api-reference/chat-completions/chat-completions">文档&lt;/a> ]&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://console.bce.baidu.com/qianfan/overview">百度千帆&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://console.bce.baidu.com/qianfan/overview">百度千帆&lt;/a>&lt;/td>
 &lt;td>支持满血 R1，2 月 18 日前完全免费。[ &lt;a href="https://console.bce.baidu.com/iam/#/iam/apikey/list">API&lt;/a> ] [ &lt;a href="https://cloud.baidu.com/doc/WENXINWORKSHOP/s/Fm2vrveyu">文档&lt;/a> ]&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://console.volcengine.com/ark">火山方舟&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://console.volcengine.com/ark">火山方舟&lt;/a>&lt;/td>
 &lt;td>支持满血 R1，注册送 50 万 Tokens，永久有效。[ &lt;a href="https://console.volcengine.com/ark/region:ark+cn-beijing/apiKey">API&lt;/a> ] [ &lt;a href="https://www.volcengine.com/docs/82379/1449737">文档&lt;/a> ]&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://bailian.console.aliyun.com/">阿里云百炼&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://bailian.console.aliyun.com/">阿里云百炼&lt;/a>&lt;/td>
 &lt;td>支持满血 R1，注册送 1000 万 Tokens，180 天内有效。[ &lt;a href="https://bailian.console.aliyun.com/?apiKey=1#/api-key">API&lt;/a> ] [ &lt;a href="https://bailian.console.aliyun.com/#/model-market/detail/deepseek-r1">文档&lt;/a> ]&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://console.cloud.tencent.com/tione/v2/aimarket/detail/deepseek_series">腾讯云&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://console.cloud.tencent.com/tione/v2/aimarket/detail/deepseek_series">腾讯云&lt;/a>&lt;/td>
 &lt;td>支持满血 R1，2 月 25 日前完全免费。[ &lt;a href="https://console.cloud.tencent.com/lkeap/api">API&lt;/a> ] [ &lt;a href="https://cloud.tencent.com/document/product/1772/115963">文档&lt;/a> ]&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/menu.svg" alt="img"> &lt;strong>国外平台&lt;/strong>&lt;/td>
+&lt;td style="text-align:left">&lt;strong>国外平台&lt;/strong>&lt;/td>
 &lt;td>&lt;strong>简介&lt;/strong>&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://app.hyperbolic.xyz/">Hyperbolic&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://app.hyperbolic.xyz/">Hyperbolic&lt;/a>&lt;/td>
 &lt;td>支持满血 R1，注册送 10 美元。[ &lt;a href="https://app.hyperbolic.xyz/settings">API&lt;/a> ] [ &lt;a href="https://docs.hyperbolic.xyz/docs/getting-started">文档&lt;/a> ]&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://api.together.ai/playground">Together&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://api.together.ai/playground">Together&lt;/a>&lt;/td>
 &lt;td>支持满血 R1，注册送 1 美元。[ &lt;a href="https://api.together.ai/settings/api-keys">API&lt;/a> ] [ &lt;a href="https://api.together.ai/docs">文档&lt;/a> ]&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://fireworks.ai/">Fireworks&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://fireworks.ai/">Fireworks&lt;/a>&lt;/td>
 &lt;td>支持满血 R1，注册送 1 美元。[ &lt;a href="https://fireworks.ai/account/api-keys">API&lt;/a> ] [ &lt;a href="https://docs.fireworks.ai/getting-started/introduction">文档&lt;/a> ]&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://openrouter.ai/">OpenRouter&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://openrouter.ai/">OpenRouter&lt;/a>&lt;/td>
 &lt;td>支持满血 R1，注册送 1 美元。[ &lt;a href="https://openrouter.ai/settings/keys">API&lt;/a> ] [ &lt;a href="https://openrouter.ai/docs/quickstart">文档&lt;/a> ]&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">&lt;img src="https://kiwi4814-1256211473.cos.ap-nanjing.myqcloud.com/img/web.svg" alt="img"> &lt;a href="https://console.groq.com/">Groq&lt;/a>&lt;/td>
+&lt;td style="text-align:left">&lt;a href="https://console.groq.com/">Groq&lt;/a>&lt;/td>
 &lt;td>支持 70B 蒸馏版，完全免费，但有速率限制。[ &lt;a href="https://console.groq.com/keys">API&lt;/a> ] [ &lt;a href="https://console.groq.com/docs/overview">文档&lt;/a> ]&lt;/td>
 &lt;/tr>
 &lt;/tbody>
@@ -511,7 +511,7 @@
 &lt;/div>
 &lt;/div>&lt;h3 id="容器自动更新">容器自动更新&lt;/h3>
 &lt;p>为了统一管理docker容器的更新，通过watchtower来对moviepilot进行更新。&lt;/p>
-&lt;p>安装指南请参照 [[Docker 部署 Watchtower 自动更新容器]]&lt;/p>
+&lt;p>安装指南请参照 &lt;a href="https://kiwi4814.github.io/posts/2024/docker-compose-watchtower/">Docker 部署 Watchtower 自动更新容器&lt;/a>&lt;/p>
 &lt;h3 id="下载器">下载器&lt;/h3>
 &lt;p>下载器如果选择 docker 部署的话，可以参照下面的 compose 文件进行部署。&lt;/p>
 &lt;h4 id="qbittorrent">qBittorrent&lt;/h4>
@@ -13894,4 +13894,4 @@ U+0020 160 无中断空格（SPACE），可命名文件的空格类型
 &lt;/div>
 &lt;/div>&lt;p>这样就可以在&lt;code>js&lt;/code>代码中使用&lt;code>replaceAll&lt;/code>方法了。&lt;/p>
 &lt;p>oracle去空格&lt;/p>
-&lt;p>&lt;code>SELECT REGEXP_REPLACE('dark souls sin', '\s', NULL) FROM DUAL;&lt;/code>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2023/08/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2020/06/java/">Java</category><category domain="https://kiwi4814.github.io/tags/2019/12/javascript/">JavaScript</category></item><item><title/><link>https://kiwi4814.github.io/posts/2025/20250126-%E5%B0%8F%E8%82%A5%E7%BE%8A/</link><guid isPermaLink="true">https://kiwi4814.github.io/posts/2025/20250126-%E5%B0%8F%E8%82%A5%E7%BE%8A/</guid><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>m4814@outlook.com (kiwi4814)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description/></item></channel></rss>
+&lt;p>&lt;code>SELECT REGEXP_REPLACE('dark souls sin', '\s', NULL) FROM DUAL;&lt;/code>&lt;/p></description><category domain="https://kiwi4814.github.io/categories/2023/08/%E6%8A%80%E6%9C%AF/">技术</category><category domain="https://kiwi4814.github.io/tags/2020/06/java/">Java</category><category domain="https://kiwi4814.github.io/tags/2019/12/javascript/">JavaScript</category></item></channel></rss>
